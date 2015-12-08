@@ -28,6 +28,18 @@ set laststatus=1
 "set statusline=\ %<%F[%n%M%R%H]%=\ %y\ %(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)
 set statusline=\ %<%F[b:%n%M%R%H]%=\ \ %(%c:%l/%L%)
 
+"map
+"map <silent> [map] [cmd]: will not show cmd in window,exp:
+"map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
+let mapleader = ","
+
+"vimdiff
+if &diff
+	map <leader>1 :diffget 1<CR> :diffupdate<CR>
+	map <leader>2 :diffget 2<CR> :diffupdate<CR>
+	map <leader>3 :diffget 3<CR> :diffupdate<CR>
+	map <leader>4 :diffget 4<CR> :diffupdate<CR>
+endif
 
 "taglist
 nnoremap <F8> :TlistToggle<CR>
