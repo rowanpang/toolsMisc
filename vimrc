@@ -24,10 +24,15 @@ setlocal foldlevel=1        " ÉèÖÃÕÛµş²ãÊıÎª
 set encoding=utf-8
 set fencs=utf-8,gbk
 
+set laststatus=1
+"set statusline=\ %<%F[%n%M%R%H]%=\ %y\ %(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)
+set statusline=\ %<%F[b:%n%M%R%H]%=\ \ %(%c:%l/%L%)
+
+
 "taglist
 nnoremap <F8> :TlistToggle<CR>
 let Tlist_Auto_Highlight_Tag = 1
-let Tlist_Auto_Open = 1
+let Tlist_Auto_Open = 0
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_File_Fold_Auto_Close = 1
