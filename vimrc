@@ -24,7 +24,7 @@ setlocal foldlevel=1        " ÉèÖÃÕÛµş²ãÊıÎª
 set encoding=utf-8
 set fencs=utf-8,gbk
 
-set laststatus=1
+set laststatus=2
 "set statusline=\ %<%F[%n%M%R%H]%=\ %y\ %(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)
 set statusline=\ %<%F[b:%n%M%R%H]%=\ \ %(%c:%l/%L%)
 
