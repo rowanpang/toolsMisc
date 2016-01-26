@@ -47,9 +47,13 @@ let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Auto_Open = 0
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_File_Fold_Auto_Close = 1
+let Tlist_File_Fold_Auto_Close = 0
 
 "nerdtree
 set rtp+=~/.vim/nerdtree
 nnoremap <F9> :NERDTreeToggle<CR>
 let NERDTreeWinPos = "right"
+
+"ctags
+"nnoremap <leader>csc :cs find c <C-R><C-W>
+source ~/.vim/plugin/cscope_maps.vim
