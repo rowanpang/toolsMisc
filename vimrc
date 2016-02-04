@@ -65,3 +65,5 @@ let NERDTreeWinPos = "right"
 "Makefile
 "for kernel script/Makefile.xx
 au BufRead,BufNewFile Makefile.* set filetype=make	
+
+"markdown
