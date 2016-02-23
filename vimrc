@@ -63,7 +63,12 @@ let NERDTreeWinPos = "right"
 "source ~/.vim/plugin/cscope_maps.vim	no need manual source,it will auto sourced 
 
 "Makefile
-"for kernel script/Makefile.xx
+"----------------for kernel script/Makefile.xx
 au BufRead,BufNewFile Makefile.* set filetype=make	
 
-"markdown
+"Binary
+augroup Binary
+	au BufReadPre *.bin let &bin=1
+	au BufReadPost *.bin if &bin | %!xxd -g 1
+	au BufReadPost *.bin set filetype=xxd | endif
+augroup END
