@@ -1,38 +1,38 @@
 "syntax
-syntax on                   " ×Ô¶¯Óï·¨¸ßÁÁ
+syntax on                   " è‡ªåŠ¨è¯­æ³•é«˜äº®
 hi CursorLine cterm=none ctermbg=Grey 
-set cursorline              " Í»³öÏÔÊ¾µ±Ç°ĞĞ
+set cursorline              " çªå‡ºæ˜¾ç¤ºå½“å‰è¡Œ
 
-set number                  " ÏÔÊ¾ĞĞºÅ
-set shiftwidth=4            " Éè¶¨ << ºÍ >> ÃüÁîÒÆ¶¯Ê±µÄ¿í¶ÈÎª 4
-set softtabstop=4           " Ê¹µÃ°´ÍË¸ñ¼üÊ±¿ÉÒÔÒ»´ÎÉ¾µô 4 ¸ö¿Õ¸ñ
-set tabstop=4               " Éè¶¨ tab ³¤¶ÈÎª 4
-set noexpandtab				" ²»Ê¹ÓÃ¿Õ¸ñÕ¹¿ªtab
-set nobackup                " ¸²¸ÇÎÄ¼şÊ±²»±¸·İ
+set number                  " æ˜¾ç¤ºè¡Œå·
+set shiftwidth=4            " è®¾å®š << å’Œ >> å‘½ä»¤ç§»åŠ¨æ—¶çš„å®½åº¦ä¸º 4
+set softtabstop=4           " ä½¿å¾—æŒ‰é€€æ ¼é”®æ—¶å¯ä»¥ä¸€æ¬¡åˆ æ‰ 4 ä¸ªç©ºæ ¼
+set tabstop=4               " è®¾å®š tab é•¿åº¦ä¸º 4
+set noexpandtab				" ä¸ä½¿ç”¨ç©ºæ ¼å±•å¼€tab
+set nobackup                " è¦†ç›–æ–‡ä»¶æ—¶ä¸å¤‡ä»½
 set autoindent				" or cindent
 
-set ignorecase smartcase    " ËÑË÷Ê±ºöÂÔ´óĞ¡Ğ´£¬µ«ÔÚÓĞÒ»¸ö»òÒÔÉÏ´óĞ´×ÖÄ¸Ê±ÈÔ±£³Ö¶Ô´óĞ¡Ğ´Ãô¸Ğ
-set nowrapscan              " ½ûÖ¹ÔÚËÑË÷µ½ÎÄ¼şÁ½¶ËÊ±ÖØĞÂËÑË÷
-set incsearch               " ÊäÈëËÑË÷ÄÚÈİÊ±¾ÍÏÔÊ¾ËÑË÷½á¹û
-set hlsearch                " ËÑË÷Ê±¸ßÁÁÏÔÊ¾±»ÕÒµ½µÄÎÄ±¾
-set smartindent             " ¿ªÆôĞÂĞĞÊ±Ê¹ÓÃÖÇÄÜ×Ô¶¯Ëõ½ø
-set hidden                  " ÔÊĞíÔÚÓĞÎ´±£´æµÄĞŞ¸ÄÊ±ÇĞ»»»º³åÇø£¬´ËÊ±µÄĞŞ¸ÄÓÉ vim ¸ºÔğ±£´æ
+set ignorecase smartcase    " æœç´¢æ—¶å¿½ç•¥å¤§å°å†™ï¼Œä½†åœ¨æœ‰ä¸€ä¸ªæˆ–ä»¥ä¸Šå¤§å†™å­—æ¯æ—¶ä»ä¿æŒå¯¹å¤§å°å†™æ•æ„Ÿ
+set nowrapscan              " ç¦æ­¢åœ¨æœç´¢åˆ°æ–‡ä»¶ä¸¤ç«¯æ—¶é‡æ–°æœç´¢
+set incsearch               " è¾“å…¥æœç´¢å†…å®¹æ—¶å°±æ˜¾ç¤ºæœç´¢ç»“æœ
+set hlsearch                " æœç´¢æ—¶é«˜äº®æ˜¾ç¤ºè¢«æ‰¾åˆ°çš„æ–‡æœ¬
+set smartindent             " å¼€å¯æ–°è¡Œæ—¶ä½¿ç”¨æ™ºèƒ½è‡ªåŠ¨ç¼©è¿›
+set hidden                  " å…è®¸åœ¨æœ‰æœªä¿å­˜çš„ä¿®æ”¹æ—¶åˆ‡æ¢ç¼“å†²åŒºï¼Œæ­¤æ—¶çš„ä¿®æ”¹ç”± vim è´Ÿè´£ä¿å­˜
 
 "list
-set listchars=tab:\|\ ,eol:$
+set listchars=tab:\|\ ,eol:$	"can also be 'Â¦,â”†'. for plugins https://github.com/Yggdroot/indentLine
 "set list					" better manual set when need
 
 "fold
-"set foldenable              " ¿ªÊ¼ÕÛµş
-set nofoldenable              " ¿ªÊ¼ÕÛµş
-set foldmethod=syntax       " ÉèÖÃÓï·¨ÕÛµş
-set foldcolumn=0            " ÉèÖÃÕÛµşÇøÓòµÄ¿í¶È
-setlocal foldlevel=1        " ÉèÖÃÕÛµş²ãÊıÎª
+"set foldenable              " å¼€å§‹æŠ˜å 
+set nofoldenable              " å¼€å§‹æŠ˜å 
+set foldmethod=syntax       " è®¾ç½®è¯­æ³•æŠ˜å 
+set foldcolumn=0            " è®¾ç½®æŠ˜å åŒºåŸŸçš„å®½åº¦
+setlocal foldlevel=1        " è®¾ç½®æŠ˜å å±‚æ•°ä¸º
 							"
 set encoding=utf-8
 set fencs=utf-8,gbk
 
-set cmdheight=1             " Éè¶¨ÃüÁîĞĞµÄĞĞÊıÎª 1
+set cmdheight=1             " è®¾å®šå‘½ä»¤è¡Œçš„è¡Œæ•°ä¸º 1
 set laststatus=2
 "set statusline=\ %<%F[%n%M%R%H]%=\ %y\ %(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)
 set statusline=\ %<%F[b:%n%M%R%H]%=\ \ %(%c:%l/%L%)
