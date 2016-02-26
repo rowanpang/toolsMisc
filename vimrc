@@ -80,3 +80,9 @@ augroup Binary
 	au BufReadPost *.bin if &bin | %!xxd -g 1
 	au BufReadPost *.bin set filetype=xxd | endif
 augroup END
+
+"autoinfo
+let g:vimrc_author='Rowan Pang'
+let g:vimrc_email='pangweizhen.2008@hotmail.com'
+let g:vimrc_homepage=''
+nmap <F4> :AuthorInfoDetect<cr>
