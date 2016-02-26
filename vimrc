@@ -18,6 +18,10 @@ set hlsearch                " 搜索时高亮显示被找到的文本
 set smartindent             " 开启新行时使用智能自动缩进
 set hidden                  " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
 
+"list
+set listchars=tab:\|\ ,eol:$
+"set list					" better manual set when need
+
 "fold
 "set foldenable              " 开始折叠
 set nofoldenable              " 开始折叠
