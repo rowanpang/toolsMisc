@@ -63,6 +63,9 @@ set rtp+=~/.vim/nerdtree
 nnoremap <F9> :NERDTreeToggle<CR>
 let NERDTreeWinPos = "right"
 
+"nerdcomment
+"ref:https://github.com/scrooloose/nerdcommenter
+
 "ctags
 "nnoremap <leader>csc :cs find c <C-R><C-W>
 "source ~/.vim/plugin/cscope_maps.vim	no need manual source,it will auto sourced 
