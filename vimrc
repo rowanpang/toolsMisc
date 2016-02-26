@@ -7,6 +7,7 @@ set number                  " 显示行号
 set shiftwidth=4            " 设定 << 和 >> 命令移动时的宽度为 4
 set softtabstop=4           " 使得按退格键时可以一次删掉 4 个空格
 set tabstop=4               " 设定 tab 长度为 4
+set noexpandtab				" 不使用空格展开tab
 set nobackup                " 覆盖文件时不备份
 set autoindent				" or cindent
 
