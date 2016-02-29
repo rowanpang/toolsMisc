@@ -81,8 +81,13 @@ augroup Binary
 	au BufReadPost *.bin set filetype=xxd | endif
 augroup END
 
-"autoinfo
+"autherinfo
 let g:vimrc_author='Rowan Pang'
 let g:vimrc_email='pangweizhen.2008@hotmail.com'
 let g:vimrc_homepage=''
 nmap <F4> :AuthorInfoDetect<cr>
+
+"rpm spec
+au FileType spec map <buffer> <F5> <Plug>SpecChangelog
+let spec_chglog_format = "%a %b %d %Y RowanPang <pangweizhen.2008@hotmail.com>"
+"let spec_chglog_release_info = 1
