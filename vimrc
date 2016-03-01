@@ -1,6 +1,10 @@
 "syntax
 syntax on                   " 自动语法高亮
-hi CursorLine cterm=none ctermbg=Grey 
+if $TERM == "xterm"
+	hi CursorLine cterm=none ctermbg=Grey 
+else "under console TERM == linux
+	hi CursorLine cterm=none ctermbg=DarkCyan
+endif
 set cursorline              " 突出显示当前行
 
 set number                  " 显示行号
