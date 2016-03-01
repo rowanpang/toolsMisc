@@ -95,3 +95,6 @@ nmap <F4> :AuthorInfoDetect<cr>
 au FileType spec map <buffer> <F5> <Plug>SpecChangelog
 let spec_chglog_format = "%a %b %d %Y RowanPang <pangweizhen.2008@hotmail.com>"
 "let spec_chglog_release_info = 1
+
+"git commit message
+au FileType gitcommit exe "normal gg"
