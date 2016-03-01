@@ -12,3 +12,10 @@
 
 3,
 	/etc/i3
+
+4,multi command
+	ref:
+		https://faq.i3wm.org/question/1709/multiple-commands-to-a-keybind.1.html
+	
+	separate commands by ;
+		bindsym $mod+v split v;exec gnome-terminal;
