@@ -21,8 +21,7 @@ floating_modifier $mod
 bindsym $mod+Return exec gnome-terminal
 
 # firfox
-bindsym $mod+Ctrl+f exec --no-startup-id /usr/bin/firefox
-bindsym $mod+ctrl+f exec --no-startup-id /usr/bin/firefox
+bindsym $mod+Ctrl+f exec  /usr/bin/firefox
 bindsym $mod+x [class="Firefox"] exec killall firefox
 
 # kill focused window
@@ -159,3 +158,10 @@ exec i3status | i3bar -d
 
 # Start other app auto
 exec /usr/bin/synergys
+exec /usr/bin/ibus-daemon
+exec /usr/bin/dbus-daemon
+#exec /usr/bin/gnome-screensaver
+
+#screensaver
+bindsym $mod+Super_R exec "gnome-terminal --profile=ptest --full-screen -e 'cmatrix -abS -u 2'";exec "xtrlock-pam -p system-auth -b none"
+#bindsym --release $mod+Super_R exec /home/pangwz/screen-i3-msg.sh
