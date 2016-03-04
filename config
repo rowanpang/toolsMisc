@@ -160,6 +160,7 @@ exec i3status | i3bar -d
 exec /usr/bin/synergys
 exec /usr/bin/ibus-daemon
 exec /usr/bin/dbus-daemon
+exec /usr/libexec/polkit-gnome-authentication-agent-1
 #exec /usr/bin/gnome-screensaver
 
 #screensaver
