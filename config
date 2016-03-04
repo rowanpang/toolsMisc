@@ -159,7 +159,7 @@ exec i3status | i3bar -d
 # Start other app auto
 exec /usr/bin/synergys
 exec /usr/bin/ibus-daemon
-exec /usr/bin/dbus-daemon
+#exec /usr/bin/dbus-daemon
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 #exec /usr/bin/gnome-screensaver
 
