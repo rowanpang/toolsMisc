@@ -94,8 +94,9 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+exclam move workspace 1			#!
-bindsym $mod+Shift+at move workspace 2				#@
+#exclam-->!,at-->@,...
+bindsym $mod+Shift+exclam move workspace 1
+bindsym $mod+Shift+at move workspace 2
 bindsym $mod+Shift+numbersign move workspace 3
 bindsym $mod+Shift+dollar move workspace 4
 bindsym $mod+Shift+percent move workspace 5
@@ -159,10 +160,12 @@ exec i3status | i3bar -d
 # Start other app auto
 exec /usr/bin/synergys
 exec /usr/bin/ibus-daemon
-#exec /usr/bin/dbus-daemon
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 #exec /usr/bin/gnome-screensaver
 
 #screensaver
-bindsym $mod+Super_R exec "gnome-terminal --profile=ptest --full-screen -e 'cmatrix -abS -u 2'";exec "xtrlock-pam -p system-auth -b none"
+#xtrlock  -b blank/none/bg
 #bindsym --release $mod+Super_R exec /home/pangwz/screen-i3-msg.sh
+#bindsym $mod+Super_R exec "gnome-terminal --profile=ptest --full-screen -e 'cmatrix -abS -u 2'";exec "xtrlock-pam -p system-auth -b none"
+#bindsym $mod+Super_R exec "gnome-terminal --profile=ptest --full-screen -e 'cmatrix -abS -u 2' && xtrlock-pam -p system-auth -b none"
+bindsym $mod+Super_R exec xtrlock-pam -p system-auth -b blank
