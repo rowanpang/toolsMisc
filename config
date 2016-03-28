@@ -22,7 +22,7 @@ floating_modifier $mod
 bindsym $mod+Return exec gnome-terminal
 
 # firfox
-bindsym $mod+Ctrl+f exec  /usr/bin/firefox
+bindsym $mod+Ctrl+f workspace 10;exec  /usr/bin/firefox
 bindsym $mod+x [class="Firefox"] exec killall firefox
 
 # kill focused window
@@ -81,6 +81,7 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindcode $mod+d focus child
+bindsym $mod+shift+a focus child 
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -160,7 +161,7 @@ exec i3status | i3bar -d
 
 # Start other app auto
 exec /usr/bin/synergys
-exec /usr/bin/ibus-daemon
+exec /usr/bin/imsettings-start --cond-start -n -q
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 #exec /usr/bin/gnome-screensaver
 
@@ -169,4 +170,5 @@ exec /usr/libexec/polkit-gnome-authentication-agent-1
 #bindsym --release $mod+Super_R exec /home/pangwz/screen-i3-msg.sh
 #bindsym $mod+Super_R exec "gnome-terminal --profile=ptest --full-screen -e 'cmatrix -abS -u 2'";exec "xtrlock-pam -p system-auth -b none"
 #bindsym $mod+Super_R exec "gnome-terminal --profile=ptest --full-screen -e 'cmatrix -abS -u 2' && xtrlock-pam -p system-auth -b none"
-bindsym $mod+Super_R exec xtrlock-pam -p system-auth -b blank
+#bindsym $mod+Super_R exec "xtrlock-pam -p system-auth -b blank"; exec "usleep 1000 && echo 'mem' > /sys/power/state"
+bindsym $mod+Super_R exec "xtrlock-pam -p system-auth -b blank"
