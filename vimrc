@@ -22,7 +22,7 @@ set hlsearch                " 搜索时高亮显示被找到的文本
 set smartindent             " 开启新行时使用智能自动缩进
 set hidden                  " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
 
-"list
+"vertical list
 set listchars=tab:\|\ ,eol:$	"can also be '¦,┆'. for plugins https://github.com/Yggdroot/indentLine
 "set list					" better manual set when need
 
@@ -98,3 +98,7 @@ let spec_chglog_format = "%a %b %d %Y RowanPang <pangweizhen.2008@hotmail.com>"
 
 "git commit message
 au FileType gitcommit exe "normal gg"
+
+"dictionary
+"in 'insert mode' use tab or c-x_c-k to finish word
+set dictionary +=/usr/share/dict/words
