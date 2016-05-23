@@ -7,7 +7,7 @@ else "under console TERM == linux
 endif
 set cursorline              " 突出显示当前行
 
-set number                  " 显示行号
+"set number                  " 显示行号
 set shiftwidth=4            " 设定 << 和 >> 命令移动时的宽度为 4
 set softtabstop=4           " 使得按退格键时可以一次删掉 4 个空格
 set tabstop=4               " 设定 tab 长度为 4
@@ -34,7 +34,7 @@ set foldcolumn=0            " 设置折叠区域的宽度
 setlocal foldlevel=1        " 设置折叠层数为
 							"
 set encoding=utf-8
-set fencs=utf-8,gbk
+set fencs=utf-8,gbk,latin1
 
 set cmdheight=1             " 设定命令行的行数为 1
 set laststatus=2
