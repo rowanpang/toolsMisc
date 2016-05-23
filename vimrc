@@ -101,4 +101,9 @@ au FileType gitcommit exe "normal gg"
 
 "dictionary
 "in 'insert mode' use tab or c-x_c-k to finish word
-set dictionary +=/usr/share/dict/words
+set dictionary+=/usr/share/dict/words
+
+"vim-instant-markdown
+"from https://github.com/suan/vim-instant-markdown
+"use for view md files 
+"after/ftplugin/markdown/instant-markdown.vim
