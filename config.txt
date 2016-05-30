@@ -19,3 +19,5 @@
 	
 	separate commands by ;
 		bindsym $mod+v split v;exec gnome-terminal;
+		bindsym $mod+Shift+asterisk move workspace 8;exec workspace 8
+
