@@ -34,7 +34,7 @@ set foldcolumn=0            " 设置折叠区域的宽度
 setlocal foldlevel=1        " 设置折叠层数为
 							"
 set encoding=utf-8
-set fencs=utf-8,gbk,latin1
+set fencs=utf-8,gbk,ucs-bom,latin1
 
 set cmdheight=1             " 设定命令行的行数为 1
 set laststatus=2
@@ -65,7 +65,9 @@ let Tlist_File_Fold_Auto_Close = 0
 "nerdtree
 set rtp+=~/.vim/nerdtree
 nnoremap <F9> :NERDTreeToggle<CR>
+"options
 let NERDTreeWinPos = "right"
+let NERDTreeShowLineNumbers = 1
 
 "nerdcomment
 "ref:https://github.com/scrooloose/nerdcommenter
@@ -107,3 +109,8 @@ set dictionary+=/usr/share/dict/words
 "from https://github.com/suan/vim-instant-markdown
 "use for view md files 
 "after/ftplugin/markdown/instant-markdown.vim
+
+"vim tabpage,:help tabp ...
+
+"paste
+set pastetoggle=<F2>
