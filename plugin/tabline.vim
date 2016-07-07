@@ -19,16 +19,34 @@ function! Tabline()
   let s = ''
   for i in range(tabpagenr('$'))
     let tab = i + 1
+	let winnrs = tabpagewinnr(tab,'$')
     let winnr = tabpagewinnr(tab)
     let buflist = tabpagebuflist(tab)
     let bufnr = buflist[winnr - 1]
     let bufname = bufname(bufnr)
     let bufmodified = getbufvar(bufnr, "&mod")
 
+	let bufnamedis = ''
+	if bufname != ''
+		let index = 0
+		let indextmp = stridx(bufname,"/",index)
+		while indextmp != -1
+			let bufnamedis .= strpart(bufname,index,1)
+			let bufnamedis .= '/'
+			let index = indextmp +1 
+			let indextmp = stridx(bufname,"/",index)
+		endwhile
+
+		let bufnamedis .= fnamemodify(bufname,':p:t')
+	else
+		let bufnamedis = 'No Name'
+	endif
+
     let s .= '%' . tab . 'T'
     let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
-    let s .= ' ' . tab .':'
-    let s .= (bufname != '' ? '['. fnamemodify(bufname, ':t') . '] ' : '[No Name] ')
+    let s .= ' ' . tab . (winnrs > 1 ? ',' . winnrs :'') . ':'
+    "let s .= (bufname != '' ? '['. fnamemodify(bufname, ':p:.') . '] ' : '[No Name] ')
+	let s.= bufnamedis
 
     if bufmodified
       let s .= '[+] '
