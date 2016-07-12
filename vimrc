@@ -1,3 +1,10 @@
+"check gui
+	if has('gui_running')
+		"in gui
+	else
+		"in terminal
+	endif
+
 "syntax
 	syntax on                   " 自动语法高亮
 	if $TERM == "xterm"
@@ -98,7 +105,7 @@
 "rpm spec
 	au FileType spec map <buffer> <F5> <Plug>SpecChangelog
 	let spec_chglog_format = "%a %b %d %Y RowanPang <pangweizhen.2008@hotmail.com>"
-"let spec_chglog_release_info = 1
+	"let spec_chglog_release_info = 1
 
 "git commit message
 	au FileType gitcommit exe "normal gg"
@@ -114,6 +121,24 @@
 
 "vim tabpage,:help tabp ...
 	"for tabline show ref plugin/tabline.vim,autoload.
+	noremap <leader>1 1gt
+	noremap <leader>2 2gt
+	noremap <leader>3 3gt
+	noremap <leader>4 4gt
+	noremap <leader>5 5gt
+	noremap <leader>6 6gt
+	noremap <leader>7 7gt
+	noremap <leader>8 8gt
+	noremap <leader>9 9gt
 
 "paste
 	set pastetoggle=<F2>
+
+"vim-airline
+	set rtp+=~/.vim/airline
+	"let g:airline#extensions#tabline#enabled = 1
+	if has('gui_running')
+		"in gui default is on
+	else
+		au VimEnter * if exists('g:loaded_airline') | AirlineToggle | endif
+	endif
