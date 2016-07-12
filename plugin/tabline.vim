@@ -29,12 +29,14 @@ function! Tabline()
 	let bufnamedis = ''
 	if bufname != ''
 		let index = 0
-		let indextmp = stridx(bufname,"/",index)
+		let delimiter = "/"
+		let partlen = 1
+		let indextmp = stridx(bufname,delimiter,index)
 		while indextmp != -1
-			let bufnamedis .= strpart(bufname,index,1)
-			let bufnamedis .= '/'
-			let index = indextmp +1 
-			let indextmp = stridx(bufname,"/",index)
+			let bufnamedis .= strpart(bufname,index,partlen)
+			let bufnamedis .= delimiter
+			let index = indextmp + strlen(delimiter)
+			let indextmp = stridx(bufname,delimiter,index)
 		endwhile
 
 		let bufnamedis .= fnamemodify(bufname,':p:t')
