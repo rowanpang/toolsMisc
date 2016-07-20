@@ -70,6 +70,9 @@
 	let Tlist_Exit_OnlyWindow = 1
 	let Tlist_GainFocus_On_ToggleOpen = 1
 	let Tlist_File_Fold_Auto_Close = 0
+	if has(win32)
+		let let Tlist_Ctags_Cmd = '$HOME\vimfiles\plugin\ctags.exe'
+	endif
 
 "nerdtree
 	set rtp+=~/.vim/nerdtree
