@@ -28,7 +28,7 @@ else
 fi
 
 start() {
-    echo -n "iStarting ${PACKAGE_DESC}: "
+    echo -n "Starting ${PACKAGE_DESC}: "
 	if hash python2 2>/dev/null; then
 		#nohup "${PYTHON}" launcher/start.py 2>&1 | /usr/bin/logger -t ${PACKAGE_NAME} &
 		nohup "${PYTHON}" launcher/start.py >/dev/null 2>&1 &
@@ -42,6 +42,16 @@ stop() {
     echo "${PACKAGE_NAME}."
 }
 
+status(){
+	pid=1`ps aux | grep "${PYTHON} launcher/start.py" | grep -v grep | awk '{print $2}'` || true
+	if [ $pid -ne 1 ] ;then 
+		echo -n "$PACKAGE_NAME running,pid: ${pid:1}"
+	else
+		echo -n "$PACKAGE_NAME stopped"
+	fi
+	echo 
+}
+
 restart() {
     stop
     sleep 1
@@ -50,7 +60,7 @@ restart() {
 
 usage() {
     N=$(basename "$0")
-    echo "Usage: [sudo] $N {start|stop|restart}" >&2
+    echo "Usage: [sudo] $N {start|stop|restart|status}" >&2
     exit 1
 }
 
@@ -76,6 +86,9 @@ case "$1" in
     restart | force-reload)
         restart
         ;;
+	status)
+		status
+		;;
     *)
         usage
         ;;
