@@ -6,7 +6,7 @@ cd $SCRIPTPATH
 if python -V | grep -q "Python 3" ;then
     PYTHON="python2"
 else
-    PYTHON="python"
+    PYTHON="python2"
 fi
 
 

@@ -1,5 +1,8 @@
 .idea
-#data
+data/gae_proxy/good_ip.txt
+data/gae_proxy/scan_ip.log
+data/launcher/launcher.log
+data/x_tunnel/client.log
 *~
 *.pyc
 *.swp
