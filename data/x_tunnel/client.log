@@ -1,0 +1,5 @@
+Jul 20 12:41:18.112 - [INFO] use config_path:/home/pangwz/XX-Net/data/x_tunnel/client.json
+Jul 20 12:41:18.112 - [INFO] Use proxy:127.0.0.1:8087
+Jul 20 12:41:18.112 - [DEBUG] x-tunnel no account
+Jul 20 12:41:18.112 - [WARNING] x-tunnel session not start
+Jul 20 12:41:18.112 - [INFO] Socks5 server listen:127.0.0.1:1080.

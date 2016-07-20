@@ -1,6 +1,6 @@
 XX-Net
 =================
-* XX-Net is a free desktop application that delivers fast, reliable and secure access to the open Internet for users in censored regions. It uses Google Engine App (GAE) acts as a proxy server through the firewall.
+* XX-Net is a free desktop application that delivers fast, reliable and secure access to the open Internet for users in censored regions. It uses google app engine (GAE) as a proxy server through the firewall.
 
 
 Wiki
@@ -17,7 +17,7 @@ Downloads
 * [__Download page__](https://github.com/XX-net/XX-Net/blob/master/code/default/download.md)
 
 
-Iinks
+Links
 ------
 * Usage :  https://github.com/XX-net/XX-Net/wiki/How-to-use
 
