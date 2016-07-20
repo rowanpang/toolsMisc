@@ -77,6 +77,7 @@
 	"options
 		let NERDTreeWinPos = "right"
 		let NERDTreeShowLineNumbers = 1
+		"let NERDTreeChDirMode = 2
 
 "nerdcomment
 	"ref:https://github.com/scrooloose/nerdcommenter
@@ -145,6 +146,8 @@
 		au VimEnter * if exists('g:loaded_airline') | AirlineToggle | endif
 	endif
 
-"fs operation
+"fs/dir operation
+	set autochdir			
 	".vim/plugin/Rename.vim   ---> :Rename newname
 	"in NERDTree 'm'-->node operation menu
+	
