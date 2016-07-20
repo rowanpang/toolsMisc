@@ -130,6 +130,8 @@
 	noremap <leader>7 7gt
 	noremap <leader>8 8gt
 	noremap <leader>9 9gt
+	noremap <leader>n gt
+	noremap <leader>p gT
 
 "paste
 	set pastetoggle=<F2>
@@ -142,3 +144,7 @@
 	else
 		au VimEnter * if exists('g:loaded_airline') | AirlineToggle | endif
 	endif
+
+"fs operation
+	".vim/plugin/Rename.vim   ---> :Rename newname
+	"in NERDTree 'm'-->node operation menu
