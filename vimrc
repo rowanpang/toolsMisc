@@ -164,7 +164,7 @@
 	endif
 
 "fs/dir operation
-	set autochdir			
+	"set autochdir	--->should't set for ctags and cscope will work error!!!
 	".vim/plugin/Rename.vim   ---> :Rename newname
 	"in NERDTree 'm'-->node operation menu
 	
