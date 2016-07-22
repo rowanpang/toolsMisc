@@ -21,7 +21,7 @@
 
 "syntax
 	syntax on                   " 自动语法高亮
-	if $TERM == "xterm"
+	if $TERM == "xterm"			" linux vconsole
 		hi CursorLine cterm=none ctermbg=Grey 
 	else "under console TERM == linux
 		hi CursorLine cterm=none ctermbg=DarkCyan
