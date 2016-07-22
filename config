@@ -13,15 +13,21 @@ set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#font -*-ar pl uming cn-light-r-normal--0-0-0-0-c-*-iso10646-*
+#font WenQuanYi Zen Hei Sharp,style=Regul
+#font pango:DejaVu Sans Mono Book 25 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+#title_format "%title-%class"
 
 # start a terminal
 # $mod+Shift+Retrun config by gnome-terminal new win hotkey,start new shell from cur dir
 bindsym $mod+Return exec gnome-terminal
 
 # firfox
+#assign [class="Firefox"] 2
 bindsym $mod+Ctrl+f exec /usr/bin/firefox
 bindsym $mod+x [class="Firefox"] exec killall firefox
 
@@ -39,8 +45,8 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
+bindsym $mod+Left focus left 
+bindsym $mod+Down focus down 
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
@@ -118,6 +124,7 @@ bindsym $mod+Shift+R restart
 bindsym $mod+Shift+E exit
 
 # resize window (you can also use the mouse for that)
+# mouse hold right click and drag<-----
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -166,6 +173,9 @@ exec /usr/bin/synergys
 exec /usr/bin/imsettings-start --cond-start -n -q
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 #exec /usr/bin/gnome-screensaver
+exec /home/pangwz/.nutstore/dist/bin/nutstore-pydaemon.py
+#exec i3-msg 'workspace 1; exec /usr/bin/nautilus'
+#exec i3-msg 'workspace 2; exec /usr/bin/gnome-terminal'
 
 #screensaver
 #xtrlock  -b blank/none/bg

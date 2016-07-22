@@ -10,3 +10,5 @@
 
 5,config
 	/etc/i3status.conf
+
+6,从系统获取状态信息
