@@ -5,6 +5,16 @@
 		"in terminal
 	endif
 
+"simalt alt-key
+	if has("win32")
+		set winaltkeys=yes		"let vim handle <alt-space> for os system menu.
+	endif	
+
+"window
+	if has("win32")
+		au GUIEnter * :simalt ~x    "auto maximum
+	endif
+
 "syntax
 	syntax on                   " 自动语法高亮
 	if $TERM == "xterm"
