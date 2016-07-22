@@ -10,6 +10,10 @@
 		set winaltkeys=yes		"let vim handle <alt-space> for os system menu.
 	endif	
 
+"backspace del key
+	set backspace=indent,eol,start
+		"start  allow backspacing over the start of insert; 即可以删除一些insert之前的字符.
+
 "window
 	if has("win32")
 		au GUIEnter * :simalt ~x    "auto maximum
