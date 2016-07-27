@@ -89,7 +89,11 @@
 	endif
 
 "nerdtree
-	set rtp+=~/.vim/nerdtree
+	if has("win32")
+		set rtp+=$HOME/vimfiles/nerdtree
+	else
+		set rtp+=~/.vim/nerdtree
+	endif
 	nnoremap <F9> :NERDTreeToggle<CR>
 	"options
 		let NERDTreeWinPos = "right"
@@ -156,8 +160,13 @@
 	set pastetoggle=<F2>
 
 "vim-airline
-	set rtp+=~/.vim/airline
 	"let g:airline#extensions#tabline#enabled = 1
+	if has("win32")
+		set rtp+=$HOME/vimfiles/airline
+	else
+		set rtp+=~/.vim/airline
+	endif
+
 	if has('gui_running')
 		"in gui default is on
 	else
