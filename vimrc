@@ -98,6 +98,7 @@
 
 "nerdcomment
 	"ref:https://github.com/scrooloose/nerdcommenter
+	"\ca 转换注释的方式，比如： /**/和// 
 
 "ctags
 	"nnoremap <leader>csc :cs find c <C-R><C-W>
