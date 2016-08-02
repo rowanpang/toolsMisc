@@ -98,6 +98,7 @@
 	"options
 		let NERDTreeWinPos = "right"
 		let NERDTreeShowLineNumbers = 1
+		let NERDTreeQuitOnOpen = 1
 		"let NERDTreeChDirMode = 2
 
 "nerdcomment
@@ -175,6 +176,7 @@
 
 "fs/dir operation
 	"set autochdir	--->should't set for ctags and cscope will work error!!!
+	au BufRead *.txt lcd %:h   "if open *.txt change to current dir.
 	".vim/plugin/Rename.vim   ---> :Rename newname
 	"in NERDTree 'm'-->node operation menu
 	
