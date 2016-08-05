@@ -18,6 +18,18 @@
 	if has("win32")
 		au GUIEnter * :simalt ~x    "auto maximum
 	endif
+		
+	:nmap <silent> <C-h> :wincmd h<CR>
+	:nmap <silent> <C-j> :wincmd j<CR>
+	:nmap <silent> <C-k> :wincmd k<CR>
+	:nmap <silent> <C-l> :wincmd l<CR>
+	:nmap <silent> <C-c> :wincmd c<CR>
+
+	augroup BgHighlight
+	    autocmd!
+		autocmd WinEnter * set cul
+		autocmd WinLeave * set nocul
+	augroup END
 
 "syntax
 	syntax on                   " 自动语法高亮
@@ -27,6 +39,7 @@
 		hi CursorLine cterm=none ctermbg=DarkCyan
 	endif
 	set cursorline              " 突出显示当前行
+		"winent/winleave also can auto set to distinguish cur window
 
 "set number                  " 显示行号
 	set shiftwidth=4            " 设定 << 和 >> 命令移动时的宽度为 4
