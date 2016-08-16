@@ -96,7 +96,9 @@
 	let Tlist_Auto_Open = 0
 	let Tlist_Exit_OnlyWindow = 1
 	let Tlist_GainFocus_On_ToggleOpen = 1
-	let Tlist_File_Fold_Auto_Close = 0
+	let Tlist_File_Fold_Auto_Close = 1
+	let Tlist_Close_On_Select = 1
+	let Tlist_Highlight_Tag_On_BufEnter = 1
 	if has("win32")
 		let Tlist_Ctags_Cmd = 'C:\Users\pangwz\vimfiles\plugin\ctags.exe'
 	endif
@@ -107,7 +109,8 @@
 	else
 		set rtp+=~/.vim/nerdtree
 	endif
-	nnoremap <F9> :NERDTreeToggle<CR>
+	"nnoremap <F9> :NERDTreeToggle<CR>
+	nnoremap <F9> :NERDTreeFind<CR>
 	"options
 		let NERDTreeWinPos = "right"
 		let NERDTreeShowLineNumbers = 1
