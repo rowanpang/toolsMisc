@@ -196,3 +196,7 @@
 	".vim/plugin/Rename.vim   ---> :Rename newname
 	"in NERDTree 'm'-->node operation menu
 	
+"dirdiff
+	"compare and sync two dir
+	":dirdiff <a> <b>
+	
