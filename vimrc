@@ -115,6 +115,8 @@
 		let NERDTreeWinPos = "right"
 		let NERDTreeShowLineNumbers = 1
 		let NERDTreeQuitOnOpen = 1
+		let nerdtree_plugin_open_cmd = 'gnome-open'
+		
 		"let NERDTreeChDirMode = 2
 
 "nerdcomment
