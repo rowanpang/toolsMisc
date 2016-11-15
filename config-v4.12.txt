@@ -160,4 +160,4 @@ bar {
 }
 
 exec /bin/synergys
-
+exec /usr/bin/ibus-daemon
