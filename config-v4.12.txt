@@ -160,4 +160,6 @@ bar {
 }
 
 exec /home/pangwz/tools/synergy/synergys
-exec /usr/bin/ibus-daemon
+exec /usr/bin/ibus-daemon --daemonize
+exec /home/pangwz/.nutstore/dist/bin/nutstore-pydaemon.py
+
