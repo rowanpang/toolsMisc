@@ -159,5 +159,5 @@ bar {
         status_command i3status
 }
 
-exec /bin/synergys
+exec /home/pangwz/tools/synergy/synergys
 exec /usr/bin/ibus-daemon
