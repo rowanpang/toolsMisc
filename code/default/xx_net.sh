@@ -41,6 +41,16 @@ stop() {
     echo "${PACKAGE_NAME}."
 }
 
+status() {
+	pid="PID`ps aux | grep "${PYTHON} launcher/start.py" | grep -v grep | awk '{print $2}'`"
+	if [ $pid == "PID" ];then
+		echo "xx-net stoped"
+	else
+		echo "xx-net running,pid: ${pid##"PID"}"
+	fi
+}
+	
+
 restart() {
     stop
     sleep 1
@@ -49,7 +59,7 @@ restart() {
 
 usage() {
     N=$(basename "$0")
-    echo "Usage: [sudo] $N {start|stop|restart}" >&2
+    echo "Usage: [sudo] $N {start|stop|restart|status}" >&2
     exit 1
 }
 
@@ -74,6 +84,9 @@ case "$1" in
     restart | force-reload)
         restart
         ;;
+	status)
+		status
+		;;
     *)
         usage
         ;;
