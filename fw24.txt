@@ -4,6 +4,8 @@
 	c,just start 'synergys'not use 'synergy'
 	d,修改.desktop配置文件，将启动项改为synergys
 
+	!!! use synergys in git, not use the synergy rpm pkg for can not cros copy!!!
+
 2,todo
 	~/.config/Synergy/xxx
 
