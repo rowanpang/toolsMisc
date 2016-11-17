@@ -88,6 +88,8 @@
 		map <leader>2 :diffget 2<CR> :diffupdate<CR>
 		map <leader>3 :diffget 3<CR> :diffupdate<CR>
 		map <leader>4 :diffget 4<CR> :diffupdate<CR>
+
+		au BufRead * set filetype=
 	endif
 
 "taglist
