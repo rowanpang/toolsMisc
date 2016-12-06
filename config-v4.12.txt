@@ -161,6 +161,6 @@ bar {
 }
 
 exec /home/pangwz/tools/synergy/synergys
-exec /usr/bin/ibus-daemon --daemonize
+exec /usr/bin/ibus-daemon --daemonize --replace
 exec /home/pangwz/.nutstore/dist/bin/nutstore-pydaemon.py
 exec /usr/libexec/polkit-gnome-authentication-agent-1
