@@ -34,11 +34,13 @@
 "syntax
 	syntax on                   " 自动语法高亮
 	if $TERM >= "xterm"				" linux vconsole
-		hi CursorLine cterm=none ctermbg=Grey 
-	else "under console TERM == linux
+		"hi CursorLine cterm=none ctermbg=Grey		"for gnome-terminal rowan-systemThem
+		hi CursorLine cterm=none ctermbg=Black		"for gnome-terminal rowan-solarDark
+	else "under terminal TERM == linux
 		hi CursorLine cterm=none ctermbg=DarkCyan
 	endif
 	set cursorline              " 突出显示当前行
+	"set cursorcolumn
 		"winent/winleave also can auto set to distinguish cur window
 
 "set number                  " 显示行号
