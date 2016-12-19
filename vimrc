@@ -206,3 +206,6 @@
 	"compare and sync two dir
 	":dirdiff <a> <b>
 	
+"supertabl
+	"according to context auto select  ins-complete mode,e.g ctrl-x ctrl-n,ctrl-x ctrl-f,
+	let g:SuperTabDefaultCompletionType = "context"
