@@ -36,7 +36,7 @@ fi
 domain=${1%.*}
 workdir="$PWD/"
 xmlConfig=${domain}.xml
-xmlTemplate='/home/pangwz/test/kvm/fw24.xml'
+xmlTemplate="$(dirname $(readlink -n $program))/template.xml"
 
 imgSizeWhenAutoCreate='25G'
 imgDisk=${workdir}${domain}.img
@@ -44,7 +44,7 @@ logFile="${workdir}serial-${domain}.log"
 domainIso=${workdir}${domain}.iso
 
 vncPort=""
-domainSavedDir="/home/pangwz/.config/libvirt/qemu/save/"
+domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
 domainSaved=$domainSavedDir$domain.save
 domainFSDir=${domain}FS/
 
