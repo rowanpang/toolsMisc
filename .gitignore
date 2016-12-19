@@ -9,6 +9,7 @@
 #
 # Normal rules
 #
+config
 .*
 *.o
 *.o.*
