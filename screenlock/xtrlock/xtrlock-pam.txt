@@ -1,6 +1,6 @@
 0,base:
 	https://github.com/aanatoly/xtrlock-pam
-
+	https://github.com/rowanpang/xtrlock-pam.git
 
 1,make install
 	/usr/bin/xtrlock-pam
