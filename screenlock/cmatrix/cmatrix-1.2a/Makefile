@@ -16,7 +16,7 @@ SHELL = /bin/sh
 
 srcdir = .
 top_srcdir = .
-prefix = /home/pangwz/tools/i3wm/screenlock/cmatrix/cmatrix-1.2a
+prefix = /usr/local
 exec_prefix = ${prefix}
 
 bindir = ${exec_prefix}/bin
@@ -40,10 +40,10 @@ pkgincludedir = $(includedir)/cmatrix
 
 top_builddir = .
 
-ACLOCAL = /home/pangwz/tools/i3wm/screenlock/cmatrix/cmatrix-1.2a/missing aclocal
-AUTOCONF = /home/pangwz/tools/i3wm/screenlock/cmatrix/cmatrix-1.2a/missing autoconf
-AUTOMAKE = /home/pangwz/tools/i3wm/screenlock/cmatrix/cmatrix-1.2a/missing automake
-AUTOHEADER = /home/pangwz/tools/i3wm/screenlock/cmatrix/cmatrix-1.2a/missing autoheader
+ACLOCAL = aclocal
+AUTOCONF = autoconf
+AUTOMAKE = automake
+AUTOHEADER = autoheader
 
 INSTALL = /usr/bin/install -c
 INSTALL_PROGRAM = ${INSTALL} $(AM_INSTALL_PROGRAM_FLAGS)
@@ -59,7 +59,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 CC = gcc
 CONSOLECHARS = 
-CURSES_LIB = 
+CURSES_LIB = -lncurses
 MAKEINFO = /home/pangwz/tools/i3wm/screenlock/cmatrix/cmatrix-1.2a/missing makeinfo
 MKFONTDIR = /usr/bin/mkfontdir
 PACKAGE = cmatrix
@@ -83,7 +83,7 @@ PROGRAMS =  $(bin_PROGRAMS)
 DEFS = -DHAVE_CONFIG_H -I. -I$(srcdir) -I.
 CPPFLAGS = 
 LDFLAGS = 
-LIBS =  
+LIBS = -lncurses  -lncurses
 cmatrix_OBJECTS =  cmatrix.o
 cmatrix_LDADD = $(LDADD)
 cmatrix_DEPENDENCIES = 

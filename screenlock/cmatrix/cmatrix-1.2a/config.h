@@ -9,7 +9,7 @@
 
 /* Define this if your curses library has use_default_colors, for 
    cool transparency =-) */
-/* #undef HAVE_USE_DEFAULT_COLORS */
+#define HAVE_USE_DEFAULT_COLORS 1
 
 /* Define this if you have the linux consolechars program */
 /* #undef HAVE_CONSOLECHARS */
@@ -18,22 +18,22 @@
 #define HAVE_SETFONT /usr/bin/setfont
 
 /* Define this if you have the wresize function in your ncurses-type library */
-/* #undef HAVE_WRESIZE */
+#define HAVE_WRESIZE 1
 
 /* Define this if you have the resizeterm function in your ncurses-type library */
-/* #undef HAVE_RESIZETERM */
+#define HAVE_RESIZETERM 1
 
 /* Define if you have the putenv function.  */
 #define HAVE_PUTENV 1
 
 /* Define if you have the <curses.h> header file.  */
-/* #undef HAVE_CURSES_H */
+#define HAVE_CURSES_H 1
 
 /* Define if you have the <fcntl.h> header file.  */
 #define HAVE_FCNTL_H 1
 
 /* Define if you have the <ncurses.h> header file.  */
-/* #undef HAVE_NCURSES_H */
+#define HAVE_NCURSES_H 1
 
 /* Define if you have the <sys/ioctl.h> header file.  */
 #define HAVE_SYS_IOCTL_H 1
@@ -48,7 +48,7 @@
 #define HAVE_UNISTD_H 1
 
 /* Define if you have the ncurses library (-lncurses).  */
-/* #undef HAVE_LIBNCURSES */
+#define HAVE_LIBNCURSES 1
 
 /* Name of package */
 #define PACKAGE "cmatrix"
