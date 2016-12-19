@@ -161,6 +161,10 @@ bar {
 }
 
 exec /home/pangwz/tools/synergy/synergys
+#for synergyc disable all xkbmap,just use the server config.
+#exec /home/pangwz/tools/synergy/synergyc rowanInspur.lan
+#exec /usr/bin/setxkbmap -option -option
+
 exec /usr/bin/ibus-daemon --daemonize --replace
 exec /home/pangwz/.nutstore/dist/bin/nutstore-pydaemon.py
 exec /usr/libexec/polkit-gnome-authentication-agent-1
