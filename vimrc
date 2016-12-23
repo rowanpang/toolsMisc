@@ -16,7 +16,9 @@
 
 "window
 	if has("win32")
-		au GUIEnter * :simalt ~x    "auto maximum
+		au GUIEnter * winsize 125 25
+		au GUIEnter * winpos 210 135
+		au GUIEnter * simalt ~x    "auto maximum
 	endif
 		
 	:nmap <silent> <C-h> :wincmd h<CR>
