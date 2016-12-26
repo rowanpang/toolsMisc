@@ -16,6 +16,10 @@ function add(){
 		mntOpt="-o uid=$uidPangwz,gid=$uidPangwz,utf8,fmask=0113"
 	fi
 
+	if [ "${ID_FS_TYPE}" == "ntfs" ];then
+		mntOpt="-t ntfs-3g -o uid=$uidPangwz,gid=$uidPangwz,utf8,fmask=0113,dmask=0022"
+	fi	
+
 	verbose "mntopt:$mntOpt"
 	/bin/mount $mntOpt ${DEVNAME} $mntDir
 	verbose "after add"
