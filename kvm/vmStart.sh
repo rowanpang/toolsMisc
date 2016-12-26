@@ -59,7 +59,8 @@ function domainCreate(){
 	else
 		verbose echo "create domain $xmlConfig"
 		#echo -e "\033[1;32m create domain $xmlConfig \033[0m"
-		virsh create $xmlConfig
+		virsh define $xmlConfig
+		virsh start ${domain}
 		ret=$?
 	fi
 
