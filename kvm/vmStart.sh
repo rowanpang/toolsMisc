@@ -134,7 +134,7 @@ EOF
 
 function checkXml(){
 	[ -f $xmlConfig ] && return
-	verbose echo "auto gen $xmlConfig"
+	verbose echo -e "\033[1;33m\t\tauto gen $xmlConfig\033[0m"
 	cp $xmlTemplate $xmlConfig
 	local uuid=$(uuidgen) 
 	verbose echo "$TAB random uuid\t:$uuid"
@@ -164,7 +164,7 @@ function checkXml(){
 
 function checkImg(){
 	[ -f $imgDisk ] && return
-	verbose echo "auto create $imgDisk" 
+	verbose echo -e "\033[1,33m\t\tauto create $imgDisk\033[0m" 
 	qemu-img create $imgDisk $imgSizeWhenAutoCreate
 }
 
@@ -173,8 +173,9 @@ function check(){
 }
 
 #main
+
 check || exit
-#exit
+
 curWS=$(getCurWorkSpace)
 echo "domain: $domain"
 echo "xmlConfig: $xmlConfig"
