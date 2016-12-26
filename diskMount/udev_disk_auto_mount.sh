@@ -1,23 +1,13 @@
 #!/bin/sh
-LOG=/tmp/log-udev_disk_auto_mount.log
-#LOG=/dev/null
 function verbose(){
 	echo "$@" >> $LOG
 }
 
-mntDir=""
-timeStamp=`/bin/date +%Y%m%d%H%M%S`
-uidPangwz=`id --user pangwz`
-
-verbose $0
-verbose "action:$ACTION"
-verbose "dev:${DEVNAME}"
-
 function add(){
 	local mntOpt=""
-	mntDir="/media/${ID_FS_LABEL}"
+	local mntDir="/media/${ID_FS_LABEL}.${ID_FS_TYPE}"
 	if [ -e $mntDir ];then
-		mntDir="/media/${ID_FS_LABEL}-$timeStamp"
+		mntDir="${mntDir}-$timeStamp"
 	fi
 	verbose "mnt dir:$mntDir"
 
@@ -33,13 +23,28 @@ function add(){
 
 function remove(){
 	verbose "in remove"
-	mntDir=`/bin/mount | /bin/grep ${DEVNAME} | awk '{print $3}'`
+	local mntDir=`/bin/mount | /bin/grep ${DEVNAME} | awk '{print $3}'`
 	verbose "mnted dir:$mntDir"
 
 	/bin/umount $mntDir
 	rm -r $mntDir
 	verbose "after remove"
 }
+
+LOG=/tmp/log-udev_disk_auto_mount.log
+#LOG=/dev/null
+
+timeStamp=`/bin/date +%Y%m%d%H%M%S`
+uidPangwz=`id --user pangwz`
+
+[ $1 ] && DEVNAME="/dev/${1}"
+[ $2 ] && ACTION=$2
+
+verbose $0
+verbose "action:$ACTION"
+verbose "dev:${DEVNAME}"
+
+eval $(blkid -po udev ${DEVNAME})
 
 if [ "$ACTION" == "add" ];then
 	add

@@ -1,1 +1,9 @@
-KERNEL=="sd[b-z][0-9]", SUBSYSTEM=="block", RUN+="/home/pangwz/tools/toolsMisc/diskMount/udev_disk_auto_mount.sh %k %N"
+ENV{ID_BUS} != "usb",GOTO="disk_auto_mount_by_label_end" 
+KERNEL!="sd[b-z][0-9]", GOTO="disk_auto_mount_by_label_end"
+SUBSYSTEM!="block",GOTO="disk_auto_mount_by_label_end"
+
+ACTION=="add", RUN+="/usr/bin/systemctl restart autoMount@%k.service"
+ACTION=="remove", RUN+="/usr/bin/systemctl restart autoUmount@%k.service"
+
+LABEL="disk_auto_mount_by_label_end"
+

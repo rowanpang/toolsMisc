@@ -1,0 +1,7 @@
+[Unit]
+Description=udisk auto mount trigger by systemd-udevd
+
+[Service]
+Type=forking
+GuessMainPID=no
+ExecStart=/home/pangwz/tools/toolsMisc/diskMount/udev_disk_auto_mount.sh %I remove
