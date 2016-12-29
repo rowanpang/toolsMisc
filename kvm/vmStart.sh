@@ -6,9 +6,6 @@
 		#imgSizeWhenAutoCreate='25G'
 	#2,./vmStart.sh *.xml or *.iso
 
-#howTodebug
-	
-
 #depend on
 	#1,qemu-img to gen imgDisk
 	#2,awk/sed/python
@@ -16,50 +13,14 @@
 	#4,i3-msg adjust win
 	#5,uuidgen,auto gen uuid
 
-program=$0
-DEBUG="yes"
-
 function Usage(){
 	echo "need param"
 	echo "Usage: $program 'domain'"
 }
+
 function verbose(){
 	[ $DEBUG == "yes" ] && {  $@; }
 }
-TAB="-e \t"
-#check param
-if [ $# -lt 1 ];then
-	Usage
-	exit -1;
-fi	
-
-domain=${1%.*}
-workdir="$PWD/"
-xmlConfig=${domain}.xml
-xmlTemplate="$(dirname $(readlink -n $program))/template.xml"
-
-imgSizeWhenAutoCreate='25G'
-imgDisk=${workdir}${domain}.img
-logFile="${workdir}serial-${domain}.log"
-domainIso=${workdir}${domain}.iso
-
-uri="system"
-if [ "$uri" == "system" ];then
-	#TODO
-	domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
-	domainSaved=$domainSavedDir$domain.save
-
-	lvirsh="sudo virsh"
-	lnetstat="sudo netstat"
-	lchmod="sudo chmod"
-else
-	domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
-	domainSaved=$domainSavedDir$domain.save
-
-	lvirsh="virsh"
-	lnetstat="netstat"
-	lchmod="chmod"
-fi
 
 function domainCreate(){
 	local ret;
@@ -190,15 +151,53 @@ function check(){
 
 #main
 
+program=$0
+DEBUG="yes"
+TAB="-e \t"
+
+domain=${1%.*}
+workdir="$PWD/"
+xmlConfig=${domain}.xml
+xmlTemplate="$(dirname $(readlink -n $program))/template.xml"
+
+imgSizeWhenAutoCreate='25G'
+imgDisk=${workdir}${domain}.img
+logFile="${workdir}serial-${domain}.log"
+domainIso=${workdir}${domain}.iso
+
+uri="system"
+if [ "$uri" == "system" ];then
+	#TODO
+	domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
+	domainSaved=$domainSavedDir$domain.save
+
+	lvirsh="sudo virsh"
+	lnetstat="sudo netstat"
+	lchmod="sudo chmod"
+else
+	domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
+	domainSaved=$domainSavedDir$domain.save
+
+	lvirsh="virsh"
+	lnetstat="netstat"
+	lchmod="chmod"
+fi
+
+#check param
+if [ $# -lt 1 ];then
+	Usage
+	exit -1;
+fi	
+
 check || exit
 
 curWS=$(getCurWorkSpace)
 echo "domain: $domain"
 echo "xmlConfig: $xmlConfig"
 echo "curWorkSpace: $curWS"
-#topleft 10 20
-#top right 1330 10
 domainCreate
+#top left 10 20
+#top right 1330 10
 i3-msg 'floating toggle ;resize set 270 200;move position 1330 00' >/dev/null 2>&1
 vncViewer
 
