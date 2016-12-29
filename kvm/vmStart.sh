@@ -43,24 +43,35 @@ imgDisk=${workdir}${domain}.img
 logFile="${workdir}serial-${domain}.log"
 domainIso=${workdir}${domain}.iso
 
-vncPort=""
-domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
-domainSaved=$domainSavedDir$domain.save
-domainFSDir=${domain}FS/
+uri="system"
+if [ "$uri" == "system" ];then
+	#TODO
+	domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
+	domainSaved=$domainSavedDir$domain.save
+
+	lvirsh="sudo virsh"
+	lnetstat="sudo netstat"
+	lchmod="sudo chmod"
+else
+	domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
+	domainSaved=$domainSavedDir$domain.save
+
+	lvirsh="virsh"
+	lnetstat="netstat"
+	lchmod="chmod"
+fi
 
 function domainCreate(){
 	local ret;
 	if [ -r $domainSaved ];then
 		verbose echo "restore domain $domainSaved"
-		#echo -e "\033[1;32m restore domain $domainSaved && delete it\033[0m"
-		virsh restore $domainSaved
+		$lvirsh restore $domainSaved
 		ret=$?
 		rm -rf $domainSaved
 	else
-		verbose echo "create domain $xmlConfig"
-		#echo -e "\033[1;32m create domain $xmlConfig \033[0m"
-		virsh define $xmlConfig
-		virsh start ${domain}
+		verbose echo "define&start domain from $xmlConfig"
+		$lvirsh define $xmlConfig
+		$lvirsh start ${domain}
 		ret=$?
 	fi
 
@@ -75,27 +86,28 @@ function domainCreate(){
 #confirm vncPort for domain throw /proc/$pid/cmdline
 function gotDomainVncPort(){
 	local pid port pids
-	local pidPort=( )
+	local pidPorts=( )
 	oldIFS="$IFS"
+	#allVnc=`sudo netstat -nptl 2>/dev/null | grep ":59[0-9][0-9]"`
+	tmp=`$lnetstat -nptl 2>/dev/null`
+
 	IFS=$'\n'
-	allVnc=`netstat -nptl 2>/dev/null | grep ":59[0-9][0-9]"`
+	allVnc=`echo "$tmp" | grep ":59[0-9][0-9]"`
 	for vnc in $allVnc;do
 		unset pid port
-		#echo $vnc 
 		pid=$(echo $vnc | awk '{print $7}' | sed 's#\([0-9]\+\)/.*#\1#')
 		port=$(echo $vnc | awk '{print $4}' | sed 's/.*:\(59[0-9][0-9]\)/\1/')
 		pids="$pid $pids" 
-		pidPort[$pid]=$port	
+		pidPorts[$pid]=$port	
 	done
-
 	IFS="$oldIFS"
+
 	#trim ^\s and \s$
 	pids=$(echo $pids | sed 's/^\s\?\([0-9]\+\)\s\?$/\1/')
 	for pid in $pids;do
-		#echo "match pid: $pid"
 		count=$(cat /proc/$pid/cmdline | grep "domain-[0-9]\+-${domain:0:20}" -c)
 		if [ $count -gt 0 ];then
-			echo ${pidPort[$pid]}
+			echo ${pidPorts[$pid]}
 			match="yes"
 			break;
 		fi
@@ -104,11 +116,14 @@ function gotDomainVncPort(){
 }
 
 function vncViewer(){
+	$lchmod a+rw $logFile
+
+	local vncPort=""
 	vncPort=$(gotDomainVncPort)
 	echo "vncPort: $vncPort"
 	vncviewer :$vncPort   >/dev/null 2>&1
 
-	virsh destroy $domain
+	$lvirsh destroy $domain
 }
 
 function getCurWorkSpace(){
