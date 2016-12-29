@@ -49,6 +49,7 @@ verbose "action:$ACTION"
 verbose "dev:${DEVNAME}"
 
 eval $(blkid -po udev ${DEVNAME})
+[ -z ${ID_FS_LABEL} ] && ID_FS_LABEL=uDisk
 
 if [ "$ACTION" == "add" ];then
 	add
