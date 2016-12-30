@@ -25,8 +25,12 @@ if python -V | grep -q "Python 3" ;then
 else
     PYTHON="python"
 fi
+if [ -L $0 ];then
+	PACKAGE_PATH="$(dirname $(readlink -n $0))/../"
+else
+	PACKAGE_PATH="../"
+fi
 
-PACKAGE_PATH="$(dirname $(readlink -n $0))/../"
 PACKAGE_VER_FILE="${PACKAGE_PATH}version.txt"
 PACKAGE_VER="default"
 
