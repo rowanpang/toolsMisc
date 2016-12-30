@@ -26,23 +26,32 @@ else
     PYTHON="python"
 fi
 
+PACKAGE_PATH="$(dirname $(readlink -n $0))/../"
+PACKAGE_VER_FILE="${PACKAGE_PATH}version.txt"
+PACKAGE_VER="default"
+
+if [ -f "${PACKAGE_VER_FILE}" ];then
+	PACKAGE_VER=$(cat $PACKAGE_VER_FILE)
+fi
+
 start() {
     echo -n "Starting ${PACKAGE_DESC}: "
     if hash python2 2>/dev/null; then
         #nohup "${PYTHON}" launcher/start.py 2>&1 | /usr/bin/logger -t ${PACKAGE_NAME} &
-        nohup "${PYTHON}" launcher/start.py >/dev/null 2>&1 &
+        #nohup "${PYTHON}" launcher/start.py >/dev/null 2>&1 &
+        nohup "${PYTHON}" ${PACKAGE_PATH}${PACKAGE_VER}/launcher/start.py >/dev/null 2>&1 &
     fi
     echo "${PACKAGE_NAME}."
 }
 
 stop() {
     echo -n "Stopping ${PACKAGE_DESC}: "
-    kill -9 `ps aux | grep "${PYTHON} launcher/start.py" | grep -v grep | awk '{print $2}'` || true
+    kill -9 `ps aux | grep "${PACKAGE_VER}/launcher/start.py" | grep -v grep | awk '{print $2}'` || true
     echo "${PACKAGE_NAME}."
 }
 
 status() {
-	pid="PID`ps aux | grep "${PYTHON} launcher/start.py" | grep -v grep | awk '{print $2}'`"
+	pid="PID`ps aux | grep "${PACKAGE_VER}/launcher/start.py" | grep -v grep | awk '{print $2}'`"
 	if [ $pid == "PID" ];then
 		echo "xx-net stoped"
 	else
