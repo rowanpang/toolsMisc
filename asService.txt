@@ -1,6 +1,5 @@
 1,ref
-	sudo ln -s /home/yourName/XX-Net/code/default/xx_net.sh xx_net
-
+	a,add data/gae_proxy/CA.crt to cert manager.
 2,
 	sudo ln -s /home/yourName/XX-Net/code/default/xx_net.sh xx_net
 	chkconfig --add xxx
