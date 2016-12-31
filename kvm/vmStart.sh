@@ -76,15 +76,29 @@ function gotDomainVncPort(){
 	[ $match ] || { echo -e "\033[1;31m\t\terror!!!not found vnc port for $domain,exit -2\033[0m" && exit -2; }
 }
 
-function vncViewer(){
+function doVncViewer(){
+	#top left 10 20
+	#top right 1330 10
+	i3-msg 'floating toggle ;resize set 270 200;move position 1330 00' >/dev/null 2>&1
 	$lchmod a+rw $logFile
-
 	local vncPort=""
 	vncPort=$(gotDomainVncPort)
 	echo "vncPort: $vncPort"
 	vncviewer :$vncPort   >/dev/null 2>&1
 
-	$lvirsh destroy $domain
+	local timeWait=0
+	local sliceWait=1
+	while [ 0 ];do
+		hereWS=$(getCurWorkSpace)
+		if [ $hereWS -eq $curWS ];then
+			break
+		else
+			sleep $sliceWait
+			let timeWait+=$sliceWait
+			echo "had wait for focus: $timeWait seconds"
+		fi
+	done
+	i3-msg 'floating toggle'  >/dev/null 2>&1
 }
 
 function getCurWorkSpace(){
@@ -149,8 +163,23 @@ function check(){
 	checkImg && checkXml
 }
 
-#main
+function main(){
+	#check param
+	if [ $# -lt 1 ];then
+		Usage
+		exit -1;
+	fi	
+	check || exit
+	curWS=$(getCurWorkSpace)
+	echo "domain: $domain"
+	echo "xmlConfig: $xmlConfig"
+	echo "curWorkSpace: $curWS"
+	domainCreate
+	doVncViewer
+	$lvirsh destroy $domain
+}
 
+#main
 program=$0
 DEBUG="yes"
 TAB="-e \t"
@@ -182,36 +211,4 @@ else
 	lnetstat="netstat"
 	lchmod="chmod"
 fi
-
-#check param
-if [ $# -lt 1 ];then
-	Usage
-	exit -1;
-fi	
-
-check || exit
-
-curWS=$(getCurWorkSpace)
-echo "domain: $domain"
-echo "xmlConfig: $xmlConfig"
-echo "curWorkSpace: $curWS"
-domainCreate
-#top left 10 20
-#top right 1330 10
-i3-msg 'floating toggle ;resize set 270 200;move position 1330 00' >/dev/null 2>&1
-vncViewer
-
-timeWait=0
-sliceWait=1
-while [ 0 ];do
-	hereWS=$(getCurWorkSpace)
-	if [ $hereWS -eq $curWS ];then
-		break
-	else
-		sleep $sliceWait
-		let timeWait+=$sliceWait
-		echo "had wait for focus: $timeWait seconds"
-	fi
-done
-
-i3-msg 'floating toggle'  >/dev/null 2>&1
+main "$@"
