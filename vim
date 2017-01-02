@@ -1,1 +1,0 @@
-/home/pangwz/tools/vim/
