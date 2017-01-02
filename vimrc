@@ -44,20 +44,24 @@
 	set cursorline              " 突出显示当前行
 	"set cursorcolumn
 		"winent/winleave also can auto set to distinguish cur window
+	"set number                  " 显示行号
 
-"set number                  " 显示行号
+"indent
 	set shiftwidth=4            " 设定 << 和 >> 命令移动时的宽度为 4
 	set softtabstop=4           " 使得按退格键时可以一次删掉 4 个空格
 	set tabstop=4               " 设定 tab 长度为 4
 	set noexpandtab				" 不使用空格展开tab
-	set nobackup                " 覆盖文件时不备份
 	set autoindent				" or cindent
+	set smartindent             " 开启新行时使用智能自动缩进
+	filetype indent on
+		"ref :help 30.3  :help indentexpr  /usr/share/vim/vim74/indent/*
 
+"search
+	set nobackup                " 覆盖文件时不备份
 	set ignorecase smartcase    " 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
 	set nowrapscan              " 禁止在搜索到文件两端时重新搜索
 	set incsearch               " 输入搜索内容时就显示搜索结果
 	set hlsearch                " 搜索时高亮显示被找到的文本
-	set smartindent             " 开启新行时使用智能自动缩进
 	set hidden                  " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
 
 "vertical list
@@ -72,9 +76,10 @@
 	set foldcolumn=0            " 设置折叠区域的宽度
 	setlocal foldlevel=1        " 设置折叠层数为
 
-"coding						"
+"encoding						"
 	set encoding=utf-8
 	set fencs=utf-8,gbk,ucs-bom,latin1
+
 "statusline
 	set cmdheight=1             " 设定命令行的行数为 1
 	set laststatus=2
