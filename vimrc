@@ -49,12 +49,15 @@
 "indent
 	set shiftwidth=4            " 设定 << 和 >> 命令移动时的宽度为 4
 	set softtabstop=4           " 使得按退格键时可以一次删掉 4 个空格
-	set tabstop=4               " 设定 tab 长度为 4
+	set tabstop=8               
+		"设定tab长度为4,如果ts与sts不相等则，按下tab建锁进sts.
+		"exp"ts=8,sts=4,则按下tab建插入的字符为4个' '，连续两个tab插入的为'\t'
 	set noexpandtab				" 不使用空格展开tab
 	set autoindent				" or cindent
 	set smartindent             " 开启新行时使用智能自动缩进
 	filetype indent on
 		"ref :help 30.3  :help indentexpr  /usr/share/vim/vim74/indent/*
+		let g:pyindent_continue=4
 
 "search
 	set nobackup                " 覆盖文件时不备份
