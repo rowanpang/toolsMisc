@@ -201,6 +201,9 @@ if [ "$uri" == "system" ];then
     domainSaved=$domainSavedDir$domain.save
 
     lvirsh="sudo virsh"
+    if [ `id | grep libvirt` ];then
+	lvirsh="virsh"
+    fi
     lnetstat="sudo netstat"
     lchmod="sudo chmod"
 else
