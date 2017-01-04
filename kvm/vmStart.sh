@@ -18,30 +18,14 @@ function Usage(){
     echo "Usage: $program 'domain'"
 }
 
-function verbose(){
-    [ $DEBUG == "yes" ] && {  $@; }
+function lsudo(){
+    #green
+    echo -e "\033[1;32msudo for:"\""$@"\""\033[0m"
+    sudo "$@"
 }
 
-function domainCreate(){
-    local ret;
-    if [ -r $domainSaved ];then
-        verbose echo "restore domain $domainSaved"
-        $lvirsh restore $domainSaved
-        ret=$?
-        rm -rf $domainSaved
-    else
-        verbose echo "define&start domain from $xmlConfig"
-        $lvirsh define $xmlConfig
-        $lvirsh start ${domain}
-        ret=$?
-    fi
-
-    if [ $ret -eq 0 ];then
-        echo -e "\033[1;32mdomain $xmlConfig up\033[0m"
-    else
-        echo -e "\033[1;31mdomain $xmlConfig up failed,exit -1\033[0m"
-        exit -1
-    fi
+function verbose(){
+    [ $DEBUG == "yes" ] && {  $@; }
 }
 
 #confirm vncPort for domain throw /proc/$pid/cmdline
@@ -49,7 +33,7 @@ function gotDomainVncPort(){
     local pid port pids
     local pidPorts=( )
     oldIFS="$IFS"
-    #allVnc=`sudo netstat -nptl 2>/dev/null | grep ":59[0-9][0-9]"`
+    #allVnc=`lsudo netstat -nptl 2>/dev/null | grep ":59[0-9][0-9]"`
     tmp=`$lnetstat -nptl 2>/dev/null`
 
     IFS=$'\n'
@@ -163,20 +147,54 @@ function check(){
     checkImg && checkXml
 }
 
+function domainCreate(){
+    local ret;
+
+    if [ -r $domainSaved ];then
+        verbose echo "restore domain $domainSaved"
+        $lvirsh restore $domainSaved
+        ret=$?
+        rm -rf $domainSaved
+    else
+	check
+        verbose echo "define&start domain from $xmlConfig"
+        $lvirsh define $xmlConfig
+        $lvirsh start ${domain}
+        ret=$?
+    fi
+
+    if [ $ret -eq 0 ];then
+        echo -e "\033[1;32mdomain $xmlConfig up\033[0m"
+    else
+        echo -e "\033[1;31mdomain $xmlConfig up failed,exit -1\033[0m"
+        exit -1
+    fi
+}
+
+function domainState(){
+    echo "$($lvirsh domstate $domain)"
+}
+
 function main(){
     #check param
     if [ $# -lt 1 ];then
         Usage
         exit -1;
     fi    
-    check || exit
     curWS=$(getCurWorkSpace)
     echo "domain: $domain"
     echo "xmlConfig: $xmlConfig"
     echo "curWorkSpace: $curWS"
-    domainCreate
+    if [ "$(domainState)" != "running" ];then
+	echo "create"
+	domainCreate
+    fi
     doVncViewer
-    $lvirsh destroy $domain
+    echo
+    read -p "Any key to destroy $domain: " select
+    if [ "$select" ];then
+	$lvirsh destroy $domain
+    fi
 }
 
 #main
@@ -200,12 +218,12 @@ if [ "$uri" == "system" ];then
     domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
     domainSaved=$domainSavedDir$domain.save
 
-    lvirsh="sudo virsh"
-    if [ `id | grep libvirt` ];then
-	lvirsh="virsh"
+    lvirsh="lsudo virsh"
+    if [ "$(id | grep libvirt)" ];then
+	lvirsh="virsh -c qemu:///system"
     fi
-    lnetstat="sudo netstat"
-    lchmod="sudo chmod"
+    lnetstat="lsudo netstat"
+    lchmod="lsudo chmod"
 else
     domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
     domainSaved=$domainSavedDir$domain.save
@@ -214,4 +232,6 @@ else
     lnetstat="netstat"
     lchmod="chmod"
 fi
+echo $lvirsh
+
 main "$@"
