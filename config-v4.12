@@ -169,3 +169,10 @@ exec /usr/bin/ibus-daemon --daemonize --replace
 exec /home/pangwz/.nutstore/dist/bin/nutstore-pydaemon.py
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec /home/pangwz/.fehbg
+
+#volumeicon
+exec /usr/bin/volumeicon
+
+#nm-applet
+exec /usr/bin/nm-applet
+
