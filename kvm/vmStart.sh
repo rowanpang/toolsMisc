@@ -186,13 +186,15 @@ function main(){
     echo "xmlConfig: $xmlConfig"
     echo "curWorkSpace: $curWS"
     if [ "$(domainState)" != "running" ];then
-	echo "create"
+	echo "not running create"
 	domainCreate
     fi
+
     doVncViewer
+
     echo
     read -p "Any key to destroy $domain: " select
-    if [ "$select" ];then
+    if ! [ "$select" ];then
 	$lvirsh destroy $domain
     fi
 }
