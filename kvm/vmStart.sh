@@ -200,7 +200,7 @@ function main(){
     doVncViewer
 
     echo
-    read -p "Any key to destroy $domain: " select
+    read -p "Any input to not destroy $domain: " select
     if ! [ "$select" ];then
 	$lvirsh destroy $domain
     fi
@@ -212,14 +212,23 @@ DEBUG="yes"
 TAB="-e \t"
 
 domain=${1%.*}
-workdir="$PWD/"
-xmlConfig=${domain}.xml
-xmlTemplate="$(dirname $(readlink -n $program))/template.xml"
+workdir="$HOME/vm-iso/"
+xmlConfig=${workdir}${domain}.xml
+
+#--------var used by xmlCheck,imgCheck
+
+if [ -L $program ];then
+    xmlTemplate="$(dirname $(readlink -n $program))/template.xml"
+else
+    xmlTemplate="$(dirname $program)/template.xml"
+fi
 
 imgSizeWhenAutoCreate='25G'
 imgDisk=${workdir}${domain}.img
 logFile="${workdir}serial-${domain}.log"
 domainIso=${workdir}${domain}.iso
+
+#-----------var end
 
 uri="system"
 if [ "$uri" == "system" ];then
