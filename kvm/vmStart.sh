@@ -181,6 +181,13 @@ function main(){
         Usage
         exit -1;
     fi    
+
+    if [ "$1" == "list" ];then
+	virsh list --all 2>&1
+	virsh -c qemu:///system list --all 2>&1
+	exit
+    fi
+
     curWS=$(getCurWorkSpace)
     echo "domain: $domain"
     echo "xmlConfig: $xmlConfig"
@@ -234,6 +241,6 @@ else
     lnetstat="netstat"
     lchmod="chmod"
 fi
-echo $lvirsh
+#echo $lvirsh
 
 main "$@"
