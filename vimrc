@@ -33,6 +33,19 @@
 		autocmd WinLeave * set nocul
 	augroup END
 
+"theme solarized
+	let g:solarized_termtrans=1
+	let g:solarized_termcolors=256
+	call togglebg#map("<F5>")
+	"colorscheme solarized 
+	colorscheme default
+
+	if has('gui_running')
+	    set background=light
+	else
+	    set background=dark
+	endif
+	
 "syntax
 	syntax on                   " 自动语法高亮
 	if $TERM >= "xterm"				" linux vconsole
