@@ -39,7 +39,7 @@ EOF
 	fi
 
 	verbose "--i3lock--"
-	i3lock -i /home/pangwz/Pictures/wallpaper/sky.png
+	i3lock -i /home/pangwz/Pictures/wallpaper/screenlock.png
 	echo 'mem' > /sys/power/state
 	verbose "--after mem power--$(now)"
 	while [ "`pidof i3lock`" ];do
