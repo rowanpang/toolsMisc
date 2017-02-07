@@ -200,7 +200,7 @@ function main(){
     doVncViewer
 
     echo
-    read -p "Any input to not destroy $domain: " select
+    read -p "Any input will not destroy $domain: " select
     if ! [ "$select" ];then
 	$lvirsh destroy $domain
     fi
