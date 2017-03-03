@@ -26,6 +26,11 @@ newIso=${newIsoPrefix}.iso
 PREFIX=${WORKDIR}${oldIsoPrefix}
 LOGFILE=${WORKDIR}${oldIsoPrefix}-log
 
+function prepareNewIsoMntDir(){
+    local tmpMnt=${PREFIX}-mntNew/
+    [ -d ${tmpMnt} ] || mkdir -p ${tmpMnt}        
+}
+
 function prepareOldIso(){
     oldDir=${PREFIX}-old/
     [ -d ${oldDir} ] || mkdir -p ${oldDir}
@@ -71,35 +76,59 @@ function overlayfs(){
     [ -d ${work} ] || mkdir -p ${work}
     [ -d ${new} ] || mkdir -p ${new}
 
-    mount -t overlay ${newIsoPrefix} -olowerdir=${old},upperdir=${upper},workdir=${work} ${new}
+    mount -t overlay ovl-${oldIsoPrefix} -olowerdir=${old},upperdir=${upper},workdir=${work} ${new}
 
     echo "${new} ${old} ${upper}"
 }
 
 #$1:for new dir
 function subShell(){
-    echo "call bash"
+    echo "call & enter new bash"
     local scriptName=newIso.sh
+    local xmlName=xmlnew.xml
+    local vendor="RowanPang"
+    local isoid="${oldIsoPrefix}-`date +%F`"
     cd ${1}
+    local labelName=$(echo -e `awk '/.*hd:LABEL=.*/ {print $3;exit}' isolinux/isolinux.cfg | awk 'BEGIN{FS="="} {print $3}'`)
     #if ! [ -f ${scriptName} ];then
 cat << EOF >${scriptName}
 #auto gen by isoMK.sh
 #!/bin/sh
 
-[ -f new.xml ] || { echo "need prepare new.xml" && exit -1; }
+[ -f $xmlName ] || { echo "need prepare $xmlName" && exit -1; }
 [ -f $newIso ] && rm -f $newIso
 [ -d repodata ] && rm -rf repodata
 
 echo "-------------createrepo----------" | tee --append $LOGFILE
-createrepo -g new.xml --workers 10  .  | tee --append $LOGFILE
+#need verbose -v 
+createrepo -v -g $xmlName --workers 10  .  | tee --append $LOGFILE
 
 echo "-----mkisofs------" | tee --append $LOGFILE
 sleep 0.5
 #need quiet? -quiet
-mkisofs -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot -R -J -V 'K-UX 3 x86_64' -o ${newIso} . | tee --append $LOGFILE
+mkisofs									    \\
+	-b isolinux/isolinux.bin	    				    \\
+	-c isolinux/boot.cat	    	    				    \\
+	-no-emul-boot		    	    				    \\
+	-boot-load-size 4	    	    				    \\
+	-boot-info-table	    	    				    \\
+	-R			    	    				    \\
+	-eltorito-alt-boot	    	    				    \\
+	-efi-boot images/efiboot.img	    				    \\
+	-no-emul-boot		    	    				    \\
+	-J			    	    				    \\
+	-V '${labelName}'	    	    				    \\
+	-publisher '${vendor}'		    				    \\
+	-appid '${isoid}'		    				    \\
+	-m '$scriptName'	    	    				    \\
+	-m '$xmlName'		    	    				    \\
+	-m "lost+found"			    				    \\
+	-o ${newIso} .		    	    				    \\
+	| tee --append $LOGFILE
 EOF
     #fi
     chmod a+x ${scriptName}
+    cp ./repodata/repomd.xml $xmlName
     /bin/bash
     cd -
 }
@@ -116,8 +145,9 @@ function unPrepare(){
         
 function main(){
     local ovl
+    prepareNewIsoMntDir
     ovl=$(overlayfs)
-    echo "call bash" > $LOGFILE
+    echo "call & enter new bash" > $LOGFILE
     [ $? ] || exit -1
     subShell $ovl
     echo "after bash" >> $LOGFILE
