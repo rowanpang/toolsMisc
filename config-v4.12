@@ -31,7 +31,9 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec gnome-terminal
-bindsym $mod+Return exec terminator
+#bindsym $mod+Return exec terminator
+bindsym $mod+Return exec xfce4-terminal
+#bindsym --release $mod+Shift+Return exec xdotool key control+shift+n
 
 # kill focused window
 bindsym $mod+Shift+q kill
