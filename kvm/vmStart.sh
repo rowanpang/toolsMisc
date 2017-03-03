@@ -139,7 +139,7 @@ function checkXml(){
 
 function checkImg(){
     [ -f $imgDisk ] && return
-    verbose echo -e "\033[1,33m\t\tauto create $imgDisk\033[0m" 
+    verbose echo -e "\033[1;33m\t\tauto create $imgDisk\033[0m" 
     qemu-img create $imgDisk $imgSizeWhenAutoCreate
 }
 
@@ -213,6 +213,8 @@ TAB="-e \t"
 
 domain=${1%.*}
 workdir="$HOME/vm-iso/"
+logDir="${workdir}logFile/"
+[ -d $logDir ] || mkdir -p $logDir
 xmlConfig=${workdir}${domain}.xml
 
 #--------var used by xmlCheck,imgCheck
@@ -225,7 +227,7 @@ fi
 
 imgSizeWhenAutoCreate='25G'
 imgDisk=${workdir}${domain}.img
-logFile="${workdir}serial-${domain}.log"
+logFile="${logDir}serial-${domain}.log"
 domainIso=${workdir}${domain}.iso
 
 #-----------var end
