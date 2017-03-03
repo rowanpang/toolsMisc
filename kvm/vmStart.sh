@@ -172,7 +172,7 @@ function domainCreate(){
 }
 
 function domainState(){
-    echo "$($lvirsh domstate $domain)"
+    echo "$($lvirsh domstate $domain 2>/dev/null)"
 }
 
 function main(){
