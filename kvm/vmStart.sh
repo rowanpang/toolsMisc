@@ -61,28 +61,39 @@ function gotDomainVncPort(){
 }
 
 function doVncViewer(){
-    #top left 10 20
-    #top right 1330 10
-    i3-msg 'floating toggle ;resize set 270 200;move position 1330 00' >/dev/null 2>&1
     $lchmod a+rw $logFile
     local vncPort=""
     vncPort=$(gotDomainVncPort)
     echo "vncPort: $vncPort"
-    vncviewer :$vncPort   >/dev/null 2>&1
+    if [ "$quitShell" ];then
+	vncviewer :$vncPort   >/dev/null 2>&1 &
+	exit
+    else
+	#top-left 10 20
+	#top-right 1330 10
+	i3-msg 'floating toggle ;resize set 270 200;move position 1330 00' >/dev/null 2>&1
+	vncviewer :$vncPort   >/dev/null 2>&1
 
-    local timeWait=0
-    local sliceWait=1
-    while [ 0 ];do
-        hereWS=$(getCurWorkSpace)
-        if [ $hereWS -eq $curWS ];then
-            break
-        else
-            sleep $sliceWait
-            let timeWait+=$sliceWait
-            echo "had wait for focus: $timeWait seconds"
-        fi
-    done
-    i3-msg 'floating toggle'  >/dev/null 2>&1
+	local timeWait=0
+	local sliceWait=1
+	while [ 0 ];do
+	    hereWS=$(getCurWorkSpace)
+	    if [ $hereWS -eq $curWS ];then
+		break
+	    else
+		sleep $sliceWait
+		let timeWait+=$sliceWait
+		echo "had wait for focus: $timeWait seconds"
+	    fi
+	done
+	i3-msg 'floating toggle'  >/dev/null 2>&1
+
+	echo
+	read -p "Any input will not destroy $domain: " select
+	if ! [ "$select" ];then
+	    $lvirsh destroy $domain
+	fi
+    fi
 }
 
 function getCurWorkSpace(){
@@ -175,14 +186,80 @@ function domainState(){
     echo "$($lvirsh domstate $domain 2>/dev/null)"
 }
 
-function main(){
-    #check param
+function optParser(){
+    program=$0
     if [ $# -lt 1 ];then
         Usage
         exit -1;
     fi    
 
-    if [ "$1" == "list" ];then
+    while [ $# -gt 0 ]; do
+	case "$1" in
+	    list)
+		do_list="true"
+		;;
+	    -q|quit)
+		quitShell="true"
+		;;
+	    *)
+		domain=${1%.*}
+		;;
+	esac
+
+	shift
+    done
+
+    DEBUG="yes"
+    TAB="-e \t"
+
+    workdir="$HOME/vm-iso/"
+    logDir="${workdir}logFile/"
+    [ -d $logDir ] || mkdir -p $logDir
+    xmlConfig=${workdir}${domain}.xml
+
+    #--------var used by xmlCheck,imgCheck
+
+    if [ -L $program ];then
+	xmlTemplate="$(dirname $(readlink -n $program))/template.xml"
+    else
+	xmlTemplate="$(dirname $program)/template.xml"
+    fi
+
+    imgSizeWhenAutoCreate='25G'
+    imgDisk=${workdir}${domain}.img
+    logFile="${logDir}serial-${domain}.log"
+    domainIso=${workdir}${domain}.iso
+
+    #-----------var end
+
+    uri="system"
+    if [ "$uri" == "system" ];then
+	#TODO
+	domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
+	domainSaved=$domainSavedDir$domain.save
+
+	lvirsh="lsudo virsh"
+	if [ "$(id | grep libvirt)" ];then
+	    lvirsh="virsh -c qemu:///system"
+	fi
+	lnetstat="lsudo netstat"
+	lchmod="lsudo chmod"
+    else
+	domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
+	domainSaved=$domainSavedDir$domain.save
+
+	lvirsh="virsh"
+	lnetstat="netstat"
+	lchmod="chmod"
+    fi
+    #echo $lvirsh
+}
+
+
+function main(){
+    optParser "$@"
+
+    if [ "$do_list" ];then
 	virsh list --all 2>&1
 	virsh -c qemu:///system list --all 2>&1
 	exit
@@ -198,60 +275,7 @@ function main(){
     fi
 
     doVncViewer
-
-    echo
-    read -p "Any input will not destroy $domain: " select
-    if ! [ "$select" ];then
-	$lvirsh destroy $domain
-    fi
 }
 
 #main
-program=$0
-DEBUG="yes"
-TAB="-e \t"
-
-domain=${1%.*}
-workdir="$HOME/vm-iso/"
-logDir="${workdir}logFile/"
-[ -d $logDir ] || mkdir -p $logDir
-xmlConfig=${workdir}${domain}.xml
-
-#--------var used by xmlCheck,imgCheck
-
-if [ -L $program ];then
-    xmlTemplate="$(dirname $(readlink -n $program))/template.xml"
-else
-    xmlTemplate="$(dirname $program)/template.xml"
-fi
-
-imgSizeWhenAutoCreate='25G'
-imgDisk=${workdir}${domain}.img
-logFile="${logDir}serial-${domain}.log"
-domainIso=${workdir}${domain}.iso
-
-#-----------var end
-
-uri="system"
-if [ "$uri" == "system" ];then
-    #TODO
-    domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
-    domainSaved=$domainSavedDir$domain.save
-
-    lvirsh="lsudo virsh"
-    if [ "$(id | grep libvirt)" ];then
-	lvirsh="virsh -c qemu:///system"
-    fi
-    lnetstat="lsudo netstat"
-    lchmod="lsudo chmod"
-else
-    domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
-    domainSaved=$domainSavedDir$domain.save
-
-    lvirsh="virsh"
-    lnetstat="netstat"
-    lchmod="chmod"
-fi
-#echo $lvirsh
-
 main "$@"
