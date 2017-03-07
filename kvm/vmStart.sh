@@ -71,7 +71,7 @@ function doVncViewer(){
     else
 	#top-left 10 20
 	#top-right 1330 10
-	i3-msg 'floating toggle ;resize set 270 200;move position 1330 00' >/dev/null 2>&1
+	i3-msg 'floating toggle ;resize set 200 600;move position 1390 00' >/dev/null 2>&1
 	vncviewer :$vncPort   >/dev/null 2>&1
 
 	local timeWait=0
@@ -195,11 +195,15 @@ function optParser(){
 
     while [ $# -gt 0 ]; do
 	case "$1" in
-	    list)
+	    -l|list)
 		do_list="true"
 		;;
 	    -q|quit)
 		quitShell="true"
+		;;
+	    -s|size)
+		imgSizeWhenAutoCreate="${2}G"
+		shift
 		;;
 	    *)
 		domain=${1%.*}
@@ -225,7 +229,7 @@ function optParser(){
 	xmlTemplate="$(dirname $program)/template.xml"
     fi
 
-    imgSizeWhenAutoCreate='25G'
+    [ "imgSizeWhenAutoCreate" ] || imgSizeWhenAutoCreate='25G'
     imgDisk=${workdir}${domain}.img
     logFile="${logDir}serial-${domain}.log"
     domainIso=${workdir}${domain}.iso
