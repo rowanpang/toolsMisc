@@ -112,8 +112,10 @@ function libInit(){
     fi
 
     program=$0
-    localdir=$(basename $0)
+    localdir="$PWD/$(dirname $0)/"
 
     DEBUG="yes"
+    HOMEDIR="$HOME/"
+    ROOTHOME="/root"
 }
 libInit

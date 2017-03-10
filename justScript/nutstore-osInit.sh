@@ -6,8 +6,7 @@ function initNutstore(){
     pkgCheckInstall java-*-openjdk
     pkgCheckInstall notify-python
 
-    local pkgInfo=`rpm -qi nautilus-nutstore`    
-    if ! [ ${#pkgInfo} -gt 30 ];then
+    if ! [ "$(pkgInstalled nautilus-nutstore)" ];then
         pr_info "installing nutstore"
         lsudo rpm -i https://www.jianguoyun.com/static/exe/installer/fedora/nautilus_nutstore_amd64.rpm
     else
@@ -15,3 +14,4 @@ function initNutstore(){
     fi
 }
 
+initNutstore

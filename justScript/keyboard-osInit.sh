@@ -1,7 +1,7 @@
 #/bin/bash
 source ./osInitframe/lib.sh
 
-orgKeyboardConf=/etc/X11/xorg.conf.d/00-keyboard.conf
+xorgKeyboardConf=/etc/X11/xorg.conf.d/00-keyboard.conf
 function initKeyBoard(){
     #swapcaps,ctrl
     pkgCheckInstall xorg-x11-xkb-utils
@@ -9,10 +9,10 @@ function initKeyBoard(){
     if [ -f $xorgKeyboardConf ];then
         local count=`grep -c 'ctrl:swapcaps' $xorgKeyboardConf`
         if [ $count -eq 0 ];then 
-            verbose "modify $xorgKeyboardConf"
+            pr_info "modify $xorgKeyboardConf"
             lsudo sed -i '/EndSection/ i \\tOption "XKbOptions" "ctrl:swapcaps"' $xorgKeyboardConf
         else
-            verbose "$xorgKeyboardConf had configured"
+            pr_info "$xorgKeyboardConf had configured"
         fi
     else
         pr_warn "$xorgKeyboardConf not exist"        

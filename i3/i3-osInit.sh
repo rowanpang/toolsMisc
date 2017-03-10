@@ -23,6 +23,7 @@ function initI3wm(){
         #4. /etc/i3/config
 
     local dir=$localdir
+    ln -snf $dir ${HOMEDIR}.i3
     baseInit
 
     #memSave

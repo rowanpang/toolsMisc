@@ -8,8 +8,8 @@ function initVim(){
     pkgCheckInstall ctags
     pkgCheckInstall cscope
 
-    [ -L ${HOMEDIR}.vim ] ||  ln -s $dir ${HOMEDIR}.vim
-    lsudo [ -L ${ROOTHOME}.vim ] || lsudo ln -sf $dir ${ROOTHOME}.vim   #for root vim
+    ln -snf $dir ${HOMEDIR}.vim
+    lsudo ln -snf $dir ${ROOTHOME}.vim   #for root vim
     lsudo sed  -i 's; \[\s\+.*\]\s\+\&\&\s\+return$;#&;' /etc/profile.d/vim.sh
 }
 
