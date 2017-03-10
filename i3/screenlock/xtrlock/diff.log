@@ -1,0 +1,58 @@
+diff --git a/src/xtrlock.c b/src/xtrlock.c
+index c72d3bc..420fa30 100644
+--- a/src/xtrlock.c
++++ b/src/xtrlock.c
+@@ -61,7 +61,8 @@ int screen;
+ Colormap cmap;
+ 
+ int bg_action = MBG;
+-char *pam_module = "system-local-login";
++/*char *pam_module = "system-local-login";*/
++char *pam_module = "system-auth";
+ 
+ int auth_pam(char *user, char *password, char *module);
+ 
+@@ -238,7 +239,8 @@ lock(int mode)
+     int clen, rlen=0, state = AUTH_NONE, old_state = -1;
+     long goodwill= INITIALGOODWILL, timeout= 0;
+     Window window;
+-
++	int ret = 0;
++	
+     display = XOpenDisplay(0);
+     if (display == NULL) {
+         err("cannot open display\n");
+@@ -254,13 +256,29 @@ lock(int mode)
+     create_cursors();
+     XMapWindow(display,window);
+     XRaiseWindow(display,window);
++	/*XSetInputFocus(display,window,RevertToNone,CurrentTime);*/
+     XSync(display, False);
+-    if (XGrabKeyboard(display, window, False, GrabModeAsync, GrabModeAsync,
+-            CurrentTime) != GrabSuccess) {
+-        err("can't grab keyboard\n");
++	#define TMP_GRAB_NUM 5000
++	int i=0;
++    if ((ret = XGrabKeyboard(display, window, False, GrabModeAsync, GrabModeAsync,
++		CurrentTime)) != GrabSuccess) {
++		err("tmp grab failed:%d\n",i);
++		while((i<TMP_GRAB_NUM) && (ret == 1)){
++			/*err("tmp grab failed:%d\n",i);*/
++			ret = XGrabKeyboard(display, window, False, GrabModeAsync, GrabModeAsync,CurrentTime);
++			i++;	
++		}
++		if(ret == GrabSuccess){
++			err("tmp grab success:%d\n",i);
++			goto NEXT;
++		}
++        err("can't grab keyboard,ret:%d\n",ret);
+         exit(1);
+     }
+-  
++	if(i==0){
++		err("luck grabed!\n");
++	}
++ NEXT:
+     for (;;) {
+         if (rlen)
+             state = AUTH_NOW;

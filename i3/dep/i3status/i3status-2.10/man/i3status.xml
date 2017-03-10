@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<refentry>
+<refmeta>
+<refentrytitle>i3status</refentrytitle>
+<manvolnum>1</manvolnum>
+<refmiscinfo class="source">i3status</refmiscinfo>
+<refmiscinfo class="version">v2.10</refmiscinfo>
+<refmiscinfo class="manual">i3 Manual</refmiscinfo>
+</refmeta>
+<refnamediv>
+  <refname>i3status</refname>
+  <refpurpose>Generates a status line for i3bar, dzen2, xmobar or lemonbar</refpurpose>
+</refnamediv>
+<refsynopsisdiv id="_synopsis">
+<simpara>i3status [-c configfile] [-h] [-v]</simpara>
+</refsynopsisdiv>
+<refsect1 id="_options">
+<title>OPTIONS</title>
+<variablelist>
+<varlistentry>
+<term>
+-c
+</term>
+<listitem>
+<simpara>
+Specifies an alternate configuration file path. By default, i3status looks for
+configuration files in the following order:
+</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+~/.i3status.conf
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+~/.config/i3status/config (or $XDG_CONFIG_HOME/i3status/config if set)
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+/etc/i3status.conf
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+/etc/xdg/i3status/config (or $XDG_CONFIG_DIRS/i3status/config if set)
+</simpara>
+</listitem>
+</orderedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+<refsect1 id="_description">
+<title>DESCRIPTION</title>
+<simpara>i3status is a small program (about 1500 SLOC) for generating a status bar for
+i3bar, dzen2, xmobar, lemonbar or similar programs. It is designed to be very
+efficient by issuing a very small number of system calls, as one generally
+wants to update such a status line every second. This ensures that even under
+high load, your status bar is updated correctly. Also, it saves a bit of energy
+by not hogging your CPU as much as spawning the corresponding amount of shell
+commands would.</simpara>
+</refsect1>
+<refsect1 id="_configuration">
+<title>CONFIGURATION</title>
+<simpara>The basic idea of i3status is that you can specify which "modules" should
+be used (the order directive). You can then configure each module with its
+own section. For every module, you can specify the output format. See below
+for a complete reference.</simpara>
+<example><title>Sample configuration</title>
+<screen>general {
+        output_format = "dzen2"
+        colors = true
+        interval = 5
+}
+
+order += "ipv6"
+order += "disk /"
+order += "run_watch DHCP"
+order += "run_watch VPNC"
+order += "path_exists VPN"
+order += "wireless wlan0"
+order += "ethernet eth0"
+order += "battery 0"
+order += "cpu_temperature 0"
+order += "load"
+order += "tztime local"
+order += "tztime berlin"
+
+wireless wlan0 {
+        format_up = "W: (%quality at %essid, %bitrate) %ip"
+        format_down = "W: down"
+}
+
+ethernet eth0 {
+        # if you use %speed, i3status requires the cap_net_admin capability
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+battery 0 {
+        format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = "⚇ CHR"
+        status_bat = "⚡ BAT"
+        status_full = "☻ FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+run_watch DHCP {
+        pidfile = "/var/run/dhclient*.pid"
+}
+
+run_watch VPNC {
+        # file containing the PID of a vpnc process
+        pidfile = "/var/run/vpnc/pid"
+}
+
+path_exists VPN {
+        # path exists when a VPN tunnel launched by nmcli/nm-applet is active
+        path = "/proc/sys/net/ipv4/conf/tun0"
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+}
+
+tztime berlin {
+        format = "%Y-%m-%d %H:%M:%S %Z"
+        timezone = "Europe/Berlin"
+}
+
+load {
+        format = "%5min"
+}
+
+cpu_temperature 0 {
+        format = "T: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/temp1_input"
+}
+
+disk "/" {
+        format = "%free"
+}</screen>
+</example>
+<refsect2 id="_general">
+<title>General</title>
+<simpara>The <literal>colors</literal> directive will disable all colors if you set it to <literal>false</literal>. You can
+also specify the colors that will be used to display "good", "degraded" or "bad"
+values using the <literal>color_good</literal>, <literal>color_degraded</literal> or <literal>color_bad</literal> directives,
+respectively. Those directives are only used if color support is not disabled by
+the <literal>colors</literal> directive. The input format for color values is the canonical RGB
+hexadecimal triplet (with no separators between the colors), prefixed by a hash
+character ("#").</simpara>
+<simpara><emphasis role="strong">Example configuration</emphasis>:</simpara>
+<screen>color_good = "#00FF00"</screen>
+<simpara>Likewise, you can use the <literal>color_separator</literal> directive to specify the color that
+will be used to paint the separator bar. The separator is always output in
+color, even when colors are disabled by the <literal>colors</literal> directive. This option has
+no effect when <literal>output_format</literal> is set to <literal>i3bar</literal> or <literal>none</literal>.</simpara>
+<simpara>The <literal>interval</literal> directive specifies the time in seconds for which i3status will
+sleep before printing the next status line.</simpara>
+<simpara>Using <literal>output_format</literal> you can chose which format strings i3status should
+use in its output. Currently available are:</simpara>
+<variablelist>
+<varlistentry>
+<term>
+i3bar
+</term>
+<listitem>
+<simpara>
+i3bar comes with i3 and provides a workspace bar which does the right thing in
+multi-monitor situations. It also comes with tray support and can display the
+i3status output. This output type uses JSON to pass as much meta-information to
+i3bar as possible (like colors, which blocks can be shortened in which way,
+etc.).
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+dzen2
+</term>
+<listitem>
+<simpara>
+Dzen is a general purpose messaging, notification and menuing program for X11.
+It was designed to be scriptable in any language and integrate well with window
+managers like dwm, wmii and xmonad though it will work with any windowmanger
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+xmobar
+</term>
+<listitem>
+<simpara>
+xmobar is a minimalistic, text based, status bar. It was designed to work
+with the xmonad Window Manager.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+lemonbar
+</term>
+<listitem>
+<simpara>
+lemonbar is a lightweight bar based entirely on XCB. It has full UTF-8 support
+and is EWMH compliant.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+term
+</term>
+<listitem>
+<simpara>
+Use ANSI Escape sequences to produce a terminal-output as close as possible to
+the graphical outputs. This makes debugging your config file a little bit
+easier because the terminal-output of i3status becomes much more readable, but
+should only used for such quick glances, because it will only support very
+basic output-features (for example you only get 3 bits of color depth).
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+none
+</term>
+<listitem>
+<simpara>
+Does not use any color codes. Separates values by the pipe symbol by default.
+This should be used with i3bar and can be used for custom scripts.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>It&#8217;s also possible to use the color_good, color_degraded, color_bad directives
+to define specific colors per module. If one of these directives is defined
+in a module section its value will override the value defined in the general
+section just for this module.</simpara>
+<simpara>If you don&#8217;t fancy the vertical separators between modules i3status/i3bar
+uses by default, you can employ the <literal>separator</literal> directive to configure how
+modules are separated. You can either disable the default separator altogether
+setting it to the empty string. You might then define separation as part of a
+module&#8217;s format string. This is your only option when using the i3bar output
+format as the separator is drawn by i3bar directly otherwise. For the other
+output formats, the provided non-empty string will be automatically enclosed
+with the necessary coloring bits if color support is enabled.</simpara>
+<simpara>i3bar supports Pango markup, allowing your format strings to specify font
+color, size, etc. by setting the <literal>markup</literal> directive to "pango". Note that the
+ampersand ("&amp;"), less-than ("&lt;"), greater-than ("&gt;"), single-quote ("'"), and
+double-quote (""") characters need to be replaced with "<literal>&amp;amp;</literal>", "<literal>&amp;lt;</literal>",
+"<literal>&amp;gt;</literal>", "<literal>&amp;apos;</literal>", and "<literal>&amp;quot;</literal>" respectively. This is done automatically
+for generated content (e.g. wireless ESSID, time).</simpara>
+<simpara><emphasis role="strong">Example configuration</emphasis>:</simpara>
+<screen>general {
+    output_format = "xmobar"
+    separator = "  "
+}
+
+order += "load"
+order += "disk /"
+
+load {
+    format = "[ load: %1min, %5min, %15min ]"
+}
+disk "/" {
+    format = "%avail"
+}</screen>
+</refsect2>
+<refsect2 id="_ipv6">
+<title>IPv6</title>
+<simpara>This module gets the IPv6 address used for outgoing connections (that is, the
+best available public IPv6 address on your computer).</simpara>
+<simpara><emphasis role="strong">Example format_up</emphasis>: <literal>%ip</literal></simpara>
+<simpara><emphasis role="strong">Example format_down</emphasis>: <literal>no IPv6</literal></simpara>
+</refsect2>
+<refsect2 id="_disk">
+<title>Disk</title>
+<simpara>Gets used, free, available and total amount of bytes on the given mounted filesystem.</simpara>
+<simpara>These values can also be expressed in percentages with the percentage_used,
+percentage_free, percentage_avail and percentage_used_of_avail formats.</simpara>
+<simpara>Byte sizes are presented in a human readable format using a set of prefixes
+whose type can be specified via the "prefix_type" option. Three sets of
+prefixes are available:</simpara>
+<variablelist>
+<varlistentry>
+<term>
+binary
+</term>
+<listitem>
+<simpara>
+IEC prefixes (Ki, Mi, Gi, Ti) represent multiples of powers of 1024.
+This is the default.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+decimal
+</term>
+<listitem>
+<simpara>
+SI prefixes (k, M, G, T) represent multiples of powers of 1000.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+custom
+</term>
+<listitem>
+<simpara>
+The custom prefixes (K, M, G, T) represent multiples of powers of 1024.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>It is possible to define a low_threshold that causes the disk text to be
+displayed using color_bad. The low_threshold type can be of threshold_type
+"bytes_free", "bytes_avail", "percentage_free", or "percentage_avail", where
+the former two can be prepended by a generic prefix (k, m, g, t) having
+prefix_type. So, if you configure low_threshold to 2, threshold_type to
+"gbytes_avail", and prefix_type to "binary", and the remaining available disk
+space is below 2 GiB, it will be colored bad. If not specified, threshold_type
+is assumed to be "percentage_avail" and low_threshold to be set to 0, which
+implies no coloring at all.</simpara>
+<simpara>You can define a different format with the option "format_not_mounted"
+which is used if the path does not exist or is not a mount point. So you can just empty
+the output for the given path with adding <literal>format_not_mounted=""</literal>
+to the config section.</simpara>
+<simpara><emphasis role="strong">Example order</emphasis>: <literal>disk /mnt/usbstick</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>%free (%avail)/ %total</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>%percentage_used used, %percentage_free free, %percentage_avail avail</literal></simpara>
+<simpara><emphasis role="strong">Example prefix_type</emphasis>: <literal>custom</literal></simpara>
+<simpara><emphasis role="strong">Example low_threshold</emphasis>: <literal>5</literal></simpara>
+<simpara><emphasis role="strong">Example threshold_type</emphasis>: <literal>percentage_free</literal></simpara>
+</refsect2>
+<refsect2 id="_run_watch">
+<title>Run-watch</title>
+<simpara>Expands the given path to a pidfile and checks if the process ID found inside
+is valid (that is, if the process is running). You can use this to check if
+a specific application, such as a VPN client or your DHCP client is running.
+There also is an option "format_down". You can hide the output with
+<literal>format_down=""</literal>.</simpara>
+<simpara><emphasis role="strong">Example order</emphasis>: <literal>run_watch DHCP</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>%title: %status</literal></simpara>
+</refsect2>
+<refsect2 id="_path_exists">
+<title>Path-exists</title>
+<simpara>Checks if the given path exists in the filesystem. You can use this to check if
+something is active, like for example a VPN tunnel managed by NetworkManager.
+There also is an option "format_down". You can hide the output with
+<literal>format_down=""</literal>.</simpara>
+<simpara><emphasis role="strong">Example order</emphasis>: <literal>path_exists VPN</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>%title: %status</literal></simpara>
+</refsect2>
+<refsect2 id="_wireless">
+<title>Wireless</title>
+<simpara>Gets the link quality, frequency and ESSID of the given wireless network
+interface. You can specify different format strings for the network being
+connected or not connected.</simpara>
+<simpara>The special interface name <literal>_first_</literal> will be replaced by the first wireless
+network interface found on the system (excluding devices starting with "lo").</simpara>
+<simpara><emphasis role="strong">Example order</emphasis>: <literal>wireless wlan0</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>W: (%quality at %essid, %bitrate / %frequency) %ip</literal></simpara>
+</refsect2>
+<refsect2 id="_ethernet">
+<title>Ethernet</title>
+<simpara>Gets the IP address and (if possible) the link speed of the given ethernet
+interface. Getting the link speed requires the cap_net_admin capability. Set
+it using <literal>setcap cap_net_admin=ep $(which i3status)</literal>.</simpara>
+<simpara>The special interface name <literal>_first_</literal> will be replaced by the first non-wireless
+network interface found on the system (excluding devices starting with "lo").</simpara>
+<simpara><emphasis role="strong">Example order</emphasis>: <literal>ethernet eth0</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>E: %ip (%speed)</literal></simpara>
+</refsect2>
+<refsect2 id="_battery">
+<title>Battery</title>
+<simpara>Gets the status (charging, discharging, running), percentage, remaining
+time and power consumption (in Watts) of the given battery and when it&#8217;s
+estimated to be empty. If you want to use the last full capacity instead of the
+design capacity (when using the design capacity, it may happen that your
+battery is at 23% when fully charged because it’s old. In general, I want to
+see it this way, because it tells me how worn off my battery is.), just specify
+<literal>last_full_capacity = true</literal>. You can hide seconds in the remaining time and
+empty time estimations by setting <literal>hide_seconds = true</literal>.</simpara>
+<simpara>If you want the battery percentage to be shown without decimals, add
+<literal>integer_battery_capacity = true</literal>.</simpara>
+<simpara>If your battery is represented in a non-standard path in /sys, be sure to
+modify the "path" property accordingly, i.e. pointing to the uevent file on
+your system. The first occurence of %d gets replaced with the battery number,
+but you can just hard-code a path as well.</simpara>
+<simpara>It is possible to define a low_threshold that causes the battery text to be
+colored red. The low_threshold type can be of threshold_type "time" or
+"percentage". So, if you configure low_threshold to 10 and threshold_type to
+"time", and your battery lasts another 9 minutes, it will be colored red.</simpara>
+<simpara>Optionally custom strings including any UTF-8 symbols can be used for different
+battery states. This makes it possible to display individual symbols
+for each state (charging, discharging, full)
+Of course it will also work with special iconic fonts, such as FontAwesome.
+If any of this special status strings is omitted, the default (CHR, BAT, FULL)
+is used.</simpara>
+<simpara><emphasis role="strong">Example order</emphasis>: <literal>battery 0</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>%status %remaining (%emptytime %consumption)</literal></simpara>
+<simpara><emphasis role="strong">Example format_down</emphasis>: <literal>No battery</literal></simpara>
+<simpara><emphasis role="strong">Example status_chr</emphasis>: <literal>⚇ CHR</literal></simpara>
+<simpara><emphasis role="strong">Example status_bat</emphasis>: <literal>⚡ BAT</literal></simpara>
+<simpara><emphasis role="strong">Example status_full</emphasis>: <literal>☻ FULL</literal></simpara>
+<simpara><emphasis role="strong">Example low_threshold</emphasis>: <literal>30</literal></simpara>
+<simpara><emphasis role="strong">Example threshold_type</emphasis>: <literal>time</literal></simpara>
+<simpara><emphasis role="strong">Example path</emphasis>: <literal>/sys/class/power_supply/CMB1/uevent</literal></simpara>
+</refsect2>
+<refsect2 id="_cpu_temperature">
+<title>CPU-Temperature</title>
+<simpara>Gets the temperature of the given thermal zone. It is possible to
+define a max_threshold that will color the temperature red in case the
+specified thermal zone is getting too hot. Defaults to 75 degrees C.</simpara>
+<simpara><emphasis role="strong">Example order</emphasis>: <literal>cpu_temperature 0</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>T: %degrees °C</literal></simpara>
+<simpara><emphasis role="strong">Example max_threshold</emphasis>: <literal>42</literal></simpara>
+<simpara><emphasis role="strong">Example path</emphasis>: <literal>/sys/devices/platform/coretemp.0/temp1_input</literal></simpara>
+</refsect2>
+<refsect2 id="_cpu_usage">
+<title>CPU Usage</title>
+<simpara>Gets the percentual CPU usage from <literal>/proc/stat</literal> (Linux) or <literal>sysctl(3)</literal> (FreeBSD/OpenBSD).</simpara>
+<simpara><emphasis role="strong">Example order</emphasis>: <literal>cpu_usage</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>%usage</literal></simpara>
+</refsect2>
+<refsect2 id="_load">
+<title>Load</title>
+<simpara>Gets the system load (number of processes waiting for CPU time in the last
+1, 5 and 15 minutes). It is possible to define a max_threshold that will
+color the load value red in case the load average of the last minute is
+getting higher than the configured threshold. Defaults to 5.</simpara>
+<simpara><emphasis role="strong">Example order</emphasis>: <literal>load</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>%1min %5min %15min</literal></simpara>
+<simpara><emphasis role="strong">Example max_threshold</emphasis>: <literal>"0,1"</literal></simpara>
+</refsect2>
+<refsect2 id="_time">
+<title>Time</title>
+<simpara>Outputs the current time in the local timezone.
+To use a different timezone, you can set the TZ environment variable,
+or use the <literal>tztime</literal> module.
+See <literal>strftime(3)</literal> for details on the format string.</simpara>
+<simpara><emphasis role="strong">Example order</emphasis>: <literal>time</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>%Y-%m-%d %H:%M:%S</literal></simpara>
+</refsect2>
+<refsect2 id="_tztime">
+<title>TzTime</title>
+<simpara>Outputs the current time in the given timezone.
+If no timezone is given, local time will be used.
+See <literal>strftime(3)</literal> for details on the format string.
+The system&#8217;s timezone database is usually installed in <literal>/usr/share/zoneinfo</literal>.
+Files below that path make for valid timezone strings, e.g. for
+<literal>/usr/share/zoneinfo/Europe/Berlin</literal> you can set timezone to <literal>Europe/Berlin</literal>
+in the <literal>tztime</literal> module.</simpara>
+<simpara><emphasis role="strong">Example order</emphasis>: <literal>tztime berlin</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>%Y-%m-%d %H:%M:%S %Z</literal></simpara>
+<simpara><emphasis role="strong">Example timezone</emphasis>: <literal>Europe/Berlin</literal></simpara>
+<simpara>If you would like to use markup in this section, there is a separate
+<literal>format_time</literal> option that is automatically escaped. Its output then replaces
+%time in the format string.</simpara>
+<simpara><emphasis role="strong">Example configuration (markup)</emphasis>:</simpara>
+<screen>tztime time {
+        format = "&lt;span foreground='#ffffff'&gt;time:&lt;/span&gt; %time"
+        format_time = "%H:%M %Z"
+}</screen>
+</refsect2>
+<refsect2 id="_ddate">
+<title>DDate</title>
+<simpara>Outputs the current discordian date in user-specified format. See <literal>ddate(1)</literal> for
+details on the format string.
+<emphasis role="strong">Note</emphasis>: Neither <emphasis role="strong">%.</emphasis> nor <emphasis role="strong">%X</emphasis> are implemented yet.</simpara>
+<simpara><emphasis role="strong">Example order</emphasis>: <literal>ddate</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>%{%a, %b %d%}, %Y%N - %H</literal></simpara>
+</refsect2>
+<refsect2 id="_volume">
+<title>Volume</title>
+<simpara>Outputs the volume of the specified mixer on the specified device.  PulseAudio
+and ALSA (Linux only) are supported.  If PulseAudio is absent, a simplified
+configuration can be used on FreeBSD and OpenBSD due to the lack of ALSA,  the
+<literal>device</literal> and <literal>mixer</literal> options can be ignored on these systems. On these systems
+the OSS API is used instead to query <literal>/dev/mixer</literal> directly if <literal>mixer_idx</literal> is
+-1, otherwise <literal>/dev/mixer</literal>+mixer_idx+.</simpara>
+<simpara>To get PulseAudio volume information, one must use the following format in the
+device line:</simpara>
+<literallayout class="monospaced">device = "pulse"</literallayout>
+<simpara>or</simpara>
+<literallayout class="monospaced">device = "pulse:N"</literallayout>
+<simpara>where N is the index of the PulseAudio sink. If no sink is specified the
+default is used. If the device string is missing or is set to "default",
+PulseAudio will be tried if detected and will fallback to ALSA (Linux)
+or OSS (FreeBSD/OpenBSD).</simpara>
+<simpara><emphasis role="strong">Example order</emphasis>: <literal>volume master</literal></simpara>
+<simpara><emphasis role="strong">Example format</emphasis>: <literal>♪: %volume</literal></simpara>
+<simpara><emphasis role="strong">Example format_muted</emphasis>: <literal>♪: 0%%</literal></simpara>
+<simpara><emphasis role="strong">Example configuration</emphasis>:</simpara>
+<screen>volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}</screen>
+<simpara><emphasis role="strong">Example configuration (PulseAudio)</emphasis>:</simpara>
+<screen>volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "pulse:1"
+}</screen>
+</refsect2>
+</refsect1>
+<refsect1 id="_universal_module_options">
+<title>Universal module options</title>
+<simpara>When using the i3bar output format, there are a few additional options that
+can be used with all modules to customize their appearance:</simpara>
+<variablelist>
+<varlistentry>
+<term>
+align
+</term>
+<listitem>
+<simpara>
+        The alignment policy to use when the minimum width (see below) is not
+        reached. Either <literal>center</literal> (default), <literal>right</literal> or <literal>left</literal>.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+min_width
+</term>
+<listitem>
+<simpara>
+        The minimum width (in pixels) the module should occupy. If the module takes
+        less space than the specified size, the block will be padded to the left
+        and/or the right side, according to the defined alignment policy. This is
+        useful when you want to prevent the whole status line from shifting when
+        values take more or less space between each iteration.
+        The option can also be a string. In this case, the width of the given text
+        determines the minimum width of the block. This is useful when you want to
+        set a sensible minimum width regardless of which font you are using, and at
+        what particular size. Please note that a number enclosed with quotes will
+        still be treated as a number.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara><emphasis role="strong">Example configuration</emphasis>:</simpara>
+<screen>disk "/" {
+    format = "%avail"
+    align = "left"
+    min_width = 100
+}</screen>
+</refsect1>
+<refsect1 id="_using_i3status_with_dzen2">
+<title>Using i3status with dzen2</title>
+<simpara>After installing dzen2, you can directly use it with i3status. Just ensure that
+<literal>output_format</literal> is set to <literal>dzen2</literal>.</simpara>
+<simpara><emphasis role="strong">Example for usage of i3status with dzen2</emphasis>:</simpara>
+<screen>i3status | dzen2 -fg white -ta r -w 1280 \
+-fn "-misc-fixed-medium-r-normal--13-120-75-75-C-70-iso8859-1"</screen>
+</refsect1>
+<refsect1 id="_using_i3status_with_xmobar">
+<title>Using i3status with xmobar</title>
+<simpara>To get xmobar to start, you might need to copy the default configuration
+file to <literal>~/.xmobarrc</literal>. Also, ensure that the <literal>output_format</literal> option for i3status
+is set to <literal>xmobar</literal>.</simpara>
+<simpara><emphasis role="strong">Example for usage of i3status with xmobar</emphasis>:</simpara>
+<screen>i3status | xmobar -o -t "%StdinReader%" -c "[Run StdinReader]"</screen>
+</refsect1>
+<refsect1 id="_what_about_memory_usage_or_cpu_frequency">
+<title>What about memory usage or CPU frequency?</title>
+<simpara>While talking about two specific things, please understand this section as a
+general explanation why your favorite information is not included in i3status.</simpara>
+<simpara>Let’s talk about memory usage specifically. It is hard to measure memory in a
+way which is accurate or meaningful. An in-depth understanding of how paging
+and virtual memory work in your operating system is required. Furthermore, even
+if we had a well-defined way of displaying memory usage and you would
+understand it, I think that it’s not helpful to repeatedly monitor your memory
+usage. One reason for that is that I have not run out of memory in the last few
+years.  Memory has become so cheap that even in my 4 year old notebook, I have
+8 GiB of RAM. Another reason is that your operating system will do the right
+thing anyway: Either you have not enough RAM for your workload, but you need to
+do it anyway, then your operating system will swap. Or you don’t have enough
+RAM and you want to restrict your workload so that it fits, then the operating
+system will kill the process using too much RAM and you can act accordingly.</simpara>
+<simpara>For CPU frequency, the situation is similar. Many people don’t understand how
+frequency scaling works precisely. The generally recommended CPU frequency
+governor ("ondemand") changes the CPU frequency far more often than i3status
+could display it. The display number is therefore often incorrect and doesn’t
+tell you anything useful either.</simpara>
+<simpara>In general, i3status wants to display things which you would look at
+occasionally anyways, like the current date/time, whether you are connected to
+a WiFi network or not, and if you have enough disk space to fit that 4.3 GiB
+download.</simpara>
+<simpara>However, if you need to look at some kind of information more than once in a
+while (like checking repeatedly how full your RAM is), you are probably better
+off with a script doing that, which pops up an alert when your RAM usage reaches
+a certain threshold. After all, the point of computers is not to burden you
+with additional boring tasks like repeatedly checking a number.</simpara>
+</refsect1>
+<refsect1 id="_external_scripts_programs_with_i3status">
+<title>External scripts/programs with i3status</title>
+<simpara>In i3status, we don’t want to implement process management again. Therefore,
+there is no module to run arbitrary scripts or commands. Instead, you should
+use your shell, for example like this:</simpara>
+<simpara><emphasis role="strong">Example for prepending the i3status output</emphasis>:</simpara>
+<screen>#!/bin/sh
+# shell script to prepend i3status with more stuff
+
+i3status | while :
+do
+        read line
+        echo "mystuff | $line" || exit 1
+done</screen>
+<simpara>Put that in some script, say <literal>.bin/my_i3status.sh</literal> and execute that instead of i3status.</simpara>
+<simpara>Note that if you want to use the JSON output format (with colors in i3bar), you
+need to use a slightly more complex wrapper script. There are examples in the
+contrib/ folder, see <ulink url="http://code.i3wm.org/i3status/tree/contrib">http://code.i3wm.org/i3status/tree/contrib</ulink></simpara>
+</refsect1>
+<refsect1 id="_signals">
+<title>SIGNALS</title>
+<simpara>When receiving <literal>SIGUSR1</literal>, i3status’s nanosleep() will be interrupted and thus
+you will force an update. You can use killall -USR1 i3status to force an update
+after changing the system volume, for example.</simpara>
+</refsect1>
+<refsect1 id="_see_also">
+<title>SEE ALSO</title>
+<simpara><literal>strftime(3)</literal>, <literal>date(1)</literal>, <literal>glob(3)</literal>, <literal>dzen2(1)</literal>, <literal>xmobar(1)</literal></simpara>
+</refsect1>
+<refsect1 id="_authors">
+<title>AUTHORS</title>
+<simpara>Michael Stapelberg and contributors</simpara>
+<simpara>Thorsten Toepper</simpara>
+<simpara>Baptiste Daroussin</simpara>
+<simpara>Axel Wagner</simpara>
+<simpara>Fernando Tarlá Cardoso Lemos</simpara>
+</refsect1>
+</refentry>

@@ -1,0 +1,12 @@
+1,base
+	configure
+	make
+	make install
+
+2,install
+	/usr/local/bin
+	/usr/local/man/man1
+
+3,src:
+	http://www.asty.org/cmatrix/
+	cmatrix-1.2a test ok on rhel6.4

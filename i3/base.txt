@@ -1,0 +1,22 @@
+1,ref:
+    http://blog.chinaunix.net/uid-22731254-id-3477538.html
+
+2,autostart app
+    自启动的命令有exec和exec_always
+    二者的区别是，当运行MOD1+shift+R重启i3时，后者会重新运行。前者只在最初运行i3时执行一次。
+    exec /usr/bin/synergyc -f --no-tray --debug NOTE --name decuhi 192.168.3.121:24800
+    exec update-notifier
+    exec nm-applet --sm-disable
+    exec xautolock -time 20 -locker "gnome-screensaver-command --lock"|
+
+3,
+    /etc/i3
+
+4,multi command
+    ref:
+        https://faq.i3wm.org/question/1709/multiple-commands-to-a-keybind.1.html
+    
+    separate commands by ;
+        bindsym $mod+v split v;exec gnome-terminal;
+        bindsym $mod+Shift+asterisk move workspace 8;exec workspace 8
+
