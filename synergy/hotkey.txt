@@ -1,0 +1,16 @@
+1,ref:
+	http://superuser.com/questions/267522/keyboard-shortcut-for-switching-screens-using-synergy
+	http://unix.stackexchange.com/questions/155272/use-a-keyboard-shortcut-to-switch-between-synergy-ized-monitors-windows
+
+2,exp:
+	section: options
+		keystroke(alt+right)      = switchToScreen(hp7)
+		keystroke(alt+down)       = switchToScreen(optiplex-380)
+		keystroke(alt+left)       = switchToScreen(laptop)
+
+		keystroke(alt+left) = switchInDirection(left)
+		keystroke(shift+control+alt+super) = switchToScreen(moe)
+	end
+
+3,ScrollLock
+	锁定，鼠标不能移动到其它屏幕。但是hotkey可以移动过去.

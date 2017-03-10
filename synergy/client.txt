@@ -1,0 +1,5 @@
+1,connect
+	synergyc rowanInspur.lan 
+
+2,debug
+	synergyc --no-daemon --debug DEBUG
