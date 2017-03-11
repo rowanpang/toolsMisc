@@ -12,6 +12,9 @@ function baseInit(){
 	pkgCheckInstall feh 
     #xtrlock
 	pkgCheckInstall pam-devel
+    #config
+	ln -snf $dir ${HOMEDIR}.i3
+	ln -rsf ${dir}config-v4.12 ${dir}config 
 }
 
 
@@ -23,7 +26,6 @@ function initI3wm(){
         #4. /etc/i3/config
 
     local dir=$localdir
-    ln -snf $dir ${HOMEDIR}.i3
     baseInit
 
     #memSave
@@ -32,7 +34,9 @@ function initI3wm(){
 	local memSaveDir="${dir}screenlock/memSave/"
 	local pamConf="/etc/pam.d/system-auth"
 	sed -i "s;PROGRAM=.*;PROGRAM=${memSaveDir}memSave.sh;" ${memSaveDir}memSave.consolehelper
-	lsudo sed -i 's;auth\s\+sufficient\s\+pam_unix.so.*;& nodelay;' $pamConf                #disable pwd error delay
+	if [ $(grep -c 'auth\s\+sufficient\s\+pam_unix.so.*nodelay.*' $pamConf) -eq 0 ];then
+	    lsudo sed -i 's;auth\s\+sufficient\s\+pam_unix.so.*;& nodelay;' $pamConf                #disable pwd error delay
+	fi
 	lsudo ln -sf ${memSaveDir}memSave.consolehelper /etc/security/console.apps/memSave
 	lsudo ln -sf ${memSaveDir}memsave.pam /etc/pam.d/memsave
 	lsudo ln -rsf `which consolehelper` /usr/bin/memSave 
