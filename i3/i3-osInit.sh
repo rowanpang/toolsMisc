@@ -5,6 +5,7 @@ function baseInit(){
     #base
 	pkgCheckInstall i3
 	pkgCheckInstall i3lock
+	pkgCheckInstall i3status
 	#pkgCheckInstall i3-doc      #about 124Mib,too big ignore
     #polkit-gnome
 	pkgCheckInstall polkit-gnome
@@ -15,8 +16,9 @@ function baseInit(){
     #config
 	ln -snf $dir ${HOMEDIR}.i3
 	ln -rsf ${dir}config-v4.12 ${dir}config 
+	lsudo sed -i 's;disk\ /\"$;disk\ /home\";' /etc/i3status.conf
+	lsudo sed -i 's;disk\ \"/\";disk\ \"/home\";' /etc/i3status.conf
 }
-
 
 function initI3wm(){
     #config order
