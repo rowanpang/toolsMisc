@@ -25,9 +25,22 @@ function initRepo(){
     fi
 }
 
+#$1,scripts regex to exec
+function doScripts(){
+    local reg=$1
+    for script in $(find ./ -mindepth 2 -name "$reg");do
+	pr_info "do script $script"
+	$script
+	pr_info "-------------------end------------------"
+    done
+}
+
 function initCheck(){
     disableSelinux
     initRepo
+    local reg='*-osEarly.sh'
+    doScripts "$reg"
+
     local who=`whoami`
     [ "$who" == "$USER" ] || lerror "effective user:$who is not login user:$USER"
     [ -f ${HOMEDIR}.gitconfig ] || lerror " prepare .gitconfig first,exit" 
@@ -35,15 +48,10 @@ function initCheck(){
 
 }
 
-
 function main(){
     callFunc initCheck
-
-    for script in $(find ./ -mindepth 2 -name '*-osInit.sh');do
-	pr_info "do script $script"
-	$script
-	pr_info "-------------------end------------------"
-    done
+    local reg='*-osInit.sh'
+    doScripts "$reg"
 }
 
 #main
