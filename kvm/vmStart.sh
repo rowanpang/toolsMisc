@@ -69,9 +69,16 @@ function doVncViewer(){
 	vncviewer :$vncPort   >/dev/null 2>&1 &
 	exit
     else
+	xwidth=$(xrandr --current | grep --only-matching 'current\s\+[1-9]\+ x [1-9]\+' | awk '{print $2}')
+	xhigh=$(xrandr --current | grep --only-matching 'current\s\+[1-9]\+ x [1-9]\+' | awk '{print $4}')
+	xSize=200
+	ySize=600
+	let px=${xwidth}-${xSize}-10
+	let py=10
+
 	#top-left 10 20
 	#top-right 1330 10
-	i3-msg 'floating toggle ;resize set 200 600;move position 1390 00' >/dev/null 2>&1
+	i3-msg "floating toggle ;resize set $xSize $ySize;move position $px $py" >/dev/null 2>&1
 	vncviewer :$vncPort   >/dev/null 2>&1
 
 	local timeWait=0
@@ -229,7 +236,7 @@ function optParser(){
 	xmlTemplate="$(dirname $program)/template.xml"
     fi
 
-    [ "imgSizeWhenAutoCreate" ] || imgSizeWhenAutoCreate='25G'
+    [ "$imgSizeWhenAutoCreate" ] || imgSizeWhenAutoCreate='25G'
     imgDisk=${workdir}${domain}.img
     logFile="${logDir}serial-${domain}.log"
     domainIso=${workdir}${domain}.iso

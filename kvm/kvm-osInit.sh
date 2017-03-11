@@ -4,12 +4,13 @@ source ./osInitframe/lib.sh
 function baseInit(){
     local dir=$localdir
     pkgCheckInstall virt-manager
-    [ $? -eq 0 ] && lsudo usermod --append --groups libvirt $USER
     pkgCheckInstall libvirt-client
+    pkgCheckInstall tigervnc
+    [ $? -eq 0 ] && lsudo usermod --append --groups kvm,qemu,libvirt $USER
 
     local kvmDir=${HOMEDIR}vm-iso/
     [ -d $kvmDir ] || mkdir -p $kvmDir
-    ln -rsf ${dir}/fw24.xml ${dir}kvm/template.xml
+    ln -rsf ${dir}/fw24.xml ${dir}template.xml
     ln -sf ${dir}/vmStart.sh ${kvmDir}vmStart.sh
     ln -sf ${dir}/isoMK.sh ${kvmDir}isoMK.sh
     ln -sf ${dir}/vmUsb.sh ${kvmDir}vmUsb.sh
@@ -19,7 +20,7 @@ function baseInit(){
 
     local bridgeName="bridge0"
     local bridgeConName=$bridgeName
-    local slave=$(ip link | grep '^[1-9]\+: en*' | awk 'BEGIN {FS=":"} { print $2}')
+    local slave=$(echo $(ip link | grep '^[1-9]\+: en*' | awk 'BEGIN {FS=":"} { print $2}'))
     local slaveConName="${bridgeName}-slave-${slave}"
 
     local qemuConfig="/etc/qemu/bridge.conf"
