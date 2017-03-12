@@ -11,11 +11,10 @@
 	<bootmenu enable='yes' timeout='3000'/>
   </os>
   <features>
+    <acpi/>
+    <apic/>
     <vmport state='off'/>
   </features>
-  <cpu mode='host-model'>
-    <model fallback='allow'/>
-  </cpu>
   <clock offset='utc'>
     <timer name='rtc' tickpolicy='catchup'/>
     <timer name='pit' tickpolicy='delay'/>
