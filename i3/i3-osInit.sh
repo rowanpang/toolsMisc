@@ -1,5 +1,6 @@
 #/bin/bash
 source ./osInitframe/lib.sh
+configSelected="${localdir}config-v4.12"
 
 function baseInit(){
     #base
@@ -15,7 +16,7 @@ function baseInit(){
 	pkgCheckInstall pam-devel
     #config
 	ln -snf $dir ${HOMEDIR}.i3
-	ln -rsf ${dir}config-v4.12 ${dir}config 
+	ln -rsf ${configSelected} ${dir}config 
 	lsudo sed -i 's;disk\ /\"$;disk\ /home\";' /etc/i3status.conf
 	lsudo sed -i 's;disk\ \"/\";disk\ \"/home\";' /etc/i3status.conf
 }
@@ -60,11 +61,11 @@ function initI3wm(){
     #volume
 	pkgCheckInstall volumeicon
 	pkgCheckInstall pavucontrol
-	#sed -i "/^#volumeicon/ aexec /usr/bin/volumeicon" ${dir}config
+	#sed -i "/^#volumeicon/ aexec /usr/bin/volumeicon" ${configSelected}
 
     #nm-applet
 	pkgCheckInstall network-manager-applet
-	#sed -i "/^#nm-applet/ aexec /usr/bin/nm-applet" ${dir}config
+	#sed -i "/^#nm-applet/ aexec /usr/bin/nm-applet" ${configSelected}
 
     #terminator
 	#pkgCheckInstall terminator
@@ -76,6 +77,13 @@ function initI3wm(){
 	pkgCheckInstall xfce4-terminal-0.6.3
 	mkdir -p $confDir
 	ln -sf ${dir}dep/xfce4-terminal/* $confDir
+
+    #synergyX
+	local synergyDir="${dir}../synergy/"
+	local synerScript=${synergyDir}synergyX.sh
+	echo $synerScript
+	sed -i "s;^exec \/.*synergyX\.sh$;exec $synerScript;" ${configSelected}
+	[ $(grep -c "$synerScript" ${configSelected}) -gt 0 ] || sed -i "/^#synergyX/ aexec $synerScript" ${configSelected}
 }
 
 initI3wm

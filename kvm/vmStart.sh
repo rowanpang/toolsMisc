@@ -69,8 +69,8 @@ function doVncViewer(){
 	vncviewer :$vncPort   >/dev/null 2>&1 &
 	exit
     else
-	xwidth=$(xrandr --current | grep --only-matching 'current\s\+[1-9]\+ x [1-9]\+' | awk '{print $2}')
-	xhigh=$(xrandr --current | grep --only-matching 'current\s\+[1-9]\+ x [1-9]\+' | awk '{print $4}')
+	xwidth=$(xrandr --current | grep --only-matching 'current\s\+[0-9]\+ x [0-9]\+' | awk '{print $2}')
+	xhigh=$(xrandr --current | grep --only-matching 'current\s\+[0-9]\+ x [0-9]\+' | awk '{print $4}')
 	xSize=200
 	ySize=600
 	let px=${xwidth}-${xSize}-10

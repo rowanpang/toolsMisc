@@ -163,7 +163,8 @@ bar {
         status_command i3status
 }
 
-exec /home/pangwz/tools/synergy/synergyX.sh
+#synergyX
+exec /home/pangwz/tools/toolsMisc/./i3/../synergy/synergyX.sh
 
 exec /usr/bin/ibus-daemon --daemonize --replace
 exec /home/pangwz/.nutstore/dist/bin/nutstore-pydaemon.py
