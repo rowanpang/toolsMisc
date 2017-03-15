@@ -14,8 +14,10 @@
     #5,uuidgen,auto gen uuid
 
 function Usage(){
-    echo "need param"
-    echo "Usage: $program 'domain'"
+    echo -e "Usage: $program [opt] 'domain'"
+    echo -e "\t\t -l,list: list vm status"	
+    echo -e "\t\t -q,quit: quit shell"	
+    echo -e "\t\t -s,size: imge disk size,default 25G"	
 }
 
 function lsudo(){
