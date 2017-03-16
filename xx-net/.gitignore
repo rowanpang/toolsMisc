@@ -8,3 +8,4 @@ data
 
 .DS_Store
 desktop.ini
+data/gae_proxy/proxy.pac
