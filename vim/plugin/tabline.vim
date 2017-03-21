@@ -40,6 +40,14 @@ function! Tabline()
 		endwhile
 
 		let bufnamedis .= fnamemodify(bufname,':p:t')
+
+		let indextmp = strridx(bufnamedis,delimiter)
+		if indextmp != -1
+		    let indextmp = strridx(bufnamedis,delimiter,indextmp - 1)
+		    let indextmp += 1
+		    let bufnamedis = strpart(bufnamedis,indextmp)
+		endif
+
 	else
 		let bufnamedis = 'No Name'
 	endif
@@ -48,7 +56,7 @@ function! Tabline()
     let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
     let s .= ' ' . tab . (winnrs > 1 ? ',' . winnrs :'') . ':'
     "let s .= (bufname != '' ? '['. fnamemodify(bufname, ':p:.') . '] ' : '[No Name] ')
-	let s.= bufnamedis
+    let s.= bufnamedis
 
     if bufmodified
       let s .= '[+] '
