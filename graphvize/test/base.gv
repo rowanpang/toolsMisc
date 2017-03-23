@@ -4,8 +4,11 @@
 // Created on 22-03-2017 by pangwz
 //
 digraph  G {
-    bgcolor=blue;
-    rankdir=LR;
+    graph [ label="ROWAN TEST\n\n";
+	    labelloc=t;
+	    bgcolor=lightblue;
+	    rankdir=LR; ];
+
     main [shape=box,style=dashed,color="0.1,0.1,0.9"];
     main -> parse [weight=10,dir=forward];
     parse -> execute;
