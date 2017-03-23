@@ -1,0 +1,25 @@
+digraph G {
+    subgraph cluster_0 {
+        label = "hello world";
+        color = hotpink;
+	style=filled;
+	fillcolor=pink;
+	a[rank=3];
+        a -> c;
+        a -> b;
+    }
+
+    subgraph cluster_1 {
+        label="MSDOT";
+        style="dashed";
+        color=purple;
+        x -> y;
+        x -> z;
+        y -> z;
+        y -> q;
+    }
+    top[rank=5,shape=box];
+    top -> a[weight=9];
+    top -> x[weight=2];
+    y -> b;
+}

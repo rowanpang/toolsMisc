@@ -1,0 +1,9 @@
+digraph structs {
+	node [shape=record];
+	struct1 [shape=record,label="<f0> |<f1>a\ mid |<f2> "];
+	struct2 [shape=record,label="data|{<f0> one|<f1> two}"];
+	struct3 [shape=record,label="hello\nworld |{ <f0>b |{c|<here> d|e}| f}| g | h"];
+	struct1:<f0> -> struct2 [color=red];
+	//struct1:<f2> -> struct3:<here>;
+	struct1:f2 -> struct3:here;
+    }
