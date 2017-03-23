@@ -9,7 +9,7 @@ function initGraphviz(){
     fi
     lsudo sed -i 's/^enabled=1/enabled=0/' $repofile
     pkgCheckInstall graphviz-qt.x86_64 graphviz-snapshot
-    pkgsInstall graphviz-doc graphviz-graphs
+    pkgsInstall graphviz graphviz-doc graphviz-graphs
     sudo dot -c					    #gen configure
 }
 
