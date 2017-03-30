@@ -1,0 +1,54 @@
+digraph vt{
+    graph[
+	rankdir=LR;
+	nodesep=0;
+    ]
+    node[
+	shape=record;
+	height=.4;
+	width=1.4;
+	labeljust=r;
+    ]
+
+    subgraph ttyDriver{
+	rank=same; nodesep=0;
+	ttyDriverNode[
+	    label="<char> *driver_name 
+		    |<tty_struct> **ttys   
+		    |<tty_port> **ports   
+		"
+	]
+	ttyDriverLabel[
+	    label="tty_driver";shape=box;
+	]
+    }
+
+    subgraph ttyStruct{
+	rank=same; 
+	ttyStructNode[
+	    label="<device> *dev
+		    |<tty_driver> *driver  
+		    |<tty_operations> *ops   
+		";
+	]
+	ttyStructLabel[
+	    label="tty_struct";shape=box;
+	]
+    } 
+
+    ttyDriverHtml [ 
+	shape=plaintext;
+	label=<<table align="right" border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr> <td bgcolor="coral" align="center" width="100">
+			<font><b>tty_struct</b></font></td></tr>
+		<tr> <td align="center">
+			<font>*dev</font></td></tr>
+		<tr> <td>
+			<font>*driver</font></td></tr>
+		<tr> <td>
+			<font>*ops</font></td></tr>
+		</table>>;
+	]
+
+    ttyStructNode:tty_driver -> ttyDriverLabel
+}
