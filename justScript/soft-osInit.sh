@@ -22,6 +22,7 @@ function miscInit(){
     pkgCheckInstall kernel-devel
     pkgCheckInstall mediainfo
     pkgCheckInstall nmap
+    pkgCheckInstall meld 
 }
 
 function main(){
