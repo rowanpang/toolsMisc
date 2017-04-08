@@ -6,8 +6,8 @@ function baseInit(){
     local dir=$localdir
     local uRulesDir="/etc/udev/rules.d/"
     local etcSymdDir="/etc/systemd/system/"
-    lsudo cp ${dir}diskMount/99-udisk.rules ${uRulesDir}99-udisk.rules
-    lsudo cp ${dir}diskMount/auto*.service $etcSymdDir
+    lsudo cp ${dir}99-udisk.rules ${uRulesDir}99-udisk.rules
+    lsudo cp ${dir}auto*.service $etcSymdDir
     lsudo sed -i "s;^ExecStart=.*;ExecStart=${dir}udev_disk_auto_mount.sh %I add;" ${etcSymdDir}autoMount@.service
     lsudo sed -i "s;^ExecStart=.*;ExecStart=${dir}udev_disk_auto_mount.sh %I remove;" ${etcSymdDir}autoUmount@.service
 

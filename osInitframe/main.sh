@@ -20,8 +20,8 @@ function initRepo(){
 		https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 	fi
 
-	lsudo sed -i "s/^metadate_expire=.*/#&/" /etc/yum.repos.d/*
-	[ $(cat /etc/dnf/dnf.conf | grep -c 'expire=1000d') -ge 1 ] || lsudo sed -i "$ a metadate_expire=1000d" /etc/dnf/dnf.conf
+	lsudo sed -i "s/^metadata_expire=.*/#&/" /etc/yum.repos.d/*
+	[ $(cat /etc/dnf/dnf.conf | grep -c 'expire=1000d') -ge 1 ] || lsudo sed -i "$ a metadata_expire=1000d" /etc/dnf/dnf.conf
     fi
 }
 
@@ -31,7 +31,9 @@ function doScripts(){
     for script in $(find ./ -mindepth 2 -name "$reg");do
 	pr_info "do script $script"
 	$script
-	pr_info "-------------------end------------------"
+	ret=$?
+	pr_info "---------------end ret:$ret ------------------"
+	[ $ret -eq 0 ] || pr_err "script $script error"
     done
 }
 
