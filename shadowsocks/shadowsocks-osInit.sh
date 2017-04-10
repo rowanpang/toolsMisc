@@ -7,8 +7,9 @@ function ssInit(){
     pkgCheckInstall libsodium
 
     #cron,run 5 minutes after midn,6,12am ...,everyday"
+    #journal --identifier cornd   to check log
     lsudo sh -c "cat << EOF > /etc/cron.d/shadowSocks-update
-2 0-23/6 * * * pangwz ${dir}ssStart.sh
+02 0-23/6 * * * pangwz ${dir}ssStart.sh
 EOF"
 }
 
