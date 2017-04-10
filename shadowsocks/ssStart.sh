@@ -48,12 +48,12 @@ function getcurConf(){
 
 curConf="curConf.txt"
 curSServer=$(getcurConf)
-specify=${1%.*}.png
+specify=$1
 for co in sg us jp;do
     for index in {a..c};do
 	tmpFile="${co}${index}.png"
 	if [ $specify ];then
-	    tmpFile=$specify
+	    tmpFile=${specify%.*}.png
 	    [ "$curSServer" == "$tmpFile" ] && pr_err "same as cur config"
 	fi
 

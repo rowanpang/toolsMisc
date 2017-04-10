@@ -25,10 +25,18 @@ function miscInit(){
     pkgCheckInstall meld 
 }
 
+function qrInit(){
+    pkgCheckInstall qrencode
+    pkgCheckInstall qrencode-devel
+    pkgCheckInstall qrencode-libs
+    pkgCheckInstall zbar
+}
+
 function main(){
     initWireshark
     initGNU
     miscInit
+    qrInit
 }
 
 main
