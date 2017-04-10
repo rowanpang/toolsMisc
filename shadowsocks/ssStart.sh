@@ -21,18 +21,25 @@ function parserConfs(){
 function starfromQR(){
     qrimg=$1
     quiet="-q"
-    wget $quiet -O $qrimg http://xyz.ishadow.online/img/qr/${qrimg}
-    info=$(zbarimg $quiet $qrimg)
+    wget $quiet -O ${workDir}$qrimg http://xyz.ishadow.online/img/qr/${qrimg}
+    info=$(zbarimg $quiet ${workDir}$qrimg)
     base64=${info#QR-Code:ss://}
     confs=$(echo $base64 | base64 -d)
     oifs=$IFS
     IFS=':'
     parserConfs $confs
     IFS="$oifs"
+    bindip="localhost"
+    [ `expr match "$(hostname)" 'rowanInspur'` ] && bindip="0.0.0.0"
+
     echo $qrimg > $curConf
     echo $method $pwd $ip $port >> $curConf
-    sslocal $quiet -d restart -s $ip -p $port -k $pwd -m $method \
-	    --pid-file ./ss.pid --log-file ss.log
+    cmd="sslocal $quiet -d restart -s $ip -p $port -k $pwd -m $method    \
+	    -b $bindip -l 1080						 \
+	    --pid-file ${workDir}ss.pid --log-file ${workDir}ss.log"
+
+    echo $cmd >> $curConf
+    $cmd
 }
 
 function checkOk(){
@@ -46,9 +53,20 @@ function getcurConf(){
     [ -f $curConf ] && echo "$(cat $curConf | head -n 1)"
 }
 
-curConf="curConf.txt"
+function gotworkDir(){
+    local prog=$1
+    local wDir
+    [ -L $prog ] && wDir=$(dirname `readlink $prog`)
+    wDir=$(dirname $prog)
+
+    echo "${wDir}/"
+}
+
+workDir=$(gotworkDir $0)
+curConf="${workDir}curConf.txt"
 curSServer=$(getcurConf)
 specify=$1
+
 for co in sg us jp;do
     for index in {a..c};do
 	tmpFile="${co}${index}.png"
@@ -59,6 +77,6 @@ for co in sg us jp;do
 
 	echo "current $tmpFile"
 	starfromQR $tmpFile
-	[ $(checkOk) == "ok" ] && break 2;
+	[ $(checkOk) == "ok" ] && break 2 || echo "---proxy $tmpFile ng,next---"
     done
 done
