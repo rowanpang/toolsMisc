@@ -32,13 +32,15 @@ function starfromQR(){
     bindip="localhost"
     [ `expr match "$(hostname)" 'rowanInspur'` ] && bindip="0.0.0.0"
 
-    echo $qrimg > $curConf
-    echo $method $pwd $ip $port >> $curConf
     cmd="sslocal $quiet -d restart -s $ip -p $port -k $pwd -m $method    \
 	    -b $bindip -l 1080						 \
 	    --pid-file ${workDir}ss.pid --log-file ${workDir}ss.log"
 
-    echo $cmd >> $curConf
+    echo $qrimg > $curConf			    #line1
+    echo $method $pwd $ip $port >> $curConf	    #line2
+    echo $cmd >> $curConf			    #3
+    echo `date +%_H` >> $curConf			    #4
+
     $cmd
 }
 
@@ -49,8 +51,38 @@ function checkOk(){
 }
 
 
-function getcurConf(){
+function getCurServer(){
     [ -f $curConf ] && echo "$(cat $curConf | head -n 1)"
+}
+
+function checkTime(){
+    local curSlice=`date +%_H`
+    let curSlice="$curSlice"/6
+
+    local lastSlice
+    if [ -f $curConf ];then
+	lastSlice=`cat $curConf | awk 'NR==4 {print $0}'`
+    fi
+    [ $lastSlice ] || lastSlice=0
+    let lastSlice="$lastSlice"/6
+    [ $lastSlice == $curSlice ] || echo "do"
+}
+
+function update(){
+    curSServer=$(getCurServer)
+    for co in sg us jp;do
+	for index in {a..c};do
+	    tmpFile="${co}${index}.png"
+	    if [ $specifyServer];then
+		tmpFile=${specifyServer%.*}.png
+		[ "$curSServer" == "$tmpFile" ] && pr_err "same as cur config"
+	    fi
+
+	    echo "current $tmpFile"
+	    starfromQR $tmpFile
+	    [ $(checkOk) == "ok" ] && break 2 || echo "---proxy $tmpFile ng,next---"
+	done
+    done
 }
 
 function gotworkDir(){
@@ -62,21 +94,33 @@ function gotworkDir(){
     echo "${wDir}/"
 }
 
-workDir=$(gotworkDir $0)
-curConf="${workDir}curConf.txt"
-curSServer=$(getcurConf)
-specify=$1
-
-for co in sg us jp;do
-    for index in {a..c};do
-	tmpFile="${co}${index}.png"
-	if [ $specify ];then
-	    tmpFile=${specify%.*}.png
-	    [ "$curSServer" == "$tmpFile" ] && pr_err "same as cur config"
-	fi
-
-	echo "current $tmpFile"
-	starfromQR $tmpFile
-	[ $(checkOk) == "ok" ] && break 2 || echo "---proxy $tmpFile ng,next---"
+function argParser(){
+    workDir=$(gotworkDir $0)
+    curConf="${workDir}curConf.txt"
+    while [ $# -gt 0 ];do
+	case "$1" in
+	    --server)
+		specifyServer=$2
+		shift
+		;;
+	    --checkTime)
+		doSliceCheck=true
+		;;
+	esac
+	shift
     done
-done
+}
+
+
+    
+function main(){
+    argParser $@
+    if [ $doSliceCheck ];then
+	local doUpdate=$(checkTime)
+	[ "$doUpdate" == "do" ] && update || echo "same time slice,exit"
+    else
+	update
+    fi
+}
+
+main $@
