@@ -9,7 +9,7 @@ function ssInit(){
     #cron,run every minute"
     #journal --identifier CORND   to check log
     lsudo sh -c "cat << EOF > /etc/cron.d/shadowSocks-update
-0-59/3 * * * * pangwz ${dir}ssStart.sh --checkTime
+3-59/3 * * * * pangwz ${dir}ssStart.sh --checkTime
 EOF"
 }
 
