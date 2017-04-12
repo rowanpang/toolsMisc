@@ -1,10 +1,8 @@
 .PHONY:all
-all:normal memleak
+all:normal memleak strdupleak strdupexec
 
-normal:normal.c
-	@gcc -g -Wall $< -o normal
+%:%.c
+	@gcc -g -Wall $< -o $@
 
-memleak:memleak.c
-	@gcc -g -Wall $< -o memleak
 clean:
-	@-rm normal memleak
+	@-rm normal memleak strdupleak

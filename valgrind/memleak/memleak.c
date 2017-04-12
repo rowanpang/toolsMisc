@@ -10,8 +10,8 @@ void f(void)
 
 int main(void) 
 { 
-    /*int i = 2; */
-    int i ; 
+    int i = 2; 
+    /*int i ; */
     f(); 
     printf("i=%d/n",i); 	//problem 3: use uninitialised value. 
     return 0; 
