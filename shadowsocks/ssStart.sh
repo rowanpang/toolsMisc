@@ -20,20 +20,21 @@ function parserConfs(){
 
 function starfromQR(){
     local qrimg=$1
+    local qrimgfull=${workDir}${qrimg}
     local quiet="-q"
     local duration="10s"
-    timeout $duration wget $quiet -O ${workDir}$qrimg http://xyz.ishadow.online/img/qr/${qrimg}
-    if ! [ -s ${qrimg} ];then
+    timeout $duration wget $quiet -O ${qrimgfull} http://xyz.ishadow.online/img/qr/${qrimg}
+    if ! [ -s ${qrimgfull} ];then
 	export http_proxy="127.0.0.1:8087"
-	timeout $duration wget $quiet -O ${workDir}$qrimg http://xyz.ishadow.online/img/qr/${qrimg}
+	timeout $duration wget $quiet -O ${qrimgfull} http://xyz.ishadow.online/img/qr/${qrimg}
 	unset http_proxy
-	if ! [ -s ${qrimg} ];then
-	    echo -e "\033[1;31m" "next update download img error!" "\033[0m" >> $curConf
+	if ! [ -s ${qrimgfull} ];then
+	    echo -e "\033[1;31m" "next update download img ${qrimgfull} error!" "\033[0m" >> $curConf
 	    exit -1
 	fi
     fi
 
-    info=$(zbarimg $quiet ${workDir}$qrimg)
+    info=$(zbarimg $quiet ${qrimgfull})
     base64=${info#QR-Code:ss://}
     confs=$(echo $base64 | base64 -d)
     oifs=$IFS
