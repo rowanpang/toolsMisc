@@ -24,6 +24,7 @@ function starfromQR(){
     local quiet="-q"
     local duration="10s"
     local svrHostName="rowanInspur"
+    echo "current $tmpFile"
     timeout $duration wget $quiet -O ${qrimgfull} http://xyz.ishadow.online/img/qr/${qrimg}
     if ! [ -s ${qrimgfull} ];then
 	export http_proxy="127.0.0.1:8087"
@@ -42,8 +43,8 @@ function starfromQR(){
     IFS=':'
     parserConfs $confs
     IFS="$oifs"
-    bindip="localhost"
-    [ `expr match "$(hostname)" "$(svrHostName)"` != 0 ] && bindip="0.0.0.0"
+    bindip="127.0.0.1"
+    [ `expr match "$(hostname)" "$svrHostName"` != 0 ] && bindip="0.0.0.0"
 
     cmd="sslocal $quiet -d restart -s $ip -p $port -k $pwd -m $method    \
 	    -b $bindip -l 1080						 \
@@ -83,17 +84,23 @@ function checkTime(){
 
 function update(){
     curSServer=$(getCurServer)
+    local needCheck="yes"
     for co in sg us jp;do
 	for index in {a..c};do
 	    tmpFile="${co}${index}.png"
-	    if [ $specifyServer];then
+	    if [ "$specifyServer" ];then
 		tmpFile=${specifyServer%.*}.png
 		[ "$curSServer" == "$tmpFile" ] && pr_err "same as cur config"
+		needCheck="no"
 	    fi
-
-	    echo "current $tmpFile"
 	    starfromQR $tmpFile
-	    [ $(checkOk) == "ok" ] && break 2 || echo "---proxy $tmpFile ng,next---"
+	    if [ "$needCheck" != "no" ];then
+	else
+	    break 2
+	fi[ "$(checkOk)" == "ok" ] && break 2 || echo "---proxy $tmpFile ng,next---"
+	    else
+		break 2
+	    fi
 	done
     done
 }
@@ -117,8 +124,7 @@ function argParser(){
 		shift
 		;;
 	    --checkTime)
-		doSliceCheck=true
-		;;
+		doSliceCheck=true ;;
 	esac
 	shift
     done
