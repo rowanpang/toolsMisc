@@ -23,6 +23,7 @@ function starfromQR(){
     local qrimgfull=${workDir}${qrimg}
     local quiet="-q"
     local duration="10s"
+    local svrHostName="rowanInspur"
     timeout $duration wget $quiet -O ${qrimgfull} http://xyz.ishadow.online/img/qr/${qrimg}
     if ! [ -s ${qrimgfull} ];then
 	export http_proxy="127.0.0.1:8087"
@@ -42,7 +43,7 @@ function starfromQR(){
     parserConfs $confs
     IFS="$oifs"
     bindip="localhost"
-    [ `expr match "$(hostname)" 'rowanInspur'` ] && bindip="0.0.0.0"
+    [ `expr match "$(hostname)" "$(svrHostName)"` != 0 ] && bindip="0.0.0.0"
 
     cmd="sslocal $quiet -d restart -s $ip -p $port -k $pwd -m $method    \
 	    -b $bindip -l 1080						 \
