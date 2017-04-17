@@ -95,9 +95,7 @@ function update(){
 	    fi
 	    starfromQR $tmpFile
 	    if [ "$needCheck" != "no" ];then
-	else
-	    break 2
-	fi[ "$(checkOk)" == "ok" ] && break 2 || echo "---proxy $tmpFile ng,next---"
+		[ "$(checkOk)" == "ok" ] && break 2 || echo "---proxy $tmpFile ng,next---"
 	    else
 		break 2
 	    fi
