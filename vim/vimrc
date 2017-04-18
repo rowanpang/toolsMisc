@@ -1,4 +1,6 @@
 "vim-plug to manage plugin. ref https://github.com/junegunn/vim-plug
+    "plugs will be install in plugged/xxx/*  'xxx' subdir named as plugin.
+    ":PlugInstall :PlugClen ...
     call plug#begin()
 	Plug 'https://github.com/SirVer/ultisnips'
 	Plug 'https://github.com/honza/vim-snippets.git'
