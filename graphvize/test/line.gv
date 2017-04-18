@@ -1,0 +1,20 @@
+//
+// line.gv
+//
+// Created on 18-04-2017 by pangwz
+//
+digraph line {
+    line [                                                                            
+	label="",
+	labelloc="b",
+	shape="underline",
+	width="3"
+	height="0.02"
+	fontsize="0"
+    ]
+
+    _exit -> line:n
+
+    line -> sys_exit
+    line -> sys_exit_group
+}
