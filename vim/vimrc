@@ -1,3 +1,7 @@
+"snippet
+    "ref software/editor/vim/plugin/snippet.txt
+    ":help snippet
+    
 "vim-plug to manage plugin. ref https://github.com/junegunn/vim-plug
     "plugs will be install in plugged/xxx/*  'xxx' subdir named as plugin.
     ":PlugInstall :PlugClen ...
