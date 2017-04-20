@@ -8,9 +8,7 @@ function pkgInstall(){
     local defConf="${dir}config-default"
     pkgCheckInstall goldendict
 
-    if ! [ -s $confFile ];then
-	cp $defConf $confFile
-    fi
+    cp $defConf $confFile
 
     sed -i "s;/home/pangwz/tools/;${localdir};" $confFile
 }
