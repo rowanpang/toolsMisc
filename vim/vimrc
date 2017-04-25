@@ -165,6 +165,7 @@
 "ctags
     "nnoremap <leader>csc :cs find c <C-R><C-W>
     "source ~/.vim/plugin/cscope_maps.vim    no need manual source,it will auto sourced 
+    set tags+=$HOME/.vim/tags/python2.ctags
 
 "Makefile
     "----------------for kernel script/Makefile.xx
