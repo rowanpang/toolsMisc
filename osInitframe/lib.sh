@@ -116,6 +116,6 @@ function libInit(){
 
     DEBUG="yes"
     HOMEDIR="$HOME/"
-    ROOTHOME="/root"
+    ROOTHOME="/root/"
 }
 libInit
