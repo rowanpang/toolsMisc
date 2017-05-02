@@ -18,6 +18,15 @@ function parserConfs(){
     parserPwdIp $pwdIp
 }
 
+function updateConfigFile(){
+    local server=`echo $1`
+    local cmd=`echo $2`
+
+    echo "stamp: `date +%_H`" > $confFile			  
+    echo "server: $server" >> $confFile			    
+    echo "cmd: $cmd" >> $confFile			   
+}
+
 function starfromQR(){
     local qrimg=$1
     local qrimgfull=${workDir}${qrimg}
@@ -25,13 +34,14 @@ function starfromQR(){
     local duration="10s"
     local svrHostName="rowanInspur"
     echo "current $tmpFile"
-    timeout $duration wget $quiet -O ${qrimgfull} http://xyz.ishadow.online/img/qr/${qrimg}
+    local remostHost="abc.ishadow.world"
+    timeout $duration wget $quiet -O ${qrimgfull} http://${remostHost}/img/qr/${qrimg}
     if ! [ -s ${qrimgfull} ];then
 	export http_proxy="127.0.0.1:8087"
-	timeout $duration wget $quiet -O ${qrimgfull} http://xyz.ishadow.online/img/qr/${qrimg}
+	timeout $duration wget $quiet -O ${qrimgfull} http://${remoteHost}/img/qr/${qrimg}
 	unset http_proxy
 	if ! [ -s ${qrimgfull} ];then
-	    echo -e "\033[1;31m" "next update download img ${qrimgfull} error!" "\033[0m" >> $curConf
+	    echo -e "\033[1;31m" "next update download img ${qrimgfull} error!" "\033[0m" >> $confFile
 	    exit -1
 	fi
     fi
@@ -50,10 +60,7 @@ function starfromQR(){
 	    -b $bindip -l 1080						 \
 	    --pid-file ${workDir}ss.pid --log-file ${workDir}ss.log"
 
-    echo $qrimg > $curConf			    #line1
-    echo $method $pwd $ip $port >> $curConf	    #line2
-    echo $cmd >> $curConf			    #3
-    echo `date +%_H` >> $curConf			    #4
+    updateConfigFile "$qrimg" "$cmd"
 
     $cmd
 }
@@ -66,16 +73,21 @@ function checkOk(){
 
 
 function getCurServer(){
-    [ -f $curConf ] && echo "$(cat $curConf | head -n 1)"
+    [ -f $confFile ] && echo "$(cat $confFile | awk '/server:/ {print $2}')"
 }
 
 function checkTime(){
+    if ! [ "$(ps -e | grep sslocal)" ];then
+	echo "do" 
+	return
+    fi
+
     local curSlice=`date +%_H`
     let curSlice="$curSlice"/6
 
     local lastSlice
-    if [ -f $curConf ];then
-	lastSlice=`cat $curConf | awk 'NR==4 {print $0}'`
+    if [ -f $confFile ];then
+	lastSlice=`cat $confFile | awk '/stamp:/ {print $2}'`
     fi
     [ $lastSlice ] || lastSlice=0
     let lastSlice="$lastSlice"/6
@@ -114,7 +126,7 @@ function gotworkDir(){
 
 function argParser(){
     workDir=$(gotworkDir $0)
-    curConf="${workDir}curConf.txt"
+    confFile="${workDir}curConf.txt"
     while [ $# -gt 0 ];do
 	case "$1" in
 	    --server)
