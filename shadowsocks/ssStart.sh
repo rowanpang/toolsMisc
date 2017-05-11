@@ -34,14 +34,15 @@ function starfromQR(){
     local duration="10s"
     local svrHostName="rowanInspur"
     echo "current $tmpFile"
-    local remostHost="abc.ishadow.world"
+    local remostHost="get.ishadow.website/"
     timeout $duration wget $quiet -O ${qrimgfull} http://${remostHost}/img/qr/${qrimg}
     if ! [ -s ${qrimgfull} ];then
 	export http_proxy="127.0.0.1:8087"
 	timeout $duration wget $quiet -O ${qrimgfull} http://${remoteHost}/img/qr/${qrimg}
 	unset http_proxy
 	if ! [ -s ${qrimgfull} ];then
-	    echo -e "\033[1;31m" "next update download img ${qrimgfull} error!" "\033[0m" >> $confFile
+	    echo -e "\033[1;31m""next update download img ${qrimgfull} error!""\033[0m" 
+	    echo -e "\033[1;31m""next update download img ${qrimgfull} error!""\033[0m" >> $confFile
 	    exit -1
 	fi
     fi
@@ -95,14 +96,13 @@ function checkTime(){
 }
 
 function update(){
-    curSServer=$(getCurServer)
     local needCheck="yes"
     for co in sg us jp;do
 	for index in {a..c};do
 	    tmpFile="${co}${index}.png"
 	    if [ "$specifyServer" ];then
 		tmpFile=${specifyServer%.*}.png
-		[ "$curSServer" == "$tmpFile" ] && pr_err "same as cur config"
+		[ "$curConfigServer" == "$tmpFile" ] && pr_err "same as cur config"
 		needCheck="no"
 	    fi
 	    starfromQR $tmpFile
@@ -127,6 +127,8 @@ function gotworkDir(){
 function argParser(){
     workDir=$(gotworkDir $0)
     confFile="${workDir}curConf.txt"
+    curConfigServer=$(getCurServer)
+
     while [ $# -gt 0 ];do
 	case "$1" in
 	    --server)
@@ -144,6 +146,11 @@ function argParser(){
     
 function main(){
     argParser $@
+
+    if [ "$curConfigServer" == "jpc.png" ];then		    #treate as no useful server.
+	return
+    fi
+
     if [ $doSliceCheck ];then
 	local doUpdate=$(checkTime)
 	[ "$doUpdate" == "do" ] && update || echo "same time slice,exit"
