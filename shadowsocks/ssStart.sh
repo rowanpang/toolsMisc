@@ -34,8 +34,8 @@ function starfromQR(){
     local duration="10s"
     local svrHostName="rowanInspur"
     echo "current $tmpFile"
-    local remostHost="get.ishadow.website/"
-    timeout $duration wget $quiet -O ${qrimgfull} http://${remostHost}/img/qr/${qrimg}
+    local remoteHost="get.ishadow.website/"
+    timeout $duration wget $quiet -O ${qrimgfull} http://${remoteHost}/img/qr/${qrimg}
     if ! [ -s ${qrimgfull} ];then
 	export http_proxy="127.0.0.1:8087"
 	timeout $duration wget $quiet -O ${qrimgfull} http://${remoteHost}/img/qr/${qrimg}
