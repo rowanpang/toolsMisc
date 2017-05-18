@@ -8,7 +8,7 @@ function baseInit(){
 	lsudo rpm -i ${dir}adobe-release-x86_64-1.0-1.noarch.rpm
     fi
 
-    pkgCheckInstall flash-plugin
+    pkgCheckInstall flash-plugin adobe-linux-x86_64
 
 }
 

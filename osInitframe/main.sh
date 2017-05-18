@@ -22,6 +22,7 @@ function initRepo(){
 
 	lsudo sed -i "s/^metadata_expire=.*/#&/" /etc/yum.repos.d/*
 	[ $(cat /etc/dnf/dnf.conf | grep -c 'expire=1000d') -ge 1 ] || lsudo sed -i "$ a metadata_expire=1000d" /etc/dnf/dnf.conf
+	[ $(cat /etc/dnf/dnf.conf | grep -c 'keepcache=true') -ge 1 ] || lsudo sed -i "$ a keepcache=true" /etc/dnf/dnf.conf
     fi
 }
 
