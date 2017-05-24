@@ -77,8 +77,8 @@
     set tabstop=8               
         "设定tab长度为4,如果ts与sts不相等则，按下tab建锁进sts.
         "exp"ts=8,sts=4,则按下tab建插入的字符为4个' '，连续两个tab插入的为'\t'
-    set noexpandtab                " 不使用空格展开tab
-    set autoindent                " or cindent
+    set noexpandtab             " 不使用空格展开tab
+    set autoindent              " or cindent
     set smartindent             " 开启新行时使用智能自动缩进
     filetype indent on
         "ref :help 30.3  :help indentexpr  /usr/share/vim/vim74/indent/*
@@ -98,13 +98,13 @@
     ":set list    /nolist                " better manual set when need
 
 "fold
-    "set foldenable              " 开始折叠
-    set nofoldenable              " 开始折叠
+    "set foldenable             " 开始折叠
+    set nofoldenable            " 开始折叠
     set foldmethod=syntax       " 设置语法折叠
     set foldcolumn=0            " 设置折叠区域的宽度
     setlocal foldlevel=1        " 设置折叠层数为
 
-"encoding                        "
+"encoding                       "
     set encoding=utf-8
     set fencs=utf-8,gbk,ucs-bom,latin1
 
