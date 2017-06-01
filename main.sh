@@ -29,9 +29,9 @@ function initRepo(){
 #$1,scripts regex to exec
 function doScripts(){
     local reg=$1
-    for script in $(find ./ -mindepth 2 -name "$reg");do
+    for script in $(find ./ -mindepth 2 -name "$reg" | sort);do
 	pr_info "do script $script"
-	$script
+	#$script
 	ret=$?
 	pr_info "---------------end ret:$ret ------------------"
 	[ $ret -eq 0 ] || pr_err "script $script error"

@@ -7,6 +7,12 @@ function javaEnv(){
     pkgCheckInstall java-*-openjdk-devel
     pkgCheckInstall java-*-openjdk-headless
     pkgCheckInstall java-*-openjdk-src
+
+    local eclipseDir="$HOME/eclipse/"
+    local javaWS="$HOME/noteGit/java/eclipseWS/"
+    local jWSlink="$eclipseDir/jworkspace"
+    [ -d $eclipseDir ] || mkdir -p $eclipseDir
+    [ -L $jWSlink ] || ln -s $javaWS $jWSlink
 }
 
 function eclipseIDE(){
