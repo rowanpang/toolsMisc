@@ -22,7 +22,7 @@ function updateConfigFile(){
     local server=`echo $1`
     local cmd=`echo $2`
 
-    echo "stamp: `date +%_H`" > $confFile			  
+    echo "stamp: `date +%Y%m%d" "%_H`" > $confFile			  
     echo "server: $server" >> $confFile			    
     echo "cmd: $cmd" >> $confFile			   
 }
@@ -83,16 +83,28 @@ function checkTime(){
 	return
     fi
 
-    local curSlice=`date +%_H`
+    local curStamp=`date +%Y%m%d" "%_H` 
+    local curDate=echo $curStamp | awk '{print $1}'
+    local curSlice=echo $curStamp | awk '{print $2}'
     let curSlice="$curSlice"/6
 
     local lastSlice
+    local lastDate
+
     if [ -f $confFile ];then
-	lastSlice=`cat $confFile | awk '/stamp:/ {print $2}'`
+	lastDate=`cat $confFile | awk '/stamp:/ {print $2}'`
     fi
-    [ $lastSlice ] || lastSlice=0
-    let lastSlice="$lastSlice"/6
-    [ $lastSlice == $curSlice ] || echo "do"
+
+    if [ "$curDate" == "$lastDate" ];then
+	if [ -f $confFile ];then
+	    lastSlice=`cat $confFile | awk '/stamp:/ {print $3}'`
+	fi
+	[ $lastSlice ] || lastSlice=0
+	let lastSlice="$lastSlice"/6
+	[ $lastSlice == $curSlice ] || echo "do"
+    else
+	echo "do"
+    fi
 }
 
 function update(){
