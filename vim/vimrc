@@ -8,7 +8,11 @@
     call plug#begin()
 	Plug 'https://github.com/SirVer/ultisnips'
 	Plug 'https://github.com/honza/vim-snippets.git'
+	Plug 'https://github.com/artur-shaik/vim-javacomplete2.git'
     call plug#end()
+
+"java complete
+    autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 "check gui
     if has('gui_running')
@@ -135,7 +139,7 @@
     let Tlist_Auto_Open = 0
     let Tlist_Exit_OnlyWindow = 1
     let Tlist_GainFocus_On_ToggleOpen = 1
-    let Tlist_File_Fold_Auto_Close = 1
+    "let Tlist_File_Fold_Auto_Close = 1
     let Tlist_Close_On_Select = 1
     let Tlist_Highlight_Tag_On_BufEnter = 1
     if has("win32")
@@ -153,7 +157,7 @@
     "options
         let NERDTreeWinPos = "right"
         let NERDTreeShowLineNumbers = 1
-        let NERDTreeQuitOnOpen = 1
+        "let NERDTreeQuitOnOpen = 1
         let nerdtree_plugin_open_cmd = 'xdg-open'
         
         "let NERDTreeChDirMode = 2
@@ -165,7 +169,7 @@
 "ctags
     "nnoremap <leader>csc :cs find c <C-R><C-W>
     "source ~/.vim/plugin/cscope_maps.vim    no need manual source,it will auto sourced 
-    set tags+=$HOME/.vim/tags/python2.ctags
+    au FileType python set tags+=$HOME/.vim/tags/python2.ctags
 
 "Makefile
     "----------------for kernel script/Makefile.xx
