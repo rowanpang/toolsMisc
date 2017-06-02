@@ -9,6 +9,7 @@
 	Plug 'https://github.com/SirVer/ultisnips'
 	Plug 'https://github.com/honza/vim-snippets.git'
 	Plug 'https://github.com/artur-shaik/vim-javacomplete2.git'
+	Plug 'https://github.com/Shougo/unite.vim.git'
     call plug#end()
 
 "java complete
