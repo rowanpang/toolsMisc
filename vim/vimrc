@@ -1,3 +1,7 @@
+"language
+   let $LANG='en_US'
+    set langmenu=en_US
+    
 "snippet
     "ref software/editor/vim/plugin/snippet.txt
     ":help snippet
