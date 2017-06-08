@@ -48,6 +48,11 @@ function pkgInstalled(){
 #$1,pkg name
 #$2,cmd
 #$3..enable repos
+#return:
+    #255:had installed
+    #254:when do 'remove' if not install return it
+    #205:pkgX uninstall error
+    # * :dnf return value
 function pkgCheckdoCmd(){
     local pkg=$1
     local cmd=$2
@@ -56,12 +61,12 @@ function pkgCheckdoCmd(){
 
     if [ "$isInstalled" -a "$cmd" == "install" ];then
         pr_info "$pkg has been installed,return"
-        return 0    
+        return 255    
     fi
 
     if [ ! "$isInstalled" -a "$cmd" == "remove" ];then
         pr_info "$pkg has not installed,return"
-	return 0
+	return 254
     fi
 
     local enabledRepo="--enablerepo=fedora "
@@ -79,12 +84,17 @@ function pkgCheckInstall(){
     local pkg=$1
     shift
     pkgCheckdoCmd $pkg "install" "$@"
+    return $?
 }
 #$@:pkgs to install
+#return:
+    #255: pkgX install error
 function pkgsInstall(){
     for pkg in "$@";do
 	pkgCheckInstall $pkg
+	[ $? ] || return $?
     done
+    return $?
 }
 
 #1:pkg
@@ -92,13 +102,16 @@ function pkgCheckUninstall(){
     local pkg=$1
     shift
     pkgCheckdoCmd $pkg "remove" "$@"
+    return $?
 }
 
 #$@:pkgs to uninstall
 function pkgsUninstall(){
     for pkg in "$@";do
 	pkgCheckUninstall $pkg
+	[ $? ] || return $?
     done
+    return $?
 }
 
 function libInit(){
