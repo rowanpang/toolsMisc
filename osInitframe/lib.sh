@@ -84,6 +84,7 @@ function pkgCheckInstall(){
     local pkg=$1
     shift
     pkgCheckdoCmd $pkg "install" "$@"
+    [ $? == 255 ] || return 0
     return $?
 }
 #$@:pkgs to install
@@ -102,6 +103,7 @@ function pkgCheckUninstall(){
     local pkg=$1
     shift
     pkgCheckdoCmd $pkg "remove" "$@"
+    [ $? == 254 ] || return 0
     return $?
 }
 

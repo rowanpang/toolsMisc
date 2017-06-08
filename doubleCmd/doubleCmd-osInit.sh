@@ -12,11 +12,12 @@ function baseInit(){
     fi
 
     lsudo dnf config-manager --set-disabled $repoName
+    local hasInstalled=$(pkgInstalled $repoName)
+
     pkgCheckInstall doublecmd-gtk $repoName
     pkgCheckInstall trash-cli				    #for manage trash can. exp: /home/pangwz/.local/share/Trash/files/*
 
-    local ret=$?
-    if [ $ret == 0 ];then	    #first install ok. reset configfile
+    if ! [ "$hasInstalled" ];then	    #first install ok. reset configfile
 	local confDir="$HOME/.config/doublecmd/"
 	local conf="${localdir}doublecmd.xml"
 	local hotKey="${localdir}shortcuts.scf"
