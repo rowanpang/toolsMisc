@@ -13,6 +13,7 @@ function baseInit(){
 
     lsudo dnf config-manager --set-disabled $repoName
     pkgCheckInstall doublecmd-gtk $repoName
+    pkgCheckInstall trash-cli				    #for manage trash can. exp: /home/pangwz/.local/share/Trash/files/*
 
     local ret=$?
     if [ $ret == 0 ];then	    #first install ok. reset configfile

@@ -265,14 +265,24 @@
   <Tabs>
     <OpenedTabs>
       <Left>
-        <ActiveTab>0</ActiveTab>
+        <ActiveTab>3</ActiveTab>
         <Tab>
           <FileView Type="columns">
             <History>
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="..">/usr/lib64/doublecmd/</Path>
+                  <Path Filename="doc">/usr/lib64/doublecmd/</Path>
+                  <Path Filename="README.txt">/usr/lib64/doublecmd/doc/</Path>
+                  <Path Filename="..">/home/pangwz/</Path>
+                  <Path Filename="..">/boot/</Path>
+                  <Path Filename="noteGit">/home/pangwz/</Path>
+                  <Path Filename="..">/home/pangwz/noteGit/</Path>
+                  <Path Filename="..">/media/windisk-d_/</Path>
+                  <Path Filename="..">/home/pangwz/</Path>
+                  <Path Filename="Nutstore">/media/windisk-d_/</Path>
+                  <Path Filename="..">/media/windisk-d_/Nutstore/</Path>
+                  <Path Filename="usb-noSerial.pcapng">/home/pangwz/Downloads/</Path>
                 </Paths>
               </Entry>
             </History>
@@ -280,10 +290,105 @@
               <ColumnsSet>Default</ColumnsSet>
             </ColumnsView>
           </FileView>
+          <Options>2</Options>
+          <LockPath>/home/pangwz/Downloads/</LockPath>
+          <Title>dwn</Title>
+        </Tab>
+        <Tab>
+          <FileView Type="columns">
+            <History>
+              <Entry Active="True">
+                <FileSource Type="FileSystem"/>
+                <Paths>
+                  <Path Filename="doc">/usr/lib64/doublecmd/</Path>
+                  <Path Filename="README.txt">/usr/lib64/doublecmd/doc/</Path>
+                  <Path Filename="..">/home/pangwz/</Path>
+                  <Path Filename="..">/boot/</Path>
+                  <Path Filename="noteGit">/home/pangwz/</Path>
+                  <Path Filename="..">/home/pangwz/noteGit/</Path>
+                  <Path Filename="..">/media/windisk-d_/</Path>
+                  <Path Filename="..">/home/pangwz/</Path>
+                  <Path Filename="Nutstore">/media/windisk-d_/</Path>
+                  <Path Filename="..">/media/windisk-d_/Nutstore/</Path>
+                  <Path Filename="..">/home/pangwz/noteGit/</Path>
+                  <Path Filename="..">/home/pangwz/tools/toolsMisc/</Path>
+                  <Path Filename="..">/home/pangwz/noteGit/</Path>
+                </Paths>
+              </Entry>
+            </History>
+            <ColumnsView>
+              <ColumnsSet>Default</ColumnsSet>
+            </ColumnsView>
+          </FileView>
+          <Options>2</Options>
+          <LockPath>/home/pangwz/noteGit/</LockPath>
+          <Title>noteGit</Title>
+        </Tab>
+        <Tab>
+          <FileView Type="columns">
+            <History>
+              <Entry Active="True">
+                <FileSource Type="FileSystem"/>
+                <Paths>
+                  <Path Filename="doc">/usr/lib64/doublecmd/</Path>
+                  <Path Filename="README.txt">/usr/lib64/doublecmd/doc/</Path>
+                  <Path Filename="..">/home/pangwz/</Path>
+                  <Path Filename="..">/boot/</Path>
+                  <Path Filename="noteGit">/home/pangwz/</Path>
+                  <Path Filename="..">/home/pangwz/noteGit/</Path>
+                  <Path Filename="..">/media/windisk-d_/</Path>
+                  <Path Filename="..">/home/pangwz/</Path>
+                  <Path Filename="Nutstore">/media/windisk-d_/</Path>
+                  <Path Filename="..">/media/windisk-d_/Nutstore/</Path>
+                  <Path Filename="..">/home/pangwz/noteGit/</Path>
+                  <Path Filename="goldenDict">/home/pangwz/tools/toolsMisc/</Path>
+                  <Path Filename="..">/home/pangwz/tools/toolsMisc/doubleCmd/</Path>
+                  <Path Filename="..">/home/pangwz/tools/toolsMisc/</Path>
+                </Paths>
+              </Entry>
+            </History>
+            <ColumnsView>
+              <ColumnsSet>Default</ColumnsSet>
+            </ColumnsView>
+          </FileView>
+          <Options>2</Options>
+          <LockPath>/home/pangwz/tools/toolsMisc/</LockPath>
+          <Title>toolsMisc</Title>
+        </Tab>
+        <Tab>
+          <FileView Type="columns">
+            <History>
+              <Entry Active="True">
+                <FileSource Type="FileSystem"/>
+                <Paths>
+                  <Path Filename="doc">/usr/lib64/doublecmd/</Path>
+                  <Path Filename="README.txt">/usr/lib64/doublecmd/doc/</Path>
+                  <Path Filename="..">/home/pangwz/</Path>
+                  <Path Filename="..">/boot/</Path>
+                  <Path Filename="noteGit">/home/pangwz/</Path>
+                  <Path Filename="..">/home/pangwz/noteGit/</Path>
+                  <Path Filename="..">/media/windisk-d_/</Path>
+                  <Path Filename="..">/home/pangwz/</Path>
+                  <Path Filename="Nutstore">/media/windisk-d_/</Path>
+                  <Path Filename="..">/media/windisk-d_/Nutstore/</Path>
+                  <Path Filename="..">/home/pangwz/Downloads/</Path>
+                  <Path Filename="..">/media/windisk-d_/Nutstore/</Path>
+                  <Path Filename="..">/home/pangwz/</Path>
+                  <Path Filename="..">/media/windisk-d_/Nutstore/</Path>
+                </Paths>
+              </Entry>
+            </History>
+            <ColumnsView>
+              <ColumnsSet>Default</ColumnsSet>
+            </ColumnsView>
+          </FileView>
+          <Options>2</Options>
+          <LockPath>/media/windisk-d_/Nutstore/</LockPath>
+          <Title>Nutstore</Title>
         </Tab>
       </Left>
       <Right>
-        <ActiveTab>0</ActiveTab>
+        <ActiveTab>2</ActiveTab>
         <Tab>
           <FileView Type="columns">
             <History>
@@ -291,6 +396,19 @@
                 <FileSource Type="FileSystem"/>
                 <Paths>
                   <Path Filename="..">/usr/lib64/doublecmd/</Path>
+                  <Path Filename="pangwz">/home/</Path>
+                  <Path Filename="rpmbuild">/home/pangwz/</Path>
+                  <Path Filename="BUILDROOT">/home/pangwz/rpmbuild/</Path>
+                  <Path Filename="..">/home/pangwz/rpmbuild/BUILDROOT/</Path>
+                  <Path Filename="..">/home/pangwz/rpmbuild/</Path>
+                  <Path Filename="Music">/home/pangwz/</Path>
+                  <Path Filename="pangwz">/home/</Path>
+                  <Path Filename="..">/home/pangwz/</Path>
+                  <Path Filename="..">/media/windisk-d_/Nutstore/</Path>
+                  <Path Filename="..">/home/pangwz/rpmbuild/</Path>
+                  <Path Filename="pangwz">/home/</Path>
+                  <Path Filename="Downloads">/home/pangwz/</Path>
+                  <Path Filename="..">/home/pangwz/Downloads/</Path>
                 </Paths>
               </Entry>
             </History>
@@ -298,6 +416,108 @@
               <ColumnsSet>Default</ColumnsSet>
             </ColumnsView>
           </FileView>
+          <Options>2</Options>
+          <LockPath>/home/pangwz/Downloads/</LockPath>
+          <Title>dwn</Title>
+        </Tab>
+        <Tab>
+          <FileView Type="columns">
+            <History>
+              <Entry Active="True">
+                <FileSource Type="FileSystem"/>
+                <Paths>
+                  <Path Filename="..">/usr/lib64/doublecmd/</Path>
+                  <Path Filename="pangwz">/home/</Path>
+                  <Path Filename="rpmbuild">/home/pangwz/</Path>
+                  <Path Filename="BUILDROOT">/home/pangwz/rpmbuild/</Path>
+                  <Path Filename="..">/home/pangwz/rpmbuild/BUILDROOT/</Path>
+                  <Path Filename="..">/home/pangwz/rpmbuild/</Path>
+                  <Path Filename="Music">/home/pangwz/</Path>
+                  <Path Filename="..">/home/pangwz/rpmbuild/</Path>
+                  <Path Filename="..">/home/pangwz/noteGit/</Path>
+                  <Path Filename="pangwz">/home/</Path>
+                  <Path Filename="tools">/home/pangwz/</Path>
+                  <Path Filename="toolsMisc">/home/pangwz/tools/</Path>
+                  <Path Filename="..">/home/pangwz/tools/toolsMisc/</Path>
+                </Paths>
+              </Entry>
+            </History>
+            <ColumnsView>
+              <ColumnsSet>Default</ColumnsSet>
+            </ColumnsView>
+          </FileView>
+          <Options>2</Options>
+          <LockPath>/home/pangwz/noteGit/</LockPath>
+          <Title>noteGit</Title>
+        </Tab>
+        <Tab>
+          <FileView Type="columns">
+            <History>
+              <Entry Active="True">
+                <FileSource Type="FileSystem"/>
+                <Paths>
+                  <Path Filename="..">/usr/lib64/doublecmd/</Path>
+                  <Path Filename="pangwz">/home/</Path>
+                  <Path Filename="rpmbuild">/home/pangwz/</Path>
+                  <Path Filename="BUILDROOT">/home/pangwz/rpmbuild/</Path>
+                  <Path Filename="..">/home/pangwz/rpmbuild/BUILDROOT/</Path>
+                  <Path Filename="..">/home/pangwz/rpmbuild/</Path>
+                  <Path Filename="Music">/home/pangwz/</Path>
+                  <Path Filename="..">/home/pangwz/rpmbuild/</Path>
+                  <Path Filename="..">/home/pangwz/noteGit/</Path>
+                  <Path Filename="pangwz">/home/</Path>
+                  <Path Filename="tools">/home/pangwz/</Path>
+                  <Path Filename="toolsMisc">/home/pangwz/tools/</Path>
+                  <Path Filename="justScript">/home/pangwz/tools/toolsMisc/</Path>
+                  <Path Filename="..">/home/pangwz/tools/toolsMisc/justScript/</Path>
+                  <Path Filename="doubleCmd">/home/pangwz/tools/toolsMisc/</Path>
+                  <Path Filename="..">/home/pangwz/tools/toolsMisc/doubleCmd/</Path>
+                  <Path Filename="adobe">/home/pangwz/tools/toolsMisc/</Path>
+                  <Path Filename="..">/home/pangwz/tools/toolsMisc/adobe/</Path>
+                  <Path Filename="doubleCmd">/home/pangwz/tools/toolsMisc/</Path>
+                  <Path Filename="doubleCmd-osInit.sh">/home/pangwz/tools/toolsMisc/doubleCmd/</Path>
+                </Paths>
+              </Entry>
+            </History>
+            <ColumnsView>
+              <ColumnsSet>Default</ColumnsSet>
+            </ColumnsView>
+          </FileView>
+          <Options>2</Options>
+          <LockPath>/home/pangwz/tools/toolsMisc/</LockPath>
+          <Title>toolsMisc</Title>
+        </Tab>
+        <Tab>
+          <FileView Type="columns">
+            <History>
+              <Entry Active="True">
+                <FileSource Type="FileSystem"/>
+                <Paths>
+                  <Path Filename="..">/usr/lib64/doublecmd/</Path>
+                  <Path Filename="pangwz">/home/</Path>
+                  <Path Filename="rpmbuild">/home/pangwz/</Path>
+                  <Path Filename="BUILDROOT">/home/pangwz/rpmbuild/</Path>
+                  <Path Filename="..">/home/pangwz/rpmbuild/BUILDROOT/</Path>
+                  <Path Filename="..">/home/pangwz/rpmbuild/</Path>
+                  <Path Filename="Music">/home/pangwz/</Path>
+                  <Path Filename="pangwz">/home/</Path>
+                  <Path Filename="..">/home/pangwz/</Path>
+                  <Path Filename="..">/media/windisk-d_/Nutstore/</Path>
+                  <Path Filename="..">/home/pangwz/rpmbuild/</Path>
+                  <Path Filename="pangwz">/home/</Path>
+                  <Path Filename="Downloads">/home/pangwz/</Path>
+                  <Path Filename="..">/home/pangwz/Downloads/</Path>
+                  <Path Filename="..">/media/windisk-d_/Nutstore/</Path>
+                </Paths>
+              </Entry>
+            </History>
+            <ColumnsView>
+              <ColumnsSet>Default</ColumnsSet>
+            </ColumnsView>
+          </FileView>
+          <Options>2</Options>
+          <LockPath>/media/windisk-d_/Nutstore/</LockPath>
+          <Title>Nutstore</Title>
         </Tab>
       </Right>
     </OpenedTabs>
@@ -339,7 +559,7 @@
       <ScrollMode>1</ScrollMode>
       <WheelScrollLines>3</WheelScrollLines>
     </Mouse>
-    <AutoFillColumns>False</AutoFillColumns>
+    <AutoFillColumns>True</AutoFillColumns>
     <AutoSizeColumn>1</AutoSizeColumn>
     <CustomColumnsChangeAllColumns>False</CustomColumnsChangeAllColumns>
     <BriefViewFileExtAligned>False</BriefViewFileExtAligned>
@@ -546,7 +766,7 @@
     <ShowWarningMessages>True</ShowWarningMessages>
     <SpaceMovesDown>False</SpaceMovesDown>
     <DirBrackets>False</DirBrackets>
-    <InplaceRename>True</InplaceRename>
+    <InplaceRename>False</InplaceRename>
     <HotDirAddTargetOrNot>False</HotDirAddTargetOrNot>
     <HotDirFullExpandOrNot>False</HotDirFullExpandOrNot>
     <ShowPathInPopup>False</ShowPathInPopup>
@@ -652,7 +872,7 @@
         <Column>
           <Title>Name</Title>
           <FuncString>[DC().GETFILENAMENOEXT{}]</FuncString>
-          <Width>250</Width>
+          <Width>431</Width>
           <Align>0</Align>
           <Font>
             <Name>default</Name>
