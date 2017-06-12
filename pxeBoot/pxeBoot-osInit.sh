@@ -13,8 +13,8 @@ function pkgInstall(){
     [ -s /tftpboot/ ] && wkdir="/tftpboot/"
 
     local cfgdir="${wkdir}pexlinux.cfg/"
-    [ -d ${cfgdir} ] || mkdir -p $cfgdir
-    cp ${dir}pxelinux.cfg ${cfgdir}default
+    [ -d ${cfgdir} ] || lsudo mkdir -p $cfgdir
+    lsudo cp ${dir}pxelinux.cfg ${cfgdir}default
 }
 
 function main(){
