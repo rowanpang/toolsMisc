@@ -214,6 +214,10 @@ function optParser(){
 		imgSizeWhenAutoCreate="${2}G"
 		shift
 		;;
+	    -h|help)
+		Usage
+		exit -1;
+		;;
 	    *)
 		domain=${1%.*}
 		;;
