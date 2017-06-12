@@ -7,6 +7,7 @@ function pkgInstall(){
 
     pkgCheckInstall tftp
     pkgCheckInstall tftp-server
+    pkgCheckInstall vsftpd
     pkgCheckInstall syslinux-tftpboot.noarch
 
     local wkdir="/var/lib/tftpboot/"
