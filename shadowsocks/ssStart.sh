@@ -159,10 +159,6 @@ function argParser(){
 function main(){
     argParser $@
 
-    if [ "$curConfigServer" == "jpc.png" ];then		    #treate as no useful server.
-	return
-    fi
-
     if [ $doSliceCheck ];then
 	local doUpdate=$(checkTime)
 	[ "$doUpdate" == "do" ] && update || echo "same time slice,exit"
