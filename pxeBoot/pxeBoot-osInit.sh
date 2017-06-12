@@ -13,9 +13,12 @@ function pkgInstall(){
     local wkdir="/var/lib/tftpboot/"
     [ -s /tftpboot/ ] && wkdir="/tftpboot/"
 
-    local cfgdir="${wkdir}pexlinux.cfg/"
-    [ -d ${cfgdir} ] || lsudo mkdir -p $cfgdir
+    local cfgdir="${wkdir}pxelinux.cfg/"
+    [ -d ${cfgdir} ] || lsudo mkdir -p "$cfgdir"
     lsudo cp ${dir}pxelinux.cfg ${cfgdir}default
+
+    local imgdir="${wkdir}syslinux/"
+    [ -d ${imgdir} ] || lsudo mkdir -p $imgdir
 }
 
 function main(){
