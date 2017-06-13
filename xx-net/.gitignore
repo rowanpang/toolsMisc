@@ -1,5 +1,7 @@
 .idea
-data
+data/gae_proxy/certs
+data/gae_proxy/good_ip.txt
+data/gae_proxy/scan_ip.*
 *~
 *.pyc
 *.swp
