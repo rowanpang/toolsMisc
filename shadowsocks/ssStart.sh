@@ -27,6 +27,11 @@ function updateConfigFile(){
     echo "cmd: $cmd" >> $confFile			   
 }
 
+function updateProxyState(){
+    local state=`echo $1`
+    echo "proxyState: $state" >> $confFile
+}
+
 function starfromQR(){
     local qrimg=$1
     local qrimgfull=${workDir}${qrimg}
@@ -66,15 +71,23 @@ function starfromQR(){
     $cmd
 }
 
-function checkOk(){
+function proxyOK(){
     `timeout 15 curl --insecure --silent --proxy socks5h://127.0.0.1:1080 https://twitter.com > /dev/null`
     ret=$?
-    [ $ret -eq 0 ] && echo "ok" || echo "ng"
+    local state=""
+    [ $ret -eq 0 ] && state="ok" || state="ng"
+
+    updateProxyState $state
+    echo $state
 }
 
 
 function getCurServer(){
     [ -f $confFile ] && echo "$(cat $confFile | awk '/server:/ {print $2}')"
+}
+
+function getCurProxyState(){
+    [ -f $confFile ] && echo "$(cat $confFile | awk '/proxyState:/ {print $2}')"
 }
 
 function checkTime(){
@@ -84,8 +97,8 @@ function checkTime(){
     fi
 
     local curStamp=`date +%Y%m%d" "%_H` 
-    local curDate=echo $curStamp | awk '{print $1}'
-    local curSlice=echo $curStamp | awk '{print $2}'
+    local curDate=`echo $curStamp | awk '{print $1}'`
+    local curSlice=`echo $curStamp | awk '{print $2}'`
     let curSlice="$curSlice"/6
 
     local lastSlice
@@ -101,7 +114,7 @@ function checkTime(){
 	fi
 	[ $lastSlice ] || lastSlice=0
 	let lastSlice="$lastSlice"/6
-	[ $lastSlice == $curSlice ] || echo "do"
+	[ $lastSlice == $curSlice ] || echo "do" && echo "same time slice"
     else
 	echo "do"
     fi
@@ -119,7 +132,7 @@ function update(){
 	    fi
 	    starfromQR $tmpFile
 	    if [ "$needCheck" != "no" ];then
-		[ "$(checkOk)" == "ok" ] && break 2 || echo "---proxy $tmpFile ng,next---"
+		[ "$(proxyOK)" == "ok" ] && break 2 || echo "---proxy $tmpFile ng,next---"
 	    else
 		break 2
 	    fi
@@ -140,6 +153,7 @@ function argParser(){
     workDir=$(gotworkDir $0)
     confFile="${workDir}curConf.txt"
     curConfigServer=$(getCurServer)
+    curProxyState=$(getCurProxyState)
 
     while [ $# -gt 0 ];do
 	case "$1" in
@@ -148,7 +162,7 @@ function argParser(){
 		shift
 		;;
 	    --checkTime)
-		doSliceCheck=true ;;
+		doTimeCheck=true ;;
 	esac
 	shift
     done
@@ -157,14 +171,18 @@ function argParser(){
 
     
 function main(){
-    argParser $@
+    argParser $@		#at first
+    local doUpdate=""
+    local ret="$(checkTime)"
 
-    if [ $doSliceCheck ];then
-	local doUpdate=$(checkTime)
-	[ "$doUpdate" == "do" ] && update || echo "same time slice,exit"
+    if [ "$curProxyState" != "ok" ] || [ ! "$doTimeCheck" ] || ( [ $doTimeCheck ] && [ "do" == "$ret" ] );then
+	doUpdate="yes"
     else
-	update
+	echo "$ret"
     fi
+
+    [ "$doUpdate" == "yes" ] && update
+
 }
 
 main $@
