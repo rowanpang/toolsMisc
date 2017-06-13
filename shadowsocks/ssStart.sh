@@ -38,7 +38,7 @@ function starfromQR(){
     local quiet="-q"
     local duration="10s"
     local svrHostName="rowanInspur"
-    echo "current $tmpFile"
+    echo -e "\033[1;31m""update to $tmpFile""\033[0m"
     local remoteHost="get.ishadow.website/"
     timeout $duration wget $quiet -O ${qrimgfull} http://${remoteHost}/img/qr/${qrimg}
     if ! [ -s ${qrimgfull} ];then
@@ -114,7 +114,7 @@ function checkTime(){
 	fi
 	[ $lastSlice ] || lastSlice=0
 	let lastSlice="$lastSlice"/6
-	[ $lastSlice == $curSlice ] || echo "do" && echo "same time slice"
+	[ $lastSlice == $curSlice ] && echo "same time slice" || echo "do"
     else
 	echo "do"
     fi
@@ -154,6 +154,7 @@ function argParser(){
     confFile="${workDir}curConf.txt"
     curConfigServer=$(getCurServer)
     curProxyState=$(getCurProxyState)
+    echo -e "\033[1;31m""curUsed: $curConfigServer""\033[0m"
 
     while [ $# -gt 0 ];do
 	case "$1" in
