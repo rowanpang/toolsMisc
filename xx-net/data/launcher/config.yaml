@@ -1,0 +1,6 @@
+modules:
+  gae_proxy: {auto_start: 1, show_detail: 1}
+  launcher: {allow_remote_connect: 0, control_port: 8085, last_run_version: 3.3.1,
+    proxy: pac, xxnet_port: 8087}
+  x_tunnel: {auto_start: 1}
+update: {last_path: /home/pangwz/tools/toolsMisc/xx-net/code/3.3.1/launcher, uuid: 46c273b7-e311-4c3c-8923-baee5c046a5d}
