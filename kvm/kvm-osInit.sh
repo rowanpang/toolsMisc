@@ -14,6 +14,7 @@ function baseInit(){
     ln -sf ${dir}/vmStart.sh ${kvmDir}vmStart.sh
     ln -sf ${dir}/isoMK.sh ${kvmDir}isoMK.sh
     ln -sf ${dir}/vmUsb.sh ${kvmDir}vmUsb.sh
+    ln -sf ${dir}/vmNet.sh ${kvmDir}vmNet.sh
 
     pkgCheckInstall bridge-utils
     pkgCheckInstall NetworkManager
