@@ -62,9 +62,19 @@ function starfromQR(){
     bindip="127.0.0.1"
     [ `expr match "$(hostname)" "$svrHostName"` != 0 ] && bindip="0.0.0.0"
 
-    cmd="sslocal $quiet -d restart -s $ip -p $port -k $pwd -m $method    \
+    if [ "$ssCmd" == "ss-local" ];then
+	cmd="$ssCmd -s $ip -p $port -k $pwd -m $method -b $bindip -l 1080
+	    -f ${workDir}ss.pid"
+	
+	if [ "$(ssCmdRunning)" ];then
+	    kill -9 `pidof $ssCmd`
+	fi
+	
+    else
+	cmd="$ssCmd $quiet -d restart -s $ip -p $port -k $pwd -m $method    \
 	    -b $bindip -l 1080						 \
 	    --pid-file ${workDir}ss.pid --log-file ${workDir}ss.log"
+    fi
 
     updateConfigFile "$qrimg" "$cmd"
 
@@ -90,8 +100,12 @@ function getCurProxyState(){
     [ -f $confFile ] && echo "$(cat $confFile | awk '/proxyState:/ {print $2}')"
 }
 
+function ssCmdRunning(){
+    [ "$(ps -e | grep $ssCmd)" ] && echo "yes"
+}
+
 function checkTime(){
-    if ! [ "$(ps -e | grep sslocal)" ];then
+    if ! [ "$(ssCmdRunning)" ];then
 	echo "do" 
 	return
     fi
@@ -154,6 +168,13 @@ function argParser(){
     confFile="${workDir}curConf.txt"
     curConfigServer=$(getCurServer)
     curProxyState=$(getCurProxyState)
+
+    if [ -x /usr/bin/ss-local ];then
+	ssCmd="ss-local"		#elf bin    recomend
+    else
+	ssCmd="sslocal"			#python version
+    fi
+
     echo -e "\033[1;31m""curUsed: $curConfigServer""\033[0m"
 
     while [ $# -gt 0 ];do
@@ -173,6 +194,7 @@ function argParser(){
     
 function main(){
     argParser $@		#at first
+
     local doUpdate=""
     local ret="$(checkTime)"
 
