@@ -20,6 +20,10 @@ function eclipseIDE(){
     pkgCheckInstall eclipse-jdt
     pkgCheckInstall eclipse-cdt
     pkgCheckInstall eclipse-mpc
+
+    #maven manager 
+    pkgCheckInstall maven-eclipse-plugin
+    pkgCheckInstall eclipse-m2e-mavenarchiver.noarch
 }
 
 function main(){
