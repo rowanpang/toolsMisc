@@ -211,7 +211,7 @@ function optParser(){
 		quitShell="true"
 		;;
 	    -s|size)
-		imgSizeWhenAutoCreate="${2}G"
+		imgSizeWhenAutoCreate="${2}"
 		shift
 		;;
 	    -h|help)
