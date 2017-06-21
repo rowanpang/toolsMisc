@@ -33,9 +33,9 @@
       <driver name='qemu' type='raw'/>
       <source file='/home/pangwz/vm-iso/kanas2.img'/>
       <backingStore/>
-      <target dev='vda' bus='virtio'/>
-      <alias name='virtio-disk0'/>
-      <address type='pci' domain='0x0000' bus='0x00' slot='0x07' function='0x0'/>
+      <target dev='hdb' bus='ide'/>
+      <alias name='ide0-0-1'/>
+      <address type='drive' controller='0' bus='0' target='0' unit='1'/>
     </disk>
     <disk type='file' device='cdrom'>
       <driver name='qemu' type='raw'/>
@@ -80,8 +80,8 @@
     <interface type='bridge'>
       <mac address='52:54:00:25:ef:d1'/>
       <source bridge='bridge0'/>
-      <model type='virtio'/>
-      <alias name='net0'/>
+      <target dev='tap0'/>
+      <model type='rtl8139'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
     </interface>
     <serial type='pty'>
