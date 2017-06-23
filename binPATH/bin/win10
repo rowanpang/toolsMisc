@@ -1,0 +1,2 @@
+#!/bin/bash
+rdesktop -u kvm-win10 kvm-win10
