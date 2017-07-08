@@ -137,7 +137,7 @@ function checkTime(){
 function update(){
     local needCheck="yes"
     for co in sg us jp;do
-	for index in {a..c};do
+	for index in b a c;do
 	    tmpFile="${co}${index}.png"
 	    if [ "$specifyServer" ];then
 		tmpFile=${specifyServer%.*}.png
