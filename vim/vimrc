@@ -25,6 +25,9 @@
 	"Plug 'scrooloose/nerdtree'
 	Plug 'rowanpang/nerdtree'
 	Plug 'scrooloose/nerdcommenter'
+	Plug 'ervandew/supertab'
+	Plug 'valloric/youcompleteme'
+
     call plug#end()
 
 "java complete
