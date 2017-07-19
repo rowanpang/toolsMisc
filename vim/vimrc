@@ -23,7 +23,8 @@
 	    ":Gstatus
 	Plug 'bling/vim-airline'
 	"Plug 'scrooloose/nerdtree'
-	"Plug 'scrooloose/nerdcommenter'
+	Plug 'rowanpang/nerdtree'
+	Plug 'scrooloose/nerdcommenter'
     call plug#end()
 
 "java complete
@@ -162,11 +163,7 @@
     endif
 
 "nerdtree
-    if has("win32")
-        set rtp+=$HOME/vimfiles/nerdtree
-    else
-        set rtp+=~/.vim/nerdtree
-    endif
+    "managed by Plugin
     "nnoremap <F9> :NERDTreeToggle<CR>
     nnoremap <F9> :NERDTreeFind<CR>
     "options
@@ -178,6 +175,7 @@
         "let NERDTreeChDirMode = 2
 
 "nerdcomment
+    "managed by Plugin
     "ref:https://github.com/scrooloose/nerdcommenter
     "\ca 转换注释的方式，比如： /**/和// 
 
