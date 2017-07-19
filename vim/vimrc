@@ -1,5 +1,5 @@
 "language
-   let $LANG='en_US'
+    let $LANG='en_US'
     set langmenu=en_US
     
 "snippet
@@ -14,6 +14,16 @@
 	Plug 'https://github.com/honza/vim-snippets.git'
 	Plug 'https://github.com/artur-shaik/vim-javacomplete2.git'
 	Plug 'https://github.com/Shougo/unite.vim.git'
+	Plug 'scrooloose/syntastic'		
+	    "语法检查
+	Plug 'majutsushi/tagbar'		
+	    "单文件tag
+	Plug 'tpope/vim-fugitive'
+	    "for git
+	    ":Gstatus
+	Plug 'bling/vim-airline'
+	"Plug 'scrooloose/nerdtree'
+	"Plug 'scrooloose/nerdcommenter'
     call plug#end()
 
 "java complete
@@ -41,7 +51,7 @@
         au GUIEnter * winpos 210 135
         au GUIEnter * simalt ~x    "auto maximum
     endif
-        
+    
     :nmap <silent> <C-h> :wincmd h<CR>
     :nmap <silent> <C-j> :wincmd j<CR>
     :nmap <silent> <C-k> :wincmd k<CR>
@@ -228,17 +238,13 @@
     set pastetoggle=<F2>
 
 "vim-airline
+    "managed by Plugin:
     "let g:airline#extensions#tabline#enabled = 1
-    if has("win32")
-        set rtp+=$HOME/vimfiles/airline
-    else
-        set rtp+=~/.vim/airline
-    endif
-
+    
     if has('gui_running')
         "in gui default is on
     else
-        au VimEnter * if exists('g:loaded_airline') | AirlineToggle | endif
+        "au VimEnter * if exists('g:loaded_airline') | AirlineToggle | endif
     endif
 
 "fs/dir operation
