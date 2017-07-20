@@ -176,6 +176,7 @@
         let nerdtree_plugin_open_cmd = 'xdg-open'
         
         "let NERDTreeChDirMode = 2
+    let g:netrw_nogx = 1	    "use xdg-open files
 
 "nerdcomment
     "managed by Plugin
@@ -282,3 +283,6 @@
     let g:ycm_complete_in_comments = 1
     let g:ycm_complete_in_strings = 1
     let g:ycm_collect_identifiers_from_comments_and_strings = 0
+
+    let g:ycm_show_diagnostics_ui = 0		    "disable ycm checker use Syntastic's checker
+
