@@ -264,6 +264,8 @@
     let g:SuperTabDefaultCompletionType = "context"
     
 "ycm
+    "let g:ycm_log_level = 'info'		"for debug usage
+    let g:ycm_log_level = 'error'
     let g:ycm_server_python_interpreter = 'python'
 
     let g:ycm_key_list_select_completion = ['<c-n>']
