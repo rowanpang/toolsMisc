@@ -167,8 +167,8 @@
 
 "nerdtree
     "managed by Plugin
-    "nnoremap <F9> :NERDTreeToggle<CR>
-    nnoremap <F9> :NERDTreeFind<CR>
+    nnoremap <F9> :NERDTreeToggle<CR>
+    "nnoremap <F9> :NERDTreeFind<CR>
     "options
         let NERDTreeWinPos = "right"
         let NERDTreeShowLineNumbers = 1
@@ -258,6 +258,25 @@
     "compare and sync two dir
     ":dirdiff <a> <b>
     
+    
 "supertabl
-    "according to context auto select  ins-complete mode,e.g ctrl-x ctrl-n,ctrl-x ctrl-f,
+    "according to context ,ins-complete mode,e.g ctrl-x ctrl-n,ctrl-x ctrl-f,
     let g:SuperTabDefaultCompletionType = "context"
+    
+"ycm
+    let g:ycm_server_python_interpreter = 'python'
+
+    let g:ycm_key_list_select_completion = ['<c-n>']
+    let g:ycm_key_list_previous_completion = ['<c-p>']
+    "let g:ycm_key_list_select_completion = ['<Down>']
+    "let g:ycm_key_list_previous_completion = ['<Up>']
+
+    let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/youcompleteme/third_party/ycmd/examples/.ycm_extra_conf.py'
+    let g:ycm_confirm_extra_conf = 0		    "关闭加载.ycm_extra_conf.py提示
+
+    let g:ycm_seed_identifiers_with_syntax = 1	    " 语法关键字补全
+    let g:ycm_autoclose_preview_window_after_insertion = 1	"previewwindow auto close
+
+    let g:ycm_complete_in_comments = 1
+    let g:ycm_complete_in_strings = 1
+    let g:ycm_collect_identifiers_from_comments_and_strings = 0
