@@ -1,0 +1,57 @@
+
+11:30:01 libtsocks(10640): Got connection request
+11:30:01 libtsocks(10640): Connection isn't a TCP stream ignoring
+11:30:01 libtsocks(10640): Got connection request
+11:30:01 libtsocks(10640): New network entry for 192.168.1.0 going to 0x3a315600
+11:30:01 libtsocks(10640): New network entry for 192.168.2.0 going to 0x3a3153c0
+11:30:01 libtsocks(10640): New network entry for 127.0.0.0 going to 0x3a3153f0
+11:30:01 libtsocks(10640): Got connection request for socket 3 to 118.184.180.46
+11:30:01 libtsocks(10640): Picking appropriate server for 118.184.180.46
+11:30:01 libtsocks(10640): Picked server 192.168.1.100 for connection
+11:30:01 libtsocks(10640): Beginning handle loop for socket 3
+11:30:01 libtsocks(10640): In request handle loop for socket 3, current state of request is 0
+11:30:01 libtsocks(10640): Connecting to 192.168.1.100 port 1080
+11:30:01 libtsocks(10640): Connect returned -1, errno is 115
+11:30:01 libtsocks(10640): Connection in progress
+11:30:01 libtsocks(10640): Handle loop completed for socket 3 in state 1, returning 115
+11:30:01 libtsocks(10640): Intercepted call to poll with 1 fds, 0x3a315440 timeout 198
+11:30:01 libtsocks(10640): Have event checks for socks enabled socket 3
+11:30:01 libtsocks(10640): Checking socket 3 for events
+11:30:01 libtsocks(10640): Socket had write event
+11:30:01 libtsocks(10640): Beginning handle loop for socket 3
+11:30:01 libtsocks(10640): In request handle loop for socket 3, current state of request is 1
+11:30:01 libtsocks(10640): Connecting to 192.168.1.100 port 1080
+11:30:01 libtsocks(10640): Connect returned 0, errno is 115
+11:30:01 libtsocks(10640): Socket 3 connected to SOCKS server
+11:30:01 libtsocks(10640): In request handle loop for socket 3, current state of request is 2
+11:30:01 libtsocks(10640): Constructing V5 method negotiation
+11:30:01 libtsocks(10640): In request handle loop for socket 3, current state of request is 3
+11:30:01 libtsocks(10640): Writing to server (sending 4 bytes)
+11:30:01 libtsocks(10640): Sent 4 bytes of 4 bytes in buffer, return code is 0
+11:30:01 libtsocks(10640): In request handle loop for socket 3, current state of request is 7
+11:30:01 libtsocks(10640): Receiving reply to SOCKS V5 method negotiation
+11:30:01 libtsocks(10640): In request handle loop for socket 3, current state of request is 4
+11:30:01 libtsocks(10640): Reading from server (expecting 2 bytes)
+11:30:01 libtsocks(10640): Received 2 bytes of 2 bytes expected, return code is 0
+11:30:01 libtsocks(10640): In request handle loop for socket 3, current state of request is 8
+11:30:01 libtsocks(10640): Constructing V5 connect request
+11:30:01 libtsocks(10640): In request handle loop for socket 3, current state of request is 3
+11:30:01 libtsocks(10640): Writing to server (sending 10 bytes)
+11:30:01 libtsocks(10640): Sent 10 bytes of 10 bytes in buffer, return code is 0
+11:30:01 libtsocks(10640): In request handle loop for socket 3, current state of request is 11
+11:30:01 libtsocks(10640): Receiving reply to SOCKS V5 connect request
+11:30:01 libtsocks(10640): In request handle loop for socket 3, current state of request is 4
+11:30:01 libtsocks(10640): Reading from server (expecting 10 bytes)
+11:30:01 libtsocks(10640): Received 10 bytes of 10 bytes expected, return code is 0
+11:30:01 libtsocks(10640): In request handle loop for socket 3, current state of request is 12
+11:30:01 libtsocks(10640): Handle loop completed for socket 3 in state 13, returning 0
+11:30:01 libtsocks(10640): Finished intercepting poll(), 1 events
+11:30:01 libtsocks(10640): Intercepted call to poll with 1 fds, 0x3a315440 timeout 197
+11:30:01 libtsocks(10640): Intercepted call to poll with 1 fds, 0x3a315440 timeout 1
+11:30:01 libtsocks(10640): Intercepted call to poll with 1 fds, 0x3a315440 timeout 1000
+11:30:02 libtsocks(10640): Intercepted call to poll with 1 fds, 0x3a315440 timeout 1000
+11:30:03 libtsocks(10640): Intercepted call to poll with 1 fds, 0x3a315440 timeout 1000
+11:30:04 libtsocks(10640): Intercepted call to poll with 1 fds, 0x3a315440 timeout 1000
+11:30:05 libtsocks(10640): Intercepted call to poll with 1 fds, 0x3a315440 timeout 1000
+11:30:06 libtsocks(10640): Intercepted call to poll with 1 fds, 0x3a315440 timeout 1000
+11:30:07 libtsocks(10640): Intercepted call to poll with 1 fds, 0x3a315440 timeout 1000

@@ -1,0 +1,63 @@
+Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$1 = CURLM_STATE_INIT
+
+Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$2 = CURLM_STATE_CONNECT
+[New Thread 0x7fffec022700 (LWP 2608)]
+
+Thread 1 "curl" hit Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$3 = CURLM_STATE_WAITRESOLVE
+
+Thread 1 "curl" hit Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$4 = CURLM_STATE_WAITRESOLVE
+
+Thread 1 "curl" hit Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$5 = CURLM_STATE_WAITRESOLVE
+[Thread 0x7fffec022700 (LWP 2608) exited]
+
+Thread 1 "curl" hit Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$6 = CURLM_STATE_WAITRESOLVE
+
+Thread 1 "curl" hit Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$7 = CURLM_STATE_WAITCONNECT
+
+Thread 1 "curl" hit Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$8 = CURLM_STATE_WAITCONNECT
+
+Thread 1 "curl" hit Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$9 = CURLM_STATE_WAITCONNECT
+
+Thread 1 "curl" hit Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$10 = CURLM_STATE_SENDPROTOCONNECT
+
+Thread 1 "curl" hit Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$11 = CURLM_STATE_DO
+
+Thread 1 "curl" hit Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+---Type <return> to continue, or q <return> to quit---
+$12 = CURLM_STATE_DO_DONE
+
+Thread 1 "curl" hit Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$13 = CURLM_STATE_WAITPERFORM
+
+Thread 1 "curl" hit Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$14 = CURLM_STATE_PERFORM
+当前 IP：58.56.96.29 来自：山东省济南市 电信
+
+Thread 1 "curl" hit Breakpoint 1, multi_runsingle (multi=multi@entry=0x555555797080, now=..., data=data@entry=0x55555578bd60) at multi.c:1096
+1096	    switch(data->mstate) {
+$15 = CURLM_STATE_DONE

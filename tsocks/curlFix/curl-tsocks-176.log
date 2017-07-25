@@ -1,0 +1,64 @@
+08:34:23 libtsocks(13826): Got connection request
+08:34:23 libtsocks(13826): Connection isn't a TCP stream ignoring
+08:34:23 libtsocks(13826): Got connection request
+08:34:23 libtsocks(13826): New network entry for 192.168.1.0 going to 0xa029f620
+08:34:23 libtsocks(13826): New network entry for 192.168.2.0 going to 0xa029f3c0
+08:34:23 libtsocks(13826): New network entry for 127.0.0.0 going to 0xa029f410
+08:34:23 libtsocks(13826): Got connection request for socket 3 to 118.184.180.46
+08:34:23 libtsocks(13826): Picking appropriate server for 118.184.180.46
+08:34:23 libtsocks(13826): Picked server 192.168.1.176 for connection
+08:34:23 libtsocks(13826): Beginning handle loop for socket 3
+08:34:23 libtsocks(13826): In request handle loop for socket 3, current state of request is 0
+08:34:23 libtsocks(13826): Connecting to 192.168.1.176 port 1080
+08:34:23 libtsocks(13826): Connect returned -1, errno is 115
+08:34:23 libtsocks(13826): Connection in progress
+08:34:23 libtsocks(13826): Handle loop completed for socket 3 in state 1, returning 115
+08:34:23 libtsocks(13826): Intercepted call to poll with 1 fds, 0xa029f440 timeout 198
+08:34:23 libtsocks(13826): Have event checks for socks enabled socket 3
+08:34:23 libtsocks(13826): Checking socket 3 for events
+08:34:23 libtsocks(13826): Socket had write event							    #socket has write event.
+08:34:23 libtsocks(13826): Beginning handle loop for socket 3						    #call handle_request() in poll()
+08:34:23 libtsocks(13826): In request handle loop for socket 3, current state of request is 1
+08:34:23 libtsocks(13826): Connecting to 192.168.1.176 port 1080					    #do a connect again.
+08:34:23 libtsocks(13826): Connect returned 0, errno is 115
+08:34:23 libtsocks(13826): Socket 3 connected to SOCKS server
+08:34:23 libtsocks(13826): In request handle loop for socket 3, current state of request is 2
+08:34:23 libtsocks(13826): Constructing V5 method negotiation
+08:34:23 libtsocks(13826): In request handle loop for socket 3, current state of request is 3
+08:34:23 libtsocks(13826): Writing to server (sending 4 bytes)
+08:34:23 libtsocks(13826): Sent 4 bytes of 4 bytes in buffer, return code is 0
+08:34:23 libtsocks(13826): In request handle loop for socket 3, current state of request is 7
+08:34:23 libtsocks(13826): Receiving reply to SOCKS V5 method negotiation
+08:34:23 libtsocks(13826): In request handle loop for socket 3, current state of request is 4
+08:34:23 libtsocks(13826): Reading from server (expecting 2 bytes)
+08:34:23 libtsocks(13826): Received 0 bytes of 2 bytes expected, return code is 11
+08:34:23 libtsocks(13826): Handle loop completed for socket 3 in state 4, returning 11
+08:34:23 libtsocks(13826): Checking socket 3 for events
+08:34:23 libtsocks(13826): Socket had read event
+08:34:23 libtsocks(13826): Beginning handle loop for socket 3
+08:34:23 libtsocks(13826): In request handle loop for socket 3, current state of request is 4
+08:34:23 libtsocks(13826): Reading from server (expecting 2 bytes)
+08:34:23 libtsocks(13826): Received 2 bytes of 2 bytes expected, return code is 0
+08:34:23 libtsocks(13826): In request handle loop for socket 3, current state of request is 8
+08:34:23 libtsocks(13826): Constructing V5 connect request
+08:34:23 libtsocks(13826): In request handle loop for socket 3, current state of request is 3
+08:34:23 libtsocks(13826): Writing to server (sending 10 bytes)
+08:34:23 libtsocks(13826): Sent 10 bytes of 10 bytes in buffer, return code is 0
+08:34:23 libtsocks(13826): In request handle loop for socket 3, current state of request is 11
+08:34:23 libtsocks(13826): Receiving reply to SOCKS V5 connect request
+08:34:23 libtsocks(13826): In request handle loop for socket 3, current state of request is 4
+08:34:23 libtsocks(13826): Reading from server (expecting 10 bytes)
+08:34:23 libtsocks(13826): Received 0 bytes of 10 bytes expected, return code is 11
+08:34:23 libtsocks(13826): Handle loop completed for socket 3 in state 4, returning 11
+08:34:23 libtsocks(13826): Checking socket 3 for events
+08:34:23 libtsocks(13826): Socket had read event
+08:34:23 libtsocks(13826): Beginning handle loop for socket 3
+08:34:23 libtsocks(13826): In request handle loop for socket 3, current state of request is 4
+08:34:23 libtsocks(13826): Reading from server (expecting 10 bytes)
+08:34:23 libtsocks(13826): Received 10 bytes of 10 bytes expected, return code is 0
+08:34:23 libtsocks(13826): In request handle loop for socket 3, current state of request is 12
+08:34:23 libtsocks(13826): Handle loop completed for socket 3 in state 13, returning 0				    #connect to socks server ok 
+08:34:24 libtsocks(13826): Finished intercepting poll(), 0 events
+08:34:24 libtsocks(13826): Intercepted call to poll with 1 fds, 0xa029f460 timeout 1000
+08:34:24 libtsocks(13826): Call to close(3)
+08:34:24 libtsocks(13826): Call to close() received on file descriptor 3 which is a connection request of status 13

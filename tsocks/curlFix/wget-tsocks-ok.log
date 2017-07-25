@@ -1,0 +1,68 @@
+22:45:56 libtsocks(3686): Got connection request
+22:45:56 libtsocks(3686): Connection isn't a TCP stream ignoring
+22:45:56 libtsocks(3686): Got connection request
+22:45:56 libtsocks(3686): New network entry for 192.168.1.0 going to 0x4ae42dd0
+22:45:56 libtsocks(3686): New network entry for 192.168.2.0 going to 0x4ae42e00
+22:45:56 libtsocks(3686): New network entry for 127.0.0.0 going to 0x4ae42e50
+22:45:56 libtsocks(3686): Got connection request for socket 3 to 118.184.180.46
+22:45:56 libtsocks(3686): Picking appropriate server for 118.184.180.46
+22:45:56 libtsocks(3686): Picked server 192.168.1.100 for connection
+22:45:56 libtsocks(3686): Beginning handle loop for socket 3
+22:45:56 libtsocks(3686): In request handle loop for socket 3, current state of request is 0
+22:45:56 libtsocks(3686): Connecting to 192.168.1.100 port 1080
+22:45:56 libtsocks(3686): Connect returned 0, errno is 107
+22:45:56 libtsocks(3686): Socket 3 connected to SOCKS server
+22:45:56 libtsocks(3686): In request handle loop for socket 3, current state of request is 2
+22:45:56 libtsocks(3686): Constructing V5 method negotiation
+22:45:56 libtsocks(3686): In request handle loop for socket 3, current state of request is 3
+22:45:56 libtsocks(3686): Writing to server (sending 4 bytes)
+22:45:56 libtsocks(3686): Sent 4 bytes of 4 bytes in buffer, return code is 0
+22:45:56 libtsocks(3686): In request handle loop for socket 3, current state of request is 7
+22:45:56 libtsocks(3686): Receiving reply to SOCKS V5 method negotiation
+22:45:56 libtsocks(3686): In request handle loop for socket 3, current state of request is 4
+22:45:56 libtsocks(3686): Reading from server (expecting 2 bytes)
+22:45:56 libtsocks(3686): Received 2 bytes of 2 bytes expected, return code is 0
+22:45:56 libtsocks(3686): In request handle loop for socket 3, current state of request is 8
+22:45:56 libtsocks(3686): Constructing V5 connect request
+22:45:56 libtsocks(3686): In request handle loop for socket 3, current state of request is 3
+22:45:56 libtsocks(3686): Writing to server (sending 10 bytes)
+22:45:56 libtsocks(3686): Sent 10 bytes of 10 bytes in buffer, return code is 0
+22:45:56 libtsocks(3686): In request handle loop for socket 3, current state of request is 11
+22:45:56 libtsocks(3686): Receiving reply to SOCKS V5 connect request
+22:45:56 libtsocks(3686): In request handle loop for socket 3, current state of request is 4
+22:45:56 libtsocks(3686): Reading from server (expecting 10 bytes)
+22:45:56 libtsocks(3686): Received 10 bytes of 10 bytes expected, return code is 0
+22:45:56 libtsocks(3686): In request handle loop for socket 3, current state of request is 12
+22:45:56 libtsocks(3686): Handle loop completed for socket 3 in state 13, returning 0				#rowanPang: wget use a non-block connect, 
+22:45:56 libtsocks(3686): Call to close(3)									#when finish socksv5,kill it ref tsocks.c:335
+22:45:57 libtsocks(3686): Got connection request
+22:45:57 libtsocks(3686): Got connection request for socket 3 to 118.184.180.46
+22:45:57 libtsocks(3686): Picking appropriate server for 118.184.180.46
+22:45:57 libtsocks(3686): Picked server 192.168.1.100 for connection
+22:45:57 libtsocks(3686): Beginning handle loop for socket 3
+22:45:57 libtsocks(3686): In request handle loop for socket 3, current state of request is 0
+22:45:57 libtsocks(3686): Connecting to 192.168.1.100 port 1080
+22:45:57 libtsocks(3686): Connect returned 0, errno is 107
+22:45:57 libtsocks(3686): Socket 3 connected to SOCKS server
+22:45:57 libtsocks(3686): In request handle loop for socket 3, current state of request is 2
+22:45:57 libtsocks(3686): Constructing V5 method negotiation
+22:45:57 libtsocks(3686): In request handle loop for socket 3, current state of request is 3
+22:45:57 libtsocks(3686): Writing to server (sending 4 bytes)
+22:45:57 libtsocks(3686): Sent 4 bytes of 4 bytes in buffer, return code is 0
+22:45:57 libtsocks(3686): In request handle loop for socket 3, current state of request is 7
+22:45:57 libtsocks(3686): Receiving reply to SOCKS V5 method negotiation
+22:45:57 libtsocks(3686): In request handle loop for socket 3, current state of request is 4
+22:45:57 libtsocks(3686): Reading from server (expecting 2 bytes)
+22:45:57 libtsocks(3686): Received 2 bytes of 2 bytes expected, return code is 0
+22:45:57 libtsocks(3686): In request handle loop for socket 3, current state of request is 8
+22:45:57 libtsocks(3686): Constructing V5 connect request
+22:45:57 libtsocks(3686): In request handle loop for socket 3, current state of request is 3
+22:45:57 libtsocks(3686): Writing to server (sending 10 bytes)
+22:45:57 libtsocks(3686): Sent 10 bytes of 10 bytes in buffer, return code is 0
+22:45:57 libtsocks(3686): In request handle loop for socket 3, current state of request is 11
+22:45:57 libtsocks(3686): Receiving reply to SOCKS V5 connect request
+22:45:57 libtsocks(3686): In request handle loop for socket 3, current state of request is 4
+22:45:57 libtsocks(3686): Reading from server (expecting 10 bytes)
+22:45:57 libtsocks(3686): Received 10 bytes of 10 bytes expected, return code is 0
+22:45:57 libtsocks(3686): In request handle loop for socket 3, current state of request is 12
+22:45:57 libtsocks(3686): Handle loop completed for socket 3 in state 13, returning 0

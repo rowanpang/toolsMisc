@@ -1,0 +1,943 @@
+execve("/usr/bin/curl", ["curl", "ip.cn"], [/* 46 vars */]) = 0
+brk(NULL)                               = 0x55b7a0282000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d0600000
+open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=162542, ...}) = 0
+mmap(NULL, 162542, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fa0d05d8000
+close(3)                                = 0
+open("/lib64/libtsocks.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\260\24\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=31488, ...}) = 0
+mmap(NULL, 2135072, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0d01d4000
+mprotect(0x7fa0d01db000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0d03da000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x6000) = 0x7fa0d03da000
+mmap(0x7fa0d03dc000, 5152, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0d03dc000
+close(3)                                = 0
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/lib64/libcurl.so.4", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 \272\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=511840, ...}) = 0
+mmap(NULL, 2598664, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cff59000
+mprotect(0x7fa0cffd0000, 2097152, PROT_NONE) = 0
+mmap(0x7fa0d01d0000, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x77000) = 0x7fa0d01d0000
+close(3)                                = 0
+open("/lib64/libmetalink.so.3", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0Pg\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=64352, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05d7000
+mmap(NULL, 2158600, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cfd49000
+mprotect(0x7fa0cfd57000, 2097152, PROT_NONE) = 0
+mmap(0x7fa0cff57000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xe000) = 0x7fa0cff57000
+mmap(0x7fa0cff58000, 8, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0cff58000
+close(3)                                = 0
+open("/lib64/libnghttp2.so.14", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`6\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=141048, ...}) = 0
+mmap(NULL, 2232240, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cfb28000
+mprotect(0x7fa0cfb48000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cfd47000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1f000) = 0x7fa0cfd47000
+close(3)                                = 0
+open("/lib64/libidn.so.11", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 .\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=212240, ...}) = 0
+mmap(NULL, 2306080, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cf8f4000
+mprotect(0x7fa0cf926000, 2097152, PROT_NONE) = 0
+mmap(0x7fa0cfb26000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x32000) = 0x7fa0cfb26000
+close(3)                                = 0
+open("/lib64/libssh2.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\340T\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=189512, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05d6000
+mmap(NULL, 2282208, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cf6c6000
+mprotect(0x7fa0cf6f2000, 2097152, PROT_NONE) = 0
+mmap(0x7fa0cf8f2000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2c000) = 0x7fa0cf8f2000
+close(3)                                = 0
+open("/lib64/libpsl.so.5", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`\22\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=51992, ...}) = 0
+mmap(NULL, 2146376, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cf4b9000
+mprotect(0x7fa0cf4c5000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cf6c4000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xb000) = 0x7fa0cf6c4000
+mmap(0x7fa0cf6c5000, 72, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0cf6c5000
+close(3)                                = 0
+open("/lib64/libssl3.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\240\276\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=315168, ...}) = 0
+mmap(NULL, 2405544, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cf26d000
+mprotect(0x7fa0cf2b4000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cf4b3000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x46000) = 0x7fa0cf4b3000
+mmap(0x7fa0cf4b8000, 1192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0cf4b8000
+close(3)                                = 0
+open("/lib64/libsmime3.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\200\222\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=164264, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05d5000
+mmap(NULL, 2255680, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cf046000
+mprotect(0x7fa0cf06a000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cf269000, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x23000) = 0x7fa0cf269000
+close(3)                                = 0
+open("/lib64/libnss3.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\227\1\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1241056, ...}) = 0
+mmap(NULL, 3319336, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0ced1b000
+mprotect(0x7fa0cee3d000, 2097152, PROT_NONE) = 0
+mmap(0x7fa0cf03d000, 28672, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x122000) = 0x7fa0cf03d000
+mmap(0x7fa0cf044000, 5672, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0cf044000
+close(3)                                = 0
+open("/lib64/libnssutil3.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\277\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=188968, ...}) = 0
+mmap(NULL, 2283072, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0ceaed000
+mprotect(0x7fa0ceb14000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0ced13000, 32768, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x26000) = 0x7fa0ced13000
+close(3)                                = 0
+open("/lib64/libplds4.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\320\16\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=15800, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05d4000
+mmap(NULL, 2109696, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0ce8e9000
+mprotect(0x7fa0ce8ec000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0ceaeb000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fa0ceaeb000
+close(3)                                = 0
+open("/lib64/libplc4.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\320\24\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=20096, ...}) = 0
+mmap(NULL, 2113904, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0ce6e4000
+mprotect(0x7fa0ce6e8000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0ce8e7000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x3000) = 0x7fa0ce8e7000
+close(3)                                = 0
+open("/lib64/libnspr4.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`\314\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=256016, ...}) = 0
+mmap(NULL, 2354496, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0ce4a5000
+mprotect(0x7fa0ce4e0000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0ce6df000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x3a000) = 0x7fa0ce6df000
+mmap(0x7fa0ce6e2000, 7488, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0ce6e2000
+close(3)                                = 0
+open("/lib64/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P`\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=142296, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05d3000
+mmap(NULL, 2208808, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0ce289000
+mprotect(0x7fa0ce2a0000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0ce49f000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x16000) = 0x7fa0ce49f000
+mmap(0x7fa0ce4a1000, 13352, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0ce4a1000
+close(3)                                = 0
+open("/lib64/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\240\r\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=19736, ...}) = 0
+mmap(NULL, 2109680, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0ce085000
+mprotect(0x7fa0ce088000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0ce287000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fa0ce287000
+close(3)                                = 0
+open("/lib64/libgssapi_krb5.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\320\266\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=320816, ...}) = 0
+mmap(NULL, 2411200, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cde38000
+mprotect(0x7fa0cde82000, 2097152, PROT_NONE) = 0
+mmap(0x7fa0ce082000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4a000) = 0x7fa0ce082000
+close(3)                                = 0
+open("/lib64/libkrb5.so.3", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\300@\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=951432, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05d2000
+mmap(NULL, 3036352, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cdb52000
+mprotect(0x7fa0cdc27000, 2097152, PROT_NONE) = 0
+mmap(0x7fa0cde27000, 69632, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xd5000) = 0x7fa0cde27000
+close(3)                                = 0
+open("/lib64/libk5crypto.so.3", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\320A\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=201312, ...}) = 0
+mmap(NULL, 2293816, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cd921000
+mprotect(0x7fa0cd94f000, 2097152, PROT_NONE) = 0
+mmap(0x7fa0cdb4f000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2e000) = 0x7fa0cdb4f000
+close(3)                                = 0
+open("/lib64/libcom_err.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\24\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=15248, ...}) = 0
+mmap(NULL, 2109608, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cd71d000
+mprotect(0x7fa0cd720000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cd91f000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fa0cd91f000
+close(3)                                = 0
+open("/lib64/liblber-2.4.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0p3\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=60816, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05d1000
+mmap(NULL, 2154984, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cd50e000
+mprotect(0x7fa0cd51c000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cd71b000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xd000) = 0x7fa0cd71b000
+close(3)                                = 0
+open("/lib64/libldap-2.4.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0p\343\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=333496, ...}) = 0
+mmap(NULL, 2426232, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cd2bd000
+mprotect(0x7fa0cd30b000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cd50a000, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4d000) = 0x7fa0cd50a000
+close(3)                                = 0
+open("/lib64/libz.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0` \0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=89520, ...}) = 0
+mmap(NULL, 2183272, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cd0a7000
+mprotect(0x7fa0cd0bc000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cd2bb000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x14000) = 0x7fa0cd2bb000
+close(3)                                = 0
+open("/lib64/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\10\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=2093616, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05d0000
+mmap(NULL, 3942752, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0ccce4000
+mprotect(0x7fa0cce9d000, 2097152, PROT_NONE) = 0
+mmap(0x7fa0cd09d000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b9000) = 0x7fa0cd09d000
+mmap(0x7fa0cd0a3000, 14688, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0cd0a3000
+close(3)                                = 0
+open("/lib64/libexpat.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\320<\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=181040, ...}) = 0
+mmap(NULL, 2273288, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0ccab8000
+mprotect(0x7fa0ccae1000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0ccce0000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x28000) = 0x7fa0ccce0000
+mmap(0x7fa0ccce3000, 8, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0ccce3000
+close(3)                                = 0
+open("/lib64/libssl.so.10", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\360\253\1\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=470360, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05cf000
+mmap(NULL, 2560752, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cc846000
+mprotect(0x7fa0cc8ae000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0ccaad000, 45056, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x67000) = 0x7fa0ccaad000
+close(3)                                = 0
+open("/lib64/libcrypto.so.10", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\317\6\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=2512480, ...}) = 0
+mmap(NULL, 4588328, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cc3e5000
+mprotect(0x7fa0cc61a000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cc819000, 167936, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x234000) = 0x7fa0cc819000
+mmap(0x7fa0cc842000, 13096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0cc842000
+close(3)                                = 0
+open("/lib64/libunistring.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20\374\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1240184, ...}) = 0
+mmap(NULL, 3338504, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cc0b5000
+mprotect(0x7fa0cc1e0000, 2097152, PROT_NONE) = 0
+mmap(0x7fa0cc3e0000, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x12b000) = 0x7fa0cc3e0000
+mmap(0x7fa0cc3e4000, 264, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0cc3e4000
+close(3)                                = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05ce000
+open("/lib64/librt.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\260 \0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=43664, ...}) = 0
+mmap(NULL, 2128800, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cbead000
+mprotect(0x7fa0cbeb4000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cc0b3000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x6000) = 0x7fa0cc0b3000
+close(3)                                = 0
+open("/lib64/libkrb5support.so.0", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`2\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=61240, ...}) = 0
+mmap(NULL, 2155208, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cbc9e000
+mprotect(0x7fa0cbcab000, 2097152, PROT_NONE) = 0
+mmap(0x7fa0cbeab000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xd000) = 0x7fa0cbeab000
+close(3)                                = 0
+open("/lib64/libkeyutils.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\24\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=15128, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05cd000
+mmap(NULL, 2109448, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cba9a000
+mprotect(0x7fa0cba9d000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cbc9c000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fa0cbc9c000
+mmap(0x7fa0cbc9d000, 8, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0cbc9d000
+close(3)                                = 0
+open("/lib64/libresolv.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0009\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=110184, ...}) = 0
+mmap(NULL, 2202184, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cb880000
+mprotect(0x7fa0cb897000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cba96000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x16000) = 0x7fa0cba96000
+mmap(0x7fa0cba98000, 6728, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0cba98000
+close(3)                                = 0
+open("/lib64/libsasl2.so.3", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`H\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=120136, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05cc000
+mmap(NULL, 2213768, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cb663000
+mprotect(0x7fa0cb67f000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cb87e000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b000) = 0x7fa0cb87e000
+close(3)                                = 0
+open("/lib64/libselinux.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0000c\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=153176, ...}) = 0
+mmap(NULL, 2253688, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cb43c000
+mprotect(0x7fa0cb45f000, 2097152, PROT_NONE) = 0
+mmap(0x7fa0cb65f000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x23000) = 0x7fa0cb65f000
+mmap(0x7fa0cb661000, 4984, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0cb661000
+close(3)                                = 0
+open("/lib64/libcrypt.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0@\r\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=36944, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05cb000
+mmap(NULL, 2314752, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cb206000
+mprotect(0x7fa0cb20d000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cb40c000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x6000) = 0x7fa0cb40c000
+mmap(0x7fa0cb40e000, 184832, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fa0cb40e000
+close(3)                                = 0
+open("/lib64/libpcre.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\300\25\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=467632, ...}) = 0
+mmap(NULL, 2560264, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0caf94000
+mprotect(0x7fa0cb005000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0cb204000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x70000) = 0x7fa0cb204000
+close(3)                                = 0
+open("/lib64/libfreebl3.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20\v\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=11448, ...}) = 0
+mmap(NULL, 2105504, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fa0cad91000
+mprotect(0x7fa0cad93000, 2093056, PROT_NONE) = 0
+mmap(0x7fa0caf92000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1000) = 0x7fa0caf92000
+close(3)                                = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05ca000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05c9000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05c8000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05c7000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fa0d05c5000
+arch_prctl(ARCH_SET_FS, 0x7fa0d05c5800) = 0
+mprotect(0x7fa0cd09d000, 16384, PROT_READ) = 0
+mprotect(0x7fa0ce287000, 4096, PROT_READ) = 0
+mprotect(0x7fa0caf92000, 4096, PROT_READ) = 0
+mprotect(0x7fa0ce49f000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cb204000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cb40c000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cb65f000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cba96000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cb87e000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cbc9c000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cbeab000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cc0b3000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cc3e0000, 12288, PROT_READ) = 0
+mprotect(0x7fa0cd2bb000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cc819000, 114688, PROT_READ) = 0
+mprotect(0x7fa0cdb4f000, 8192, PROT_READ) = 0
+mprotect(0x7fa0cd91f000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cde27000, 61440, PROT_READ) = 0
+mprotect(0x7fa0ce082000, 8192, PROT_READ) = 0
+mprotect(0x7fa0ccaad000, 16384, PROT_READ) = 0
+mprotect(0x7fa0ccce0000, 12288, PROT_READ) = 0
+mprotect(0x7fa0ce6df000, 4096, PROT_READ) = 0
+mprotect(0x7fa0ceaeb000, 4096, PROT_READ) = 0
+mprotect(0x7fa0ce8e7000, 4096, PROT_READ) = 0
+mprotect(0x7fa0ced13000, 28672, PROT_READ) = 0
+mprotect(0x7fa0cf03d000, 20480, PROT_READ) = 0
+mprotect(0x7fa0cf4b3000, 16384, PROT_READ) = 0
+mprotect(0x7fa0cf269000, 12288, PROT_READ) = 0
+mprotect(0x7fa0cd71b000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cd50a000, 12288, PROT_READ) = 0
+mprotect(0x7fa0cfb26000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cf6c4000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cf8f2000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cfd47000, 4096, PROT_READ) = 0
+mprotect(0x7fa0cff57000, 4096, PROT_READ) = 0
+mprotect(0x7fa0d01d0000, 12288, PROT_READ) = 0
+mprotect(0x7fa0d03da000, 4096, PROT_READ) = 0
+mprotect(0x55b79f7eb000, 12288, PROT_READ) = 0
+mprotect(0x7fa0d0601000, 4096, PROT_READ) = 0
+munmap(0x7fa0d05d8000, 162542)          = 0
+set_tid_address(0x7fa0d05c5ad0)         = 13826
+set_robust_list(0x7fa0d05c5ae0, 24)     = 0
+rt_sigaction(SIGRTMIN, {0x7fa0ce28eaf0, [], SA_RESTORER|SA_SIGINFO, 0x7fa0ce299c10}, NULL, 8) = 0
+rt_sigaction(SIGRT_1, {0x7fa0ce28eb80, [], SA_RESTORER|SA_RESTART|SA_SIGINFO, 0x7fa0ce299c10}, NULL, 8) = 0
+rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+getrlimit(RLIMIT_STACK, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+statfs("/sys/fs/selinux", 0x7fff5cea4280) = -1 ENOENT (No such file or directory)
+statfs("/selinux", 0x7fff5cea4280)      = -1 ENOENT (No such file or directory)
+brk(NULL)                               = 0x55b7a0282000
+brk(0x55b7a02a3000)                     = 0x55b7a02a3000
+open("/proc/filesystems", O_RDONLY)     = 3
+fstat(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+read(3, "nodev\tsysfs\nnodev\trootfs\nnodev\tr"..., 1024) = 388
+read(3, "", 1024)                       = 0
+close(3)                                = 0
+access("/etc/selinux/config", F_OK)     = 0
+open("/etc/pki/tls/legacy-settings", O_RDONLY) = -1 ENOENT (No such file or directory)
+access("/etc/system-fips", F_OK)        = -1 ENOENT (No such file or directory)
+getuid()                                = 1000
+geteuid()                               = 1000
+futex(0x7fa0ce2880a8, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+pipe([3, 4])                            = 0
+close(3)                                = 0
+close(4)                                = 0
+rt_sigaction(SIGPIPE, {SIG_IGN, [PIPE], SA_RESTORER|SA_RESTART, 0x7fa0ccd18ed0}, {SIG_DFL, [], 0}, 8) = 0
+gettid()                                = 13826
+rt_sigaction(SIGPIPE, {SIG_IGN, [], SA_RESTORER, 0x7fa0ce299c10}, NULL, 8) = 0
+open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=110570304, ...}) = 0
+mmap(NULL, 110570304, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fa0c441e000
+close(3)                                = 0
+open("/home/pangwz/.curlrc", O_RDONLY)  = -1 ENOENT (No such file or directory)
+ioctl(1, TCGETS, 0x7fff5cea3e00)        = -1 ENOTTY (Inappropriate ioctl for device)
+socket(AF_INET6, SOCK_DGRAM, IPPROTO_IP) = 3
+close(3)                                = 0
+mmap(NULL, 8392704, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7fa0c3c1d000
+mprotect(0x7fa0c3c1d000, 4096, PROT_NONE) = 0
+clone(child_stack=0x7fa0c441cef0, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, parent_tidptr=0x7fa0c441d9d0, tls=0x7fa0c441d700, child_tidptr=0x7fa0c441d9d0) = 13827
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "%", 1%)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "T", 1T)                        = 1
+write(2, "o", 1o)                        = 1
+write(2, "t", 1t)                        = 1
+write(2, "a", 1a)                        = 1
+write(2, "l", 1l)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "%", 1%)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "R", 1R)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "c", 1c)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "i", 1i)                        = 1
+write(2, "v", 1v)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "d", 1d)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "%", 1%)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "X", 1X)                        = 1
+write(2, "f", 1f)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "r", 1r)                        = 1
+write(2, "d", 1d)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "A", 1A)                        = 1
+write(2, "v", 1v)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "r", 1r)                        = 1
+write(2, "a", 1a)                        = 1
+write(2, "g", 1g)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "S", 1S)                        = 1
+write(2, "p", 1p)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "d", 1d)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "T", 1T)                        = 1
+write(2, "i", 1i)                        = 1
+write(2, "m", 1m)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "T", 1T)                        = 1
+write(2, "i", 1i)                        = 1
+write(2, "m", 1m)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "T", 1T)                        = 1
+write(2, "i", 1i)                        = 1
+write(2, "m", 1m)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "C", 1C)                        = 1
+write(2, "u", 1u)                        = 1
+write(2, "r", 1r)                        = 1
+write(2, "r", 1r)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "n", 1n)                        = 1
+write(2, "t", 1t)                        = 1
+write(2, "\n", 1
+)                       = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "D", 1D)                        = 1
+write(2, "l", 1l)                        = 1
+write(2, "o", 1o)                        = 1
+write(2, "a", 1a)                        = 1
+write(2, "d", 1d)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "U", 1U)                        = 1
+write(2, "p", 1p)                        = 1
+write(2, "l", 1l)                        = 1
+write(2, "o", 1o)                        = 1
+write(2, "a", 1a)                        = 1
+write(2, "d", 1d)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "T", 1T)                        = 1
+write(2, "o", 1o)                        = 1
+write(2, "t", 1t)                        = 1
+write(2, "a", 1a)                        = 1
+write(2, "l", 1l)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "S", 1S)                        = 1
+write(2, "p", 1p)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "n", 1n)                        = 1
+write(2, "t", 1t)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "L", 1L)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "f", 1f)                        = 1
+write(2, "t", 1t)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "S", 1S)                        = 1
+write(2, "p", 1p)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "d", 1d)                        = 1
+write(2, "\n", 1
+)                       = 1
+write(2, "\r", 1)                       = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) = 3
+setsockopt(3, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+setsockopt(3, SOL_TCP, TCP_KEEPIDLE, [60], 4) = 0
+setsockopt(3, SOL_TCP, TCP_KEEPINTVL, [60], 4) = 0
+fcntl(3, F_GETFL)                       = 0x2 (flags O_RDWR)
+fcntl(3, F_SETFL, O_RDWR|O_NONBLOCK)    = 0								    #a non-block socket
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Got c"..., 50) = 50						    #rowanPang: connect request
+getsockopt(3, SOL_SOCKET, SO_TYPE, [1], [4]) = 0
+open("/etc/tsocks.conf", O_RDONLY)      = 5
+fstat(5, {st_mode=S_IFREG|0644, st_size=151, ...}) = 0
+read(5, "local = 192.168.1.0/255.255.255."..., 4096) = 151
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): New n"..., 81) = 81
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): New n"..., 81) = 81
+read(5, "", 4096)                       = 0
+close(5)                                = 0
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): New n"..., 79) = 79
+getpeername(3, 0x7fff5cea3890, [16])    = -1 ENOTCONN (Transport endpoint is not connected)
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Got c"..., 81) = 81						    #log:7
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Picki"..., 73) = 73
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Picke"..., 70) = 70
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Begin"..., 62) = 62
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Conne"..., 65) = 65											    #log:12
+connect(3, {sa_family=AF_INET, sin_port=htons(1080), sin_addr=inet_addr("192.168.1.176")}, 16) = -1 EINPROGRESS (Operation now in progress)	    #rowanPang:
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Conne"..., 61) = 61
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Conne"..., 50) = 50
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Handl"..., 88) = 88					#log:15
+poll([{fd=3, events=POLLOUT|POLLWRNORM}], 1, 0) = 0 (Timeout)					#log: ? who call poll?	timeout 0: immediately return.
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Inter"..., 87) = 87					#log:16   in poll()
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Have "..., 72) = 72
+poll([{fd=3, events=POLLOUT}], 1, 198)  = 1 ([{fd=3, revents=POLLOUT}])				#rowanPang: who call poll? 确保这这个poll中连接成功socket server.
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Check"..., 56) = 56
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Socke"..., 50) = 50
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Begin"..., 62) = 62					#log:20
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Conne"..., 65) = 65
+connect(3, {sa_family=AF_INET, sin_port=htons(1080), sin_addr=inet_addr("192.168.1.176")}, 16) = 0	#tsocks connect to socks server again. and connected ok.
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Conne"..., 60) = 60
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Socke"..., 62) = 62
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Const"..., 62) = 62
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Writi"..., 63) = 63
+sendto(3, "\5\2\0\2", 4, 0, NULL, 0)    = 4
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Sent "..., 79) = 79
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Recei"..., 74) = 74
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Readi"..., 67) = 67
+recvfrom(3, 0x55b7a029f768, 2, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Recei"..., 83) = 83						#log:34
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Handl"..., 87) = 87						#log:35
+poll([{fd=3, events=POLLIN}], 1, 198)   = 1 ([{fd=3, revents=POLLIN}])					#rowanPang: polling again if in state RECEIVING event|POLLIN
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0					#ref tsocks.c:583
+write(4, "08:34:23 libtsocks(13826): Check"..., 56) = 56						#log:36
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Socke"..., 49) = 49
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Begin"..., 62) = 62
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Readi"..., 67) = 67
+recvfrom(3, "\5\0", 2, 0, NULL, NULL)   = 2
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Recei"..., 82) = 82
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Const"..., 59) = 59
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Writi"..., 64) = 64
+sendto(3, "\5\1\0\1v\270\264.\0P", 10, 0, NULL, 0) = 10
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Sent "..., 81) = 81
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): In re"..., 95) = 95
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Recei"..., 71) = 71
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Readi"..., 68) = 68
+recvfrom(3, 0x55b7a029f768, 10, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Recei"..., 84) = 84
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Handl"..., 87) = 87
+poll([{fd=3, events=POLLIN}], 1, 198)   = 1 ([{fd=3, revents=POLLIN}])
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Check"..., 56) = 56
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Socke"..., 49) = 49
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Begin"..., 62) = 62
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Readi"..., 68) = 68
+recvfrom(3, "\5\0\0\1\0\0\0\0\0\0", 10, 0, NULL, NULL) = 10
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Recei"..., 84) = 84
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): In re"..., 95) = 95
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:23 libtsocks(13826): Handl"..., 87) = 87
+poll([{fd=3, events=POLLIN}], 1, 198)   = 0 (Timeout)
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:24 libtsocks(13826): Finis"..., 66) = 66							    #rowanPang: log:61 'poll():664  finished'
+poll([{fd=3, events=POLLOUT|POLLWRNORM}], 1, 0) = 1 ([{fd=3, revents=POLLOUT|POLLWRNORM}])
+getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
+getpeername(3, {sa_family=AF_INET, sin_port=htons(1080), sin_addr=inet_addr("192.168.1.176")}, [128->16]) = 0
+getsockname(3, {sa_family=AF_INET, sin_port=htons(58992), sin_addr=inet_addr("192.168.1.100")}, [128->16]) = 0
+sendto(3, "GET / HTTP/1.1\r\nHost: ip.cn\r\nUse"..., 69, MSG_NOSIGNAL, NULL, 0) = 69				    #real http request.
+poll([{fd=3, events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}], 1, 0) = 0 (Timeout)
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:24 libtsocks(13826): Inter"..., 88) = 88
+poll([{fd=3, events=POLLIN}], 1, 1000)  = 1 ([{fd=3, revents=POLLIN}])
+poll([{fd=3, events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}], 1, 0) = 1 ([{fd=3, revents=POLLIN|POLLRDNORM}])
+recvfrom(3, "HTTP/1.1 200 OK\r\nServer: nginx/1"..., 16384, 0, NULL, NULL) = 226
+fstat(1, {st_mode=S_IFIFO|0600, st_size=0, ...}) = 0
+write(2, "\r", 1)                       = 1
+write(2, "1", 11)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "4", 14)                        = 1
+write(2, "5", 15)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "4", 14)                        = 1
+write(2, "5", 15)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "5", 15)                        = 1
+write(2, "1", 11)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "5", 15)                        = 1
+write(2, "1", 11)                        = 1
+write(2, "\r", 1)                       = 1
+write(2, "1", 11)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "4", 14)                        = 1
+write(2, "5", 15)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "4", 14)                        = 1
+write(2, "5", 15)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "5", 15)                        = 1
+write(2, "1", 11)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "5", 15)                        = 1
+write(2, "1", 11)                        = 1
+write(2, "\n", 1
+)                       = 1
+write(1, "\345\275\223\345\211\215 IP\357\274\232138.128.192.146 \346\235\245\350"..., 45当前 IP：138.128.192.146 来自：美国 
+) = 45
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:24 libtsocks(13826): Call "..., 44) = 44
+close(3)                                = 0										#rowanPang: log:63
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "08:34:24 libtsocks(13826): Call "..., 116) = 116
+exit_group(0)                           = ?
++++ exited with 0 +++

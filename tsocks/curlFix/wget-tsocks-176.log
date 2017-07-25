@@ -1,0 +1,135 @@
+
+10:00:19 libtsocks(11701): Got connection request
+10:00:19 libtsocks(11701): Connection isn't a TCP stream ignoring
+10:00:19 libtsocks(11701): Got connection request
+10:00:19 libtsocks(11701): New network entry for 192.168.1.0 going to 0x4f76fd90
+10:00:19 libtsocks(11701): New network entry for 192.168.2.0 going to 0x4f76fdc0
+10:00:19 libtsocks(11701): New network entry for 127.0.0.0 going to 0x4f76fe10
+10:00:19 libtsocks(11701): Got connection request for socket 3 to 118.184.180.46
+10:00:19 libtsocks(11701): Picking appropriate server for 118.184.180.46
+10:00:19 libtsocks(11701): Picked server 192.168.1.176 for connection
+10:00:19 libtsocks(11701): Beginning handle loop for socket 3
+10:00:19 libtsocks(11701): In request handle loop for socket 3, current state of request is 0
+10:00:19 libtsocks(11701): Connecting to 192.168.1.176 port 1080
+10:00:19 libtsocks(11701): Connect returned 0, errno is 107
+10:00:19 libtsocks(11701): Socket 3 connected to SOCKS server
+10:00:19 libtsocks(11701): In request handle loop for socket 3, current state of request is 2
+10:00:19 libtsocks(11701): Constructing V5 method negotiation
+10:00:19 libtsocks(11701): In request handle loop for socket 3, current state of request is 3
+10:00:19 libtsocks(11701): Writing to server (sending 4 bytes)
+10:00:19 libtsocks(11701): Sent 4 bytes of 4 bytes in buffer, return code is 0
+10:00:19 libtsocks(11701): In request handle loop for socket 3, current state of request is 7
+10:00:19 libtsocks(11701): Receiving reply to SOCKS V5 method negotiation
+10:00:19 libtsocks(11701): In request handle loop for socket 3, current state of request is 4
+10:00:19 libtsocks(11701): Reading from server (expecting 2 bytes)
+10:00:19 libtsocks(11701): Received 2 bytes of 2 bytes expected, return code is 0
+10:00:19 libtsocks(11701): In request handle loop for socket 3, current state of request is 8
+10:00:19 libtsocks(11701): Constructing V5 connect request
+10:00:19 libtsocks(11701): In request handle loop for socket 3, current state of request is 3
+10:00:19 libtsocks(11701): Writing to server (sending 10 bytes)
+10:00:19 libtsocks(11701): Sent 10 bytes of 10 bytes in buffer, return code is 0
+10:00:19 libtsocks(11701): In request handle loop for socket 3, current state of request is 11
+10:00:19 libtsocks(11701): Receiving reply to SOCKS V5 connect request
+10:00:19 libtsocks(11701): In request handle loop for socket 3, current state of request is 4
+10:00:19 libtsocks(11701): Reading from server (expecting 10 bytes)
+10:00:19 libtsocks(11701): Received 10 bytes of 10 bytes expected, return code is 0
+10:00:19 libtsocks(11701): In request handle loop for socket 3, current state of request is 12
+10:00:19 libtsocks(11701): Handle loop completed for socket 3 in state 13, returning 0
+10:00:28 libtsocks(11799): Got connection request
+10:00:28 libtsocks(11799): New network entry for 192.168.1.0 going to 0x4c006500
+10:00:28 libtsocks(11799): New network entry for 192.168.2.0 going to 0x4c010ee0
+10:00:28 libtsocks(11799): New network entry for 127.0.0.0 going to 0x4c0023f0
+10:00:28 libtsocks(11799): Got connection request for socket 6 to 127.0.0.1
+10:00:28 libtsocks(11799): Connection for socket 6 is local
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(11)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Call to close(10)
+10:00:28 libtsocks(11799): Got connection request
+10:00:28 libtsocks(11799): Got connection request for socket 10 to 127.0.0.1
+10:00:28 libtsocks(11799): Connection for socket 10 is local
+10:00:38 libtsocks(11799): Call to close(5)
+10:00:38 libtsocks(11799): Call to close(9)
+10:00:38 libtsocks(11799): Call to close(7)
+10:00:38 libtsocks(11799): Call to close(3)
+10:00:38 libtsocks(11799): Call to close(4)

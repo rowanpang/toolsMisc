@@ -1,0 +1,1246 @@
+execve("/usr/bin/curl", ["curl", "ip.cn"], [/* 46 vars */]) = 0
+brk(NULL)                               = 0x558a3a2f8000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc459000
+open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=162542, ...}) = 0
+mmap(NULL, 162542, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fd6cc431000
+close(3)                                = 0
+open("/lib64/libtsocks.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\260\24\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=31488, ...}) = 0
+mmap(NULL, 2135072, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6cc02d000
+mprotect(0x7fd6cc034000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6cc233000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x6000) = 0x7fd6cc233000
+mmap(0x7fd6cc235000, 5152, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc235000
+close(3)                                = 0
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/lib64/libcurl.so.4", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 \272\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=511840, ...}) = 0
+mmap(NULL, 2598664, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6cbdb2000
+mprotect(0x7fd6cbe29000, 2097152, PROT_NONE) = 0
+mmap(0x7fd6cc029000, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x77000) = 0x7fd6cc029000
+close(3)                                = 0
+open("/lib64/libmetalink.so.3", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0Pg\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=64352, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc430000
+mmap(NULL, 2158600, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6cbba2000
+mprotect(0x7fd6cbbb0000, 2097152, PROT_NONE) = 0
+mmap(0x7fd6cbdb0000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xe000) = 0x7fd6cbdb0000
+mmap(0x7fd6cbdb1000, 8, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6cbdb1000
+close(3)                                = 0
+open("/lib64/libnghttp2.so.14", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`6\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=141048, ...}) = 0
+mmap(NULL, 2232240, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6cb981000
+mprotect(0x7fd6cb9a1000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6cbba0000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1f000) = 0x7fd6cbba0000
+close(3)                                = 0
+open("/lib64/libidn.so.11", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 .\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=212240, ...}) = 0
+mmap(NULL, 2306080, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6cb74d000
+mprotect(0x7fd6cb77f000, 2097152, PROT_NONE) = 0
+mmap(0x7fd6cb97f000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x32000) = 0x7fd6cb97f000
+close(3)                                = 0
+open("/lib64/libssh2.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\340T\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=189512, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc42f000
+mmap(NULL, 2282208, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6cb51f000
+mprotect(0x7fd6cb54b000, 2097152, PROT_NONE) = 0
+mmap(0x7fd6cb74b000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2c000) = 0x7fd6cb74b000
+close(3)                                = 0
+open("/lib64/libpsl.so.5", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`\22\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=51992, ...}) = 0
+mmap(NULL, 2146376, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6cb312000
+mprotect(0x7fd6cb31e000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6cb51d000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xb000) = 0x7fd6cb51d000
+mmap(0x7fd6cb51e000, 72, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6cb51e000
+close(3)                                = 0
+open("/lib64/libssl3.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\240\276\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=315168, ...}) = 0
+mmap(NULL, 2405544, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6cb0c6000
+mprotect(0x7fd6cb10d000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6cb30c000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x46000) = 0x7fd6cb30c000
+mmap(0x7fd6cb311000, 1192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6cb311000
+close(3)                                = 0
+open("/lib64/libsmime3.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\200\222\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=164264, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc42e000
+mmap(NULL, 2255680, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6cae9f000
+mprotect(0x7fd6caec3000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6cb0c2000, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x23000) = 0x7fd6cb0c2000
+close(3)                                = 0
+open("/lib64/libnss3.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\227\1\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1241056, ...}) = 0
+mmap(NULL, 3319336, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6cab74000
+mprotect(0x7fd6cac96000, 2097152, PROT_NONE) = 0
+mmap(0x7fd6cae96000, 28672, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x122000) = 0x7fd6cae96000
+mmap(0x7fd6cae9d000, 5672, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6cae9d000
+close(3)                                = 0
+open("/lib64/libnssutil3.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\277\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=188968, ...}) = 0
+mmap(NULL, 2283072, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6ca946000
+mprotect(0x7fd6ca96d000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6cab6c000, 32768, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x26000) = 0x7fd6cab6c000
+close(3)                                = 0
+open("/lib64/libplds4.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\320\16\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=15800, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc42d000
+mmap(NULL, 2109696, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6ca742000
+mprotect(0x7fd6ca745000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6ca944000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fd6ca944000
+close(3)                                = 0
+open("/lib64/libplc4.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\320\24\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=20096, ...}) = 0
+mmap(NULL, 2113904, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6ca53d000
+mprotect(0x7fd6ca541000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6ca740000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x3000) = 0x7fd6ca740000
+close(3)                                = 0
+open("/lib64/libnspr4.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`\314\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=256016, ...}) = 0
+mmap(NULL, 2354496, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6ca2fe000
+mprotect(0x7fd6ca339000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6ca538000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x3a000) = 0x7fd6ca538000
+mmap(0x7fd6ca53b000, 7488, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6ca53b000
+close(3)                                = 0
+open("/lib64/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P`\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=142296, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc42c000
+mmap(NULL, 2208808, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6ca0e2000
+mprotect(0x7fd6ca0f9000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6ca2f8000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x16000) = 0x7fd6ca2f8000
+mmap(0x7fd6ca2fa000, 13352, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6ca2fa000
+close(3)                                = 0
+open("/lib64/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\240\r\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=19736, ...}) = 0
+mmap(NULL, 2109680, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c9ede000
+mprotect(0x7fd6c9ee1000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6ca0e0000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fd6ca0e0000
+close(3)                                = 0
+open("/lib64/libgssapi_krb5.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\320\266\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=320816, ...}) = 0
+mmap(NULL, 2411200, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c9c91000
+mprotect(0x7fd6c9cdb000, 2097152, PROT_NONE) = 0
+mmap(0x7fd6c9edb000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4a000) = 0x7fd6c9edb000
+close(3)                                = 0
+open("/lib64/libkrb5.so.3", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\300@\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=951432, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc42b000
+mmap(NULL, 3036352, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c99ab000
+mprotect(0x7fd6c9a80000, 2097152, PROT_NONE) = 0
+mmap(0x7fd6c9c80000, 69632, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xd5000) = 0x7fd6c9c80000
+close(3)                                = 0
+open("/lib64/libk5crypto.so.3", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\320A\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=201312, ...}) = 0
+mmap(NULL, 2293816, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c977a000
+mprotect(0x7fd6c97a8000, 2097152, PROT_NONE) = 0
+mmap(0x7fd6c99a8000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2e000) = 0x7fd6c99a8000
+close(3)                                = 0
+open("/lib64/libcom_err.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\24\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=15248, ...}) = 0
+mmap(NULL, 2109608, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c9576000
+mprotect(0x7fd6c9579000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c9778000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fd6c9778000
+close(3)                                = 0
+open("/lib64/liblber-2.4.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0p3\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=60816, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc42a000
+mmap(NULL, 2154984, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c9367000
+mprotect(0x7fd6c9375000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c9574000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xd000) = 0x7fd6c9574000
+close(3)                                = 0
+open("/lib64/libldap-2.4.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0p\343\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=333496, ...}) = 0
+mmap(NULL, 2426232, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c9116000
+mprotect(0x7fd6c9164000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c9363000, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4d000) = 0x7fd6c9363000
+close(3)                                = 0
+open("/lib64/libz.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0` \0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=89520, ...}) = 0
+mmap(NULL, 2183272, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c8f00000
+mprotect(0x7fd6c8f15000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c9114000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x14000) = 0x7fd6c9114000
+close(3)                                = 0
+open("/lib64/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\10\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=2093616, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc429000
+mmap(NULL, 3942752, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c8b3d000
+mprotect(0x7fd6c8cf6000, 2097152, PROT_NONE) = 0
+mmap(0x7fd6c8ef6000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b9000) = 0x7fd6c8ef6000
+mmap(0x7fd6c8efc000, 14688, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6c8efc000
+close(3)                                = 0
+open("/lib64/libexpat.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\320<\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=181040, ...}) = 0
+mmap(NULL, 2273288, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c8911000
+mprotect(0x7fd6c893a000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c8b39000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x28000) = 0x7fd6c8b39000
+mmap(0x7fd6c8b3c000, 8, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6c8b3c000
+close(3)                                = 0
+open("/lib64/libssl.so.10", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\360\253\1\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=470360, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc428000
+mmap(NULL, 2560752, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c869f000
+mprotect(0x7fd6c8707000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c8906000, 45056, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x67000) = 0x7fd6c8906000
+close(3)                                = 0
+open("/lib64/libcrypto.so.10", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\317\6\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=2512480, ...}) = 0
+mmap(NULL, 4588328, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c823e000
+mprotect(0x7fd6c8473000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c8672000, 167936, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x234000) = 0x7fd6c8672000
+mmap(0x7fd6c869b000, 13096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6c869b000
+close(3)                                = 0
+open("/lib64/libunistring.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20\374\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1240184, ...}) = 0
+mmap(NULL, 3338504, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c7f0e000
+mprotect(0x7fd6c8039000, 2097152, PROT_NONE) = 0
+mmap(0x7fd6c8239000, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x12b000) = 0x7fd6c8239000
+mmap(0x7fd6c823d000, 264, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6c823d000
+close(3)                                = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc427000
+open("/lib64/librt.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\260 \0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=43664, ...}) = 0
+mmap(NULL, 2128800, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c7d06000
+mprotect(0x7fd6c7d0d000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c7f0c000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x6000) = 0x7fd6c7f0c000
+close(3)                                = 0
+open("/lib64/libkrb5support.so.0", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`2\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=61240, ...}) = 0
+mmap(NULL, 2155208, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c7af7000
+mprotect(0x7fd6c7b04000, 2097152, PROT_NONE) = 0
+mmap(0x7fd6c7d04000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xd000) = 0x7fd6c7d04000
+close(3)                                = 0
+open("/lib64/libkeyutils.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\24\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=15128, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc426000
+mmap(NULL, 2109448, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c78f3000
+mprotect(0x7fd6c78f6000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c7af5000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fd6c7af5000
+mmap(0x7fd6c7af6000, 8, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6c7af6000
+close(3)                                = 0
+open("/lib64/libresolv.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0009\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=110184, ...}) = 0
+mmap(NULL, 2202184, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c76d9000
+mprotect(0x7fd6c76f0000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c78ef000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x16000) = 0x7fd6c78ef000
+mmap(0x7fd6c78f1000, 6728, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6c78f1000
+close(3)                                = 0
+open("/lib64/libsasl2.so.3", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`H\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=120136, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc425000
+mmap(NULL, 2213768, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c74bc000
+mprotect(0x7fd6c74d8000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c76d7000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b000) = 0x7fd6c76d7000
+close(3)                                = 0
+open("/lib64/libselinux.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0000c\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=153176, ...}) = 0
+mmap(NULL, 2253688, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c7295000
+mprotect(0x7fd6c72b8000, 2097152, PROT_NONE) = 0
+mmap(0x7fd6c74b8000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x23000) = 0x7fd6c74b8000
+mmap(0x7fd6c74ba000, 4984, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6c74ba000
+close(3)                                = 0
+open("/lib64/libcrypt.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0@\r\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=36944, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc424000
+mmap(NULL, 2314752, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c705f000
+mprotect(0x7fd6c7066000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c7265000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x6000) = 0x7fd6c7265000
+mmap(0x7fd6c7267000, 184832, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd6c7267000
+close(3)                                = 0
+open("/lib64/libpcre.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\300\25\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=467632, ...}) = 0
+mmap(NULL, 2560264, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c6ded000
+mprotect(0x7fd6c6e5e000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c705d000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x70000) = 0x7fd6c705d000
+close(3)                                = 0
+open("/lib64/libfreebl3.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20\v\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=11448, ...}) = 0
+mmap(NULL, 2105504, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd6c6bea000
+mprotect(0x7fd6c6bec000, 2093056, PROT_NONE) = 0
+mmap(0x7fd6c6deb000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1000) = 0x7fd6c6deb000
+close(3)                                = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc423000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc422000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc421000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc420000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd6cc41e000
+arch_prctl(ARCH_SET_FS, 0x7fd6cc41e800) = 0
+mprotect(0x7fd6c8ef6000, 16384, PROT_READ) = 0
+mprotect(0x7fd6ca0e0000, 4096, PROT_READ) = 0
+mprotect(0x7fd6c6deb000, 4096, PROT_READ) = 0
+mprotect(0x7fd6ca2f8000, 4096, PROT_READ) = 0
+mprotect(0x7fd6c705d000, 4096, PROT_READ) = 0
+mprotect(0x7fd6c7265000, 4096, PROT_READ) = 0
+mprotect(0x7fd6c74b8000, 4096, PROT_READ) = 0
+mprotect(0x7fd6c78ef000, 4096, PROT_READ) = 0
+mprotect(0x7fd6c76d7000, 4096, PROT_READ) = 0
+mprotect(0x7fd6c7af5000, 4096, PROT_READ) = 0
+mprotect(0x7fd6c7d04000, 4096, PROT_READ) = 0
+mprotect(0x7fd6c7f0c000, 4096, PROT_READ) = 0
+mprotect(0x7fd6c8239000, 12288, PROT_READ) = 0
+mprotect(0x7fd6c9114000, 4096, PROT_READ) = 0
+mprotect(0x7fd6c8672000, 114688, PROT_READ) = 0
+mprotect(0x7fd6c99a8000, 8192, PROT_READ) = 0
+mprotect(0x7fd6c9778000, 4096, PROT_READ) = 0
+mprotect(0x7fd6c9c80000, 61440, PROT_READ) = 0
+mprotect(0x7fd6c9edb000, 8192, PROT_READ) = 0
+mprotect(0x7fd6c8906000, 16384, PROT_READ) = 0
+mprotect(0x7fd6c8b39000, 12288, PROT_READ) = 0
+mprotect(0x7fd6ca538000, 4096, PROT_READ) = 0
+mprotect(0x7fd6ca944000, 4096, PROT_READ) = 0
+mprotect(0x7fd6ca740000, 4096, PROT_READ) = 0
+mprotect(0x7fd6cab6c000, 28672, PROT_READ) = 0
+mprotect(0x7fd6cae96000, 20480, PROT_READ) = 0
+mprotect(0x7fd6cb30c000, 16384, PROT_READ) = 0
+mprotect(0x7fd6cb0c2000, 12288, PROT_READ) = 0
+mprotect(0x7fd6c9574000, 4096, PROT_READ) = 0
+mprotect(0x7fd6c9363000, 12288, PROT_READ) = 0
+mprotect(0x7fd6cb97f000, 4096, PROT_READ) = 0
+mprotect(0x7fd6cb51d000, 4096, PROT_READ) = 0
+mprotect(0x7fd6cb74b000, 4096, PROT_READ) = 0
+mprotect(0x7fd6cbba0000, 4096, PROT_READ) = 0
+mprotect(0x7fd6cbdb0000, 4096, PROT_READ) = 0
+mprotect(0x7fd6cc029000, 12288, PROT_READ) = 0
+mprotect(0x7fd6cc233000, 4096, PROT_READ) = 0
+mprotect(0x558a3968d000, 12288, PROT_READ) = 0
+mprotect(0x7fd6cc45a000, 4096, PROT_READ) = 0
+munmap(0x7fd6cc431000, 162542)          = 0
+set_tid_address(0x7fd6cc41ead0)         = 10640
+set_robust_list(0x7fd6cc41eae0, 24)     = 0
+rt_sigaction(SIGRTMIN, {0x7fd6ca0e7af0, [], SA_RESTORER|SA_SIGINFO, 0x7fd6ca0f2c10}, NULL, 8) = 0
+rt_sigaction(SIGRT_1, {0x7fd6ca0e7b80, [], SA_RESTORER|SA_RESTART|SA_SIGINFO, 0x7fd6ca0f2c10}, NULL, 8) = 0
+rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+getrlimit(RLIMIT_STACK, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+statfs("/sys/fs/selinux", 0x7ffc1ca7c270) = -1 ENOENT (No such file or directory)
+statfs("/selinux", 0x7ffc1ca7c270)      = -1 ENOENT (No such file or directory)
+brk(NULL)                               = 0x558a3a2f8000
+brk(0x558a3a319000)                     = 0x558a3a319000
+open("/proc/filesystems", O_RDONLY)     = 3
+fstat(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+read(3, "nodev\tsysfs\nnodev\trootfs\nnodev\tr"..., 1024) = 388
+read(3, "", 1024)                       = 0
+close(3)                                = 0
+access("/etc/selinux/config", F_OK)     = 0
+open("/etc/pki/tls/legacy-settings", O_RDONLY) = -1 ENOENT (No such file or directory)
+access("/etc/system-fips", F_OK)        = -1 ENOENT (No such file or directory)
+getuid()                                = 1000
+geteuid()                               = 1000
+futex(0x7fd6ca0e10a8, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+pipe([3, 4])                            = 0
+close(3)                                = 0
+close(4)                                = 0
+rt_sigaction(SIGPIPE, {SIG_IGN, [PIPE], SA_RESTORER|SA_RESTART, 0x7fd6c8b71ed0}, {SIG_DFL, [], 0}, 8) = 0
+gettid()                                = 10640
+rt_sigaction(SIGPIPE, {SIG_IGN, [], SA_RESTORER, 0x7fd6ca0f2c10}, NULL, 8) = 0
+open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=110570304, ...}) = 0
+mmap(NULL, 110570304, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fd6c0277000
+close(3)                                = 0
+open("/home/pangwz/.curlrc", O_RDONLY)  = -1 ENOENT (No such file or directory)
+ioctl(1, TCGETS, 0x7ffc1ca7bdf0)        = -1 ENOTTY (Inappropriate ioctl for device)
+socket(AF_INET6, SOCK_DGRAM, IPPROTO_IP) = 3
+close(3)                                = 0
+mmap(NULL, 8392704, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7fd6bfa76000
+mprotect(0x7fd6bfa76000, 4096, PROT_NONE) = 0
+clone(child_stack=0x7fd6c0275ef0, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, parent_tidptr=0x7fd6c02769d0, tls=0x7fd6c0276700, child_tidptr=0x7fd6c02769d0) = 10641
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "%", 1%)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "T", 1T)                        = 1
+write(2, "o", 1o)                        = 1
+write(2, "t", 1t)                        = 1
+write(2, "a", 1a)                        = 1
+write(2, "l", 1l)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "%", 1%)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "R", 1R)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "c", 1c)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "i", 1i)                        = 1
+write(2, "v", 1v)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "d", 1d)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "%", 1%)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "X", 1X)                        = 1
+write(2, "f", 1f)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "r", 1r)                        = 1
+write(2, "d", 1d)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "A", 1A)                        = 1
+write(2, "v", 1v)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "r", 1r)                        = 1
+write(2, "a", 1a)                        = 1
+write(2, "g", 1g)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "S", 1S)                        = 1
+write(2, "p", 1p)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "d", 1d)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "T", 1T)                        = 1
+write(2, "i", 1i)                        = 1
+write(2, "m", 1m)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "T", 1T)                        = 1
+write(2, "i", 1i)                        = 1
+write(2, "m", 1m)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "T", 1T)                        = 1
+write(2, "i", 1i)                        = 1
+write(2, "m", 1m)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "C", 1C)                        = 1
+write(2, "u", 1u)                        = 1
+write(2, "r", 1r)                        = 1
+write(2, "r", 1r)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "n", 1n)                        = 1
+write(2, "t", 1t)                        = 1
+write(2, "\n", 1
+)                       = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "D", 1D)                        = 1
+write(2, "l", 1l)                        = 1
+write(2, "o", 1o)                        = 1
+write(2, "a", 1a)                        = 1
+write(2, "d", 1d)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "U", 1U)                        = 1
+write(2, "p", 1p)                        = 1
+write(2, "l", 1l)                        = 1
+write(2, "o", 1o)                        = 1
+write(2, "a", 1a)                        = 1
+write(2, "d", 1d)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "T", 1T)                        = 1
+write(2, "o", 1o)                        = 1
+write(2, "t", 1t)                        = 1
+write(2, "a", 1a)                        = 1
+write(2, "l", 1l)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "S", 1S)                        = 1
+write(2, "p", 1p)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "n", 1n)                        = 1
+write(2, "t", 1t)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "L", 1L)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "f", 1f)                        = 1
+write(2, "t", 1t)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "S", 1S)                        = 1
+write(2, "p", 1p)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "e", 1e)                        = 1
+write(2, "d", 1d)                        = 1
+write(2, "\n", 1
+)                       = 1
+write(2, "\r", 1)                       = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+poll(NULL, 0, 4)                        = 0 (Timeout)
+socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) = 3
+setsockopt(3, SOL_SOCKET, SO_KEEPALIVE, [1], 4) = 0
+setsockopt(3, SOL_TCP, TCP_KEEPIDLE, [60], 4) = 0
+setsockopt(3, SOL_TCP, TCP_KEEPINTVL, [60], 4) = 0
+fcntl(3, F_GETFL)                       = 0x2 (flags O_RDWR)
+fcntl(3, F_SETFL, O_RDWR|O_NONBLOCK)    = 0
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Got c"..., 50) = 50
+getsockopt(3, SOL_SOCKET, SO_TYPE, [1], [4]) = 0
+open("/etc/tsocks.conf", O_RDONLY)      = 5
+fstat(5, {st_mode=S_IFREG|0644, st_size=151, ...}) = 0
+read(5, "local = 192.168.1.0/255.255.255."..., 4096) = 151
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): New n"..., 81) = 81
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): New n"..., 81) = 81
+read(5, "", 4096)                       = 0
+close(5)                                = 0
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): New n"..., 79) = 79
+getpeername(3, 0x7ffc1ca7b880, [16])    = -1 ENOTCONN (Transport endpoint is not connected)
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Got c"..., 81) = 81
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Picki"..., 73) = 73
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Picke"..., 70) = 70
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Begin"..., 62) = 62
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Conne"..., 65) = 65
+connect(3, {sa_family=AF_INET, sin_port=htons(1080), sin_addr=inet_addr("192.168.1.100")}, 16) = -1 EINPROGRESS (Operation now in progress)
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Conne"..., 61) = 61
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Conne"..., 50) = 50
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Handl"..., 88) = 88
+poll([{fd=3, events=POLLOUT|POLLWRNORM}], 1, 0) = 1 ([{fd=3, revents=POLLOUT|POLLWRNORM}])				#wait 0,但是返回可以pollout!
+getsockopt(3, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
+getpeername(3, {sa_family=AF_INET, sin_port=htons(1080), sin_addr=inet_addr("192.168.1.100")}, [128->16]) = 0
+getsockname(3, {sa_family=AF_INET, sin_port=htons(59638), sin_addr=inet_addr("192.168.1.100")}, [128->16]) = 0
+sendto(3, "GET / HTTP/1.1\r\nHost: ip.cn\r\nUse"..., 69, MSG_NOSIGNAL, NULL, 0) = 69
+poll([{fd=3, events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}], 1, 0) = 0 (Timeout)
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Inter"..., 87) = 87
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Have "..., 72) = 72
+poll([{fd=3, events=POLLOUT}], 1, 198)  = 1 ([{fd=3, revents=POLLOUT}])
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Check"..., 56) = 56
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Socke"..., 50) = 50
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Begin"..., 62) = 62
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Conne"..., 65) = 65
+connect(3, {sa_family=AF_INET, sin_port=htons(1080), sin_addr=inet_addr("192.168.1.100")}, 16) = 0
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Conne"..., 60) = 60
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Socke"..., 62) = 62
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Const"..., 62) = 62
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Writi"..., 63) = 63
+sendto(3, "\5\2\0\2", 4, 0, NULL, 0)    = 4
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Sent "..., 79) = 79
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Recei"..., 74) = 74
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Readi"..., 67) = 67
+recvfrom(3, "\5\0", 2, 0, NULL, NULL)   = 2
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Recei"..., 82) = 82
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Const"..., 59) = 59
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Writi"..., 64) = 64
+sendto(3, "\5\1\0\1v\270\264.\0P", 10, 0, NULL, 0) = 10
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Sent "..., 81) = 81
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): In re"..., 95) = 95
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Recei"..., 71) = 71
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): In re"..., 94) = 94
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Readi"..., 68) = 68
+recvfrom(3, "\5\0\0\1\0\0\0\0\0\0", 10, 0, NULL, NULL) = 10
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Recei"..., 84) = 84
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): In re"..., 95) = 95
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Handl"..., 87) = 87
+poll([{fd=3, events=POLLOUT}], 1, 198)  = 1 ([{fd=3, revents=POLLOUT}])
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Finis"..., 66) = 66
+poll([{fd=3, events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}], 1, 0) = 0 (Timeout)
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Inter"..., 87) = 87
+poll([{fd=3, events=POLLIN}], 1, 197)   = 0 (Timeout)
+poll([{fd=3, events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}], 1, 0) = 0 (Timeout)
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Inter"..., 85) = 85
+poll([{fd=3, events=POLLIN}], 1, 1)     = 0 (Timeout)
+poll([{fd=3, events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}], 1, 0) = 0 (Timeout)
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:01 libtsocks(10640): Inter"..., 88) = 88
+poll([{fd=3, events=POLLIN}], 1, 1000)  = 0 (Timeout)
+poll([{fd=3, events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}], 1, 0) = 0 (Timeout)
+write(2, "\r", 1)                       = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "0", 10)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "1", 11)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:02 libtsocks(10640): Inter"..., 88) = 88
+poll([{fd=3, events=POLLIN}], 1, 1000)  = 0 (Timeout)
+poll([{fd=3, events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}], 1, 0) = 0 (Timeout)
+write(2, "\r", 1)                       = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "0", 10)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "2", 12)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:03 libtsocks(10640): Inter"..., 88) = 88
+poll([{fd=3, events=POLLIN}], 1, 1000)  = 0 (Timeout)
+poll([{fd=3, events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}], 1, 0) = 0 (Timeout)
+write(2, "\r", 1)                       = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "0", 10)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "3", 13)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:04 libtsocks(10640): Inter"..., 88) = 88
+poll([{fd=3, events=POLLIN}], 1, 1000)  = 0 (Timeout)
+poll([{fd=3, events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}], 1, 0) = 0 (Timeout)
+write(2, "\r", 1)                       = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "0", 10)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "4", 14)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:05 libtsocks(10640): Inter"..., 88) = 88
+poll([{fd=3, events=POLLIN}], 1, 1000)  = 0 (Timeout)
+poll([{fd=3, events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}], 1, 0) = 0 (Timeout)
+write(2, "\r", 1)                       = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "0", 10)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "5", 15)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:06 libtsocks(10640): Inter"..., 88) = 88
+poll([{fd=3, events=POLLIN}], 1, 1000)  = 0 (Timeout)
+poll([{fd=3, events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}], 1, 0) = 0 (Timeout)
+write(2, "\r", 1)                       = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "0", 10)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "0", 10)                        = 1
+write(2, "6", 16)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, ":", 1:)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, "-", 1-)                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, " ", 1 )                        = 1
+write(2, "0", 10)                        = 1
+stat("/etc/localtime", {st_mode=S_IFREG|0644, st_size=414, ...}) = 0
+write(4, "11:30:07 libtsocks(10640): Inter"..., 88) = 88
+poll([{fd=3, events=POLLIN}], 1, 1000

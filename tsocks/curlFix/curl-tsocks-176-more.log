@@ -1,0 +1,252 @@
+16:52:25 libtsocks(8737): Got connection request
+16:52:25 libtsocks(8737): Connection isn't a TCP stream ignoring
+16:52:25 libtsocks(8737): in function poll,requests=(nil)
+16:52:25 libtsocks(8737): Got connection request
+16:52:25 libtsocks(8737): New network entry for 192.168.1.0 going to 0x4b71f640
+16:52:25 libtsocks(8737): New network entry for 192.168.2.0 going to 0x4b71f3c0
+16:52:25 libtsocks(8737): New network entry for 127.0.0.0 going to 0x4b71f3f0
+16:52:25 libtsocks(8737): Got connection request for socket 3 to 118.184.180.46
+16:52:25 libtsocks(8737): Picking appropriate server for 118.184.180.46
+16:52:25 libtsocks(8737): Picked server 192.168.1.176 for connection
+16:52:25 libtsocks(8737): Beginning handle loop for socket 3
+16:52:25 libtsocks(8737): In request handle loop for socket 3, current state of request is 0
+16:52:25 libtsocks(8737): Connecting to 192.168.1.176 port 1080
+16:52:25 libtsocks(8737): Connect returned -1, errno is 115
+16:52:25 libtsocks(8737): Connection in progress
+16:52:25 libtsocks(8737): Handle loop completed for socket 3 in state 1, returning 115
+16:52:25 libtsocks(8737): in function poll,requests=0x562a4b71f6e0
+16:52:25 libtsocks(8737): Intercepted call to poll with 1 fds, 0x4b71f440 timeout 198
+16:52:25 libtsocks(8737): Have event checks for socks enabled socket 3
+16:52:25 libtsocks(8737): Checking socket 3 for events
+16:52:25 libtsocks(8737): Socket had write event
+16:52:25 libtsocks(8737): Beginning handle loop for socket 3
+16:52:25 libtsocks(8737): In request handle loop for socket 3, current state of request is 1
+16:52:25 libtsocks(8737): Connecting to 192.168.1.176 port 1080
+16:52:25 libtsocks(8737): Connect returned 0, errno is 115
+16:52:25 libtsocks(8737): Socket 3 connected to SOCKS server
+16:52:25 libtsocks(8737): In request handle loop for socket 3, current state of request is 2
+16:52:25 libtsocks(8737): Constructing V5 method negotiation
+16:52:25 libtsocks(8737): In request handle loop for socket 3, current state of request is 3
+16:52:25 libtsocks(8737): Writing to server (sending 4 bytes)
+16:52:25 libtsocks(8737): Sent 4 bytes of 4 bytes in buffer, return code is 0
+16:52:25 libtsocks(8737): In request handle loop for socket 3, current state of request is 7
+16:52:25 libtsocks(8737): Receiving reply to SOCKS V5 method negotiation
+16:52:25 libtsocks(8737): In request handle loop for socket 3, current state of request is 4
+16:52:25 libtsocks(8737): Reading from server (expecting 2 bytes)
+16:52:25 libtsocks(8737): Received 0 bytes of 2 bytes expected, return code is 11
+16:52:25 libtsocks(8737): Handle loop completed for socket 3 in state 4, returning 11
+16:52:25 libtsocks(8737): Checking socket 3 for events
+16:52:25 libtsocks(8737): Socket had read event
+16:52:25 libtsocks(8737): Beginning handle loop for socket 3
+16:52:25 libtsocks(8737): In request handle loop for socket 3, current state of request is 4
+16:52:25 libtsocks(8737): Reading from server (expecting 2 bytes)
+16:52:25 libtsocks(8737): Received 2 bytes of 2 bytes expected, return code is 0
+16:52:25 libtsocks(8737): In request handle loop for socket 3, current state of request is 8
+16:52:25 libtsocks(8737): Constructing V5 connect request
+16:52:25 libtsocks(8737): In request handle loop for socket 3, current state of request is 3
+16:52:25 libtsocks(8737): Writing to server (sending 10 bytes)
+16:52:25 libtsocks(8737): Sent 10 bytes of 10 bytes in buffer, return code is 0
+16:52:25 libtsocks(8737): In request handle loop for socket 3, current state of request is 11
+16:52:25 libtsocks(8737): Receiving reply to SOCKS V5 connect request
+16:52:25 libtsocks(8737): In request handle loop for socket 3, current state of request is 4
+16:52:25 libtsocks(8737): Reading from server (expecting 10 bytes)
+16:52:25 libtsocks(8737): Received 0 bytes of 10 bytes expected, return code is 11
+16:52:25 libtsocks(8737): Handle loop completed for socket 3 in state 4, returning 11
+16:52:25 libtsocks(8737): Checking socket 3 for events
+16:52:25 libtsocks(8737): Socket had read event
+16:52:25 libtsocks(8737): Beginning handle loop for socket 3
+16:52:25 libtsocks(8737): In request handle loop for socket 3, current state of request is 4
+16:52:25 libtsocks(8737): Reading from server (expecting 10 bytes)
+16:52:25 libtsocks(8737): Received 10 bytes of 10 bytes expected, return code is 0
+16:52:25 libtsocks(8737): In request handle loop for socket 3, current state of request is 12
+16:52:25 libtsocks(8737): Handle loop completed for socket 3 in state 13, returning 0
+16:52:26 libtsocks(8737): Finished intercepting poll(), 0 events
+16:52:26 libtsocks(8737): in function poll,requests=0x562a4b71f6e0
+16:52:26 libtsocks(8737): Intercepted call to poll with 1 fds, 0x4b71f460 timeout 1000
+16:52:26 libtsocks(8737): Call to close(3)
+16:52:26 libtsocks(8737): Call to close() received on file descriptor 3 which is a connection request of status 13
+16:52:26 libtsocks(8737): in function kill_socks_request
+16:52:36 libtsocks(8785): Got connection request
+16:52:36 libtsocks(8785): New network entry for 192.168.1.0 going to 0x3800cec0
+16:52:36 libtsocks(8785): New network entry for 192.168.2.0 going to 0x380032c0
+16:52:36 libtsocks(8785): New network entry for 127.0.0.0 going to 0x38004670
+16:52:36 libtsocks(8785): Got connection request for socket 6 to 127.0.0.1
+16:52:36 libtsocks(8785): Connection for socket 6 is local
+16:52:36 libtsocks(8785): in function poll,requests=(nil)
+16:52:36 libtsocks(8785): in function poll,requests=(nil)
+16:52:36 libtsocks(8785): in function poll,requests=(nil)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(11)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): Call to close(10)
+16:52:36 libtsocks(8785): in function poll,requests=(nil)
+16:52:36 libtsocks(8785): in function poll,requests=(nil)
+16:52:36 libtsocks(8785): in function poll,requests=(nil)
+16:52:36 libtsocks(8785): in function poll,requests=(nil)
+16:52:36 libtsocks(8785): Got connection request
+16:52:36 libtsocks(8785): Got connection request for socket 10 to 127.0.0.1
+16:52:36 libtsocks(8785): Connection for socket 10 is local
+16:52:36 libtsocks(8785): in function poll,requests=(nil)
+16:52:36 libtsocks(8785): in function poll,requests=(nil)
+16:52:36 libtsocks(8785): in function poll,requests=(nil)
+16:52:36 libtsocks(8785): in function poll,requests=(nil)
+16:52:37 libtsocks(8785): in function poll,requests=(nil)
+16:52:37 libtsocks(8785): in function poll,requests=(nil)
+16:52:37 libtsocks(8785): in function poll,requests=(nil)
+16:52:37 libtsocks(8785): in function poll,requests=(nil)
+16:53:05 libtsocks(8785): Call to close(11)
+16:53:55 libtsocks(8785): Call to close(11)
+16:54:02 libtsocks(8785): Call to close(11)
+16:54:09 libtsocks(8785): Call to close(11)
+16:54:17 libtsocks(8785): Call to close(11)
+16:54:38 libtsocks(8785): Call to close(11)
+16:54:51 libtsocks(8785): Call to close(11)
+17:02:09 libtsocks(8785): Call to close(11)
+17:02:20 libtsocks(8785): Call to close(11)
+17:02:36 libtsocks(8785): in function poll,requests=(nil)
+17:02:36 libtsocks(8785): Call to close(10)
+17:02:36 libtsocks(8785): Got connection request
+17:02:36 libtsocks(8785): Got connection request for socket 10 to 127.0.0.1
+17:02:36 libtsocks(8785): Connection for socket 10 is local
+17:02:36 libtsocks(8785): in function poll,requests=(nil)
+17:02:36 libtsocks(8785): in function poll,requests=(nil)
+17:02:36 libtsocks(8785): in function poll,requests=(nil)
+17:12:36 libtsocks(8785): in function poll,requests=(nil)
+17:12:36 libtsocks(8785): Call to close(10)
+17:12:36 libtsocks(8785): Got connection request
+17:12:36 libtsocks(8785): Got connection request for socket 10 to 127.0.0.1
+17:12:36 libtsocks(8785): Connection for socket 10 is local
+17:12:36 libtsocks(8785): in function poll,requests=(nil)
+17:12:36 libtsocks(8785): in function poll,requests=(nil)
+17:12:36 libtsocks(8785): in function poll,requests=(nil)
+17:22:36 libtsocks(8785): in function poll,requests=(nil)
+17:22:36 libtsocks(8785): Call to close(10)
+17:22:36 libtsocks(8785): Got connection request
+17:22:36 libtsocks(8785): Got connection request for socket 10 to 127.0.0.1
+17:22:36 libtsocks(8785): Connection for socket 10 is local
+17:22:36 libtsocks(8785): in function poll,requests=(nil)
+17:22:36 libtsocks(8785): in function poll,requests=(nil)
+17:22:36 libtsocks(8785): in function poll,requests=(nil)
+17:26:19 libtsocks(8785): Call to close(11)
+17:26:35 libtsocks(8785): Call to close(11)
+17:32:37 libtsocks(8785): in function poll,requests=(nil)
+17:32:37 libtsocks(8785): Call to close(10)
+17:32:37 libtsocks(8785): Got connection request
+17:32:37 libtsocks(8785): Got connection request for socket 10 to 127.0.0.1
+17:32:37 libtsocks(8785): Connection for socket 10 is local
+17:32:37 libtsocks(8785): in function poll,requests=(nil)
+17:32:37 libtsocks(8785): in function poll,requests=(nil)
+17:32:37 libtsocks(8785): in function poll,requests=(nil)
+17:42:37 libtsocks(8785): in function poll,requests=(nil)
+17:42:37 libtsocks(8785): Call to close(10)
+17:42:37 libtsocks(8785): Got connection request
+17:42:37 libtsocks(8785): Got connection request for socket 10 to 127.0.0.1
+17:42:37 libtsocks(8785): Connection for socket 10 is local
+17:42:37 libtsocks(8785): in function poll,requests=(nil)
+17:42:37 libtsocks(8785): in function poll,requests=(nil)
+17:42:37 libtsocks(8785): in function poll,requests=(nil)
+17:52:37 libtsocks(8785): in function poll,requests=(nil)
+17:52:37 libtsocks(8785): Call to close(10)
+17:52:37 libtsocks(8785): Got connection request
+17:52:37 libtsocks(8785): Got connection request for socket 10 to 127.0.0.1
+17:52:37 libtsocks(8785): Connection for socket 10 is local
+17:52:37 libtsocks(8785): in function poll,requests=(nil)
+17:52:37 libtsocks(8785): in function poll,requests=(nil)
+17:52:37 libtsocks(8785): in function poll,requests=(nil)
+17:54:22 libtsocks(8785): in function poll,requests=(nil)
+17:54:22 libtsocks(8785): in function poll,requests=(nil)
+17:54:22 libtsocks(8785): in function poll,requests=(nil)
+17:54:22 libtsocks(8785): in function poll,requests=(nil)
+17:54:22 libtsocks(8785): in function poll,requests=(nil)
+17:54:22 libtsocks(8785): Call to close(6)
+17:54:22 libtsocks(8785): Got connection request
+17:54:22 libtsocks(8785): Got connection request for socket 6 to 127.0.0.1
+17:54:22 libtsocks(8785): Connection for socket 6 is local
+17:54:22 libtsocks(8785): in function poll,requests=(nil)
+17:54:22 libtsocks(8785): in function poll,requests=(nil)
+17:54:22 libtsocks(8785): in function poll,requests=(nil)
+17:54:22 libtsocks(8785): Call to close(5)
+17:54:22 libtsocks(8785): Call to close(7)
+17:54:22 libtsocks(8785): Call to close(9)
+17:54:22 libtsocks(8785): Call to close(3)
+17:54:22 libtsocks(8785): Call to close(4)
