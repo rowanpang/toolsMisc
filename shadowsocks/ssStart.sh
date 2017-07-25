@@ -137,14 +137,20 @@ function checkTime(){
 function update(){
     local needCheck="yes"
     for co in us sg jp;do
-	for index in b a c;do
+	for index in a b c;do
 	    tmpFile="${co}${index}.png"
 	    if [ "$specifyServer" ];then
 		tmpFile=${specifyServer%.*}.png
 		[ "$curConfigServer" == "$tmpFile" ] && pr_err "same as cur config"
 		needCheck="no"
 	    fi
+
+	    #if [ "$curConfigServer" == "$tmpFile" ];then #circle server?
+		#continue
+	    #fi
+
 	    starfromQR $tmpFile
+
 	    if [ "$needCheck" != "no" ];then
 		[ "$(proxyOK)" == "ok" ] && break 2 || echo "---proxy $tmpFile ng,next---"
 	    else
@@ -161,6 +167,12 @@ function gotworkDir(){
     wDir=$(dirname $prog)
 
     echo "${wDir}/"
+}
+
+function Usage(){
+    echo "      -h:this help info"
+    echo "--server: specify Server to connect "
+    echo "--checkTime: do time check"
 }
 
 function argParser(){
@@ -185,6 +197,9 @@ function argParser(){
 		;;
 	    --checkTime)
 		doTimeCheck=true ;;
+	    -h)
+		Usage
+		exit
 	esac
 	shift
     done
