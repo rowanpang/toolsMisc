@@ -27,6 +27,9 @@
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'ervandew/supertab'
 	Plug 'valloric/youcompleteme'
+	"Plug 'yggdroot/indentline'
+	Plug 'raimondi/delimitmate'
+	Plug 'tpope/vim-surround'
 
     call plug#end()
 
