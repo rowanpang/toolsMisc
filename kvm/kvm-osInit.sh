@@ -1,6 +1,40 @@
 #!/bin/bash
 source ./osInitframe/lib.sh
 
+function inspurInnerSecurity(){
+    local bridgeName="iInner"
+    local bridgeConName=$bridgeName
+    if ! [ $(brctl show | grep -c $bridgeName) -gt 0 ];then
+        pr_info "add bridge con $bridgeConName"
+        nmcli connection add ifname $bridgeName con-name $bridgeConName type bridge
+        nmcli connection up $bridgeConName
+    fi
+}
+
+function kvmlocalBridge(){
+    local bridgeName="bridge0"
+    local bridgeConName=$bridgeName
+    local slave=$(echo $(ip link | grep '^[1-9]\+: en*' | awk 'BEGIN {FS=":"} { print $2}') | awk '{print $1}')
+    local slaveConName="${bridgeName}-slave-${slave}"
+
+    local qemuConfig="/etc/qemu/bridge.conf"
+    if [ $(cat $qemuConfig | grep -c $bridgeName) -lt 1 ];then
+	lsudo sed -i "$ iallow bridge0" $qemuConfig
+    fi
+
+    if ! [ $(brctl show | grep -c $bridgeName) -gt 0 ];then
+        pr_info "add bridge con $bridgeConName"
+        nmcli connection add ifname $bridgeName con-name $bridgeConName type bridge
+        nmcli connection up $bridgeConName
+    fi
+    if ! [ $(brctl show | grep $bridgeName | grep -c $slave) -gt 0 ];then
+        pr_info "add slave $slave to $bridgeName and make connection $slaveConName"
+        nmcli connection add ifname ${slave} con-name $slaveConName type  bridge-slave master $bridgeName
+        nmcli connection up $slaveConName
+    fi
+
+}
+
 function baseInit(){
     local dir=$localdir
     pkgCheckInstall virt-manager
@@ -19,26 +53,8 @@ function baseInit(){
     pkgCheckInstall bridge-utils
     pkgCheckInstall NetworkManager
 
-    local bridgeName="bridge0"
-    local bridgeConName=$bridgeName
-    local slave=$(echo $(ip link | grep '^[1-9]\+: en*' | awk 'BEGIN {FS=":"} { print $2}'))
-    local slaveConName="${bridgeName}-slave-${slave}"
-
-    local qemuConfig="/etc/qemu/bridge.conf"
-    if [ $(cat $qemuConfig | grep -c $bridgeName) -lt 1 ];then
-	lsudo sed -i "$ iallow bridge0" $qemuConfig
-    fi
-
-    if ! [ $(brctl show | grep -c $bridgeName) -gt 0 ];then
-        pr_info "add bridge con $bridgeConName"
-        nmcli connection add ifname $bridgeName con-name $bridgeConName type bridge
-        nmcli connection up $bridgeConName
-    fi
-    if ! [ $(brctl show | grep $bridgeName | grep -c $slave) -gt 0 ];then
-        pr_info "add slave $slave to $bridgeName and make connection $slaveConName"
-        nmcli connection add ifname ${slave} con-name $slaveConName type  bridge-slave master $bridgeName
-        nmcli connection up $slaveConName
-    fi
+    kvmlocalBridge
+    inspurInnerSecurity
 }
 
 baseInit
