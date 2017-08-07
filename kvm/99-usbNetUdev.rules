@@ -1,10 +1,11 @@
 
-ACTION!="add",		GOTO="ethUsbr459c_end"
-ENV{ID_BUS} != "usb",	GOTO="ethUsbr459c_end"
-SUBSYSTEM!="net",	GOTO="ethUsbr459c_end"
-ATTR{type}!="1",	GOTO="ethUsbr459c_end"
+ACTION!="add",		GOTO="usbNetUdev_end"
+ENV{ID_BUS} != "usb",	GOTO="usbNetUdev_end"
+SUBSYSTEM!="net",	GOTO="usbNetUdev_end"
+ATTR{type}!="1",	GOTO="usbNetUdev_end"
 
 ATTR{address}=="00:e0:4c:68:45:9c",    NAME="ethUsbr459c"
+ATTR{address}=="5c:63:bf:08:37:a2",    NAME="wifiUsbr37a2"
 
 
-LABEL="ethUsbr459c_end"
+LABEL="usbNetUdev_end"
