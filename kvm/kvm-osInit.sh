@@ -2,7 +2,7 @@
 source ./osInitframe/lib.sh
 
 function inspurInnerSecurity(){
-    local bridgeName="iInner"
+    local bridgeName="br-iInner"
     local bridgeConName=$bridgeName
     if ! [ $(brctl show | grep -c $bridgeName) -gt 0 ];then
         pr_info "add bridge con $bridgeConName"
@@ -35,6 +35,13 @@ function kvmlocalBridge(){
 
 }
 
+function usbNetUdev(){
+    local dir=$localdir
+    local uRulesDir="/etc/udev/rules.d/"
+    local rfile="99-usbNetUdev.rules"
+    lsudo cp ${dir}${rfile} ${uRulesDir}
+}
+
 function baseInit(){
     local dir=$localdir
     pkgCheckInstall virt-manager
@@ -55,6 +62,7 @@ function baseInit(){
 
     kvmlocalBridge
     inspurInnerSecurity
+    usbNetUdev
 }
 
 baseInit

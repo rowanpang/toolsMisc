@@ -1,0 +1,10 @@
+
+ACTION!="add",		GOTO="ethUsbr459c_end"
+ENV{ID_BUS} != "usb",	GOTO="ethUsbr459c_end"
+SUBSYSTEM!="net",	GOTO="ethUsbr459c_end"
+ATTR{type}!="1",	GOTO="ethUsbr459c_end"
+
+ATTR{address}=="00:e0:4c:68:45:9c",    NAME="ethUsbr459c"
+
+
+LABEL="ethUsbr459c_end"
