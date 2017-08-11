@@ -84,6 +84,9 @@ function initI3wm(){
 	echo $synerScript
 	sed -i "s;^exec \/.*synergyX\.sh$;exec $synerScript;" ${configSelected}
 	[ $(grep -c "$synerScript" ${configSelected}) -gt 0 ] || sed -i "/^#synergyX/ aexec $synerScript" ${configSelected}
+
+    #startx
+	[ -f $HOME/.Xclients ] || cp ${dir}./Xclients $HOME/.Xclients
 }
 
 initI3wm
