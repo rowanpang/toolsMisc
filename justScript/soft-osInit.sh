@@ -23,6 +23,7 @@ function miscInit(){
     pkgCheckInstall mediainfo
     pkgCheckInstall nmap
     pkgCheckInstall meld 
+    pkgCheckInstall autojump
 }
 
 function qrInit(){
