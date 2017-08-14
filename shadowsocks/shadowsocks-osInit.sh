@@ -8,8 +8,8 @@ function ssInit(){
     pkgCheckUninstall python-shadowsocks
     pkgCheckInstall libsodium-1.0.12-1.fc24 updates
 
-    lsudo dnf copr enable librehatr/shadowsocks
-    lsudo dnf copr disable librehatr/shadowsocks
+    lsudo dnf copr enable librehat/shadowsocks
+    lsudo dnf copr disable librehat/shadowsocks
     pkgCheckInstall shadowsocks-libev.x86_64 librehat-shadowsocks
 
     #cron,run every minute"
