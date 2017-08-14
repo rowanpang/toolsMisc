@@ -38,7 +38,7 @@
 # Tamas Szerb <toma@rulez.org>
 if [ "$1" == '-d' ];then
     debug='yes'
-    debugfile=`mktemp tsocksLog_XXXXXX`
+    debugfile=`mktemp tsockslog-XXXXXX.log`
     debuglevel=2
     shift
 else
@@ -96,7 +96,7 @@ case "$1" in
 
 		if [ $# = 0 ]
 		then
-			${SHELL:-/bin/sh}
+		    env PS1="[TOSCKS:\u \W]\$ " ${SHELL:-/bin/sh} 
 		fi
 
 		if [ $# -gt 0 ]

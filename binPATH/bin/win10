@@ -1,2 +1,2 @@
 #!/bin/bash
-rdesktop -u kvm-win10 kvm-win10
+rdesktop -f -u kvm-win10 -p qqqqqq 192.168.1.232

@@ -1,0 +1,12 @@
+
+ACTION!="add",		GOTO="usbNetUdev_end"
+ENV{ID_BUS} != "usb",	GOTO="usbNetUdev_end"
+SUBSYSTEM!="net",	GOTO="usbNetUdev_end"
+ATTR{type}!="1",	GOTO="usbNetUdev_end"
+
+ATTR{address}=="00:e0:4c:68:45:9c",    NAME="ethUsbr459c"
+ATTR{address}=="5c:63:bf:08:37:a2",    NAME="wifiUsbr37a2"
+ATTR{address}=="00:e0:4c:68:30:f8",    NAME="ethUsbr30f8"
+
+
+LABEL="usbNetUdev_end"

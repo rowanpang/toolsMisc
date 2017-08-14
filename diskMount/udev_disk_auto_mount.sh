@@ -1,9 +1,18 @@
 #!/bin/sh
 function verbose(){
+    fsize=`du -b $LOG | awk '{print $1}'`
+    let max=8*1024				
+    if [ $fsize -gt $max ];then
+	echo "------new file-------" > $LOG
+    fi
+
     echo "$@" >> $LOG
 }
 
 function add(){
+    eval $(blkid -po udev ${DEVNAME})
+    [ -z ${ID_FS_LABEL} ] && ID_FS_LABEL=uDisk
+
     local mntOpt=""
     local mntDir="/media/${ID_FS_LABEL}.${ID_FS_TYPE}"
     #if [ -e $mntDir ];then
@@ -11,7 +20,7 @@ function add(){
     #fi
     verbose "mnt dir:$mntDir"
 
-    mkdir $mntDir;
+    [ -d $mntDir ] || mkdir $mntDir;
     if [ "${ID_FS_TYPE}" == "vfat" ];then
         mntOpt="-o uid=$uidPangwz,gid=$uidPangwz,utf8,fmask=0113"
     fi
@@ -32,6 +41,7 @@ function remove(){
 
     /bin/umount $mntDir
     rm -r $mntDir
+
     verbose "after remove"
 }
 
@@ -47,9 +57,6 @@ uidPangwz=`id --user pangwz`
 verbose $0
 verbose "action:$ACTION"
 verbose "dev:${DEVNAME}"
-
-eval $(blkid -po udev ${DEVNAME})
-[ -z ${ID_FS_LABEL} ] && ID_FS_LABEL=uDisk
 
 if [ "$ACTION" == "add" ];then
     add
