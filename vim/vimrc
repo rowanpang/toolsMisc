@@ -30,8 +30,22 @@
 	"Plug 'yggdroot/indentline'
 	Plug 'raimondi/delimitmate'
 	Plug 'tpope/vim-surround'
+	Plug 'kien/ctrlp.vim'
+	Plug 'easymotion/vim-easymotion'
 
     call plug#end()
+     
+"easymotion
+"ref http://www.wklken.me/posts/2015/06/07/vim-plugin-easymotion.html
+
+"Ctrlp
+    "let g:loaded_ctrlp = 1			    "uncomment it if you not want it;
+    "let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'  "default values
+    let g:ctrlp_by_filename = 1
+    let g:ctrlp_regexp = 1
+    let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+    let g:ctrlp_open_new_file = 't'
+    let g:ctrlp_lazy_update = 0
 
 "java complete
     autocmd FileType java setlocal omnifunc=javacomplete#Complete
