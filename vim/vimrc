@@ -32,11 +32,18 @@
 	Plug 'tpope/vim-surround'
 	Plug 'kien/ctrlp.vim'
 	Plug 'easymotion/vim-easymotion'
+	Plug 'nathanaelkane/vim-indent-guides'
 
     call plug#end()
+
+"indent-guides
+    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_exclude_filetypes = ['help','vim']
+    "au BufReadPost * IndentGuidesEnable 
+    "<leader>ig
      
 "easymotion
-"ref http://www.wklken.me/posts/2015/06/07/vim-plugin-easymotion.html
+    "ref http://www.wklken.me/posts/2015/06/07/vim-plugin-easymotion.html
 
 "Ctrlp
     "let g:loaded_ctrlp = 1			    "uncomment it if you not want it;
@@ -93,9 +100,9 @@
     colorscheme default
 
     if has('gui_running')
-        set background=light
+	set background=light
     else
-        set background=dark
+	set background=dark
     endif
     
 "syntax
