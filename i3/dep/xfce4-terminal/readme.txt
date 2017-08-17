@@ -3,4 +3,7 @@
     b,通过accels.scm 修改快捷键.
 
 2,config
-    /home/pangwz/.config/xfce4/terminal/*
+    a,/home/pangwz/.config/xfce4/terminal/*
+    b,color ref ./terminalrc
+
+    
