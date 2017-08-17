@@ -33,6 +33,7 @@
 	Plug 'kien/ctrlp.vim'
 	Plug 'easymotion/vim-easymotion'
 	Plug 'nathanaelkane/vim-indent-guides'
+	Plug 'altercation/vim-colors-solarized'
 
     call plug#end()
 
@@ -94,10 +95,10 @@
 
 "theme solarized
     let g:solarized_termtrans=1
-    let g:solarized_termcolors=256
+    "let g:solarized_termcolors=256
     call togglebg#map("<F5>")
-    "colorscheme solarized 
-    colorscheme default
+    colorscheme solarized 
+    "colorscheme default
 
     if has('gui_running')
 	set background=light
