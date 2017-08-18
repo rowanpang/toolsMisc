@@ -1,0 +1,49 @@
+# sample synergy configuration file
+#
+# comments begin with the # character and continue to the end of
+# line.  comments may appear anywhere the syntax permits.
+# +-------+  +--------+ +---------+
+# |winxPC |  |linuxPC| |iMac     |
+# |       |  |        | |         |
+# +-------+  +--------+ +---------+
+
+section: screens
+	# three hosts named:  winxPC, linuxPC, and iMac
+	# These are the nice names of the hosts to make it easy to write the config file
+	# The aliases section below contain the "actual" names of the hosts (their hostnames)
+	winxPC:
+	linuxPC:
+end
+
+section: aliases
+	# The "real" name of iMac is John-Smiths-iMac-3.local. 
+	# If we wanted we could remove this alias and instead use John-Smiths-iMac-3.local everywhere iMac is above. 
+	# Hopefully it should be easy to see why using an alias is nicer
+	winxPC:
+		pangweizhenbj01
+	linuxPC:
+		rowanInspur.lan
+end
+
+section: links
+	# winxPC is to the left of linuxPC
+	linuxPC:
+		down = winxPC
+
+	# linuxPC is to the right of winxPC
+	winxPC:
+		up = linuxPC
+
+end
+
+
+section: options
+	screenSaverSync = false
+	win32KeepForeground = false
+	switchCorners = none
+	keystroke(alt+shift+h) = switchInDirection(left)
+	keystroke(alt+shift+l) = switchInDirection(right)
+
+	keystroke(alt+shift+k) = switchInDirection(up)
+	keystroke(alt+shift+j) = switchInDirection(down)
+end

@@ -3,38 +3,36 @@
 # comments begin with the # character and continue to the end of
 # line.  comments may appear anywhere the syntax permits.
 # +-------+  +--------+ +---------+
-# |Laptop |  |Desktop1| |iMac     |
+# |winxPC |  |linuxPC| |iMac     |
 # |       |  |        | |         |
 # +-------+  +--------+ +---------+
 
 section: screens
-	# three hosts named:  Laptop, Desktop1, and iMac
+	# three hosts named:  winxPC, linuxPC, and iMac
 	# These are the nice names of the hosts to make it easy to write the config file
 	# The aliases section below contain the "actual" names of the hosts (their hostnames)
-	Laptop:
-	Desktop1:
+	winxPC:
+	linuxPC:
 end
 
 section: aliases
 	# The "real" name of iMac is John-Smiths-iMac-3.local. 
 	# If we wanted we could remove this alias and instead use John-Smiths-iMac-3.local everywhere iMac is above. 
 	# Hopefully it should be easy to see why using an alias is nicer
-	Laptop:
+	winxPC:
 		pangweizhenbj01
-	Desktop1:
+	linuxPC:
 		rowanInspur.lan
 end
 
 section: links
-	# Laptop is to the left of Desktop1
-	Desktop1:
-		#right = Laptop
-		down = Laptop
+	# winxPC is to the left of linuxPC
+	linuxPC:
+		left = winxPC
 
-	# Desktop1 is to the right of Laptop
-	Laptop:
-		#left = Desktop1
-		up = Desktop1
+	# linuxPC is to the right of winxPC
+	winxPC:
+		right = linuxPC
 
 end
 
