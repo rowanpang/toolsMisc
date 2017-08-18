@@ -52,7 +52,7 @@
     let g:ctrlp_by_filename = 1
     let g:ctrlp_regexp = 1
     let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-    let g:ctrlp_open_new_file = 't'
+    let g:ctrlp_open_new_file = 't'		    "open new file created by ctrlp in table.'
     let g:ctrlp_lazy_update = 0
 
 "java complete
