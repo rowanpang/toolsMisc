@@ -75,8 +75,10 @@ function initI3wm(){
     #xfce4-terminator
 	local confDir=${HOMEDIR}.config/xfce4/terminal
 	pkgCheckInstall xfce4-terminal-0.6.3
-	mkdir -p $confDir
-	ln -sf ${dir}dep/xfce4-terminal/* $confDir
+	[ -d $confDir ] || mkdir -p $confDir
+	ln -sf ${dir}dep/xfce4-terminal/accels.scm $confDir/accels.scm
+	ln -sf ${dir}dep/xfce4-terminal/readme.txt $confDir/readme.txt
+	ln -sf ${dir}dep/xfce4-terminal/terminalrc.solarized $confDir/terminalrc
 
     #synergyX
 	local synergyDir="${dir}../synergy/"
