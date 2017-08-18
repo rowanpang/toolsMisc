@@ -24,6 +24,10 @@ function miscInit(){
     pkgCheckInstall nmap
     pkgCheckInstall meld 
     pkgCheckInstall autojump
+	#autojump use $PROMPT_COMMAND 实现将dir添加到数据库中.
+	#j() 是在bash加载时export的func
+	#autojump_add_to_database()  也是export 的func
+	#数据库: ~/.local/share/autojump/autojump.txt
 }
 
 function qrInit(){
