@@ -34,8 +34,21 @@
 	Plug 'easymotion/vim-easymotion'
 	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'altercation/vim-colors-solarized'
+	Plug 'skywind3000/asyncrun.vim'
 
     call plug#end()
+    "
+"asyncrun
+    command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+    "let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+
+    function! AsyncrunStatus(...)
+	let builder = a:1
+	call builder.add_section('S:','%{g:asyncrun_status}')
+	return 0
+    endfunction
+    call airline#add_statusline_func('AsyncrunStatus')
+
 
 "indent-guides
     let g:indent_guides_enable_on_vim_startup = 0
@@ -271,6 +284,7 @@
     if has('gui_running')
         "in gui default is on
     else
+	"uncommen below if don't want airline.
         "au VimEnter * if exists('g:loaded_airline') | AirlineToggle | endif
     endif
 
