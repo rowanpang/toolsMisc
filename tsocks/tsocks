@@ -39,10 +39,11 @@
 if [ "$1" == '-d' ];then
     debug='yes'
     debugfile=`mktemp tsockslog-XXXXXX.log`
-    debuglevel=2
+    debuglevel=2	    #MSGDEBUG
     shift
 else
     debug='no'
+    debuglevel=-1	    #MSGNONE
 fi
 
 case "$1" in
@@ -55,8 +56,8 @@ case "$1" in
 				export LD_PRELOAD="libtsocks.so $LD_PRELOAD"
 		fi
 
+		export TSOCKS_DEBUG=$debuglevel
 		if [ "$debug" == 'yes' ];then
-		    export TSOCKS_DEBUG=$debuglevel
 		    export TSOCKS_DEBUG_FILE=$debugfile
 		fi
 	;;
@@ -67,8 +68,8 @@ case "$1" in
 				unset LD_PRELOAD
 		fi
 
+		unset TSOCKS_DEBUG
 		if [ "$debug" == 'yes' ];then
-		    unset TSOCKS_DEBUG
 		    unset TSOCKS_DEBUG_FILE
 		fi
 	;;
@@ -89,8 +90,8 @@ case "$1" in
 			export LD_PRELOAD="libtsocks.so $LD_PRELOAD"
 		fi
 
+		export TSOCKS_DEBUG=$debuglevel
 		if [ "$debug" == 'yes' ];then
-		    export TSOCKS_DEBUG=$debuglevel
 		    export TSOCKS_DEBUG_FILE=$debugfile
 		fi
 
