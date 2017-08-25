@@ -275,6 +275,11 @@
     noremap <leader>9 9gt
     noremap <leader>n gt
     noremap <leader>p gT
+    "for previous tabpage
+    let g:preTab = 1		
+    noremap <Leader>tl :exe "tabn ".g:preTab<CR>
+    au TabLeave * let g:preTab= tabpagenr()
+    au TabClosed * exe "normal gT"
 
 "paste
     set pastetoggle=<F2>
