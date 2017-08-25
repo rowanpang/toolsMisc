@@ -13,4 +13,8 @@ function initGraphviz(){
     sudo dot -c					    #gen configure
 }
 
+function initDia(){
+    pkgsInstall dia
+}
+
 initGraphviz
