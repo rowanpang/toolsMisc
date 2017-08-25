@@ -10,6 +10,13 @@
 		<LocalLeader>li
 		:map	to see
 	ref .vim/vimrc
+
+    d,tools
+	vimdot xx.gv
+	gvedit xx.gv
+
+    e,coding 
+	ref Coding/dot/xx
 	
 1,error
     a,Layout type: "" not recognized. Use one of:
