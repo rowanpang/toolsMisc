@@ -35,6 +35,7 @@
 	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'altercation/vim-colors-solarized'
 	Plug 'skywind3000/asyncrun.vim'
+	Plug 'wannesm/wmgraphviz.vim'
 
     call plug#end()
     "
@@ -94,7 +95,7 @@
         au GUIEnter * simalt ~x    "auto maximum
     endif
     
-    :nmap <silent> <C-h> :wincmd h<CR>
+    :nmap <silent> <C-h> :wincmd h<CR>		"silent not show cmd map in commandline"
     :nmap <silent> <C-j> :wincmd j<CR>
     :nmap <silent> <C-k> :wincmd k<CR>
     :nmap <silent> <C-l> :wincmd l<CR>
@@ -178,7 +179,8 @@
 "keymap leader
     "map <silent> [map] [cmd]: will not show cmd in window,exp:
     "map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
-    let mapleader = ","
+    let mapleader = ","		    "default is \
+    let maplocalleader = ','	    "default is \ 
 
 "vimdiff
     if &diff
