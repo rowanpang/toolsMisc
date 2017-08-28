@@ -36,9 +36,13 @@
 	Plug 'altercation/vim-colors-solarized'
 	Plug 'skywind3000/asyncrun.vim'
 	Plug 'wannesm/wmgraphviz.vim'
+	Plug 'mileszs/ack.vim'
 
     call plug#end()
     "
+"ack/ag
+    let g:ackprg = 'ag --vimgrep --smart-case' 
+
 "asyncrun
     command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
     "let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
