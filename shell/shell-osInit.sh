@@ -47,10 +47,17 @@ function zshInit(){
     if ! [ -d $HOME/.oh-my-zsh ];then
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     fi
-
     rcT="$HOME/.zshrc"
     rc="$localdir/zshrc"
     ln -sf $rc $rcT
+    lsudo useradd -D -s '/usr/bin/zsh'	    #chang the default shell when useradd
+
+    #root user
+    if [ "$USER" != 'root'];then
+	lsudo chsh -s /bin/zsh root
+	lsudo ln -sf  $rc /root/.zshrc
+	lsudo ln -sf /home/pangwz/.oh-my-zsh/   /root/.oh-my-zsh
+    fi
 
 }
 

@@ -8,7 +8,20 @@
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-ZSH_THEME="random"
+ZSH_THEME="adben"
+ZSH_THEME="apple"
+ZSH_THEME="awesomepanda"
+ZSH_THEME="half-life"
+ZSH_THEME="kiwi"
+ZSH_THEME="kolo"
+ZSH_THEME="minimal"
+ZSH_THEME="steeef"
+ZSH_THEME="zhann"
+
+#ZSH_THEME="random"
+ZSH_THEME="kolo"
+
+
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -30,7 +43,7 @@ ZSH_THEME="random"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -52,7 +65,11 @@ ZSH_THEME="random"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fasd autojump fedora)
+# 
+# [autojump]:  use fasd alias 'd' 'z' instead
+plugins=(git git-prompt fasd fedora thefuck command-not-found common-aliases gpg-agent svn-fast-info 
+	ssh-agent encode64 pip pep8)
+
 
 source $ZSH/oh-my-zsh.sh
 

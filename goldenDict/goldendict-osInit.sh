@@ -17,7 +17,7 @@ function repoInit(){
     local dir="${localdir}/dictRepo/"
     cd $dir
     tar -xjf stardict-oxford-gb-formated-2.4.2.tar.bz2
-    cd ../
+    cd -
 }
 
 function main(){

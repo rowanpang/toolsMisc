@@ -9,7 +9,9 @@ function initVim(){
     pkgCheckInstall cscope
 
     ln -snf $dir ${HOMEDIR}.vim
-    lsudo ln -snf $dir ${ROOTHOME}.vim   #for root vim
+    if [ "$USER" != 'root'];then
+	lsudo ln -snf $dir ${ROOTHOME}.vim   #for root vim
+    fi 
     lsudo sed  -i 's; \[\s\+.*\]\s\+\&\&\s\+return$;#&;' /etc/profile.d/vim.sh
 
     #for ycm dependence
