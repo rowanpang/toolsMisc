@@ -18,6 +18,7 @@ function Usage(){
     echo -e "\t\t -l,list: list vm status"	
     echo -e "\t\t -q,quit: quit shell"	
     echo -e "\t\t -s,size: imge disk size,default 25G"	
+    echo -e "\t\t -n,noVnc: not startup vncViewer" 
 }
 
 function lsudo(){
@@ -63,6 +64,9 @@ function gotDomainVncPort(){
 }
 
 function doVncViewer(){
+    if [ "$noVncViewer" == 'true' ];then
+	return
+    fi
     $lchmod a+rw $logFile
     local vncPort=""
     vncPort=$(gotDomainVncPort)
@@ -213,6 +217,9 @@ function optParser(){
 	    -s|size)
 		imgSizeWhenAutoCreate="${2}"
 		shift
+		;;
+	    -n|noVnc)
+		noVncViewer="true"
 		;;
 	    -h|help)
 		Usage
