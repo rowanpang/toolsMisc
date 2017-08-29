@@ -65,6 +65,10 @@ function zshInit(){
 	lsudo ln -sf /home/pangwz/.oh-my-zsh/   /root/.oh-my-zsh
     fi
 
+    #them
+    th="${localdir}steeef-rowan.zsh-theme"
+    tht="$HOME/.oh-my-zsh/themes/"
+    ln -sf $th $tht
 }
 
 bashConf
