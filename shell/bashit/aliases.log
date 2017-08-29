@@ -1,0 +1,42 @@
+Alias		    Enabled?  Description
+ag		      [x]     33m'the silver searcher (ag) aliases'39;49;00m
+ansible		      [x]     33m'ansible abbreviations'39;49;00m
+apt		      [ ]     33m'Apt and dpkg aliases for Ubuntu and Debian distros.'39;49;00m
+atom		      [x]     33m'Atom.io editor abbreviations'39;49;00m
+bundler		      [x]     33m'ruby bundler'39;49;00m
+clipboard	      [x]     33m'pbcopy and pbpaste shortcuts to linux'39;49;00m
+curl		      [x]     33m'Curl aliases for convenience.'39;49;00m
+docker		      [x]     33m'docker abbreviations'39;49;00m
+docker-compose	      [x]     33m'docker-compose abbreviations'39;49;00m
+emacs		      [x]     33m'emacs editor'39;49;00m
+fuck		      [x]
+general		      [x]     33m'general aliases'39;49;00m
+git		      [x]     33m'common git abbreviations'39;49;00m
+gitsvn		      [x]     33m'common git-svn abbreviations'39;49;00m
+heroku		      [x]     33m'heroku task abbreviations'39;49;00m
+hg		      [x]     33m'mercurial abbreviations'39;49;00m
+homebrew	      [x]     33m'homebrew abbreviations'39;49;00m
+homebrew-cask	      [x]     33m'homebrew-cask abbreviations'39;49;00m
+homesick	      [x]     33m'homesick aliases'39;49;00m
+jitsu		      [x]     33m'jitsu task abbreviations'39;49;00m
+laravel		      [x]     33m'laravel artisan abbreviations'39;49;00m
+maven		      [x]     33m'maven abbreviations'39;49;00m
+npm		      [x]     33m'common npm abbreviations'39;49;00m
+osx		      [x]     33m'osx-specific aliases'39;49;00m
+phoenix		      [x]     33m'phoenix abbreviations'39;49;00m
+rails		      [x]     33m'rails abbreviations'39;49;00m
+svn		      [x]     33m'common svn abbreviations'39;49;00m
+systemd		      [x]     33m'systemd service'39;49;00m
+textmate	      [x]     33m'textmate abbreviations'39;49;00m
+tmux		      [x]     33m'Tmux terminal multiplexer'39;49;00m
+todo.txt-cli	      [x]     33m'todo.txt-cli abbreviations'39;49;00m
+vagrant		      [x]     33m'vagrant aliases'39;49;00m
+vault		      [x]     33m'vault aliases'39;49;00m
+vim		      [x]     33m'vim abbreviations'39;49;00m
+yarn		      [x]     33m'yarn package manager aliases'39;49;00m
+
+to enable an alias, do:
+$ bash-it enable alias	<alias name> [alias name]... -or- $ bash-it enable alias all
+
+to disable an alias, do:
+$ bash-it disable alias <alias name> [alias name]... -or- $ bash-it disable alias all

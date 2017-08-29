@@ -1,0 +1,72 @@
+Plugin		    Enabled?  Description
+alias-completion      [x]     33m'Automatic completion of aliases'39;49;00m
+autojump	      [x]     33m'Autojump configuration, see https://github.com/wting/autojump for more details'39;49;00m
+aws		      [ ]     33m'AWS helper functions'39;49;00m
+base		      [x]     33m'miscellaneous tools'39;49;00m
+battery		      [x]     33m'display info about your battery charge level'39;49;00m
+boot2docker	      [x]     33m'Helpers to get Docker setup correctly for boot2docker'39;49;00m
+browser		      [x]     33m'render commandline output in your browser'39;49;00m
+chruby-auto	      [ ]     33m'load chruby + auto-switching (from /usr/local/share/chruby)'39;49;00m
+chruby		      [ ]     33m'load chruby		       (from /usr/local/share/chruby)'39;49;00m
+dirs		      [x]     33m'directory stack navigation'39;49;00m
+docker-compose	      [x]     33m'Helper functions for using docker-compose'39;49;00m
+docker-machine	      [x]     33m'Helpers to get Docker setup correctly for docker-machine'39;49;00m
+docker		      [x]     33m'Helpers to more easily work with Docker'39;49;00m
+edit-mode-emacs	      [x]     33m'Enable emacs editing mode'39;49;00m
+edit-mode-vi	      [ ]     33m'Enable vi editing mode'39;49;00m
+explain		      [x]     33m'mankier.com explain function to explain other commands'39;49;00m
+extract		      [x]     33m'one command to extract them all...'39;49;00m
+fasd		      [x]     33m'initialize fasd (see https://github.com/clvv/fasd)'39;49;00m
+fzf		      [x]     33m'load fzf, if you are using it'39;49;00m
+gh		      [x]     33m'load gh, if you are using it (DEPRECATED, use hub instead)'39;49;00m
+gif		      [x]     33m'gif helper functions'39;49;00m
+git		      [x]     33m'git helper functions'39;49;00m
+git-subrepo	      [x]     33m'load git-subrepo if you are using it, and initialize completions'39;49;00m
+go		      [x]     33m'go environment variables & path configuration'39;49;00m
+gradle		      [x]     33m'Add a gw command to use gradle wrapper if present, else use system gradle'39;49;00m
+hg		      [x]     33m'hg helper functions'39;49;00m
+history		      [x]     33m'history manipulation'39;49;00m
+hub		      [x]     33m'load hub, if you are using it'39;49;00m
+java		      [x]     33m'Java and JAR helper functions'39;49;00m
+javascript	      [x]     33m'download jquery files into current project'39;49;00m
+jekyll		      [x]     33m'manage your jekyll site'39;49;00m
+jenv		      [ ]     33m'load jenv, if you are using it'39;49;00m
+latex		      [x]     33m'use mactex'39;49;00m
+less-pretty-cat	      [x]     33m'pygmentize instead of cat to terminal if possible'39;49;00m
+nginx		      [x]     33m'manage your nginx service'39;49;00m
+node		      [x]     33m'Node.js helper functions'39;49;00m
+nvm		      [ ]     33m'node version manager configuration'39;49;00m
+osx		      [x]     33m'osx-specific functions'39;49;00m
+osx-timemachine	      [x]     33m'OS X Time Machine functions'39;49;00m
+percol		      [x]     33m'Search&Select history and fasd with percol'39;49;00m
+pipsi		      [x]     33m'load pipsi, if you are using it'39;49;00m
+plenv		      [ ]     33m'plenv plugin for Perl'39;49;00m
+postgres	      [ ]     33m'postgres helper functions'39;49;00m
+projects	      [x]     33m'add "export PROJECT_PATHS=~/projects:~/intertrode/projects" to navigate quickly to your project directories with `pj` and `pjo`'39;49;00m
+proxy		      [x]     33m'Proxy Tools'39;49;00m
+pyenv		      [ ]     33m'load pyenv, if you are using it'39;49;00m
+python		      [x]     33m'alias "shttp" to SimpleHTTPServer'39;49;00m
+rails		      [x]     33m'Helper functions for Ruby on Rails'39;49;00m
+rbenv		      [ ]     33m'load rbenv, if you are using it'39;49;00m
+ruby		      [x]     33m'ruby and rubygems specific functions and settings'39;49;00m
+rvm		      [x]     33m'load rvm, if you are using it'39;49;00m
+sdkman		      [x]     33m'Load Software Development Kit Manager'39;49;00m
+sshagent	      [x]     33m'sshagent helper functions'39;49;00m
+ssh		      [x]     33m'ssh helper functions'39;49;00m
+subversion	      [x]     33m'svn helper functions'39;49;00m
+textmate	      [x]     33m'set textmate as a default editor'39;49;00m
+tmuxinator	      [x]     33m'sources tmuxinator script if available'39;49;00m
+tmux		      [x]     33m'make sure that tmux is launched in 256 color mode'39;49;00m
+todo		      [x]     33m'Todo.txt integration'39;49;00m
+virtualenv	      [ ]     33m'virtualenvwrapper helper functions'39;49;00m
+visual-studio-code    [x]     33m'Defines the `code` executable for Visual Studio Code on OS X'39;49;00m
+xterm		      [x]     33m'automatically set your xterm title with host and location info'39;49;00m
+z_autoenv	      [x]     33m'source into environment when cding to directories'39;49;00m
+z		      [ ]     33m'maintains a jump-list of the directories you actually use'39;49;00m
+33m'				  z is DEPRECATED, use fasd instead'39;49;00m
+
+to enable a plugin, do:
+$ bash-it enable plugin	 <plugin name> [plugin name]... -or- $ bash-it enable plugin all
+
+to disable a plugin, do:
+$ bash-it disable plugin <plugin name> [plugin name]... -or- $ bash-it disable plugin all
