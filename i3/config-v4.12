@@ -124,9 +124,9 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+t restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+e exit
@@ -176,3 +176,8 @@ exec /usr/bin/nm-applet
 
 #volumeicon
 exec --no-startup-id /usr/bin/volumeicon
+
+#app class
+#ref https://i3wm.org/docs/userguide.html#assign_workspace
+assign [class="Firefox"] 10:fox
+assign [class="Wireshark"] 9:srk
