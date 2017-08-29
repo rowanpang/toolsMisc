@@ -19,6 +19,7 @@ function Usage(){
     echo -e "\t\t -q,quit: quit shell"	
     echo -e "\t\t -s,size: imge disk size,default 25G"	
     echo -e "\t\t -n,noVnc: not startup vncViewer" 
+    echo -e "\t\t -t,shut: shutdown vm" 
 }
 
 function lsudo(){
@@ -209,7 +210,14 @@ function optParser(){
     while [ $# -gt 0 ]; do
 	case "$1" in
 	    -l|list)
-		do_list="true"
+		doWhat="list"
+		break
+		;;
+	    -t|shut)
+		doWhat="shut"
+		vmtoShut="${2}"
+		shift
+		break
 		;;
 	    -q|quit)
 		quitShell="true"
@@ -259,7 +267,7 @@ function optParser(){
     uri="system"
     if [ "$uri" == "system" ];then
 	#TODO
-	domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
+	domainSavedDir="$HOME/.config/libvirt/qemu/save/"
 	domainSaved=$domainSavedDir$domain.save
 
 	lvirsh="lsudo virsh"
@@ -269,7 +277,7 @@ function optParser(){
 	lnetstat="lsudo netstat"
 	lchmod="lsudo chmod"
     else
-	domainSavedDir="/home/$USER/.config/libvirt/qemu/save/"
+	domainSavedDir="$HOME/.config/libvirt/qemu/save/"
 	domainSaved=$domainSavedDir$domain.save
 
 	lvirsh="virsh"
@@ -280,14 +288,32 @@ function optParser(){
 }
 
 
+function dolist(){
+    virsh list --all 2>&1
+    virsh -c qemu:///system list --all 2>&1
+}
+
+function doshut(){
+    virsh -c qemu:///system shutdown $1 2>&1
+}
+
 function main(){
     optParser "$@"
 
-    if [ "$do_list" ];then
-	virsh list --all 2>&1
-	virsh -c qemu:///system list --all 2>&1
-	exit
-    fi
+    case "$doWhat" in
+	"list")
+	    dolist 
+	    ;;
+	"shut")
+	    doshut $vmtoShut
+	    shift
+	    ;;
+	*)
+	    doWhat="create"
+	    ;;
+    esac
+
+    [ "$doWhat" == "create" ] || exit
 
     curWS=$(getCurWorkSpace)
     echo "domain: $domain"

@@ -1,2 +1,3 @@
 #!/bin/bash
+$HOME/vm-iso/vmStart.sh -q -n win10_v1511
 rdesktop -f -u kvm-win10 -p qqqqqq 192.168.1.232
