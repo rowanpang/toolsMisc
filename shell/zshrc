@@ -22,6 +22,7 @@ ZSH_THEME="zhann"
 
 #ZSH_THEME="random"
 ZSH_THEME="steeef"
+ZSH_THEME="steeef-rowan"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
