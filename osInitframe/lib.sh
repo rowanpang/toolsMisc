@@ -127,7 +127,8 @@ function libInit(){
     fi
 
     program=$0
-    localdir="$PWD/$(dirname $0)/"
+    pdir=`dirname $program | sed 's;^\./;;'`
+    localdir="$PWD/${pdir}/"
 
     DEBUG="yes"
     HOMEDIR="$HOME/"

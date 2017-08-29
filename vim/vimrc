@@ -131,7 +131,8 @@
         hi CursorLine cterm=none ctermbg=Black        "for gnome-terminal rowan-solarDark
 	set cursorline              " 突出显示当前行
     else "under terminal TERM == linux
-        hi CursorLine cterm=none ctermbg=DarkMagenta
+        hi CursorLine cterm=none ctermbg=Gray
+	set nocursorline              " 突出显示当前行
     endif
     "set cursorcolumn
         "winent/winleave also can auto set to distinguish cur window
