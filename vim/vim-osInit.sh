@@ -16,6 +16,11 @@ function initVim(){
 
     #for ycm dependence
 	pkgsInstall clang llvm automake gcc gcc-c++ kernel-devel cmake python-devel
+
+
+    #fix deps for ack plugin
+    pkgCheckInstall ack
+    pkgCheckInstall ag
 }
 
 initVim

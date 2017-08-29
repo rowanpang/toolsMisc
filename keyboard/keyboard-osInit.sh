@@ -2,7 +2,7 @@
 source ./osInitframe/lib.sh
 
 xorgKeyboardConf=/etc/X11/xorg.conf.d/00-keyboard.conf
-function initKeyBoard(){
+function ctrlCapsSwapX11(){
     #swapcaps,ctrl
     pkgCheckInstall xorg-x11-xkb-utils
     #setxkbmap -option ctrl:swapcaps
@@ -19,4 +19,25 @@ function initKeyBoard(){
     fi  
 }   
 
-initKeyBoard
+function ctrlCapsSwapKern(){
+    rclocal="/etc/rc.d/rc.local"
+    dir="$localdir"
+    rcdir="${dir}../rclocal/doit/"
+    maps=${dir}kernCtrlCap.maps
+    script=${rcdir}keyboard-rcInit.sh
+
+
+    if [ -e $rclocal ] && [ -d $rcdir ];then
+	cat > $script <<EOF
+#!/bin/bash
+
+#---genby keyboard when keyboard do init--- 
+#---$0---
+loadkeys $maps
+EOF
+	chmod a+x $script
+    fi
+}
+
+ctrlCapsSwapX11
+ctrlCapsSwapKern
