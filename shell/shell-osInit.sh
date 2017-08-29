@@ -19,21 +19,27 @@ function bashConf(){
 }
 
 function binPATH(){
-    binDir="$localdir/bin"
+    binDir="${localdir}bin"
     conf="$HOME/.bash_profile"
     conf="$HOME/.bashrc"
-
-    for conf in {"$HOME/.bashrc","$HOME/.zshrc"};do
-	if [ -f $conf ];then
-	    if [ `echo "$PATH" | grep -c "$binDir"` -eq 0 ];then
-		echo 'PATH=$PATH:'"$binDir" >> $conf
-		echo "export PATH" >> $conf
-
-		PATH=$PAHT:$binDir
-		export PATH
-	    fi
+    if [ -f $conf ];then
+	if [ `echo "$PATH" | grep -c "$binDir"` -eq 0 ];then
+	    echo 'PATH=$PATH:'"$binDir" >> $conf
+	    echo "export PATH" >> $conf
 	fi
-    done
+    fi
+
+    conf="$HOME/.zshrc"
+    if [ -f $conf ];then
+	if [ `echo "$PATH" | grep -c "$binDir"` -eq 0 ];then
+	    #echo 'PATH=$PATH:'"$binDir" >> $conf
+	    #echo "export PATH" >> $conf
+	    sed -i "\;^# export PATH; iPATH=$PATH:$binDir\nexport PATH" $conf
+	fi
+    fi
+
+    PATH="$PATH:$binDir"
+    export PATH
 }
 
 function zshInit(){
@@ -62,5 +68,5 @@ function zshInit(){
 }
 
 bashConf
-binPATH
 zshInit
+binPATH
