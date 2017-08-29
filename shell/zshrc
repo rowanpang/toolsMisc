@@ -1,4 +1,6 @@
 # If you come from bash you might have to change your $PATH.
+PATH=/usr/local/bin:/usr/bin:/home/pangwz/bin:/usr/local/sbin:/usr/sbin:/home/pangwz/tools/toolsMisc/./shell/bin
+export PATH
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -10,18 +12,16 @@
 ZSH_THEME="robbyrussell"
 ZSH_THEME="adben"
 ZSH_THEME="apple"
-ZSH_THEME="awesomepanda"
+ZSH_THEME="awesomepanda"    #ng
 ZSH_THEME="half-life"
-ZSH_THEME="kiwi"
+ZSH_THEME="kiwi"	    #command not found
 ZSH_THEME="kolo"
 ZSH_THEME="minimal"
 ZSH_THEME="steeef"
 ZSH_THEME="zhann"
 
 #ZSH_THEME="random"
-ZSH_THEME="kolo"
-
-
+ZSH_THEME="steeef"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

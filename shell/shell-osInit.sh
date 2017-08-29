@@ -23,15 +23,15 @@ function binPATH(){
     conf="$HOME/.bash_profile"
     conf="$HOME/.bashrc"
     if [ -f $conf ];then
-	if [ `echo "$PATH" | grep -c "$binDir"` -eq 0 ];then
+	if [ `cat $conf | grep -c "$binDir"` -eq 0 ];then
 	    echo 'PATH=$PATH:'"$binDir" >> $conf
 	    echo "export PATH" >> $conf
 	fi
     fi
 
-    conf="$HOME/.zshrc"
+    conf="${localdir}zshrc"
     if [ -f $conf ];then
-	if [ `echo "$PATH" | grep -c "$binDir"` -eq 0 ];then
+	if [ `cat $conf | grep -c "$binDir"` -eq 0 ];then
 	    #echo 'PATH=$PATH:'"$binDir" >> $conf
 	    #echo "export PATH" >> $conf
 	    sed -i "\;^# export PATH; iPATH=$PATH:$binDir\nexport PATH" $conf
@@ -59,7 +59,7 @@ function zshInit(){
     lsudo useradd -D -s '/usr/bin/zsh'	    #chang the default shell when useradd
 
     #root user
-    if [ "$USER" != 'root'];then
+    if [ "$USER" != 'root' ];then
 	lsudo chsh -s /bin/zsh root
 	lsudo ln -sf  $rc /root/.zshrc
 	lsudo ln -sf /home/pangwz/.oh-my-zsh/   /root/.oh-my-zsh
