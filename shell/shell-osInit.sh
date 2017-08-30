@@ -71,6 +71,11 @@ function zshInit(){
     ln -sf $th $tht
 }
 
+function sofwareInit(){
+    pkgCheckInstall ansifilter 
+}
+
 bashConf
 zshInit
 binPATH
+sofwareInit
