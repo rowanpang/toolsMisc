@@ -184,12 +184,16 @@ exec --no-startup-id /usr/bin/volumeicon
 #xporp for xwindos property exp: class="Firefox"
 assign [class="Firefox"]    firefox
 bindsym $mod+Control+f workspace firefox
+bindsym $mod+Shift+Control+f move container to workspace firefox
 
 assign [class="Wireshark"]  ishark
 bindsym $mod+Control+i workspace ishark
+bindsym $mod+Shift+Control+i move container to workspace ishark
 
 assign [class="Doublecmd"]  doublecmd
 bindsym $mod+Control+d workspace doublecmd
+bindsym $mod+Shift+Control+d move container to workspace doublecmd
 
 assign [class="Foxit Reader"]  pdf
 bindsym $mod+Control+p workspace pdf
+bindsym $mod+Shift+Control+p move container to workspace pdf
