@@ -17,4 +17,14 @@ function initDia(){
     pkgsInstall dia
 }
 
+function initQr(){
+    pkgCheckInstall qrencode
+    pkgCheckInstall qrencode-devel
+    pkgCheckInstall qrencode-libs
+    pkgCheckInstall zbar
+    pkgCheckInstall python-qrcode
+}
+
 initGraphviz
+initDia
+initQr

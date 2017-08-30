@@ -30,18 +30,10 @@ function miscInit(){
 	#数据库: ~/.local/share/autojump/autojump.txt
 }
 
-function qrInit(){
-    pkgCheckInstall qrencode
-    pkgCheckInstall qrencode-devel
-    pkgCheckInstall qrencode-libs
-    pkgCheckInstall zbar
-}
-
 function main(){
     initWireshark
     initGNU
     miscInit
-    qrInit
 }
 
 main
