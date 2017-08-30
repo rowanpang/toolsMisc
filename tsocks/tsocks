@@ -36,15 +36,58 @@
 # 
 # This script is originally from the debian tsocks package by 
 # Tamas Szerb <toma@rulez.org>
-if [ "$1" == '-d' ];then
-    debug='yes'
-    debugfile=`mktemp tsockslog-XXXXXX.log`
-    debuglevel=2	    #MSGDEBUG
+function Usage(){
+    echo -e '\t\t-d: enable debug'
+    echo -e '\t\t-s: proxy server'
+    echo -e '\t\t-p: proxy port'
+}
+debug='no'
+debuglevel=-1	    #MSGNONE
+suffix=""
+confTmp="$HOME/.tsocks/conf"
+conf="$confTmp"
+
+while [ $# -gt 0 ];do
+    case $1 in
+	'-d')
+	    debug='yes'
+	    debugfile=`mktemp tsockslog-XXXXXX.log`
+	    debuglevel=2	    #MSGDEBUG
+	    ;;
+	'-s')
+	    sip=$2
+	    shift
+	    suffix="$suffix.s.$sip"
+	    ;;
+	'-p')
+	    sport=$2
+	    shift
+	    suffix="$suffix.p.$sport"
+	    ;;
+	   *)
+	    break
+	    ;;
+    esac
     shift
-else
-    debug='no'
-    debuglevel=-1	    #MSGNONE
+done
+
+if [ "X$suffix" != "X" ];then
+    conf="$HOME/.tsocks/conf$suffix"
+    [ -e $conf ] || cp $confTmp $conf
+
+    if [ $sip ];then
+	osvr=`sed -n '/^server = /p' $confTmp`
+	shopt -s extglob
+	tsvr=${osvr%.+([0-9])}.$sip
+	shopt -u extglob
+	sed -i "s;\(^server = \)[1-9].*\+;$tsvr;" $conf
+    fi
+
+    [ $sport ] && sed -i "s;\(server_port = \)[0-9]\+$;\1$sport;" $conf
+
 fi
+
+export TSOCKS_CONF_FILE=$conf
 
 case "$1" in
 	on)
@@ -79,8 +122,9 @@ case "$1" in
 		echo "TSOCKS_DEBUG_FILE=\"$TSOCKS_DEBUG_FILE\""
 	;;
 	-h|-?)
-      echo "$0: Please see tsocks(1) or read comment at top of $0"
-   ;;
+	    echo "$0: Please see tsocks(1) or read comment at top of $0"
+	    Usage
+	    ;;
 	*)
 		if [ -z "$LD_PRELOAD" ]
 		then
