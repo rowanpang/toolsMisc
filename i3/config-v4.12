@@ -190,3 +190,6 @@ bindsym $mod+Control+i workspace ishark
 
 assign [class="Doublecmd"]  doublecmd
 bindsym $mod+Control+d workspace doublecmd
+
+assign [class="Foxit Reader"]  pdf
+bindsym $mod+Control+p workspace pdf
