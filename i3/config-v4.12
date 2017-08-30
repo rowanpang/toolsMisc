@@ -8,6 +8,7 @@
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# cmd xmodmap for mean of Mod4
 
 set $mod Mod4
 
@@ -111,6 +112,7 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -179,5 +181,12 @@ exec --no-startup-id /usr/bin/volumeicon
 
 #app class
 #ref https://i3wm.org/docs/userguide.html#assign_workspace
-assign [class="Firefox"] 10:fox
-assign [class="Wireshark"] 9:srk
+#xporp for xwindos property exp: class="Firefox"
+assign [class="Firefox"]    firefox
+bindsym $mod+Control+f workspace firefox
+
+assign [class="Wireshark"]  ishark
+bindsym $mod+Control+i workspace ishark
+
+assign [class="Doublecmd"]  doublecmd
+bindsym $mod+Control+d workspace doublecmd
