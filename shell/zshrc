@@ -68,8 +68,11 @@ ZSH_THEME="steeef-rowan"
 # Add wisely, as too many plugins slow down shell startup.
 # 
 # [autojump]:  use fasd alias 'd' 'z' instead
-plugins=(git git-prompt fasd fedora thefuck command-not-found common-aliases gpg-agent svn-fast-info 
-	ssh-agent encode64 pip pep8)
+plugins=(
+	git git-prompt fasd fedora thefuck 
+	command-not-found common-aliases gpg-agent svn-fast-info 
+	ssh-agent encode64 pip pep8 sudo	
+	)
 
 
 source $ZSH/oh-my-zsh.sh

@@ -335,5 +335,10 @@
     let g:ycm_complete_in_strings = 1
     let g:ycm_collect_identifiers_from_comments_and_strings = 1
 
-    let g:ycm_show_diagnostics_ui = 0		    "disable ycm checker use Syntastic's checker
+    let g:ycm_show_diagnostics_ui = 0		"disable ycm checker use Syntastic's checker
 
+"cmdline hotkey
+    :cnoremap <C-A> <HOME>
+    :cnoremap <C-F> <Right>
+    :cnoremap <C-B> <Left>
+    :cnoremap <C-B> <Left>

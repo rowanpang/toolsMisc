@@ -168,13 +168,16 @@ bar {
 #synergyX
 exec /home/pangwz/tools/toolsMisc/./i3/../synergy/synergyX.sh
 
-exec /usr/bin/ibus-daemon --daemonize --replace
+#exec /usr/bin/ibus-daemon --daemonize --replace
+exec /usr/bin/fcitx -d 
 exec /home/pangwz/.nutstore/dist/bin/nutstore-pydaemon.py
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec /home/pangwz/.fehbg
 
-#nm-applet
+#nm-applet,netManager
 exec /usr/bin/nm-applet
+
+exec /usr/bin/megasync
 
 #volumeicon
 exec --no-startup-id /usr/bin/volumeicon
@@ -197,3 +200,8 @@ bindsym $mod+Shift+Control+d move container to workspace doublecmd
 assign [class="Foxit Reader"]  pdf
 bindsym $mod+Control+p workspace pdf
 bindsym $mod+Shift+Control+p move container to workspace pdf
+
+assign [class="libreoffice*"] office
+bindsym $mod+Control+o workspace office
+bindsym $mod+Shift+Control+o move container to workspace office
+
