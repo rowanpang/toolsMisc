@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+rpm -qf `which $1`
