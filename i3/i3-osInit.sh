@@ -31,6 +31,10 @@ function initI3wm(){
     local dir=$localdir
     baseInit
 
+    #xscreensaver
+    #xscreen-daemon to config and preview
+	pkgCheckInstall xscreensaver
+
     #memSave
 	pkgCheckInstall usermode-gtk
 	pkgCheckInstall i3lock
