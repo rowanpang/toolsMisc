@@ -89,6 +89,12 @@ function initI3wm(){
 
     #startx
 	[ -f $HOME/.Xclients ] || cp ${dir}./Xclients $HOME/.Xclients
+
+    #input-method
+	pkgCheckInstall fcitx 
+	pkgCheckInstall fcitx-configtool
+	pkgCheckInstall sogoupinyin
+
 }
 
 initI3wm
