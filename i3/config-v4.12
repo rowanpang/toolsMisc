@@ -205,3 +205,6 @@ assign [class="libreoffice*"] office
 bindsym $mod+Control+o workspace office
 bindsym $mod+Shift+Control+o move container to workspace office
 
+assign [class="Evolution"] mail
+bindsym $mod+Control+m workspace mail
+bindsym $mod+Shift+Control+m move container to workspace mail

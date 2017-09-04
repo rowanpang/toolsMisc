@@ -71,7 +71,7 @@ ZSH_THEME="steeef-rowan"
 plugins=(
 	git git-prompt fasd fedora thefuck 
 	command-not-found common-aliases gpg-agent svn-fast-info 
-	ssh-agent encode64 pip pep8
+	ssh-agent encode64 pip zsh-completions zsh-syntax-highlighting
 	)
 
 
