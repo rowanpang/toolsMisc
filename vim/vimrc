@@ -1,11 +1,11 @@
 "language
     let $LANG='en_US'
     set langmenu=en_US
-    
+
 "snippet
     "ref software/editor/vim/plugin/snippet.txt
     ":help snippet
-    
+
 "vim-plug to manage plugin. ref https://github.com/junegunn/vim-plug
     "plugs will be install in plugged/xxx/*  'xxx' subdir named as plugin.
     ":PlugInstall :PlugClen ...
@@ -37,7 +37,10 @@
     call plug#end()
     "
 "ack/ag
-    let g:ackprg = 'ag --vimgrep --smart-case' 
+    let g:ackprg = 'ag --vimgrep --smart-case'
+
+"strip trailing space
+    autocmd BufWritePre * %s/\s\+$//e
 
 "asyncrun
     command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
@@ -54,9 +57,9 @@
 "indent-guides
     let g:indent_guides_enable_on_vim_startup = 0
     let g:indent_guides_exclude_filetypes = ['help','vim','nerdtree']
-    "au BufReadPost * IndentGuidesEnable 
+    "au BufReadPost * IndentGuidesEnable
     "<leader>ig
-     
+
 "easymotion
     "ref http://www.wklken.me/posts/2015/06/07/vim-plugin-easymotion.html
 
@@ -82,7 +85,7 @@
 "simalt alt-key
     if has("win32")
         set winaltkeys=yes        "let vim handle <alt-space> for os system menu.
-    endif    
+    endif
 
 "backspace del key
     set backspace=indent,eol,start
@@ -94,7 +97,7 @@
         au GUIEnter * winpos 210 135
         au GUIEnter * simalt ~x    "auto maximum
     endif
-    
+
     :nmap <silent> <C-h> :wincmd h<CR>		"silent not show cmd map in commandline"
     :nmap <silent> <C-j> :wincmd j<CR>
     :nmap <silent> <C-k> :wincmd k<CR>
@@ -111,7 +114,7 @@
     let g:solarized_termtrans=1
     "let g:solarized_termcolors=256
     call togglebg#map("<F5>")
-    colorscheme solarized 
+    colorscheme solarized
     "colorscheme default
 
     if has('gui_running')
@@ -119,7 +122,7 @@
     else
 	set background=dark
     endif
-    
+
 "highlight
     syntax on				" 自动语法高亮
     if $TERM >= "xterm"			" linux vconsole
@@ -137,7 +140,7 @@
 "indent
     set shiftwidth=4            " 设定 << 和 >> 命令移动时的宽度为 4
     set softtabstop=4           " 使得按退格键时可以一次删掉 4 个空格
-    set tabstop=8               
+    set tabstop=8
         "设定tab长度为4,如果ts与sts不相等则，按下tab建锁进sts.
         "exp"ts=8,sts=4,则按下tab建插入的字符为4个' '，连续两个tab插入的为'\t'
     set noexpandtab             " 不使用空格展开tab
@@ -157,7 +160,7 @@
 
 "vertical list
     "can also be '¦,┆'. for plugins https://github.com/Yggdroot/indentLine
-    set listchars=tab:\|\ ,eol:$    
+    set listchars=tab:\|\ ,eol:$
     ":set list    /nolist                " better manual set when need
 
 "fold
@@ -181,7 +184,7 @@
     "map <silent> [map] [cmd]: will not show cmd in window,exp:
     "map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
     let mapleader = ","		    "default is \
-    let maplocalleader = ','	    "default is \ 
+    let maplocalleader = ','	    "default is \
 
 "vimdiff
     if &diff
@@ -215,23 +218,23 @@
         let NERDTreeShowLineNumbers = 1
         "let NERDTreeQuitOnOpen = 1
         let nerdtree_plugin_open_cmd = 'xdg-open'
-        
+
         "let NERDTreeChDirMode = 2
     let g:netrw_nogx = 1	    "use xdg-open files
 
 "nerdcomment
     "managed by Plugin
     "ref:https://github.com/scrooloose/nerdcommenter
-    "\ca 转换注释的方式，比如： /**/和// 
+    "\ca 转换注释的方式，比如： /**/和//
 
 "ctags
     "nnoremap <leader>csc :cs find c <C-R><C-W>
-    "source ~/.vim/plugin/cscope_maps.vim    no need manual source,it will auto sourced 
+    "source ~/.vim/plugin/cscope_maps.vim    no need manual source,it will auto sourced
     au FileType python set tags+=$HOME/.vim/tags/python2.ctags
 
 "Makefile
     "----------------for kernel script/Makefile.xx
-    au BufRead,BufNewFile Makefile.* set filetype=make    
+    au BufRead,BufNewFile Makefile.* set filetype=make
 
 "Binary
     augroup Binary
@@ -260,7 +263,7 @@
 
 "vim-instant-markdown
     "from https://github.com/suan/vim-instant-markdown
-    "use for view md files 
+    "use for view md files
     "after/ftplugin/markdown/instant-markdown.vim
 
 "vim tabpage,:help tabp ...
@@ -277,7 +280,7 @@
     noremap <leader>n gt
     noremap <leader>p gT
     "for previous tabpage
-    let g:preTab = 1		
+    let g:preTab = 1
     noremap <Leader>tl :exe "tabn ".g:preTab<CR>
     au TabLeave * let g:preTab= tabpagenr()
     au TabClosed * exe "normal gT"
@@ -288,7 +291,7 @@
 "vim-airline
     "managed by Plugin:
     "let g:airline#extensions#tabline#enabled = 1
-    
+
     if has('gui_running')
         "in gui default is on
     else
@@ -301,16 +304,16 @@
     "au BufEnter *.txt lcd %:h   "if open *.txt change to current dir.
     ".vim/plugin/Rename.vim   ---> :Rename newname
     "in NERDTree 'm'-->node operation menu
-    
+
 "dirdiff
     "compare and sync two dir
     ":dirdiff <a> <b>
-    
-    
+
+
 "supertabl
     "according to context ,ins-complete mode,e.g ctrl-x ctrl-n,ctrl-x ctrl-f,
     let g:SuperTabDefaultCompletionType = "context"
-    
+
 "ycm
     "let g:ycm_log_level = 'info'		"for debug usage
     let g:ycm_log_level = 'error'
