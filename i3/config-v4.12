@@ -170,6 +170,9 @@ exec /home/pangwz/tools/toolsMisc/./i3/../synergy/synergyX.sh
 
 #exec /usr/bin/ibus-daemon --daemonize --replace
 exec /usr/bin/fcitx -d 
+exec /usr/bin/sogou-qimpanel		
+#exec /usr/bin/xcompmgr			    #enable it if you does not want see sogoupiyin 'black block' 
+
 exec /home/pangwz/.nutstore/dist/bin/nutstore-pydaemon.py
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec /home/pangwz/.fehbg

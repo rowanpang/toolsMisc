@@ -14,13 +14,9 @@
 	Plug 'https://github.com/honza/vim-snippets.git'
 	Plug 'https://github.com/artur-shaik/vim-javacomplete2.git'
 	Plug 'https://github.com/Shougo/unite.vim.git'
-	Plug 'scrooloose/syntastic'		
-	    "语法检查
-	Plug 'majutsushi/tagbar'		
-	    "单文件tag
-	Plug 'tpope/vim-fugitive'
-	    "for git
-	    ":Gstatus
+	Plug 'scrooloose/syntastic'		"语法检查
+	Plug 'majutsushi/tagbar'		"单文件tag
+	Plug 'tpope/vim-fugitive'		"for git :Gstatus
 	Plug 'bling/vim-airline'
 	"Plug 'scrooloose/nerdtree'
 	Plug 'rowanpang/nerdtree'
@@ -124,19 +120,19 @@
 	set background=dark
     endif
     
-"syntax
-    syntax on                   " 自动语法高亮
-    if $TERM >= "xterm"                " linux vconsole
+"highlight
+    syntax on				" 自动语法高亮
+    if $TERM >= "xterm"			" linux vconsole
 
         hi CursorLine cterm=none ctermbg=Black        "for gnome-terminal rowan-solarDark
-	set cursorline              " 突出显示当前行
+	set cursorline			" 突出显示当前行
     else "under terminal TERM == linux
         hi CursorLine cterm=none ctermbg=Gray
-	set nocursorline              " 突出显示当前行
+	set nocursorline		" 突出显示当前行
     endif
     "set cursorcolumn
         "winent/winleave also can auto set to distinguish cur window
-    "set number                  " 显示行号
+    "set number				" 显示行号
 
 "indent
     set shiftwidth=4            " 设定 << 和 >> 命令移动时的宽度为 4
@@ -336,6 +332,11 @@
     let g:ycm_collect_identifiers_from_comments_and_strings = 1
 
     let g:ycm_show_diagnostics_ui = 0		"disable ycm checker use Syntastic's checker
+
+"syntastic
+    "let g:syntastic_check_on_open = 1
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
 
 "cmdline hotkey
     :cnoremap <C-A> <HOME>
