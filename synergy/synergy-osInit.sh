@@ -7,13 +7,13 @@ function initSynergy(){
     local dir=$localdir
     local conf='ll'		#linux on left
     local conf='lu'		#linux on up
-    local conf='lr'		#linux on right 
-    tconf = "$HOME/.synergy.conf"
+    local conf='lr'		#linux on right
+    tconf="$HOME/.synergy.conf"
 
     case $conf in
 	'll')
 	    lsudo ln -sf ${dir}synergy.conf.llwr  /etc/synergy.conf
-	    ln -sf ${dir}synergy.conf.llwr  $tconf
+	    ln -sf ${dir}synergy.conf.llwr $tconf
 	    ;;
 	'lr')
 	    lsudo ln -sf ${dir}synergy.conf.lrwl  /etc/synergy.conf
