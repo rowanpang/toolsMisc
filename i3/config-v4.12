@@ -166,7 +166,7 @@ bar {
 }
 
 #synergyX
-#exec /home/pangwz/tools/toolsMisc/i3/../synergy/synergyX.sh
+exec /home/pangwz/tools/toolsMisc/i3/../synergy/synergyX.sh
 
 #exec /usr/bin/ibus-daemon --daemonize --replace
 exec /usr/bin/fcitx -d
