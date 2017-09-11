@@ -8,8 +8,10 @@ function ssInit(){
     pkgCheckUninstall python-shadowsocks
     pkgCheckInstall libsodium-1.0.12-1.fc24 updates
 
-    lsudo dnf copr enable librehat/shadowsocks
-    lsudo dnf copr disable librehat/shadowsocks
+    if ! [ -f /etc/yum.repos.d/_copr_librehat-shadowsocks.repo ];then
+	lsudo dnf copr enable librehat/shadowsocks
+	lsudo dnf copr disable librehat/shadowsocks
+    fi
     pkgCheckInstall shadowsocks-libev.x86_64 librehat-shadowsocks
 
     #cron,run every minute"

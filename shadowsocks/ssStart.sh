@@ -1,5 +1,5 @@
 #!/bin/bash
-function pr_err(){                                                         
+function pr_err(){
     #31m,red
     echo -e "\033[1;31m" "$@" "\033[0m"
     exit -1
@@ -22,9 +22,9 @@ function updateConfigFile(){
     local server=`echo $1`
     local cmd=`echo $2`
 
-    echo "stamp: `date +%Y%m%d" "%_H`" > $confFile			  
-    echo "server: $server" >> $confFile			    
-    echo "cmd: $cmd" >> $confFile			   
+    echo "stamp: `date +%Y%m%d" "%_H`" > $confFile
+    echo "server: $server" >> $confFile
+    echo "cmd: $cmd" >> $confFile
 }
 
 function updateProxyState(){
@@ -47,7 +47,7 @@ function starfromQR(){
 	timeout $duration wget $quiet -O ${qrimgfull} http://${remoteHost}/img/qr/${qrimg}
 	unset http_proxy
 	if ! [ -s ${qrimgfull} ];then
-	    echo -e "\033[1;31m""next update download img ${qrimgfull} error!""\033[0m" 
+	    echo -e "\033[1;31m""next update download img ${qrimgfull} error!""\033[0m"
 	    echo -e "\033[1;31m""next update download img ${qrimgfull} error!""\033[0m" >> $confFile
 	    exit -1
 	fi
@@ -61,16 +61,17 @@ function starfromQR(){
     parserConfs $confs
     IFS="$oifs"
     bindip="127.0.0.1"
-    [ `expr match "$(hostname)" "$svrHostName"` != 0 ] && bindip="0.0.0.0"
+    ipBridge0=`ip a s bridge0 | grep 'inet\s\+' | awk '{print $2}' | cut -d '/' -f 1`
+    [ `expr match "$(hostname)" "$svrHostName"` != 0 ] && bindip=$ipBridge0
 
     if [ "$ssCmd" == "ss-local" ];then
 	cmd="$ssCmd -s $ip -p $port -k $pwd -m $method -b $bindip -l 1080
 	    -f ${workDir}ss.pid"
-	
+
 	if [ "$(ssCmdRunning)" ];then
 	    kill -9 `pidof $ssCmd`
 	fi
-	
+
     else
 	cmd="$ssCmd $quiet -d restart -s $ip -p $port -k $pwd -m $method    \
 	    -b $bindip -l 1080						 \
@@ -107,11 +108,11 @@ function ssCmdRunning(){
 
 function checkTime(){
     if ! [ "$(ssCmdRunning)" ];then
-	echo "do" 
+	echo "do"
 	return
     fi
 
-    local curStamp=`date +%Y%m%d" "%_H` 
+    local curStamp=`date +%Y%m%d" "%_H`
     local curDate=`echo $curStamp | awk '{print $1}'`
     local curSlice=`echo $curStamp | awk '{print $2}'`
     let curSlice="$curSlice"/6
@@ -206,8 +207,6 @@ function argParser(){
     done
 }
 
-
-    
 function main(){
     argParser $@		#at first
 

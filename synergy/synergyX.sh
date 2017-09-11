@@ -2,15 +2,21 @@
 prog=$0
 svrName="rowanInspur.lan"
 svrPort=24800
+ipBridge0=`ip a s bridge0 | grep 'inet\s\+' | awk '{print $2}' | cut -d '/' -f 1`
+if [ $ipBridge0 ];then
+    addr=$ipBridge0
+else
+    addr='0.0.0.0'
+fi
 
-svrCmd="$(dirname $prog)/synergys"
+svrCmd="$(dirname $prog)/synergys --address $addr"
 cliCmd="$(dirname $prog)/synergyc $svrName"
 
 #by startup the network may not connected.
 
 if [ $HOSTNAME == $svrName ];then
     $svrCmd
-else 
+else
     while [ "yes" ];do
 	tcping $svrName $svrPort -q -t 1 && break
 	sleep 1
