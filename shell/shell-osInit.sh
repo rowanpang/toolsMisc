@@ -43,6 +43,8 @@ function binPATH(){
 }
 
 function zshInit(){
+    pkgCheckInstall thefuck
+    pkgCheckInstall fasd
     pkgCheckInstall zsh
     pkgCheckInstall util-linux-user	#for chsh cmd
     if command -v zsh &>/dev/null;then
@@ -72,7 +74,7 @@ function zshInit(){
 }
 
 function sofwareInit(){
-    pkgCheckInstall ansifilter 
+    pkgCheckInstall ansifilter
 }
 
 bashConf

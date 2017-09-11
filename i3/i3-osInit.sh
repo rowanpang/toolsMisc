@@ -11,12 +11,12 @@ function baseInit(){
     #polkit-gnome
 	pkgCheckInstall polkit-gnome
     #wallpaper
-	pkgCheckInstall feh 
+	pkgCheckInstall feh
     #xtrlock
 	pkgCheckInstall pam-devel
     #config
 	ln -snf $dir ${HOMEDIR}.i3
-	ln -rsf ${configSelected} ${dir}config 
+	ln -rsf ${configSelected} ${dir}config
 	lsudo sed -i 's;disk\ /\"$;disk\ /home\";' /etc/i3status.conf
 	lsudo sed -i 's;disk\ \"/\";disk\ \"/home\";' /etc/i3status.conf
 }
@@ -46,7 +46,7 @@ function initI3wm(){
 	fi
 	lsudo ln -sf ${memSaveDir}memSave.consolehelper /etc/security/console.apps/memSave
 	lsudo ln -sf ${memSaveDir}memsave.pam /etc/pam.d/memsave
-	lsudo ln -rsf `which consolehelper` /usr/bin/memSave 
+	lsudo ln -rsf `which consolehelper` /usr/bin/memSave
 
     #---------disable pwd quality check
 	local oldUnix="$(sed --quiet '/^password\s\+\S\+\s\+pam_unix.so.*/ p' $pamConf)"
@@ -74,7 +74,7 @@ function initI3wm(){
     #terminator
 	#pkgCheckInstall terminator
 	#mkdir -p ${HOMEDIR}.config/terminator
-	#ln -sf ${dir}dep/terminator/config ${HOMEDIR}.config/terminator/config 
+	#ln -sf ${dir}dep/terminator/config ${HOMEDIR}.config/terminator/config
 
     #xfce4-terminator
 	local confDir=${HOMEDIR}.config/xfce4/terminal
@@ -95,9 +95,9 @@ function initI3wm(){
 	[ -f $HOME/.Xclients ] || cp ${dir}./Xclients $HOME/.Xclients
 
     #input-method
-	pkgCheckInstall fcitx 
+	pkgCheckInstall fcitx
 	pkgCheckInstall fcitx-configtool
-	pkgCheckInstall sogoupinyin
+	pkgCheckInstall sogoupinyin fzug-free
 
 }
 

@@ -11,7 +11,7 @@ function initVim(){
     ln -snf $dir ${HOMEDIR}.vim
     if [ "$USER" != 'root'];then
 	lsudo ln -snf $dir ${ROOTHOME}.vim   #for root vim
-    fi 
+    fi
     lsudo sed  -i 's; \[\s\+.*\]\s\+\&\&\s\+return$;#&;' /etc/profile.d/vim.sh
 
     #for ycm dependence
@@ -20,7 +20,7 @@ function initVim(){
 
     #fix deps for ack plugin
     pkgCheckInstall ack
-    pkgCheckInstall ag
+    pkgCheckInstall agrep
 }
 
 initVim
