@@ -2,6 +2,12 @@
     let $LANG='en_US'
     set langmenu=en_US
 
+"keymap leader
+    "map <silent> [map] [cmd]: will not show cmd in window,exp:
+    "map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
+    let mapleader = ","		    "default is \
+    let maplocalleader = ','	    "default is \
+
 "snippet
     "ref software/editor/vim/plugin/snippet.txt
     ":help snippet
@@ -33,6 +39,8 @@
 	Plug 'skywind3000/asyncrun.vim'
 	Plug 'wannesm/wmgraphviz.vim'
 	Plug 'mileszs/ack.vim'
+	Plug 'godlygeek/tabular'
+	Plug 'juneedahamed/vc.vim'
 
     call plug#end()
     "
@@ -41,6 +49,24 @@
 
 "strip trailing space
     autocmd BufWritePre * %s/\s\+$//e
+
+"vc plugin mapping
+    map <silent> <leader>vB :VCBlame<CR>
+    map <silent> <leader>vd :VCDiff<CR>
+    map <silent> <leader>vdf :VCDiff!<CR>
+    map <silent> <leader>vs :VCStatus<CR>
+    map <silent> <leader>vsu :VCStatus -u<CR>
+    map <silent> <leader>vsq :VCStatus -qu<CR>
+    map <silent> <leader>vsc :VCStatus .<CR>
+    map <silent> <leader>vl :VCLog!<CR>
+    map <silent> <leader>vb :VCBrowse<CR>
+    map <silent> <leader>vbm :VCBrowse<CR>
+    map <silent> <leader>vbw :VCBrowseWorkingCopy<CR>
+    map <silent> <leader>vbr :VCBrowseRepo<CR>
+    map <silent> <leader>vbl :VCBrowseMyList<CR>
+    map <silent> <leader>vbb :VCBrowseBookMarks<CR>
+    map <silent> <leader>vbf :VCBrowseBuffer<CR>
+    map <silent> <leader>vq :diffoff! <CR> :q<CR>
 
 "asyncrun
     command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
@@ -179,12 +205,6 @@
     set laststatus=2
     "set statusline=\ %<%F[%n%M%R%H]%=\ %y\ %(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)
     set statusline=\ %<%F[b:%n%M%R%H]%=\ \ %(%c:%l/%L%)
-
-"keymap leader
-    "map <silent> [map] [cmd]: will not show cmd in window,exp:
-    "map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
-    let mapleader = ","		    "default is \
-    let maplocalleader = ','	    "default is \
 
 "vimdiff
     if &diff
