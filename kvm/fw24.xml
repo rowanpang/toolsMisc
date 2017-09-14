@@ -1,8 +1,8 @@
 <domain type='kvm' id='2'>
   <name>kanas</name>
   <uuid>cd29c1dc-5212-4bdc-93d4-9107f8a3d1b6</uuid>
-  <memory unit='MiB'>1024</memory>
-  <currentMemory unit='MiB'>1024</currentMemory>
+  <memory unit='MiB'>512</memory>
+  <currentMemory unit='MiB'>512</currentMemory>
   <vcpu placement='static'>4</vcpu>
   <os>
     <type arch='x86_64' machine='pc-i440fx-2.6'>hvm</type>
