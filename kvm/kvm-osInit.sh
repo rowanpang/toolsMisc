@@ -1,38 +1,46 @@
 #!/bin/bash
 source ./osInitframe/lib.sh
 
-function inspurInnerSecurity(){
-    local bridgeName="br-iInner"
+
+function addBridgeAndSlave(){
+    local bridgeName=$1
+    local slave=$2
+    local i3StatCfg="$HOME/.config/i3status/config"	    #remenber modify
+
     local bridgeConName=$bridgeName
     if ! [ $(brctl show | grep -c $bridgeName) -gt 0 ];then
         pr_info "add bridge con $bridgeConName"
         nmcli connection add ifname $bridgeName con-name $bridgeConName type bridge
         nmcli connection up $bridgeConName
+    fi
+
+    if [ "$slave" ];then
+	local slaveConName="brSlave-${bridgeName#br-}-${slave}"
+	if ! [ $(brctl show | grep $bridgeName | grep -c $slave) -gt 0 ];then
+	    pr_info "add slave $slave to $bridgeName and make connection $slaveConName"
+	    nmcli connection add ifname ${slave} con-name $slaveConName type  \
+				    bridge-slave master $bridgeName
+	    nmcli connection up $slaveConName
+	fi
     fi
 }
 
-function kvmlocalBridge(){
-    local bridgeName="bridge0"
-    local bridgeConName=$bridgeName
-    local slave=$(echo $(ip link | grep '^[1-9]\+: en*' | awk 'BEGIN {FS=":"} { print $2}') | awk '{print $1}')
-    local slaveConName="${bridgeName}-slave-${slave}"
+function br-sec(){
+    local bridgeName="br-sec"
+    local slave="enp2s0"
+    addBridgeAndSlave $bridgeName $slave
+}
+
+function br-wan(){
+    local bridgeName="br-wan"
+    local slave="ethUsbr30f8"
 
     local qemuConfig="/etc/qemu/bridge.conf"
     if [ $(cat $qemuConfig | grep -c $bridgeName) -lt 1 ];then
-	lsudo sed -i "$ iallow bridge0" $qemuConfig
+	lsudo sed -i "$ iallow $bridgeName" $qemuConfig
     fi
 
-    if ! [ $(brctl show | grep -c $bridgeName) -gt 0 ];then
-        pr_info "add bridge con $bridgeConName"
-        nmcli connection add ifname $bridgeName con-name $bridgeConName type bridge
-        nmcli connection up $bridgeConName
-    fi
-    if ! [ $(brctl show | grep $bridgeName | grep -c $slave) -gt 0 ];then
-        pr_info "add slave $slave to $bridgeName and make connection $slaveConName"
-        nmcli connection add ifname ${slave} con-name $slaveConName type  bridge-slave master $bridgeName
-        nmcli connection up $slaveConName
-    fi
-
+    addBridgeAndSlave $bridgeName $slave
 }
 
 function usbNetUdev(){
@@ -60,8 +68,8 @@ function baseInit(){
     pkgCheckInstall bridge-utils
     pkgCheckInstall NetworkManager
 
-    kvmlocalBridge
-    inspurInnerSecurity
+    br-wan
+    br-sec
     usbNetUdev
 }
 

@@ -61,8 +61,7 @@ function starfromQR(){
     parserConfs $confs
     IFS="$oifs"
     bindip="127.0.0.1"
-    isRowanNet=`ip a s | grep 'inet ' | grep '192.168'`
-    ipBridge0=`ip a s bridge0 | grep 'inet\s\+' | awk '{print $2}' | cut -d '/' -f 1`
+    isRowanNet=`ip a s | grep 'inet ' | grep '192.168\.1\.'`
     if [ `expr match "$(hostname)" "$svrHostName"` != 0 ] && [ "$isRowanNet" ];then
 	bindip='0.0.0.0'
     fi

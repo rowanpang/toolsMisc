@@ -4,12 +4,12 @@ svrName="rowanInspur.lan"
 svrPort=24800
 isRowanNet=`ip a s | grep 'inet ' | grep '192\.168\.1\.'`
 deflink=`ip route | grep default | sed 's/^.*dev //' | awk '{print $1}'`
-ipBridge0=`ip a s $deflink | grep 'inet\s\+' | awk '{print $2}' | cut -d '/' -f 1`
+ipdeflink=`ip a s $deflink | grep 'inet\s\+' | awk '{print $2}' | cut -d '/' -f 1`
 if [ "$isRowanNet" ];then
     addr='0.0.0.0'
 else
     #exit
-    addr=$ipBridge0
+    addr=$ipdeflink
 fi
 
 svrCmd="$(dirname $prog)/synergys --address $addr"
