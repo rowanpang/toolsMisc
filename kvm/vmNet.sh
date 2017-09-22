@@ -2,13 +2,13 @@
 
 function Usage(){
     echo "Usage: $program   for start"
-    echo "Usage: $program   -s/-ls/-l/-d/-ld   start,list,destroy"
+    echo "Usage: $program   -s/-ls/-l/-d/-ld/-u   start,list,destroy,undefine"
     echo "Usage: $program   -n  specify the netXml to define"
     echo "Usage: $program   -h  for this help"
 }
 
 function verbose(){
-    if [ "$DEBUG" == 'yes' ];then 
+    if [ "$DEBUG" == 'yes' ];then
         echo $@
     fi
 }
@@ -61,7 +61,7 @@ function listSelect(){
     local min=0
     local let max=$((${#arrary[@]}-1))
     local sel=-1
-    
+
     for i in "${!arrary[@]}";do
 	echo "memer [$i]: ${arrary[$i]}"
     done
@@ -89,27 +89,6 @@ function listSelect(){
     return $sel
 }
 
-function vNetStartSel(){
-    local domains=( )
-    local index=0
-    local virNets="${isoDir}virtNet-*"
-
-    for line in $virNets ;do
-        [ -z $line ] && continue
-        domain=$line
-        domains[$index]=$domain
-        let index+=1
-    done
-
-    listSelect domains
-    index=$?
-    if [ $index -eq 255 ];then
-        lerror "no virtNet found"    
-    fi
-    selVirtNetXml=${domains[$index]}
-    verbose $selVirtNetXml
-}
-
 function argParser(){
     program=$0
     selVirtNetXml=""
@@ -117,25 +96,28 @@ function argParser(){
     DEBUG="no"
     workDir="$PWD/"
     if [ -L $program ];then
-	isoDir="$(dirname $(readlink -n $program))/"
+	xmlCfgDir="$(dirname $(readlink -n $program))/"
     else
-	isoDir="$(dirname $program)/"
+	xmlCfgDir="$(dirname $program)/"
     fi
 
-    doCmds="list start"
+    doCmds="list start list"
     while [ $# -gt 0 ];do
 	case "$1" in
 	    -l)
 		doCmds="list"
 		;;
 	    -s)
-		doCmds="start" 
+		doCmds="start"
 		;;
 	    -ls)
 		doCmds="list start"
 		;;
 	    -d)
 		doCmds="destroy"
+		;;
+	    -u)
+		doCmds="undefine"
 		;;
 	    -h)
 		Usage
@@ -154,9 +136,30 @@ function dolist(){
     virsh -c qemu:///system net-list --all | grep --color -E '^|active'
 }
 
+function vNetStartSel(){
+    local domains=( )
+    local index=0
+    local virNets="${xmlCfgDir}virtNet-*"
+
+    for line in $virNets ;do
+        [ -z $line ] && continue
+        domain=$line
+        domains[$index]=$domain
+        let index+=1
+    done
+
+    listSelect domains
+    index=$?
+    if [ $index -eq 255 ];then
+        lerror "no virtNet found"
+    fi
+    selVirtNetXml=${domains[$index]}
+    verbose $selVirtNetXml
+}
+
 function doStart(){
     if [ "$specifyNet" ];then
-	selVirtNetXml=$specifyNet
+	selVirtNetXml=${xmlCfgDir}${specifyNet%.xml}.xml
     else
 	vNetStartSel
     fi
@@ -183,10 +186,14 @@ function vNetDestroySel(){
     done
     IFS="$oldIFS"
 
+    if [ $index -eq 0 ];then
+        lerror "no active virtNet found"
+    fi
+
     listSelect domains
     index=$?
     if [ $index -eq 255 ];then
-        lerror "no virtNet found"    
+        lerror "no virtNet found"
     fi
     selVirtToDestroy=${domains[$index]}
     verbose $selVirtToDestroy
@@ -197,11 +204,44 @@ function doDestroy(){
     virsh -c qemu:///system net-destroy $selVirtToDestroy
 }
 
+function vNetUndefineSel(){
+    local virshLines=$(virsh -c qemu:///system net-list --all | grep 'active')
+    local oldIFS="$IFS"
+    IFS=$'\n'
+
+    local domains=( )
+    local index=0
+    for line in $virshLines;do
+        [ -z $line ] && continue
+        domain=$(echo $line | awk '{print $1}')
+        domains[$index]=$domain
+        let index+=1
+    done
+    IFS="$oldIFS"
+
+    if [ $index -eq 0 ];then
+        lerror "no defined virtNet found"
+    fi
+
+    listSelect domains
+    index=$?
+    if [ $index -eq 255 ];then
+        lerror "no virtNet found"
+    fi
+    selVirtToUndefine=${domains[$index]}
+    verbose $selVirtToUndefine
+}
+
+function doUndefine(){
+    vNetUndefineSel
+    virsh -c qemu:///system net-undefine $selVirtToUndefine
+}
+
 #main
 argParser $@
 
 for perCmd in $doCmds;do
-    lsuccess "do $perCmd"
+    lsuccess "-------do $perCmd--------"
     case "$perCmd" in
 	"list")
 	    dolist
@@ -211,6 +251,9 @@ for perCmd in $doCmds;do
 	    ;;
 	"destroy")
 	    doDestroy
+	    ;;
+	"undefine")
+	    doUndefine
 	    ;;
     esac
 done
