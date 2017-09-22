@@ -1,7 +1,6 @@
 #!/bin/bash
 source ./osInitframe/lib.sh
 
-
 function addBridgeAndSlave(){
     local bridgeName=$1
     local slave=$2
@@ -11,6 +10,7 @@ function addBridgeAndSlave(){
     if ! [ $(brctl show | grep -c $bridgeName) -gt 0 ];then
         pr_info "add bridge con $bridgeConName"
         nmcli connection add ifname $bridgeName con-name $bridgeConName type bridge
+	nmcli connection modify br-sec connection.autoconnect-slaves 1
         nmcli connection up $bridgeConName
     fi
 
@@ -43,6 +43,17 @@ function br-wan(){
     addBridgeAndSlave $bridgeName $slave
 }
 
+function br-kvmlan(){
+    local dir=$localdir
+    local cmd=${dir}vmNet.sh
+    local lan='virtNet-Isolated'
+    local lancfg=${dir}${lan}.xml
+    sed -in "s/\(<hostname>\)rowanInspur/\1${HOSTNAME%.*}/p" $lancfg
+
+    $cmd -n $lan
+    virsh -c qemu:///system net-autostart $lan
+}
+
 function usbNetUdev(){
     local dir=$localdir
     local uRulesDir="/etc/udev/rules.d/"
@@ -70,6 +81,7 @@ function baseInit(){
 
     br-wan
     br-sec
+    br-kvmlan
     usbNetUdev
 }
 
