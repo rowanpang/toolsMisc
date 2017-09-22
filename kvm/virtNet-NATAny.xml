@@ -9,7 +9,7 @@ or other application using the libvirt API.
   <name>virtNet-NATAny</name>
   <uuid>ffb3c1e6-58af-4282-87bb-df439618daa3</uuid>
   <forward mode='nat'/>
-  <bridge name='virbr1' stp='on' delay='0'/>
+  <bridge name='br-kvmNat' stp='on' delay='0'/>
   <mac address='52:54:00:17:e2:6c'/>
   <domain name='nat.kvm'/>
   <dns>

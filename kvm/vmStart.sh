@@ -20,6 +20,7 @@ function Usage(){
     echo -e "\t\t -s,size: imge disk size,default 25G"
     echo -e "\t\t -n,noVnc: not startup vncViewer"
     echo -e "\t\t -t,shut: shutdown vm"
+    echo -e "\t\t -d,destroy: destroy vm"
 }
 
 function lsudo(){
@@ -235,6 +236,12 @@ function optParser(){
 		shift
 		break
 		;;
+	    -d|destroy)
+		doWhat="destroy"
+		vmtoDestroy="${2}"
+		shift
+		break
+		;;
 	    -q|quit)
 		quitShell="true"
 		;;
@@ -324,6 +331,11 @@ function main(){
 	    doshut $vmtoShut
 	    shift
 	    ;;
+	"destroy")
+	    virsh -c qemu:///system destroy $vmtoDestroy 2>&1
+	    shift
+	    ;;
+
 	*)
 	    doWhat="create"
 	    ;;
