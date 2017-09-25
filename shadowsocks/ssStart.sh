@@ -33,27 +33,28 @@ function updateProxyState(){
 }
 
 function starfromQR(){
-    local qrimg=$1
-    local qrimgfull=${workDir}${qrimg}
+    local qridx=${1}
+    local qrimgWeb=${qrid}xxoo.png
+    local qrimglocal=${workDir}${qridx}.png
     local quiet="-q"
     local duration="10s"
     local svrHostName="rowanInspur"
-    echo -e "\033[1;31m""update to $tmpFile""\033[0m"
+    echo -e "\033[1;31m""update to $tmpIndex""\033[0m"
     local remoteHost="get.ishadow.website/"
     local remoteHost="ss.ishadowx.net/"
-    timeout $duration wget $quiet -O ${qrimgfull} http://${remoteHost}/img/qr/${qrimg}
-    if ! [ -s ${qrimgfull} ];then
+    timeout $duration wget $quiet -O ${qrimglocal} http://${remoteHost}/img/qr/${qrimgWeb}
+    if ! [ -s ${qrimglocal} ];then
 	export http_proxy="127.0.0.1:8087"
-	timeout $duration wget $quiet -O ${qrimgfull} http://${remoteHost}/img/qr/${qrimg}
+	timeout $duration wget $quiet -O ${qrimglocal} http://${remoteHost}/img/qr/${qrimgWeb}
 	unset http_proxy
-	if ! [ -s ${qrimgfull} ];then
-	    echo -e "\033[1;31m""next update download img ${qrimgfull} error!""\033[0m"
-	    echo -e "\033[1;31m""next update download img ${qrimgfull} error!""\033[0m" >> $confFile
+	if ! [ -s ${qrimglocal} ];then
+	    echo -e "\033[1;31m""$(date):next update download img ${qrimglocal} error!""\033[0m"
+	    echo -e "\033[1;31m""$(date):next update download img ${qrimglocal} error!""\033[0m" >> $confFile
 	    exit -1
 	fi
     fi
 
-    info=$(zbarimg $quiet ${qrimgfull})
+    info=$(zbarimg $quiet ${qrimglocal})
     base64=${info#QR-Code:ss://}
     confs=$(echo $base64 | base64 -d)
     oifs=$IFS
@@ -80,7 +81,7 @@ function starfromQR(){
 	    --pid-file ${workDir}ss.pid --log-file ${workDir}ss.log"
     fi
 
-    updateConfigFile "$qrimg" "$cmd"
+    updateConfigFile "$qridx" "$cmd"
 
     $cmd
 }
@@ -142,21 +143,21 @@ function update(){
     local needCheck="yes"
     for co in us sg jp;do
 	for index in a b c;do
-	    tmpFile="${co}${index}.png"
+	    tmpIndex="${co}${index}"
 	    if [ "$specifyServer" ];then
-		tmpFile=${specifyServer%.*}.png
-		[ "$curConfigServer" == "$tmpFile" ] && pr_err "same as cur config"
+		tmpIndex=${specifyServer%.*}
+		[ "$curConfigServer" == "$tmpIndex" ] && pr_err "same as cur config"
 		needCheck="no"
 	    fi
 
-	    #if [ "$curConfigServer" == "$tmpFile" ];then #circle server?
+	    #if [ "$curConfigServer" == "$tmpIndex" ];then #circle server?
 		#continue
 	    #fi
 
-	    starfromQR $tmpFile
+	    starfromQR $tmpIndex
 
 	    if [ "$needCheck" != "no" ];then
-		[ "$(proxyOK)" == "ok" ] && break 2 || echo "---proxy $tmpFile check ng,next---"
+		[ "$(proxyOK)" == "ok" ] && break 2 || echo "---proxy $tmpIndex check ng,next---"
 	    else
 		break 2
 	    fi
