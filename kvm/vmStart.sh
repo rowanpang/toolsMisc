@@ -148,8 +148,12 @@ function checkXml_newMAC(){
     local macs=$(sed -n '/<mac address/p' $xmlConfig | sed "s/<mac address='//g" | sed "s/'\/>//g")
     for mac in `echo $macs`;do
 	gotNewMac $mac
-	sed -in "s#\(\s\+<mac address=\)'$mac'/>#\1\'$newMacStr\'/>#p" $xmlConfig
+	sed -i "s#\(\s\+<mac address=\)'$mac'/>#\1\'$newMacStr\'/>#" $xmlConfig
     done
+    domainShort="${domain:0:10}"
+
+    sed -i "s/\(<target dev='kwan-\)xxx/\1${domainShort}/p" $xmlConfig
+    sed -i "s/\(<target dev='klan-\)xxx/\1${domainShort}/p" $xmlConfig
 }
 
 function checkXml_Source(){
