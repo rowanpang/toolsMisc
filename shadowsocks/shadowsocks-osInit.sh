@@ -14,11 +14,33 @@ function ssInit(){
     fi
     pkgCheckInstall shadowsocks-libev.x86_64 librehat-shadowsocks
 
-    #cron,run every minute"
-    #journal --identifier CORND   to check log
-    lsudo sh -c "cat << EOF > /etc/cron.d/shadowSocks-update
-3-59/3 * * * * pangwz ${dir}ssStart.sh --checkTime
+    method='systemd'
+
+    local svr=shadowsocks-rowan.service
+    local timer=shadowsocks-rowan.timer
+    if [ $method == 'systemd' ];then
+	local socfg="${dir}systemd-${svr}"
+	local tocfg="${dir}systemd-${timer}"
+	local stcfg="/etc/systemd/system/$svr"	    #service target config
+	local ttcfg="/etc/systemd/system/$timer"
+
+	[ -f /etc/cron.d/shadowSocks-update ] && lsudo rm -f /etc/cron.d/shadowSocks-update
+	lsudo cp $socfg $stcfg
+	lsudo cp $tocfg $ttcfg
+	lsudo sed -i "s;\(^ExecStart=\)\S\+$;\1${dir}ssStart.sh;" $stcfg
+	[ $? ] && systemctl enable $timer
+
+    else
+	#cron,run every minute"
+	#journal --identifier CORND   to check log
+	lsudo sh -c "cat << EOF > /etc/cron.d/shadowSocks-update
+3-59/3 * * * * $USER ${dir}ssStart.sh --checkTime
 EOF"
+	systemctl disable $timer
+    fi
+
+
+
 }
 
 ssInit
