@@ -71,7 +71,7 @@ function terminalInit(){
     #xfce4-terminator
 	local confDir=${HOMEDIR}.config/xfce4/terminal
 
-	pkgCheckInstall xfce4-terminal-0.6.3
+	pkgCheckInstall xfce4-terminal
 	[ -d $confDir ] || mkdir -p $confDir
 	ln -sf ${dir}dep/xfce4-terminal/accels.scm $confDir/accels.scm
 	ln -sf ${dir}dep/xfce4-terminal/readme.txt $confDir/readme.txt

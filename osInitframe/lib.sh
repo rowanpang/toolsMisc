@@ -69,7 +69,7 @@ function pkgCheckdoCmd(){
 	return 254
     fi
 
-    local enabledRepo="--enablerepo=fedora "
+    local enabledRepo="--enablerepo=fedora --enablerepo=updates "
     for repo in $@;do
 	enabledRepo="$enabledRepo --enablerepo=$repo"
     done    
