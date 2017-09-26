@@ -19,7 +19,7 @@ function baseInit(){
 	sed -i "s;exec .*/\.fehbg;exec $HOME/.fehbg;" $configSelected
 
 	#for memSave usage
-	ln -rsf $HOME/Pictures/wallpaper/dark-person-kristen.jpg  \
+	ln -rsf $HOME/Pictures/wallpaper/dark-person-kristen.png  \
 		$HOME/Pictures/wallpaper/screenlock.png
 
     #xtrlock
