@@ -11,16 +11,22 @@ function baseInit(){
 	#pkgCheckInstall i3-doc      #about 124Mib,too big ignore
     #polkit-gnome
 	pkgCheckInstall polkit-gnome
+
     #wallpaper
 	pkgCheckInstall feh
+	ln -snf $dir/wallpaper $HOME/Pictures/wallpaper
+	feh --image-bg black --bg-center $HOME/Pictures/wallpaper/dark-person-kristen.png
+
+	#for memSave usage
+	ln -rsf $HOME/Pictures/wallpaper/dark-person-kristen.jpg  \
+		$HOME/Pictures/wallpaper/screenlock.png
+
     #xtrlock
 	pkgCheckInstall pam-devel
 
     #xscreensaver
-    #xscreen-daemon to config and preview
+	#xscreen-daemon to config and preview
 	pkgCheckInstall xscreensaver
-    #wallpaper
-	ln -snf $dir/wallpaper $HOME/Pictures/wallpaper
 
     #config
 	ln -snf $dir ${HOMEDIR}.i3
