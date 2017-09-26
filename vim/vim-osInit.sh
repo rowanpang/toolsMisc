@@ -21,6 +21,10 @@ function initVim(){
     #fix deps for ack plugin
     pkgCheckInstall ack
     pkgCheckInstall agrep
+
+    vim +PlugInstall +qa    #install plugin and exit
+    ycmbuild="${dir}ycm-build.sh"
+    $ycmbuild
 }
 
 initVim

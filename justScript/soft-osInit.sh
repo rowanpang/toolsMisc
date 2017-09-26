@@ -3,8 +3,8 @@
 source ./osInitframe/lib.sh
 
 function initWine(){
-    pkgCheckInstall samba-winbind-clients updates 
-    pkgCheckInstall wine updates
+    pkgCheckInstall samba-winbind-clients updates
+    #pkgCheckInstall wine updates
 }
 
 function initWireshark(){
@@ -13,16 +13,12 @@ function initWireshark(){
     [ $? -eq 0 ] && lsudo usermod --append --groups wireshark,usbmon $USER
 }
 
-function initGNU(){
-    pkgCheckInstall gcc-c++	 #will auto dependence gcc e.g
-}
-
 function miscInit(){
     pkgCheckInstall mplayer rpmfusion-free rpmfusion-free-updates
     pkgCheckInstall kernel-devel
     pkgCheckInstall mediainfo
     pkgCheckInstall nmap
-    pkgCheckInstall meld 
+    pkgCheckInstall meld
     pkgCheckInstall autojump
 	#autojump use $PROMPT_COMMAND 实现将dir添加到数据库中.
 	#j() 是在bash加载时export的func
@@ -32,7 +28,6 @@ function miscInit(){
 
 function main(){
     initWireshark
-    initGNU
     miscInit
 }
 
