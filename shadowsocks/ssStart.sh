@@ -34,22 +34,25 @@ function updateProxyState(){
 
 function starfromQR(){
     local qridx=${1}
-    local qrimgWeb=${qrid}xxoo.png
+    local qrimgWeb=${qridx}xxoo.png
     local qrimglocal=${workDir}${qridx}.png
+    local remoteHost="get.ishadow.website/"
+    local remoteHost="ss.ishadowx.net/"
+    local qrurl="http://${remoteHost}/img/qr/${qrimgWeb}"
+
     local quiet="-q"
     local duration="10s"
     local svrHostName="rowanInspur"
+
     echo -e "\033[1;31m""update to $tmpIndex""\033[0m"
-    local remoteHost="get.ishadow.website/"
-    local remoteHost="ss.ishadowx.net/"
-    timeout $duration wget $quiet -O ${qrimglocal} http://${remoteHost}/img/qr/${qrimgWeb}
+    timeout $duration wget $quiet -O ${qrimglocal} $qrurl
     if ! [ -s ${qrimglocal} ];then
 	export http_proxy="127.0.0.1:8087"
 	timeout $duration wget $quiet -O ${qrimglocal} http://${remoteHost}/img/qr/${qrimgWeb}
 	unset http_proxy
 	if ! [ -s ${qrimglocal} ];then
-	    echo -e "\033[1;31m""$(date):next update download img ${qrimglocal} error!""\033[0m"
-	    echo -e "\033[1;31m""$(date):next update download img ${qrimglocal} error!""\033[0m" >> $confFile
+	    echo -e "\033[1;31m""$(date):next update download img ${qrurl} error!""\033[0m"
+	    echo -e "\033[1;31m""$(date):next update download img ${qrurl} error!""\033[0m" >> $confFile
 	    exit -1
 	fi
     fi
