@@ -13,8 +13,8 @@ function initNutstore(){
 	pr_info "nutstore installed"
     fi
 
-    local i3cfg="$HOME/.i3/config"
-    sed -i "s;exec .*/\(\.nutstore/dist/bin/nutstore-pydaemon.py\);exec $HOME/\1" $i3cfg
+    local i3cfg="$i3configSelected"
+    sed -i "s;exec .*/\(\.nutstore/dist/bin/nutstore-pydaemon.py\);exec $HOME/\1;" $i3cfg
 }
 
 initNutstore

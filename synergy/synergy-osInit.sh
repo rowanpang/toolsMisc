@@ -11,7 +11,7 @@ function initSynergy(){
     tconf="$HOME/.synergy.conf"
     script=${dir}synergyX.sh
 
-    i3cfg=$HOME/.i3/config
+    i3cfg=${i3configSelected}
     sed -i "s;exec .*synergyX.sh;exec $script;" $i3cfg
 
     case $conf in

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function pr_info(){
-    if [ "$DEBUG" == 'yes' ];then 
+    if [ "$DEBUG" == 'yes' ];then
         echo $@
     fi
 }
@@ -42,7 +42,7 @@ function callFunc(){
 function pkgInstalled(){
     local pkg=$1
     rpm -q $pkg 2>&1 >/dev/null
-    [ $? -eq 0 ] && echo "yes" 
+    [ $? -eq 0 ] && echo "yes"
 }
 
 #$1,pkg name
@@ -61,7 +61,7 @@ function pkgCheckdoCmd(){
 
     if [ "$isInstalled" -a "$cmd" == "install" ];then
         pr_info "$pkg has been installed,return"
-        return 255    
+        return 255
     fi
 
     if [ ! "$isInstalled" -a "$cmd" == "remove" ];then
@@ -72,10 +72,10 @@ function pkgCheckdoCmd(){
     local enabledRepo="--enablerepo=fedora --enablerepo=updates "
     for repo in $@;do
 	enabledRepo="$enabledRepo --enablerepo=$repo"
-    done    
-    lsudo dnf --assumeyes --disablerepo=* $enabledRepo "$cmd" "$pkg"    
+    done
+    lsudo dnf --assumeyes --disablerepo=* $enabledRepo "$cmd" "$pkg"
     [ $? ] || pr_err "pkg $pkg do $cmd error"
-    return $? 
+    return $?
 }
 
 #$1,pkg name
@@ -117,7 +117,7 @@ function pkgsUninstall(){
 }
 
 function libInit(){
-    if [ -r /etc/redhat-release ];then                                                  
+    if [ -r /etc/redhat-release ];then
         case $(cat /etc/redhat-release) in
             Fedora*):
                 osVendor=fedora
@@ -133,5 +133,6 @@ function libInit(){
     DEBUG="yes"
     HOMEDIR="$HOME/"
     ROOTHOME="/root/"
+    i3configSelected="$PWD/i3/config-v4.12"
 }
 libInit

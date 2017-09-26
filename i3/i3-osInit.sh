@@ -1,6 +1,6 @@
 #/bin/bash
 source ./osInitframe/lib.sh
-configSelected="${localdir}config-v4.12"
+configSelected="${i3configSelected}"
 
 function baseInit(){
     local dir=$localdir
@@ -101,7 +101,9 @@ function synergyInit(){
 function inputMethoInit() {
     pkgCheckInstall fcitx
     pkgCheckInstall fcitx-configtool
-    pkgCheckInstall sogoupinyin fzug-free
+    if ! [ $osVer -eq 26 ];then
+	pkgCheckInstall sogoupinyin fzug-free
+    fi
 }
 
 function initI3wm(){
