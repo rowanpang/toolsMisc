@@ -19,6 +19,8 @@ function baseInit(){
     #xscreensaver
     #xscreen-daemon to config and preview
 	pkgCheckInstall xscreensaver
+    #wallpaper
+	ln -snf $dir/wallpaper $HOME/Pictures/wallpaper
 
     #config
 	ln -snf $dir ${HOMEDIR}.i3
