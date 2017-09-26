@@ -61,6 +61,14 @@ function usbNetUdev(){
     lsudo cp ${dir}${rfile} ${uRulesDir}
 }
 
+function ldnsmasq() {
+    local cfg1=${dir}NetworkManager.conf
+    local cfg2=${dir}dnsmasq.conf
+
+    lsudo cp -f $cfg1 /etc/NetworkManager/
+    lsudo cp -f $cfg2 /etc/NetworkManager/dnsmasq.d/
+}
+
 function baseInit(){
     local dir=$localdir
     pkgCheckInstall virt-manager
@@ -82,6 +90,7 @@ function baseInit(){
     br-wan
     br-sec
     br-kvmlan
+    ldnsmasq
     usbNetUdev
 }
 
