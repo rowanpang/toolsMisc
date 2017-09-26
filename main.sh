@@ -3,7 +3,7 @@ source	./osInitframe/lib.sh
 
 function disableSelinux(){
     $(selinuxenabled)
-    if [ $? ];then
+    if [ $? -eq 0 ];then
         lsudo setenforce 0
         lsudo sed -i 's;SELINUX=enforcing;SELINUX=disabled;' /etc/selinux/config
     fi
