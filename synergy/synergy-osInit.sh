@@ -7,8 +7,12 @@ function initSynergy(){
     local dir=$localdir
     local conf='ll'		#linux on left
     local conf='lu'		#linux on up
-    local conf='lr'		#linux on right 
+    local conf='lr'		#linux on right
     tconf="$HOME/.synergy.conf"
+    script=${dir}synergyX.sh
+
+    i3cfg=$HOME/.i3/config
+    sed -i "s;exec .*synergyX.sh;exec $script;" $i3cfg
 
     case $conf in
 	'll')

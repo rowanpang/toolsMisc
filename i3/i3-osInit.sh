@@ -16,6 +16,7 @@ function baseInit(){
 	pkgCheckInstall feh
 	ln -snf $dir/wallpaper $HOME/Pictures/wallpaper
 	feh --image-bg black --bg-center $HOME/Pictures/wallpaper/dark-person-kristen.png
+	sed -i "s;exec .*/\.fehbg;exec $HOME/.fehbg;" $configSelected
 
 	#for memSave usage
 	ln -rsf $HOME/Pictures/wallpaper/dark-person-kristen.jpg  \
