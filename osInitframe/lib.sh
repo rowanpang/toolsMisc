@@ -73,7 +73,7 @@ function pkgCheckdoCmd(){
     for repo in $@;do
 	enabledRepo="$enabledRepo --enablerepo=$repo"
     done    
-    lsudo dnf --disablerepo=* $enabledRepo "$cmd" "$pkg"    
+    lsudo dnf --assumeyes --disablerepo=* $enabledRepo "$cmd" "$pkg"    
     [ $? ] || pr_err "pkg $pkg do $cmd error"
     return $? 
 }

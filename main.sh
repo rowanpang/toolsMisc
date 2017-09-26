@@ -16,7 +16,7 @@ function initRepo(){
 	fi
 
 	if ! [ $(pkgInstalled rpmfusion-nonfree-release) ];then
-	    lsudo dnf --assumeyes	    \
+	    lsudo dnf --assumeyes install    \
 		https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 	fi
 
