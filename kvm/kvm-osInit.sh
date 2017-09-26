@@ -48,7 +48,7 @@ function br-kvmlan(){
     local cmd=${dir}vmNet.sh
     local lan='virtNet-Isolated'
     local lancfg=${dir}${lan}.xml
-    sed -in "s/\(<hostname>\)rowanInspur/\1${HOSTNAME%.*}/p" $lancfg
+    sed -i "s/\(<hostname>\).*\(</hostname>\)/\1${HOSTNAME%.*}\2/p" $lancfg
 
     $cmd -n $lan
     virsh -c qemu:///system net-autostart $lan
