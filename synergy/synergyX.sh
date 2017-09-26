@@ -16,7 +16,7 @@ svrCmd="$(dirname $prog)/synergys --address $addr"
 cliCmd="$(dirname $prog)/synergyc $svrName"
 
 #by startup the network may not connected.
-if [ $HOSTNAME == $svrName ];then
+if [ ${HOSTNAME%.*} == ${svrName%.*} ];then
     $svrCmd
 else
     while [ "yes" ];do

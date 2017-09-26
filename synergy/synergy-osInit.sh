@@ -8,6 +8,9 @@ function initSynergy(){
     local conf='ll'		#linux on left
     local conf='lu'		#linux on up
     local conf='lr'		#linux on right
+
+    pkgCheckInstall tcping
+
     tconf="$HOME/.synergy.conf"
     script=${dir}synergyX.sh
 

@@ -12,6 +12,9 @@ function baseInit(){
     #polkit-gnome
 	pkgCheckInstall polkit-gnome
 
+    #compmgr
+	pkgCheckInstall xcompmgr
+
     #wallpaper
 	pkgCheckInstall feh
 	ln -snf $dir/wallpaper $HOME/Pictures/wallpaper
