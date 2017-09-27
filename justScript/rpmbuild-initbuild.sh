@@ -5,7 +5,7 @@ if [ $PWD != "$HOME/rpmbuild" ];then
     exit
 fi
 
-pkgs="tsocks kernel postfix util-linux"
+pkgs="tsocks kernel postfix util-linux coreutils"
 
 for pkg in $pkgs;do
     pkgIns=$(rpm -q $pkg)
@@ -25,10 +25,14 @@ for pkg in $pkgs;do
     spec=$(rpm -ql -p $srpm | grep '\.spec')
     if ! [ -f SPECS/$spec ];then
 	rpm -i $srpm
-	echo "----builddep for $pkgIns-----"
+	echo
+	echo -e "\033[1;31m----builddep for $pkgIns-----\033[0m"
+	echo
 	sleep 1
 	dnf --assumeyes builddep SPECS/$spec
-	echo "----rpmbuid -bp for $pkgIns-----"
+	echo
+	echo -e "\033[1;31m----rpmbuid -bp for $pkgIns-----\033[0m"
+	echo
 	sleep 1
 	rpmbuild -bp SPECS/$spec
     fi
