@@ -21,6 +21,7 @@ function miscInit(){
     pkgCheckInstall mplayer rpmfusion-free rpmfusion-free-updates
     pkgCheckInstall mediainfo
     pkgCheckInstall nmap
+    pkgCheckInstall screen
     pkgCheckInstall meld
     pkgCheckInstall autojump
 	#autojump use $PROMPT_COMMAND 实现将dir添加到数据库中.
