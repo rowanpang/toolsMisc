@@ -7,7 +7,7 @@ function addBridgeAndSlave(){
     local i3StatCfg="$HOME/.config/i3status/config"	    #remenber modify
 
     local bridgeConName=$bridgeName
-    if ! [ $(brctl show | grep -c $bridgeName) -gt 0 ];then
+    if [ $(brctl show | grep -c $bridgeName) -eq 0 ];then
         pr_info "add bridge con $bridgeConName"
         nmcli connection add ifname $bridgeName con-name $bridgeConName type bridge
 	nmcli connection modify br-sec connection.autoconnect-slaves 1
@@ -16,7 +16,7 @@ function addBridgeAndSlave(){
 
     if [ "$slave" ];then
 	local slaveConName="brSlave-${bridgeName#br-}-${slave}"
-	if ! [ $(brctl show | grep $bridgeName | grep -c $slave) -gt 0 ];then
+	if [ $(nmcli connection | grep -c $slaveConName) -eq 0 ];then
 	    pr_info "add slave $slave to $bridgeName and make connection $slaveConName"
 	    nmcli connection add ifname ${slave} con-name $slaveConName type  \
 				    bridge-slave master $bridgeName
