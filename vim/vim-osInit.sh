@@ -20,7 +20,7 @@ function initVim(){
 
     #fix deps for ack plugin
     pkgCheckInstall ack
-    pkgCheckInstall agrep
+    pkgCheckInstall the_silver_searcher
 
     vim +PlugInstall +qa    #install plugin and exit
     ycmbuild="${dir}ycm-build.sh"
