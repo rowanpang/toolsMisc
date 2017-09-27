@@ -103,6 +103,8 @@ function synergyInit(){
 
 function inputMethoInit() {
     pkgCheckInstall fcitx
+    pkgCheckInstall fcitx-pinyin		#a input method by pinyin
+    #pkgCheckInstall fcitx-libpinyin		#a input method by pinyin
     pkgCheckInstall fcitx-configtool
     if ! [ $osVer -eq 26 ];then
 	pkgCheckInstall sogoupinyin fzug-free
