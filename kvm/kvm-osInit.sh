@@ -10,7 +10,8 @@ function addBridgeAndSlave(){
     if [ $(brctl show | grep -c $bridgeName) -eq 0 ];then
         pr_info "add bridge con $bridgeConName"
         nmcli connection add ifname $bridgeName con-name $bridgeConName type bridge
-	nmcli connection modify br-sec connection.autoconnect-slaves 1
+	nmcli connection modify $bridgeConName connection.autoconnect-slaves 1
+	nmcli connection modify $bridgeConName ipv6.method ignore
         nmcli connection up $bridgeConName
     fi
 
@@ -27,7 +28,9 @@ function addBridgeAndSlave(){
 
 function br-sec(){
     local bridgeName="br-sec"
-    local slave="enp2s0"
+    local dlink=`echo $(ip link | grep enp | awk 'BEGIN{FS=":"};{print $2}')`
+    local slave="enp3s0"
+    local slave=$dlink
     addBridgeAndSlave $bridgeName $slave
 }
 
