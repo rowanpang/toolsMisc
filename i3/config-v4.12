@@ -173,7 +173,7 @@ exec /usr/bin/fcitx -d
 exec /usr/bin/sogou-qimpanel
 #exec /usr/bin/xcompmgr			    #enable it if you does not want see sogoupiyin 'black block'
 
-exec /root/.nutstore/dist/bin/nutstore-pydaemon.py
+exec /home/pangwz/.nutstore/dist/bin/nutstore-pydaemon.py
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec /root/.fehbg
 
