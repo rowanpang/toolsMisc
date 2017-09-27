@@ -116,6 +116,17 @@ function pkgsUninstall(){
     return $?
 }
 
+function netRPMInstall(){
+    pkgName=$1
+    pkgUrl=$2
+    if ! [ "$(pkgInstalled $pkgName)" ];then
+        pr_info "installing $pkgName"
+        lsudo rpm -i $pkgUrl
+    else
+	pr_info "$pkgName installed"
+    fi
+}
+
 function libInit(){
     if [ -r /etc/redhat-release ];then
         case $(cat /etc/redhat-release) in
