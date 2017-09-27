@@ -14,8 +14,11 @@ function initWireshark(){
 }
 
 function miscInit(){
+    kern=$(rpm -q kernel)
+    kerndevel=${kern/kernel/kernel-devel}
+    pkgCheckInstall $kerndevel
+
     pkgCheckInstall mplayer rpmfusion-free rpmfusion-free-updates
-    pkgCheckInstall kernel-devel
     pkgCheckInstall mediainfo
     pkgCheckInstall nmap
     pkgCheckInstall meld
