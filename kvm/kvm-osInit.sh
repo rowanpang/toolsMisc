@@ -69,8 +69,8 @@ function ldnsmasq() {
     local cfg1=${dir}NetworkManager.conf
     local cfg2=${dir}dnsmasq.conf
 
-    lsudo cp -f $cfg1 /etc/NetworkManager/
-    lsudo cp -f $cfg2 /etc/NetworkManager/dnsmasq.d/
+    lsudo ln -sf $cfg1 /etc/NetworkManager/
+    lsudo ln -sf $cfg2 /etc/NetworkManager/dnsmasq.d/
 }
 
 function baseInit(){
