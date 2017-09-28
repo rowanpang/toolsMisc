@@ -12,6 +12,7 @@ function addBridgeAndSlave(){
         nmcli connection add ifname $bridgeName con-name $bridgeConName type bridge
 	nmcli connection modify $bridgeConName connection.autoconnect-slaves 1
 	nmcli connection modify $bridgeConName ipv6.method ignore
+	nmcli connection modify $bridgeConName bridge.stp no
         nmcli connection up $bridgeConName
     fi
 
