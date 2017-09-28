@@ -32,11 +32,7 @@ function binPATH(){
     conf="${localdir}zshrc"
     if [ -f $conf ];then
 	if [ `cat $conf | grep -c "$binDir"` -eq 0 ];then
-	    #echo 'PATH=$PATH:'"$binDir" >> $conf
-	    #echo "export PATH" >> $conf
-	    PATH=/usr/local/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/home/pangwz/tools/toolsMisc/shell/bin
-	    sed -i "s;/home/pangwz/tools/toolsMisc/shell/bin;$binDir;" $conf
-	    #sed -i "\;^# export PATH; iPATH=$PATH:$binDir\nexport PATH" $conf
+	    sed -i "2s;^PATH=\(\S\+\);PATH=$binDir:\1;" $conf
 	fi
     fi
 
