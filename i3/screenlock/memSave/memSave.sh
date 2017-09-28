@@ -24,19 +24,19 @@ function do_work(){
 	#i3-msg "workspace 10;exec gnome-terminal --full-screen --command \"$CMATRIX -B\";exec $XTRLOCK -p system-auth -b none" > /dev/null
 	#i3-msg "workspace 10;exec /home/pangwz/tools/i3wm/screenlock/xtrlock/xtrlock-pam -p system-auth -b none" > /dev/null
 	verbose "--euid:$EUID-------"
-	if [ $EUID -eq 0 ];then
-		passwd >/dev/null 2>&1 << EOF
-QQ@476581728
-QQ@476581728
-EOF
-		[ -f $LOGFILE ] && chmod 666 $LOGFILE
-	else
-		passwd >/dev/null 2>&1 << EOF
+	#if [ $EUID -eq 0 ];then
+		#passwd >/dev/null 2>&1 << EOF
+#QQ@476581728
+#QQ@476581728
+#EOF
+		#[ -f $LOGFILE ] && chmod 666 $LOGFILE
+	#else
+		#passwd >/dev/null 2>&1 << EOF
 
-QQ@476581728
-QQ@476581728
-EOF
-	fi
+#QQ@476581728
+#QQ@476581728
+#EOF
+	#fi
 
 	verbose "--i3lock--"
 	i3lock -i $HOME/Pictures/wallpaper/screenlock.png
@@ -49,18 +49,18 @@ EOF
 	done
 	verbose "--after sleep--$(now)"
 
-	if [ $EUID -eq 0 ];then
-		passwd >/dev/null 2>&1 << EOF
+	#if [ $EUID -eq 0 ];then
+		#passwd >/dev/null 2>&1 << EOF
 
 
-EOF
-	else
-		passwd &>/dev/null << EOF
-QQ@476581728
+#EOF
+	#else
+		#passwd &>/dev/null << EOF
+#QQ@476581728
 
 
-EOF
-	fi
+#EOF
+	#fi
 	verbose "-----------------out $FUNCNAME--$(now)------------"
 }
 
