@@ -23,6 +23,7 @@ function miscInit(){
     pkgCheckInstall nmap
     pkgCheckInstall screen
     pkgCheckInstall meld
+    pkgCheckInstall seahorse
     pkgCheckInstall autojump
 	#autojump use $PROMPT_COMMAND 实现将dir添加到数据库中.
 	#j() 是在bash加载时export的func
