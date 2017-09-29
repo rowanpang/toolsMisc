@@ -70,6 +70,8 @@ function argParser(){
 	case "$1" in
 	    --checkTime)
 		doTimeCheck=true ;;
+	    --systemd)
+		calledBySystemd=true;;
 	    -h)
 		Usage
 		exit
@@ -79,7 +81,12 @@ function argParser(){
 }
 
 function update(){
-    cmd=${workDir}ssUpdate.sh
+    if [ "$calledBySystemd" ];then
+	cmd="systemctl restart shadowsocks-rowan"
+    else
+	cmd=${workDir}ssUpdate.sh
+    fi
+    echo "update do:"$cmd
     $cmd
 }
 
@@ -110,6 +117,7 @@ function main(){
 
     echo $cause
     [ "$doUpdate" == "yes" ] && update
+    return 0		    #if not,systemd will treat exit with error
 }
 
 main $@

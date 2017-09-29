@@ -15,32 +15,41 @@ function ssInit(){
     pkgCheckInstall shadowsocks-libev.x86_64 librehat-shadowsocks
 
     method='systemd'
+    cronSvr='/etc/cron.d/shadowSocks-update'
+    local    svr=shadowsocks-rowan.service
+    local chksvr=shadowsocks-rowan-chk.service
+    local chktmr=shadowsocks-rowan-chk.timer
 
-    local svr=shadowsocks-rowan.service
-    local timer=shadowsocks-rowan.timer
+    local    ssvrcfg="${dir}systemd-${svr}"
+    local schksvrcfg="${dir}systemd-${chksvr}"
+    local schktmrcfg="${dir}systemd-${chktmr}"
+
+    local    dsvrcfg="/etc/systemd/system/${svr}"
+    local dchksvrcfg="/etc/systemd/system/${chksvr}"
+    local dchktmrcfg="/etc/systemd/system/${chktmr}"
+
+    local svrExec="${dir}ssRun.sh"
+    local chkExec="${dir}ssChk.sh"
+    local chkArg="--checkTime --systemd"
+
     if [ $method == 'systemd' ];then
-	local socfg="${dir}systemd-${svr}"
-	local tocfg="${dir}systemd-${timer}"
-	local stcfg="/etc/systemd/system/$svr"	    #service target config
-	local ttcfg="/etc/systemd/system/$timer"
+	[ -f $cronSvr ] && lsudo rm -f $cronSvr
 
-	[ -f /etc/cron.d/shadowSocks-update ] && lsudo rm -f /etc/cron.d/shadowSocks-update
-	lsudo cp $socfg $stcfg
-	lsudo cp $tocfg $ttcfg
-	lsudo sed -i "s;\(^ExecStart=\)\S\+$;\1${dir}ssStart.sh;" $stcfg
-	[ $? ] && systemctl enable $timer
+	lsudo cp    $ssvrcfg $dsvrcfg
+	lsudo cp $schksvrcfg $dchksvrcfg
+	lsudo cp $schktmrcfg $dchktmrcfg
+
+	lsudo sed -i "s;\(^ExecStart=\)\S\+$;\1${svrExec};" $dsvrcfg
+	lsudo sed -i "s;\(^ExecStart=\)\S\+$;\1${chkExec} ${chkArg};" $dchksvrcfg
+	[ $? ] && systemctl enable $chktmr
 
     else
-	#cron,run every minute"
 	#journal --identifier CORND   to check log
+	systemctl disable $chktmr
 	lsudo sh -c "cat << EOF > /etc/cron.d/shadowSocks-update
 3-59/3 * * * * $USER ${dir}ssStart.sh --checkTime
 EOF"
-	systemctl disable $timer
     fi
-
-
-
 }
 
 ssInit

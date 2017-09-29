@@ -49,7 +49,7 @@ function starfromQR(){
     $wgetdwn
     if ! [ -s ${qrimglocal} ];then
 	export http_proxy="127.0.0.1:8087"
-	echo -e "\033[1;31m""use proxy $http_proxy""\033[0m"
+	echo -e "\033[1;31m""use proxy:$http_proxy""\033[0m"
 	$wgetdwn
 	unset http_proxy
 	if ! [ -s ${qrimglocal} ];then

@@ -2,5 +2,5 @@
 Description=free shadow socks service
 
 [Service]
-Type=forking
+Type=simple
 ExecStart=/root/bin/log_time.sh
