@@ -10,7 +10,7 @@ function parserPwdIp(){
     ip=$2
 }
 
-function parserConfs(){
+function parserQr(){
     method=$1
     pwdIp=$2
     port=$3
@@ -43,12 +43,14 @@ function starfromQR(){
     local quiet="-q"
     local duration="10s"
     local svrHostName="rowanInspur"
+    local wgetdwn="timeout $duration wget --quiet -o /dev/null -O ${qrimglocal} $qrurl"
 
-    echo -e "\033[1;31m""update to $tmpIndex""\033[0m"
-    timeout $duration wget $quiet -O ${qrimglocal} $qrurl
+    echo -e "\033[1;31m""update select $tmpIndex""\033[0m"
+    $wgetdwn
     if ! [ -s ${qrimglocal} ];then
 	export http_proxy="127.0.0.1:8087"
-	timeout $duration wget $quiet -O ${qrimglocal} http://${remoteHost}/img/qr/${qrimgWeb}
+	echo -e "\033[1;31m""use proxy $http_proxy""\033[0m"
+	$wgetdwn
 	unset http_proxy
 	if ! [ -s ${qrimglocal} ];then
 	    echo -e "\033[1;31m""$(date):next update download img ${qrurl} error!""\033[0m"
@@ -62,20 +64,20 @@ function starfromQR(){
     confs=$(echo $base64 | base64 -d)
     oifs=$IFS
     IFS=':'
-    parserConfs $confs
+    parserQr $confs
     IFS="$oifs"
     bindip="127.0.0.1"
     isRowanNet=`ip a s | grep 'inet ' | grep '192.168\.1\.'`
     if [ `expr match "$(hostname)" "$svrHostName"` != 0 ] && [ "$isRowanNet" ];then
 	bindip='0.0.0.0'
     fi
-
+    curPID=$(curRunningPID)
     if [ "$ssCmd" == "ss-local" ];then
 	cmd="$ssCmd -s $ip -p $port -k $pwd -m $method -b $bindip -l 1080
 	    -f ${workDir}ss.pid"
 
-	if [ "$(ssCmdRunning)" ];then
-	    kill -9 `pidof $ssCmd`
+	if [ "$curPID" ];then
+	    kill -9 $curPID
 	fi
 
     else
@@ -99,66 +101,33 @@ function proxyOK(){
     echo $state
 }
 
-
 function getCurServer(){
     [ -f $confFile ] && echo "$(cat $confFile | awk '/server:/ {print $2}')"
 }
 
-function getCurProxyState(){
-    [ -f $confFile ] && state="$(cat $confFile | awk '/proxyState:/ {print $2}')"
-    if ! [ "$(ssCmdRunning)" ];then
-	state="not running"
-    fi
-
-    echo $state
-}
-
-function ssCmdRunning(){
-    [ "$(ps -e | grep $ssCmd)" ] && echo "yes"
-}
-
-function checkTime(){
-    local curStamp=`date +%Y%m%d" "%_H`
-    local curDate=`echo $curStamp | awk '{print $1}'`
-    local curSlice=`echo $curStamp | awk '{print $2}'`
-    let curSlice="$curSlice"/6
-
-    local lastSlice
-    local lastDate
-
-    if [ -f $confFile ];then
-	lastDate=`cat $confFile | awk '/stamp:/ {print $2}'`
-    fi
-
-    if [ "$curDate" == "$lastDate" ];then
-	if [ -f $confFile ];then
-	    lastSlice=`cat $confFile | awk '/stamp:/ {print $3}'`
-	fi
-	[ $lastSlice ] || lastSlice=0
-	let lastSlice="$lastSlice"/6
-	[ $lastSlice == $curSlice ] && echo "same time slice" || echo "do"
-    else
-	echo "do"
+function curRunningPID(){
+    ssproc=$(ps -elf | grep $ssCmd | grep '\-l 1080')
+    if [ "$ssproc" ];then
+	pid=$(echo $ssproc | awk '{print $4}')
+	echo $pid
     fi
 }
 
 function update(){
     local needCheck="yes"
-    for co in us sg jp;do
+    for country in us sg jp;do
 	for index in a b c;do
-	    tmpIndex="${co}${index}"
+	    tmpIndex="${country}${index}"
+	    curConfigServer=$(getCurServer)
+	    echo -e "\033[1;31m""curUsed: $curConfigServer""\033[0m"
+
 	    if [ "$specifyServer" ];then
 		tmpIndex=${specifyServer%.*}
 		[ "$curConfigServer" == "$tmpIndex" ] && pr_err "same as cur config"
 		needCheck="no"
 	    fi
 
-	    #if [ "$curConfigServer" == "$tmpIndex" ];then #circle server?
-		#continue
-	    #fi
-
 	    starfromQR $tmpIndex
-
 	    if [ "$needCheck" != "no" ];then
 		[ "$(proxyOK)" == "ok" ] && break 2 || echo "---proxy $tmpIndex check ng,next---"
 	    else
@@ -178,9 +147,8 @@ function gotworkDir(){
 }
 
 function Usage(){
-    echo "      -h:this help info"
-    echo "--server: specify Server to connect "
-    echo "--checkTime: do time check"
+    echo "         -h:this help info"
+    echo "   --server: specify Server to connect "
 }
 
 function argParser(){
@@ -192,9 +160,6 @@ function argParser(){
 
     workDir=$(gotworkDir $0)
     confFile="${workDir}curConf.txt"
-    curConfigServer=$(getCurServer)
-
-    echo -e "\033[1;31m""curUsed: $curConfigServer""\033[0m"
 
     while [ $# -gt 0 ];do
 	case "$1" in
@@ -202,8 +167,6 @@ function argParser(){
 		specifyServer=$2
 		shift
 		;;
-	    --checkTime)
-		doTimeCheck=true ;;
 	    -h)
 		Usage
 		exit
@@ -214,26 +177,7 @@ function argParser(){
 
 function main(){
     argParser $@		#at first
-
-    local doUpdate="no"
-    local ret="$(checkTime)"
-    local curProxyState=$(getCurProxyState)
-
-    if [ "$curProxyState" != "ok" ];then
-	doUpdate="yes"
-	cause="$ssCmd:$curProxyState"
-    elif [ ! "$doTimeCheck" ];then
-	doUpdate="yes"
-	cause="not checkTime,just do update"
-    elif ( [ $doTimeCheck ] && [ "do" == "$ret" ] );then
-	doUpdate="yes"
-	cause="checkTime,but time past,need do"
-    else
-	cause="dry run,not do update"
-    fi
-
-    echo $cause
-    [ "$doUpdate" == "yes" ] && update
+    update
 }
 
 main $@
