@@ -145,5 +145,20 @@ function libInit(){
     HOMEDIR="$HOME/"
     ROOTHOME="/root/"
     i3configSelected="$PWD/i3/config-v4.12"
+    dlink=$(ip route | grep default |		    \
+	    awk '{
+		    i=1;
+		    while(i<NF){
+			if($i=="dev"){
+			    print $(i+1)
+			};
+			i++
+		    }
+		}')
+    dip=$(ip a s $dlink | grep 'inet ' | awk '{print $2}' | \
+	    awk 'BEGIN{ FS="/" };
+		{
+		    print $1
+		}')
 }
 libInit

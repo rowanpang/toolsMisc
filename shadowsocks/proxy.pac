@@ -1,5 +1,5 @@
 function FindProxyForURL(url, host) {
-    var autoproxy = 'SOCKS 10.4.11.26:1081';
+    var autoproxy = 'SOCKS 10.4.11.38:1080';
     return autoproxy;
 
     if (dnsDomainIs(host, '.google.com') ||

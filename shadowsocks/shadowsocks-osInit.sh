@@ -1,6 +1,5 @@
 #!/bin/bash
 source ./osInitframe//lib.sh
-
 function ssInit(){
     dir=$localdir
 
@@ -52,4 +51,31 @@ EOF"
     fi
 }
 
-ssInit
+function pScriptInit(){
+    tdir="${localdir}../shell/bin/"
+
+    scripts="phome.sh lvzl.sh"
+
+    for f in $scripts;do
+	pscript=${localdir}$f
+	if ! [ -f $pscript ];then
+	    echo 'hello' > $pscript
+	fi
+	ln -sf $pscript $tdir
+    done
+}
+
+function pacInit(){
+    lcfg="${localdir}proxy.pac"
+    lsudo ln -sf ${lcfg} /var/www/html/rowan.pac
+    nProxy="'SOCKS ${dip}:1080'"
+    sed -i "s#\(var autoproxy = \).*;#\1$nProxy;#" $lcfg
+}
+
+function main(){
+    pacInit
+    pScriptInit
+    ssInit
+}
+
+main
