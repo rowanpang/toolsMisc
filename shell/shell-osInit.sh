@@ -44,7 +44,8 @@ function zshInit(){
     pkgCheckInstall thefuck
     pkgCheckInstall fasd
     pkgCheckInstall zsh
-    pkgCheckInstall util-linux-user	#for chsh cmd
+    pkgCheckInstall sqlite		    #needed by zsh for auto complete
+    pkgCheckInstall util-linux-user	    #for chsh cmd
     if command -v zsh &>/dev/null;then
 	chsh -s /bin/zsh
     fi
