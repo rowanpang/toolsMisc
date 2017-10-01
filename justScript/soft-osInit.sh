@@ -23,6 +23,7 @@ function miscInit(){
     pkgCheckInstall nmap
     pkgCheckInstall screen
     pkgCheckInstall meld
+    pkgCheckInstall firewall-applet
     pkgCheckInstall lshw
     pkgCheckInstall seahorse
     pkgCheckInstall autojump
