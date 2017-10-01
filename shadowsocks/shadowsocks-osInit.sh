@@ -70,12 +70,38 @@ function pacInit(){
     lsudo ln -sf ${lcfg} /var/www/html/rowan.pac
     nProxy="'SOCKS ${dip}:1080'"
     sed -i "s#\(var autoproxy = \).*;#\1$nProxy;#" $lcfg
+
+    svrNames="http https"	    #http,https for proxy.pac
+    for svr in $svrNames;do
+	lsudo firewall-cmd --add-service=$svr		    #take effect immediately
+	lsudo firewall-cmd --permanent --add-service=$svr   #only after service restart or reload
+    done
+}
+
+function firewalldAddService(){
+    svrName=$1
+
+    svrcfgl="${localdir}firewalld-${svrName}.xml"
+    svrcfgt="/etc/firewalld/services/${svrName}.xml"
+    lsudo cp $svrcfgl $svrcfgt
+    lsudo systemctl start firewalld.service
+    lsudo firewall-cmd --add-service=$svrName		    #take effect immediately
+    lsudo firewall-cmd --permanent --add-service=$svrName    #only after service restart or reload
+}
+
+function firewalldInit(){
+    if ! [ -x "/usr/sbin/firewalld" ];then
+	pr_warn "not firewalld system"
+    fi
+
+    firewalldAddService "socksRowan"
 }
 
 function main(){
     pacInit
     pScriptInit
     ssInit
+    firewalldInit
 }
 
 main
