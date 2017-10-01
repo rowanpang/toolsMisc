@@ -67,7 +67,7 @@ function pScriptInit(){
 
 function pacInit(){
     lcfg="${localdir}proxy.pac"
-    lsudo ln -sf ${lcfg} /var/www/html/rowan.pac
+    lsudo cp -f ${lcfg} /var/www/html/rowan.pac
     nProxy="'SOCKS ${dip}:1080'"
     sed -i "s#\(var autoproxy = \).*;#\1$nProxy;#" $lcfg
 
