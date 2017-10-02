@@ -46,33 +46,36 @@ bindsym $mod+d exec dmenu_run
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#
+
+default_orientation vertical
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+l focus right
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-#bindsym $mod+semicolon focus right
-
+# bindsym $mod+semicolon focus right
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
+bindsym $mod+h     focus left
+bindsym $mod+l     focus right
+bindsym $mod+j     focus down
+bindsym $mod+k     focus up
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
-bindsym $mod+p workspace prev
-bindsym $mod+n workspace next
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+h     move left
+bindsym $mod+Shift+j     move down
+bindsym $mod+Shift+k     move up
+bindsym $mod+Shift+l     move right
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
+
+bindsym $mod+p       workspace prev
+bindsym $mod+n       workspace next
+
 
 # split in left/right
 bindsym $mod+Shift+v split h
@@ -111,7 +114,6 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -171,7 +173,6 @@ exec /root/toolsmisc/synergy/synergyX.sh
 #exec /usr/bin/ibus-daemon --daemonize --replace
 exec /usr/bin/fcitx -d
 exec /usr/bin/sogou-qimpanel
-#exec /usr/bin/xcompmgr			    #enable it if you does not want see sogoupiyin 'black block'
 
 exec /home/pangwz/.nutstore/dist/bin/nutstore-pydaemon.py
 exec /usr/libexec/polkit-gnome-authentication-agent-1
