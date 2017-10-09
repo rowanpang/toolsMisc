@@ -152,8 +152,8 @@ function checkXml_newMAC(){
     done
     domainShort="${domain:0:10}"
 
-    sed -i "s/\(<target dev='kwan-\)xxx/\1${domainShort}/p" $xmlConfig
-    sed -i "s/\(<target dev='klan-\)xxx/\1${domainShort}/p" $xmlConfig
+    sed -i "s/\(<target dev='kw-\)xxx/\1${domainShort}/p" $xmlConfig
+    sed -i "s/\(<target dev='kl-\)xxx/\1${domainShort}/p" $xmlConfig
 }
 
 function checkXml_Source(){
