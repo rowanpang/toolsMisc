@@ -80,13 +80,13 @@ function baseInit(){
     pkgCheckInstall tigervnc
     [ $? -eq 0 ] && lsudo usermod --append --groups kvm,qemu,libvirt $USER
 
-    local kvmDir=${HOMEDIR}vm-iso/
+    local kvmDir="${HOMEDIR}vm-iso/"
     [ -d $kvmDir ] || mkdir -p $kvmDir
-    ln -rsf ${dir}/fw24.xml ${dir}template.xml
-    ln -sf ${dir}/vmStart.sh ${kvmDir}vmStart.sh
-    ln -sf ${dir}/isoMK.sh ${kvmDir}isoMK.sh
-    ln -sf ${dir}/vmUsb.sh ${kvmDir}vmUsb.sh
-    ln -sf ${dir}/vmNet.sh ${kvmDir}vmNet.sh
+    ln -rsf ${dir}fw24.xml   ${dir}template.xml
+    ln -sf  ${dir}vmStart.sh ${kvmDir}vmStart.sh
+    ln -sf  ${dir}isoMK.sh   ${kvmDir}isoMK.sh
+    ln -sf  ${dir}vmUsb.sh   ${kvmDir}vmUsb.sh
+    ln -sf  ${dir}vmNet.sh   ${kvmDir}vmNet.sh
 
     pkgCheckInstall bridge-utils
     pkgCheckInstall NetworkManager

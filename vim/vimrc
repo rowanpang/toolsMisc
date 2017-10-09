@@ -175,6 +175,8 @@
     filetype indent on
         "ref :help 30.3  :help indentexpr  /usr/share/vim/vim74/indent/*
         let g:pyindent_continue=4
+"line wrap
+    set textwidth=80
 
 "search
     set nobackup                " 覆盖文件时不备份
