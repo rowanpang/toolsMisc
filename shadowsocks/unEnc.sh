@@ -1,11 +1,15 @@
 #!/usr/bin/bash
-files="phome.sh.enc lvzl.sh.enc"
+files="phome.sh lvzl.sh rss-heroku.sh"
 
 for f in $files;do
     echo "---cur:$f----"
-    new=${f%.enc}
-    if ! [ -f "./$new" ];then
-	echo "---decrypt $f----"
-	openssl enc -in $f -d -aec-256-cfb -out ${new}
+    dec="./$f"
+    enc="./enc-${f}"
+    if ! [ -f "$dec" ] && [ -f $enc ];then
+	echo "---decrypt $enc----"
+	openssl enc -d -in $enc -aes-256-cfb -out ${dec}
+    elif ! [ -f "$enc" ] && [ -f $dec ];then
+	echo "---encrypt $dec----"
+	openssl enc -in $dec -aes-256-cfb -out ${enc}
     fi
 done

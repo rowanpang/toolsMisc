@@ -71,8 +71,7 @@ function starfromQR(){
     fi
 
     if [ "$ssCmd" == "ss-local" ];then
-	cmd="$ssCmd -s $ip -p $port -k $pwd -m $method -b $bindip -l 1080
-	    -f ${workDir}ss.pid"
+	cmd="$ssCmd -s $ip -p $port -k $pwd -m $method -b $bindip -l 1080"
 
 	if [ "$(ssCmdRunning)" ];then
 	    kill -9 `pidof $ssCmd`
@@ -80,8 +79,7 @@ function starfromQR(){
 
     else
 	cmd="$ssCmd $quiet -d restart -s $ip -p $port -k $pwd -m $method    \
-	    -b $bindip -l 1080						 \
-	    --pid-file ${workDir}ss.pid --log-file ${workDir}ss.log"
+	    -b $bindip -l 1080 --log-file ${workDir}ss.log"
     fi
 
     updateConfigFile "$qridx" "$cmd"
