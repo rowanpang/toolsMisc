@@ -68,7 +68,8 @@ function pScriptInit(){
 function pacInit(){
     lcfg="${localdir}proxy.pac"
     lsudo cp -f ${lcfg} /var/www/html/rowan.pac
-    nProxy="'SOCKS ${dip}:1080'"
+    dport="1080"
+    nProxy="'SOCKS ${dip}:$dport'"
     sed -i "s#\(var autoproxy = \).*;#\1$nProxy;#" $lcfg
 
     svrNames="http https"	    #http,https for proxy.pac
@@ -97,11 +98,26 @@ function firewalldInit(){
     firewalldAddService "socksRowan"
 }
 
+function rssHerokuInit(){
+    dir=${localdir}
+    local svr="rss-heroku.service"
+    local ssvrcfg="${dir}systemd-${svr}"
+    local dsvrcfg="/etc/systemd/system/${svr}"
+    local svrExec="${dir}rss-heroku.sh"
+
+    lsudo cp    $ssvrcfg $dsvrcfg
+
+    lsudo sed -i "s;\(^ExecStart=\)\S\+$;\1${svrExec};" $dsvrcfg
+    [ $? ] && systemctl enable $svr
+
+}
+
 function main(){
     pacInit
     pScriptInit
     ssInit
     firewalldInit
+    rssHerokuInit
 }
 
 main

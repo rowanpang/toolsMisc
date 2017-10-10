@@ -1,0 +1,9 @@
+[Unit]
+Description=heroku free shadow socks service
+
+[Service]
+Type=forking
+ExecStart=/root/bin/log_time.sh
+
+[Install]
+WantedBy=multi-user.target
