@@ -84,7 +84,7 @@ function update(){
     if [ "$calledBySystemd" ];then
 	cmd="systemctl restart shadowsocks-rowan"
     else
-	cmd=${workDir}ssUpdate.sh
+	cmd=${workDir}ssRun.sh
     fi
     echo "update do:"$cmd
     $cmd

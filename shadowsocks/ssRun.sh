@@ -32,26 +32,39 @@ function updateProxyState(){
     echo "proxyState: $state" >> $confFile
 }
 
+function proxyQrimgDwn(){
+    dwnCmd="$1"
+    proxys="ALL_PROXY=socks5h://127.0.0.1:1083 http_proxy=127.0.0.1:8087"
+    for proxy in $proxys;do
+	echo -e "\033[1;31m""use proxy:$proxy""\033[0m"
+	export $proxy
+	$dwnCmd
+	unset ${proxy%=*}
+	if [ -s ${qrimglocal} ];then
+	    break;
+	fi
+    done
+}
+
 function starfromQR(){
     local qridx=${1}
     local qrimgWeb=${qridx}xxoo.png
     local qrimglocal=${workDir}${qridx}.png
     local remoteHost="get.ishadow.website/"
     local remoteHost="ss.ishadowx.net/"
-    local qrurl="http://${remoteHost}/img/qr/${qrimgWeb}"
+    local qrurl="https://${remoteHost}/img/qr/${qrimgWeb}"
 
     local quiet="-q"
     local duration="10s"
     local svrHostName="rowanInspur"
-    local wgetdwn="timeout $duration wget --quiet -o /dev/null -O ${qrimglocal} $qrurl"
+    local dwnQrimg="timeout $duration wget --quiet -o /dev/null -O ${qrimglocal} $qrurl"
+    local dwnQrimg="timeout $duration curl --insecure --silent	\
+		    --output ${qrimglocal} $qrurl"
 
     echo -e "\033[1;31m""update select $tmpIndex""\033[0m"
-    $wgetdwn
+    #$dwnQrimg
     if ! [ -s ${qrimglocal} ];then
-	export http_proxy="127.0.0.1:8087"
-	echo -e "\033[1;31m""use proxy:$http_proxy""\033[0m"
-	$wgetdwn
-	unset http_proxy
+	proxyQrimgDwn "$dwnQrimg"
 	if ! [ -s ${qrimglocal} ];then
 	    echo -e "\033[1;31m""$(date):next update download img ${qrurl} error!""\033[0m"
 	    echo -e "\033[1;31m""$(date):next update download img ${qrurl} error!""\033[0m" >> $confFile
@@ -114,7 +127,6 @@ function curRunningPID(){
 }
 
 function update(){
-    local needCheck="yes"
     for country in us sg jp;do
 	for index in a b c;do
 	    tmpIndex="${country}${index}"
@@ -149,9 +161,11 @@ function gotworkDir(){
 function Usage(){
     echo "         -h:this help info"
     echo "   --server: specify Server to connect "
+    echo "   --nocheck: not do check"
 }
 
 function argParser(){
+    needCheck="yes"
     if [ -x /usr/bin/ss-local ];then
 	ssCmd="ss-local"		#elf bin    recomend
     else
@@ -166,6 +180,9 @@ function argParser(){
 	    --server)
 		specifyServer=$2
 		shift
+		;;
+	    --nocheck)
+		needCheck="no"
 		;;
 	    -h)
 		Usage
