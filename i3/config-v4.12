@@ -208,9 +208,14 @@ bindsym $mod+Control+p workspace pdf
 bindsym $mod+Shift+Control+p move container to workspace pdf
 
 assign [class="libreoffice*"] office
+assign [class="Soffice"] office
 bindsym $mod+Control+o workspace office
 bindsym $mod+Shift+Control+o move container to workspace office
 
 assign [class="Evolution"] mail
 bindsym $mod+Control+m workspace mail
 bindsym $mod+Shift+Control+m move container to workspace mail
+
+assign [class="Eclipse"] java
+bindsym $mod+Control+j workspace java
+bindsym $mod+Shift+Control+j move container to workspace java

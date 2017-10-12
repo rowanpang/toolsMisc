@@ -41,6 +41,7 @@
 	Plug 'mileszs/ack.vim'
 	Plug 'godlygeek/tabular'
 	Plug 'juneedahamed/vc.vim'
+	Plug 'plasticboy/vim-markdown'
 
     call plug#end()
     "
@@ -77,8 +78,8 @@
 	call builder.add_section('S:','%{g:asyncrun_status}')
 	return 0
     endfunction
-    call airline#add_statusline_func('AsyncrunStatus')
-
+    "will block gvim need 'enter' trigger on
+    "call airline#add_statusline_func('AsyncrunStatus')
 
 "indent-guides
     let g:indent_guides_enable_on_vim_startup = 0

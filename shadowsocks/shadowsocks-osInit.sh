@@ -16,8 +16,9 @@ function ssInit(){
     method='systemd'
     cronSvr='/etc/cron.d/shadowSocks-update'
     local    svr=shadowsocks-rowan.service
-    local chksvr=shadowsocks-rowan-chk.service
-    local chktmr=shadowsocks-rowan-chk.timer
+    local svrPrefix="${svr%.service}"
+    local chksvr="${svrPrefix}-chk.service"
+    local chktmr="${svrPrefix}-chk.timer"
 
     local    ssvrcfg="${dir}systemd-${svr}"
     local schksvrcfg="${dir}systemd-${chksvr}"
@@ -101,15 +102,29 @@ function firewalldInit(){
 function rssHerokuInit(){
     dir=${localdir}
     local svr="rss-heroku.service"
-    local ssvrcfg="${dir}systemd-${svr}"
-    local dsvrcfg="/etc/systemd/system/${svr}"
-    local svrExec="${dir}rss-heroku.sh"
+    local svrPrefix="${svr%.service}"
+    local chksvr="${svrPrefix}-chk.service"
+    local chktmr="${svrPrefix}-chk.timer"
+
+    local    ssvrcfg="${dir}systemd-${svr}"
+    local schksvrcfg="${dir}systemd-${chksvr}"
+    local schktmrcfg="${dir}systemd-${chktmr}"
+
+    local    dsvrcfg="/etc/systemd/system/${svr}"
+    local dchksvrcfg="/etc/systemd/system/${chksvr}"
+    local dchktmrcfg="/etc/systemd/system/${chktmr}"
+
+    local svrExec="${dir}${svrPrefix}.sh"
+    local chkExec="${dir}${svrPrefix}-chk.sh"
+    local chkArg=""
 
     lsudo cp    $ssvrcfg $dsvrcfg
+    lsudo cp $schksvrcfg $dchksvrcfg
+    lsudo cp $schktmrcfg $dchktmrcfg
 
     lsudo sed -i "s;\(^ExecStart=\)\S\+$;\1${svrExec};" $dsvrcfg
-    [ $? ] && systemctl enable $svr
-
+    lsudo sed -i "s;\(^ExecStart=\)\S\+$;\1${chkExec} ${chkArg};" $dchksvrcfg
+    [ $? ] && systemctl enable $chktmr
 }
 
 function main(){

@@ -23,6 +23,8 @@ function miscInit(){
     pkgCheckInstall nmap
     pkgCheckInstall screen
     pkgCheckInstall meld
+    pkgCheckInstall nodejs
+    pkgCheckInstall daemonize
     pkgCheckInstall firewall-applet
     pkgCheckInstall lshw
     pkgCheckInstall seahorse
