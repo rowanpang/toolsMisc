@@ -22,11 +22,16 @@ function javaEnv(){
 
 function eclipseIDE(){
     pkgCheckInstall eclipse-platform
+    if [ "$USER" == "root" ];then
+	return
+	#for root user will cause 'Fragment directory should be read only..' error
+	#ref https://github.com/eclipse/rt.equinox.p2/blob/master/bundles/  \
+	    #org.eclipse.equinox.simpleconfigurator/src/org/eclipse/equinox/ \
+	    #internal/simpleconfigurator/utils/SimpleConfiguratorUtils.java
+    fi
     pkgCheckInstall eclipse-jdt
     pkgCheckInstall eclipse-cdt
     pkgCheckInstall eclipse-mpc
-
-    #maven manager 
     pkgCheckInstall maven-eclipse-plugin
     pkgCheckInstall eclipse-m2e-mavenarchiver.noarch
 }
