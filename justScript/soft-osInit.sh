@@ -27,8 +27,10 @@ function miscInit(){
     pkgCheckInstall daemonize
     pkgCheckInstall firewall-applet
     pkgCheckInstall lshw
+    pkgCheckInstall usbview
     pkgCheckInstall seahorse
     pkgCheckInstall autojump
+    pkgCheckInstall mailx
 	#autojump use $PROMPT_COMMAND 实现将dir添加到数据库中.
 	#j() 是在bash加载时export的func
 	#autojump_add_to_database()  也是export 的func
