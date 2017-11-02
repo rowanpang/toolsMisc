@@ -104,8 +104,8 @@ function doVncViewer(){
 	i3-msg 'floating toggle'  >/dev/null 2>&1
 
 	echo
-	read -p "Any input will not destroy $domain: " select
-	if ! [ "$select" ];then
+	read -p "Any input will not destroy $domain: " notDestroy
+	if ! [ "$notDestroy" ];then
 	    $lvirsh destroy $domain
 	fi
     fi
@@ -152,8 +152,8 @@ function checkXml_newMAC(){
     done
     domainShort="${domain:0:10}"
 
-    sed -i "s/\(<target dev='kw-\)xxx/\1${domainShort}/p" $xmlConfig
-    sed -i "s/\(<target dev='kl-\)xxx/\1${domainShort}/p" $xmlConfig
+    sed -i "s/\(<target dev='kw-\)xxx/\1${domainShort}/" $xmlConfig
+    sed -i "s/\(<target dev='kl-\)xxx/\1${domainShort}/" $xmlConfig
 }
 
 function checkXml_Source(){
