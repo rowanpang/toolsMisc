@@ -87,6 +87,9 @@ function firewalldAddService(){
     svrcfgt="/etc/firewalld/services/${svrName}.xml"
     lsudo cp $svrcfgl $svrcfgt
     lsudo systemctl restart firewalld.service
+    while [ `systemctl is-active firewalld` != 'active' ];do
+	sleep 1
+    done
     lsudo firewall-cmd --add-service=$svrName		    #take effect immediately
     lsudo firewall-cmd --permanent --add-service=$svrName    #only after service restart or reload
 }
