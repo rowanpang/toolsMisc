@@ -13,12 +13,12 @@ function initRepo(){
     if [ $osVendor == "fedora" -a $osVer -ge 24 ];then
 	if ! [ $(pkgInstalled rpmfusion-free-release) ];then
 	    lsudo dnf --assumeyes install   \
-		https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(osVer).noarch.rpm
+		https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${osVer}.noarch.rpm
 	fi
 
 	if ! [ $(pkgInstalled rpmfusion-nonfree-release) ];then
 	    lsudo dnf --assumeyes install    \
-		https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(osVer).noarch.rpm
+		https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${osVer}.noarch.rpm
 	fi
 
 	lsudo sed -i "s/^metadata_expire=.*/#&/" /etc/yum.repos.d/*
