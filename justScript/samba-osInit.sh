@@ -11,6 +11,11 @@ function pkgInstall(){
     pkgCheckInstall samba-common-tools.x86_64
     pkgCheckInstall samba-libs.x86_64
 
+    cfgl="${localdir}samba-smb.conf"
+    cfgt="/etc/samba/smb.conf"
+    rm -f $cfgt
+    lsudo ln -sf $cfgl $cfgt
+
     smbUser="$USER"
     local isExist=`lsudo pdbedit -L | grep $smbUser`
 
@@ -26,9 +31,6 @@ qqqqqq
 EOF
     fi
 
-    cfgl="${localdir}samba-smb.conf"
-    cfgt="/etc/samba/smb.conf"
-    lsudo ln -sf $cfgl $cfgt
 }
 
 function main(){
