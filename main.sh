@@ -61,6 +61,8 @@ function initCheck(){
 }
 
 function main(){
+    git submodule init
+    git submodule update
     callFunc initCheck
     local reg='*-osInit.sh'
     doScripts "$reg"
