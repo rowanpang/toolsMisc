@@ -28,9 +28,11 @@ function initRepo(){
 
 	[ $(cat /etc/dnf/dnf.conf | grep -c 'expire=1000d') -ge 1 ] || lsudo sed -i "$ a metadata_expire=1000d" /etc/dnf/dnf.conf
 	[ $(cat /etc/dnf/dnf.conf | grep -c 'keepcache=true') -ge 1 ] || lsudo sed -i "$ a keepcache=true" /etc/dnf/dnf.conf
+	[ -f /etc/yum.repos.d/FZUG.repo ] || lsudo dnf config-manager --add-repo=http://repo.fdzh.org/FZUG/FZUG.repo
+
+	dnf --refresh makecache
     fi
 
-    [ -f /etc/yum.repos.d/FZUG.repo ] || lsudo dnf config-manager --add-repo=http://repo.fdzh.org/FZUG/FZUG.repo
 }
 
 #$1,scripts regex to exec
