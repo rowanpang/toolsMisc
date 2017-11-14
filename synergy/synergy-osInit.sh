@@ -6,14 +6,21 @@ source ./osInitframe/lib.sh
 function initSynergy(){
     local dir=$localdir
     local conf='ll'		#linux on left
-    local conf='lu'		#linux on up
     local conf='lr'		#linux on right
+    local conf='lu'		#linux on up
+
+    pkgCheckInstall tcping
+
     tconf="$HOME/.synergy.conf"
+    script=${dir}synergyX.sh
+
+    i3cfg=${i3configSelected}
+    sed -i "s;exec .*synergyX.sh;exec $script;" $i3cfg
 
     case $conf in
 	'll')
 	    lsudo ln -sf ${dir}synergy.conf.llwr  /etc/synergy.conf
-	    ln -sf ${dir}synergy.conf.llwr $tconf
+	    ln -sf ${dir}synergy.conf.llwr  $tconf
 	    ;;
 	'lr')
 	    lsudo ln -sf ${dir}synergy.conf.lrwl  /etc/synergy.conf

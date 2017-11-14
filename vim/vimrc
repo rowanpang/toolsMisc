@@ -2,6 +2,12 @@
     let $LANG='en_US'
     set langmenu=en_US
 
+"keymap leader
+    "map <silent> [map] [cmd]: will not show cmd in window,exp:
+    "map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
+    let mapleader = ","		    "default is \
+    let maplocalleader = ','	    "default is \
+
 "snippet
     "ref software/editor/vim/plugin/snippet.txt
     ":help snippet
@@ -33,6 +39,9 @@
 	Plug 'skywind3000/asyncrun.vim'
 	Plug 'wannesm/wmgraphviz.vim'
 	Plug 'mileszs/ack.vim'
+	Plug 'godlygeek/tabular'
+	Plug 'juneedahamed/vc.vim'
+	Plug 'plasticboy/vim-markdown'
 
     call plug#end()
     "
@@ -41,6 +50,24 @@
 
 "strip trailing space
     autocmd BufWritePre * %s/\s\+$//e
+
+"vc plugin mapping
+    map <silent> <leader>vB :VCBlame<CR>
+    map <silent> <leader>vd :VCDiff<CR>
+    map <silent> <leader>vdf :VCDiff!<CR>
+    map <silent> <leader>vs :VCStatus<CR>
+    map <silent> <leader>vsu :VCStatus -u<CR>
+    map <silent> <leader>vsq :VCStatus -qu<CR>
+    map <silent> <leader>vsc :VCStatus .<CR>
+    map <silent> <leader>vl :VCLog!<CR>
+    map <silent> <leader>vb :VCBrowse<CR>
+    map <silent> <leader>vbm :VCBrowse<CR>
+    map <silent> <leader>vbw :VCBrowseWorkingCopy<CR>
+    map <silent> <leader>vbr :VCBrowseRepo<CR>
+    map <silent> <leader>vbl :VCBrowseMyList<CR>
+    map <silent> <leader>vbb :VCBrowseBookMarks<CR>
+    map <silent> <leader>vbf :VCBrowseBuffer<CR>
+    map <silent> <leader>vq :diffoff! <CR> :q<CR>
 
 "asyncrun
     command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
@@ -51,8 +78,8 @@
 	call builder.add_section('S:','%{g:asyncrun_status}')
 	return 0
     endfunction
-    call airline#add_statusline_func('AsyncrunStatus')
-
+    "will block gvim need 'enter' trigger on
+    "call airline#add_statusline_func('AsyncrunStatus')
 
 "indent-guides
     let g:indent_guides_enable_on_vim_startup = 0
@@ -118,7 +145,7 @@
     "colorscheme default
 
     if has('gui_running')
-	set background=light
+	set background=dark
     else
 	set background=dark
     endif
@@ -149,6 +176,8 @@
     filetype indent on
         "ref :help 30.3  :help indentexpr  /usr/share/vim/vim74/indent/*
         let g:pyindent_continue=4
+"line wrap
+    set textwidth=80
 
 "search
     set nobackup                " 覆盖文件时不备份
@@ -179,12 +208,6 @@
     set laststatus=2
     "set statusline=\ %<%F[%n%M%R%H]%=\ %y\ %(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)
     set statusline=\ %<%F[b:%n%M%R%H]%=\ \ %(%c:%l/%L%)
-
-"keymap leader
-    "map <silent> [map] [cmd]: will not show cmd in window,exp:
-    "map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
-    let mapleader = ","		    "default is \
-    let maplocalleader = ','	    "default is \
 
 "vimdiff
     if &diff
@@ -218,8 +241,7 @@
         let NERDTreeShowLineNumbers = 1
         "let NERDTreeQuitOnOpen = 1
         let nerdtree_plugin_open_cmd = 'xdg-open'
-
-        "let NERDTreeChDirMode = 2
+	let NERDTreeChDirMode = 2
     let g:netrw_nogx = 1	    "use xdg-open files
 
 "nerdcomment

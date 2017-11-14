@@ -8,9 +8,14 @@ or other application using the libvirt API.
 <network>
   <name>virtNet-Isolated</name>
   <uuid>e5ab61df-16f4-4a97-89ce-8bd67a6743f3</uuid>
-  <bridge name='virbr0' stp='on' delay='0'/>
+  <bridge name='br-kvmLan' stp='on' delay='0'/>
   <mac address='52:54:00:9e:c7:26'/>
-  <domain name='virtNet-Isolated'/>
+  <domain name='lan.kvm'/>
+  <dns>
+      <host ip='192.168.177.1'>
+	  <hostname>rowanInspur</hostname>
+      </host>
+  </dns>
   <ip address='192.168.177.1' netmask='255.255.255.0'>
     <dhcp>
       <range start='192.168.177.128' end='192.168.177.254'/>

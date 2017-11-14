@@ -1,0 +1,13 @@
+#!/usr/bin/sh
+#proc=$(ps -elf | grep 'nutstore-pydaemon.py' | grep -v 'grep' | awk '{print $16}')
+#pid=$(ps -elf | grep 'nutstore-pydaemon.py' | grep -v 'grep' | awk '{print $4}')
+
+proc=$(ps -elf | grep 'nutstore-pydaemon.py' | grep -v 'grep')
+pid=$(echo $proc | awk '{print $4}')
+echo $proc
+echo $pid
+
+read -p "kill[y/n](y):" select
+if ! [ ${select:0:1} == 'n' ];then
+    kill -9 $pid
+fi

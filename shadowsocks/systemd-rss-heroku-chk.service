@@ -1,0 +1,6 @@
+[Unit]
+Description=rss-heroku-chk service
+
+[Service]
+Type=simple
+ExecStart=/root/bin/log_time.sh

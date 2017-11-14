@@ -9,9 +9,14 @@ or other application using the libvirt API.
   <name>virtNet-NATAny</name>
   <uuid>ffb3c1e6-58af-4282-87bb-df439618daa3</uuid>
   <forward mode='nat'/>
-  <bridge name='virbr1' stp='on' delay='0'/>
+  <bridge name='br-kvmNat' stp='on' delay='0'/>
   <mac address='52:54:00:17:e2:6c'/>
-  <domain name='virtNet-NATAny'/>
+  <domain name='nat.kvm'/>
+  <dns>
+      <host ip='192.168.122.1'>
+	  <hostname>rowanInspur</hostname>
+      </host>
+  </dns>
   <ip address='192.168.122.1' netmask='255.255.255.0'>
     <dhcp>
       <range start='192.168.122.128' end='192.168.122.254'/>

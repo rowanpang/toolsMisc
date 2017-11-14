@@ -9,18 +9,24 @@ function initVim(){
     pkgCheckInstall cscope
 
     ln -snf $dir ${HOMEDIR}.vim
-    if [ "$USER" != 'root'];then
+    if [ "$USER" != 'root' ];then
 	lsudo ln -snf $dir ${ROOTHOME}.vim   #for root vim
     fi
     lsudo sed  -i 's; \[\s\+.*\]\s\+\&\&\s\+return$;#&;' /etc/profile.d/vim.sh
 
     #for ycm dependence
-	pkgsInstall clang llvm automake gcc gcc-c++ kernel-devel cmake python-devel
+	pkgsInstall clang llvm automake gcc gcc-c++ cmake python-devel
 
 
     #fix deps for ack plugin
     pkgCheckInstall ack
-    pkgCheckInstall agrep
+    pkgCheckInstall the_silver_searcher
+
+    vim +PlugInstall +qa    #install plugin and exit
+    ycmbuild="${dir}ycm-build.sh"
+    if ! [ -f $HOME/.vim/plugged/youcompleteme/third_party/ycmd/ycm_core.so ];then
+	$ycmbuild
+    fi
 }
 
 initVim

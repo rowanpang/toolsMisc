@@ -5,5 +5,5 @@
     b,in script do things needed 
 
 2,do init just run
-    ./osInitframe/main.sh   or
+    ./main.sh   or
     ./diskMount/autoMount-osInit.sh

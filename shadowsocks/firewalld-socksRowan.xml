@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>socksRowan</short>
+  <description>This option allows you to access the socks service </description>
+  <port protocol="tcp" port="1080-1085"/>
+</service>

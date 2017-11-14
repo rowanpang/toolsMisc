@@ -9,7 +9,7 @@ function baseInit(){
     local repofile="home:zhonghuaren.repo"
     local repoName="home_zhonghuaren"
     if ! [ -s /etc/yum.repos.d/$repofile ];then
-	lsudo dnf config-manager --add-repo http://ftp.gwdg.de/pub/opensuse/repositories/home:/zhonghuaren/Fedora_24/$repofile
+	lsudo dnf config-manager --add-repo http://ftp.gwdg.de/pub/opensuse/repositories/home:/zhonghuaren/Fedora_${osVer}/$repofile
     fi
 
     lsudo dnf config-manager --set-disabled $repoName

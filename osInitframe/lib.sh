@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function pr_info(){
-    if [ "$DEBUG" == 'yes' ];then 
+    if [ "$DEBUG" == 'yes' ];then
         echo $@
     fi
 }
@@ -42,7 +42,7 @@ function callFunc(){
 function pkgInstalled(){
     local pkg=$1
     rpm -q $pkg 2>&1 >/dev/null
-    [ $? -eq 0 ] && echo "yes" 
+    [ $? -eq 0 ] && echo "yes"
 }
 
 #$1,pkg name
@@ -61,7 +61,7 @@ function pkgCheckdoCmd(){
 
     if [ "$isInstalled" -a "$cmd" == "install" ];then
         pr_info "$pkg has been installed,return"
-        return 255    
+        return 255
     fi
 
     if [ ! "$isInstalled" -a "$cmd" == "remove" ];then
@@ -69,13 +69,13 @@ function pkgCheckdoCmd(){
 	return 254
     fi
 
-    local enabledRepo="--enablerepo=fedora "
+    local enabledRepo="--enablerepo=fedora --enablerepo=updates "
     for repo in $@;do
 	enabledRepo="$enabledRepo --enablerepo=$repo"
-    done    
-    lsudo dnf --disablerepo=* $enabledRepo "$cmd" "$pkg"    
+    done
+    lsudo dnf --assumeyes --disablerepo=* $enabledRepo "$cmd" "$pkg"
     [ $? ] || pr_err "pkg $pkg do $cmd error"
-    return $? 
+    return $?
 }
 
 #$1,pkg name
@@ -116,8 +116,19 @@ function pkgsUninstall(){
     return $?
 }
 
+function netRPMInstall(){
+    pkgName=$1
+    pkgUrl=$2
+    if ! [ "$(pkgInstalled $pkgName)" ];then
+        pr_info "installing $pkgName"
+        lsudo rpm -i $pkgUrl
+    else
+	pr_info "$pkgName installed"
+    fi
+}
+
 function libInit(){
-    if [ -r /etc/redhat-release ];then                                                  
+    if [ -r /etc/redhat-release ];then
         case $(cat /etc/redhat-release) in
             Fedora*):
                 osVendor=fedora
@@ -133,5 +144,21 @@ function libInit(){
     DEBUG="yes"
     HOMEDIR="$HOME/"
     ROOTHOME="/root/"
+    i3configSelected="$PWD/i3/config-v4.12"
+    dlink=$(ip route | grep default |		    \
+	    awk '{
+		    i=1;
+		    while(i<NF){
+			if($i=="dev"){
+			    print $(i+1)
+			};
+			i++
+		    }
+		}')
+    dip=$(ip a s $dlink | grep 'inet ' | awk '{print $2}' | \
+	    awk 'BEGIN{ FS="/" };
+		{
+		    print $1
+		}')
 }
 libInit

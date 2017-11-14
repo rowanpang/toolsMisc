@@ -32,9 +32,7 @@ function binPATH(){
     conf="${localdir}zshrc"
     if [ -f $conf ];then
 	if [ `cat $conf | grep -c "$binDir"` -eq 0 ];then
-	    #echo 'PATH=$PATH:'"$binDir" >> $conf
-	    #echo "export PATH" >> $conf
-	    sed -i "\;^# export PATH; iPATH=$PATH:$binDir\nexport PATH" $conf
+	    sed -i "2s;^PATH=\(\S\+\);PATH=$binDir:\1;" $conf
 	fi
     fi
 
@@ -46,7 +44,8 @@ function zshInit(){
     pkgCheckInstall thefuck
     pkgCheckInstall fasd
     pkgCheckInstall zsh
-    pkgCheckInstall util-linux-user	#for chsh cmd
+    pkgCheckInstall sqlite		    #needed by zsh for auto complete
+    pkgCheckInstall util-linux-user	    #for chsh cmd
     if command -v zsh &>/dev/null;then
 	chsh -s /bin/zsh
     fi

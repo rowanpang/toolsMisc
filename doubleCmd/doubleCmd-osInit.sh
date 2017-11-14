@@ -8,7 +8,7 @@ function baseInit(){
     local repofile="home:Alexx2000.repo"
     local repoName="home_Alexx2000"
     if ! [ -s /etc/yum.repos.d/$repofile ];then
-	lsudo dnf config-manager --add-repo http://download.opensuse.org/repositories/home:Alexx2000/Fedora_24/$repofile
+	lsudo dnf config-manager --add-repo http://download.opensuse.org/repositories/home:Alexx2000/Fedora_${osVer}/$repofile
     fi
 
     lsudo dnf config-manager --set-disabled $repoName
@@ -22,6 +22,7 @@ function baseInit(){
 	local conf="${localdir}doublecmd.xml"
 	local hotKey="${localdir}shortcuts.scf"
 
+	[ -d $confDir ]  || mkdir $confDir
 	lsudo cp $conf $confDir
 	lsudo cp $hotKey $confDir
     fi

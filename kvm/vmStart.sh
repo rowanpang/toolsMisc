@@ -15,11 +15,12 @@
 
 function Usage(){
     echo -e "Usage: $program [opt] 'domain'"
-    echo -e "\t\t -l,list: list vm status"	
-    echo -e "\t\t -q,quit: quit shell"	
-    echo -e "\t\t -s,size: imge disk size,default 25G"	
-    echo -e "\t\t -n,noVnc: not startup vncViewer" 
-    echo -e "\t\t -t,shut: shutdown vm" 
+    echo -e "\t\t -l,list: list vm status"
+    echo -e "\t\t -q,quit: quit shell"
+    echo -e "\t\t -s,size: imge disk size,default 25G"
+    echo -e "\t\t -n,noVnc: not startup vncViewer"
+    echo -e "\t\t -t,shut: shutdown vm"
+    echo -e "\t\t -d,destroy: destroy vm"
 }
 
 function lsudo(){
@@ -46,8 +47,8 @@ function gotDomainVncPort(){
         unset pid port
         pid=$(echo $vnc | awk '{print $7}' | sed 's#\([0-9]\+\)/.*#\1#')
         port=$(echo $vnc | awk '{print $4}' | sed 's/.*:\(59[0-9][0-9]\)/\1/')
-        pids="$pid $pids" 
-        pidPorts[$pid]=$port    
+        pids="$pid $pids"
+        pidPorts[$pid]=$port
     done
     IFS="$oldIFS"
 
@@ -103,8 +104,8 @@ function doVncViewer(){
 	i3-msg 'floating toggle'  >/dev/null 2>&1
 
 	echo
-	read -p "Any input will not destroy $domain: " select
-	if ! [ "$select" ];then
+	read -p "Any input will not destroy $domain: " notDestroy
+	if ! [ "$notDestroy" ];then
 	    $lvirsh destroy $domain
 	fi
     fi
@@ -120,7 +121,7 @@ import os
 import json
 
 jsonStr=os.popen('i3-msg -t get_workspaces').readline()
-dicts = json.loads(jsonStr)                                                             
+dicts = json.loads(jsonStr)
 for d in dicts:
     if d['focused'] == True:
         print d['num']
@@ -132,39 +133,58 @@ EOF
     rm $pyName
 }
 
-function checkXml(){
-    [ -f $xmlConfig ] && return
-    verbose echo -e "\033[1;33m\t\tauto gen $xmlConfig\033[0m"
-    cp $xmlTemplate $xmlConfig
-    local uuid=$(uuidgen) 
-    verbose echo "$TAB random uuid\t:$uuid"
-#kvm uuid
-    sed -i "s#<uuid>\S\+</uuid>#<uuid>$uuid</uuid>#" $xmlConfig
-    #sed -i "#<uuid>\S\+</uuid># d" $xmlConfig
-#kvm name    
-    sed -i "s#<name>\S\+</name>#<name>$domain</name>#" $xmlConfig
-#kvm source file
-    sed -i "s#\(\s\+<source file=\)\s*\S\+.img'/>#\1\'$imgDisk\'/>#" $xmlConfig 
-    sed -i "s#\(\s\+<source file=\)\s*\S\+.iso'>#\1\'$domainIso\'>#" $xmlConfig
-    sed -i "s#\(\s\+<source path=\)\s*\S\+.log'/>#\1\'$logFile\'/>#" $xmlConfig
-#kvm vnc port autoport
-    #skip
-#kvm mac
-    local macStr=$(echo `sed -n '/<mac address/p' $xmlConfig`)
-    macStr=${macStr##\<mac address=\'}
-    macStr=${macStr%%\'/>}
+function gotNewMac(){	    #$1=52:54:00:9c:7b:6e
+    local macStr=`echo $1`
     local macHex="0x$(echo $macStr | sed -n 's/://gp')"
     verbose echo "$TAB oldmacHex\t:$macHex"
     local newMac=$(awk "BEGIN{num=strtonum($macHex);printf(\"%X\n\",num+$RANDOM)}")
     verbose echo "$TAB newMacHex\t:$newMac"
     newMacStr=$(echo $newMac | sed -r 's/^([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})/\1:\2:\3:\4:\5:\6/')
     verbose echo "$TAB newMacStr\t:$newMacStr"
-    sed -i "s#\(\s\+<mac address=\)\s*\S\+'/>#\1\'$newMacStr\'/>#" $xmlConfig
+}
+
+function checkXml_newMAC(){
+    local macStr=$(echo `sed -n '/<mac address/p' $xmlConfig`)
+    local macs=$(sed -n '/<mac address/p' $xmlConfig | sed "s/<mac address='//g" | sed "s/'\/>//g")
+    for mac in `echo $macs`;do
+	gotNewMac $mac
+	sed -i "s#\(\s\+<mac address=\)'$mac'/>#\1\'$newMacStr\'/>#" $xmlConfig
+    done
+    domainShort="${domain:0:10}"
+
+    sed -i "s/\(<target dev='kw-\)xxx/\1${domainShort}/" $xmlConfig
+    sed -i "s/\(<target dev='kl-\)xxx/\1${domainShort}/" $xmlConfig
+}
+
+function checkXml_Source(){
+    sed -i "s#\(\s\+<source file=\)\s*\S\+.img'/>#\1\'$imgDisk\'/>#" $xmlConfig
+    sed -i "s#\(\s\+<source file=\)\s*\S\+.iso'>#\1\'$domainIso\'>#" $xmlConfig
+    sed -i "s#\(\s\+<source path=\)\s*\S\+.log'/>#\1\'$logFile\'/>#" $xmlConfig
+}
+
+function checkXml_basic(){
+#kvm uuid
+    local uuid=$(uuidgen)
+    verbose echo "$TAB random uuid\t:$uuid"
+    sed -i "s#<uuid>\S\+</uuid>#<uuid>$uuid</uuid>#" $xmlConfig
+#kvm name
+    sed -i "s#<name>\S\+</name>#<name>$domain</name>#" $xmlConfig
+}
+
+function checkXml(){
+    [ -f $xmlConfig ] && return
+    verbose echo -e "\033[1;33m\t\tauto gen $xmlConfig\033[0m"
+    cp $xmlTemplate $xmlConfig
+
+    checkXml_basic
+    checkXml_Source
+    #kvm vnc port autoport #skip
+    checkXml_newMAC
 }
 
 function checkImg(){
     [ -f $imgDisk ] && return
-    verbose echo -e "\033[1;33m\t\tauto create $imgDisk\033[0m" 
+    verbose echo -e "\033[1;33m\t\tauto create $imgDisk\033[0m"
     qemu-img create $imgDisk $imgSizeWhenAutoCreate
 }
 
@@ -186,6 +206,7 @@ function domainCreate(){
         $lvirsh define $xmlConfig
         $lvirsh start ${domain}
         ret=$?
+	$lvirsh undefine $domain
     fi
 
     if [ $ret -eq 0 ];then
@@ -205,7 +226,7 @@ function optParser(){
     if [ $# -lt 1 ];then
         Usage
         exit -1;
-    fi    
+    fi
 
     while [ $# -gt 0 ]; do
 	case "$1" in
@@ -216,6 +237,12 @@ function optParser(){
 	    -t|shut)
 		doWhat="shut"
 		vmtoShut="${2}"
+		shift
+		break
+		;;
+	    -d|destroy)
+		doWhat="destroy"
+		vmtoDestroy="${2}"
 		shift
 		break
 		;;
@@ -265,7 +292,7 @@ function optParser(){
     #-----------var end
 
     uri="system"
-    if [ "$uri" == "system" ];then
+    if [ "$uri" == "system" ] && [ $EUID -ne 0 ];then
 	#TODO
 	domainSavedDir="$HOME/.config/libvirt/qemu/save/"
 	domainSaved=$domainSavedDir$domain.save
@@ -302,12 +329,17 @@ function main(){
 
     case "$doWhat" in
 	"list")
-	    dolist 
+	    dolist
 	    ;;
 	"shut")
 	    doshut $vmtoShut
 	    shift
 	    ;;
+	"destroy")
+	    virsh -c qemu:///system destroy $vmtoDestroy 2>&1
+	    shift
+	    ;;
+
 	*)
 	    doWhat="create"
 	    ;;

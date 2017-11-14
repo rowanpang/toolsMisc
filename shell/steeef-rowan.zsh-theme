@@ -102,5 +102,5 @@ add-zsh-hook precmd steeef_precmd
     && myPROMPT=${myPROMPT}"SSH-${cport}:${sport} "
 
 PROMPT=$'
-${myPROMPT}%{$purple%}%n${PR_RST} at %{$orange%}%m${PR_RST} in %{$limegreen%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
+${myPROMPT}%{$purple%}%n${PR_RST} at %{$orange%}%m${PR_RST} in %{$limegreen%}%~${PR_RST} %{$orange%}%D{%m-%d %H:%M:%S} ${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
 $ '

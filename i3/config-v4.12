@@ -46,38 +46,41 @@ bindsym $mod+d exec dmenu_run
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#
+
+default_orientation vertical
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+l focus right
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-#bindsym $mod+semicolon focus right
-
+# bindsym $mod+semicolon focus right
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
+bindsym $mod+h     focus left
+bindsym $mod+l     focus right
+bindsym $mod+j     focus down
+bindsym $mod+k     focus up
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
-bindsym $mod+p workspace prev
-bindsym $mod+n workspace next
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+h     move left
+bindsym $mod+Shift+j     move down
+bindsym $mod+Shift+k     move up
+bindsym $mod+Shift+l     move right
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
+bindsym $mod+p       workspace prev
+bindsym $mod+n       workspace next
+
+
+# split in left/right
 bindsym $mod+Shift+v split h
 
-# split in vertical orientation
+# split in up/down
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
@@ -111,7 +114,6 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -166,21 +168,22 @@ bar {
 }
 
 #synergyX
-exec /home/pangwz/tools/toolsMisc/i3/../synergy/synergyX.sh
+exec /root/toolsmisc/synergy/synergyX.sh
 
 #exec /usr/bin/ibus-daemon --daemonize --replace
 exec /usr/bin/fcitx -d
 exec /usr/bin/sogou-qimpanel
-#exec /usr/bin/xcompmgr			    #enable it if you does not want see sogoupiyin 'black block'
 
 exec /home/pangwz/.nutstore/dist/bin/nutstore-pydaemon.py
 exec /usr/libexec/polkit-gnome-authentication-agent-1
-exec /home/pangwz/.fehbg
+exec /root/.fehbg
 
 #nm-applet,netManager
 exec /usr/bin/nm-applet
 
 exec /usr/bin/megasync
+
+exec /usr/bin/xcompmgr
 
 #volumeicon
 exec --no-startup-id /usr/bin/volumeicon
@@ -205,9 +208,14 @@ bindsym $mod+Control+p workspace pdf
 bindsym $mod+Shift+Control+p move container to workspace pdf
 
 assign [class="libreoffice*"] office
+assign [class="Soffice"] office
 bindsym $mod+Control+o workspace office
 bindsym $mod+Shift+Control+o move container to workspace office
 
 assign [class="Evolution"] mail
 bindsym $mod+Control+m workspace mail
 bindsym $mod+Shift+Control+m move container to workspace mail
+
+assign [class="Eclipse"] java
+bindsym $mod+Control+j workspace java
+bindsym $mod+Shift+Control+j move container to workspace java
