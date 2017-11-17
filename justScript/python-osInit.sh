@@ -11,6 +11,10 @@ function cryptography(){
     else
 	pkgCheckInstall python-flask
     fi
+
+    pkgCheckInstall python2-pycodestyle
+    pkgCheckInstall python-pep8
+    pkgCheckInstall python2-autopep8
 }
 
 function main(){
