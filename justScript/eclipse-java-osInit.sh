@@ -8,16 +8,20 @@ function javaEnv(){
     pkgCheckInstall java-*-openjdk-headless
     pkgCheckInstall java-*-openjdk-src
 
-    local eclipseDir="$HOME/eclipse/"
+    local eclipseDir="$HOME/workspace/"
     [ -d $eclipseDir ] || mkdir -p $eclipseDir
 
     local javaWS="$HOME/noteGit/java/eclipseWS/"
-    local jWSlink="$eclipseDir/jworkspace"
+    local jWSlink="$eclipseDir/java-eclipse"
     [ -L $jWSlink ] || ln -s $javaWS $jWSlink
 
     local cWS="$HOME/noteGit/gnu/eclipseWS/"
-    local cWSlink="$eclipseDir/cworkspace"
+    local cWSlink="$eclipseDir/c-eclipse"
     [ -L $cWSlink ] || ln -s $cWS $cWSlink
+
+    local pyWS="$HOME/noteGit/python/pycharmWS/"
+    local pyWSlink="$eclipseDir/pycharm-py"
+    [ -L $pyWSlink ] || ln -s $pyWS $pyWSlink
 }
 
 function eclipseIDE(){
