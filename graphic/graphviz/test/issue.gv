@@ -1,0 +1,261 @@
+/*=============================================================================
+#     FileName: issue.gv
+#         Desc: issue flow [action and owner]
+#       Author: Rowan Pang
+#        Email: pangweizhen.2008@hotmail.com
+#     HomePage:
+#      Version: 0.0.1
+#   LastChange: 2017-12-04 15:06:50
+#      History:
+=============================================================================*/
+digraph structs {
+
+/*
+ *    role:
+ *                pm: project Manager	项目管理
+ *               ppm: Product Manager	产品经理
+ *            tester:
+ *         sw-leader:
+ *                sw:
+ *         hw-leader:
+ *                hw:
+ *
+ *    status:
+ *               new:
+ *          assigned:
+ *           confirm:
+ *          moreinfo:
+ *          postpone:
+ *    readyToRelease:
+ *       readyToTest:
+ *            closed:
+ *            reOpen:
+ *         applySCCB:
+ *          waitSCCB:
+ *      closedBySCCB:
+ */
+    splines = "ortho"
+    colorscheme = "X11"
+    ranksep = 1.2
+    node [
+	colorscheme = "X11"
+	style = "solid"
+	shape = "plaintext"
+    ]
+    New[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "red" align = "center" width ="150">
+		    <font><b>New</b></font>
+		    </td></tr>
+		<tr><td bgcolor = "red" align = "center" width ="150">
+		    <font><b>Raiser: membership</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner: sw/sw-leader</b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+    Assigned[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "yellow" align = "center" width ="150">
+		    <font><b>Assigned</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner: sw/hw-leader</b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+    Confirm[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "yellow" align = "center" width ="150">
+		    <font><b>Confirm</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner: sw/hw-leader</b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+    readyToRelease[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "yellow" align = "center" width ="150">
+		    <font><b>readyToRelease</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner: Integrationer</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>CVS-ID: ##</b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+    readyToTest[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "yellow" align = "center" width ="150">
+		    <font><b>readyToTest</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner: Raiser</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>VERSION: ##</b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+    MoreInfo[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "deeppink2" align = "center" width ="150">
+		    <font><b>MoreInfo</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner: Raiser </b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+
+    Track[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "deeppink2" align = "center" width ="150">
+		    <font><b>Track</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner: Raiser </b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+
+    rollTest[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "deeppink2" align = "center" width ="150">
+		    <font><b>rollTest</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner: Raiser </b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+    Closed[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "green" align = "center" width ="150">
+		    <font><b>Closed</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner: None</b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+    reOpen[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "red" align = "center" width ="150">
+		    <font><b>reOpen</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner: sw/leader</b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+    postPone[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "gray80" align = "center" width ="150">
+		    <font><b>postPone</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner: sw-leader</b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+    applySCCB[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "gray50" align = "center" width ="150">
+		    <font><b>applySCCB</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner: sw-leader</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Note: xxx</b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+    waitSCCB[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "gray50" align = "center" width ="150">
+		    <font><b>waitSCCB</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner:PPM </b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Note: xxx</b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+    closedBySCCB[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "green" align = "center" width ="150">
+		    <font><b>closedBySCCB</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner:None</b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+    mayDuplicate[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "deeppink2" align = "center" width ="150">
+		    <font><b>mayDuplicate</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner: Raiser</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>withID: ##</b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+    Duplicated[label=<
+	    <table border="0" cellborder="1" cellspacing="0" fixedsize="false">
+		<tr><td bgcolor = "green" align = "center" width ="150">
+		    <font><b>Duplicated</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>Owner:None</b></font>
+		    </td></tr>
+		<tr><td align = "center" width ="150">
+		    <font><b>withID: ##</b></font>
+		    </td></tr>
+	    </table>
+	    >
+    ]
+
+    New -> Assigned -> Confirm -> readyToRelease -> readyToTest -> Closed
+    Assigned -> MoreInfo -> Assigned
+    Assigned -> postPone -> reOpen
+    Assigned -> applySCCB -> waitSCCB -> closedBySCCB
+    Assigned -> mayDuplicate
+	mayDuplicate -> Duplicated
+	mayDuplicate -> reOpen
+    Assigned -> Track
+	Track -> reOpen
+    waitSCCB -> reOpen
+    Closed -> rollTest -> reOpen [style = "dotted"]
+    Closed -> reOpen
+    readyToTest -> reOpen
+	reOpen -> Assigned [penwidth = 4.0 color = "red"]
+    New -> MoreInfo -> New
+
+}
