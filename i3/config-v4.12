@@ -219,3 +219,7 @@ bindsym $mod+Shift+Control+m move container to workspace mail
 assign [class="Eclipse"] java
 bindsym $mod+Control+j workspace java
 bindsym $mod+Shift+Control+j move container to workspace java
+
+assign [class="Virt-manager"] vm
+bindsym $mod+Control+v workspace vm
+bindsym $mod+Shift+Control+v move container to workspace vm
