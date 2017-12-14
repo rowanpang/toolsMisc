@@ -73,11 +73,37 @@ function ldnsmasq() {
     lsudo ln -sf $cfg2 /etc/NetworkManager/dnsmasq.d/
 }
 
+function vncInit(){
+    pkgCheckInstall tigervnc
+    pkgCheckInstall tigervnc-server
+    sOrg="/usr/lib/systemd/system/vncserver@.service"
+
+    #for root user enable vncserver :1 and :2
+    vncCfg="root:1,2"
+    for cfg in $vncCfg;do
+	usr=${cfg%%:*}
+	displays=${cfg##*:}
+	echo $usr $displays
+
+	sNew="/etc/systemd/system/vncserver-${usr}@.service"
+	lsudo cp $sOrg $sNew
+	homedir=`grep ^${usr} /etc/passwd | awk 'BEGIN{FS=":"}{print $6}'`
+	lsudo sed -i -e "s/=<USER>/=${usr}/" -e "s#=/home/<USER>#=${homedir}#" $sNew
+
+	for display in `echo $displays | sed 's/,/ /'`;do
+	    echo $display
+	    #systemctl daemon-reload
+	    #systemctl enable vncserver-${usr}@:${displayName}.service
+	    #systemctl start vncserver-${usr}@:${displayName}.service
+	done
+    done
+
+}
+
 function baseInit(){
     local dir=$localdir
     pkgCheckInstall virt-manager
     pkgCheckInstall libvirt-client
-    pkgCheckInstall tigervnc
     [ $? -eq 0 ] && lsudo usermod --append --groups kvm,qemu,libvirt $USER
 
     local kvmDir="${HOMEDIR}vm-iso/"
@@ -90,6 +116,8 @@ function baseInit(){
 
     pkgCheckInstall bridge-utils
     pkgCheckInstall NetworkManager
+
+    vncInit
 
     br-wan
     br-sec
