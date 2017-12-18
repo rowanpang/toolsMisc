@@ -244,6 +244,10 @@
         "let NERDTreeQuitOnOpen = 1
         let nerdtree_plugin_open_cmd = 'xdg-open'
 	let NERDTreeChDirMode = 2
+	let NERDTreeShowBookmarks = 1
+	"let NERDTreeBookmarksFile = '/path/to/file'
+	"default is $HOME/.NERDTreeBookmarks
+
     let g:netrw_nogx = 1	    "use xdg-open files
 
 "nerdcomment
