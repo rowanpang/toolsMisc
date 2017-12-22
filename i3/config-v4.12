@@ -169,6 +169,8 @@ bar {
 
 #synergyX
 exec /root/toolsmisc/synergy/synergyX.sh
+exec_always /usr/bin/setxkbmap	    -option	    #disable ctrlCap software swap for X11
+exec_always /usr/bin/loadkeys	    -d		    #disable ctrlCap software swap for kern
 
 #exec /usr/bin/ibus-daemon --daemonize --replace
 exec /usr/bin/fcitx -d
