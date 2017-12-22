@@ -12,9 +12,9 @@ function Usage(){
 if [ $# -lt 1 ];then
     Usage
     exit -1;
-fi    
+fi
 
-BASEDIR=/home/pangwz/vm-iso/
+BASEDIR="$PWD/"
 WORKDIR=${BASEDIR}make/
 verControl=0
 
@@ -28,7 +28,7 @@ LOGFILE=${WORKDIR}${oldIsoPrefix}-log
 
 function prepareNewIsoMntDir(){
     local tmpMnt=${PREFIX}-mntNew/
-    [ -d ${tmpMnt} ] || mkdir -p ${tmpMnt}        
+    [ -d ${tmpMnt} ] || mkdir -p ${tmpMnt}
 }
 
 function prepareOldIso(){
@@ -51,20 +51,20 @@ function prepareUpper(){
 
         local curUpperDir=${upperDirTMP}V${curVer}-`date +%Y%m%d-%H%M%S`/
         local newUpperDir=${upperDirTMP}V${newVer}-`date +%Y%m%d-%H%M%S`/
-    
+
         if [ $curVer -eq 1 ];then
             mkdir -p ${newUpperDir}
         else
             let newVer=$curVer+1
             rm -rf ${curUpperDir}${newIso}
-            cp -r ${curUpperDir} ${newUpperDir}                    
+            cp -r ${curUpperDir} ${newUpperDir}
         fi
     else
         local newUpperDir=${upperDirTMP}/
-        [ -d ${newUpperDir} ] || mkdir -p ${newUpperDir}        
-    fi        
+        [ -d ${newUpperDir} ] || mkdir -p ${newUpperDir}
+    fi
     echo ${newUpperDir}
-}    
+}
 
 function overlayfs(){
     local upper
@@ -84,49 +84,109 @@ function overlayfs(){
 #$1:for new dir
 function subShell(){
     echo "call & enter new bash"
-    local scriptName=newIso.sh
+    local scriptName="mkNewIso.sh"
     local xmlName=xmlnew.xml
-    local vendor="RowanPang"
-    local isoid="${oldIsoPrefix}-`date +%F`"
     cd ${1}
-    local labelName=$(echo -e `awk '/.*hd:LABEL=.*/ {print $3;exit}' isolinux/isolinux.cfg | awk 'BEGIN{FS="="} {print $3}'`)
-    #if ! [ -f ${scriptName} ];then
+
 cat << EOF >${scriptName}
-#auto gen by isoMK.sh
+#auto generate by isoMK.sh
 #!/bin/sh
 
-[ -f $xmlName ] || { echo "need prepare $xmlName" && exit -1; }
-[ -f $newIso ] && rm -f $newIso
-[ -d repodata ] && rm -rf repodata
+vendor="RowanPang"
+isoid="${oldIsoPrefix}-`date +%F`"
+loaderType="unknown"
 
-echo "-------------createrepo----------" | tee --append $LOGFILE
-#need verbose -v 
-createrepo -v -g $xmlName --workers 10  .  | tee --append $LOGFILE
+function envChkPrepare() {
+    if [ -d isolinux ];then
+	loaderType="isolinux"
+    elif [ -d boot/grub ] && [ -s ppc/bootinfo.txt ];then
+	loaderType="grubPowerPc"
+    else
+	echo 'unknown bootloader,exit -1'
+	exit -1
+    fi
 
-echo "-----mkisofs------" | tee --append $LOGFILE
-sleep 0.5
-#need quiet? -quiet
-mkisofs									    \\
-	-b isolinux/isolinux.bin	    				    \\
-	-c isolinux/boot.cat	    	    				    \\
-	-no-emul-boot		    	    				    \\
-	-boot-load-size 4	    	    				    \\
-	-boot-info-table	    	    				    \\
-	-R			    	    				    \\
-	-eltorito-alt-boot	    	    				    \\
-	-efi-boot images/efiboot.img	    				    \\
-	-no-emul-boot		    	    				    \\
-	-J			    	    				    \\
-	-V '${labelName}'	    	    				    \\
-	-publisher '${vendor}'		    				    \\
-	-appid '${isoid}'		    				    \\
-	-m '$scriptName'	    	    				    \\
-	-m '$xmlName'		    	    				    \\
-	-m "lost+found"			    				    \\
-	-o ${newIso} .		    	    				    \\
-	| tee --append $LOGFILE
+    [ -f "$xmlName" ] || { echo "need prepare $xmlName" && exit -1; }
+    [ -f $newIso ] && rm -f $newIso
+}
+
+function repoDateUpdate(){
+    echo "createrepo----------" | tee --append $LOGFILE
+    [ -d repodata ] && rm -rf repodata
+    createrepo -v -g $xmlName --workers 10  .  | tee --append $LOGFILE
+}
+
+function isofsIsolinux(){
+    echo "loader isolinux"
+    local labelName="\$(echo -e \`awk '/.*hd:LABEL=.*/ {print \$3;exit}'    \\
+			isolinux/isolinux.cfg | awk 'BEGIN{FS="="} {print   \\
+			\$3}'\`)"
+
+    mkisofs								    \\
+	    -b isolinux/isolinux.bin	    				    \\
+	    -c isolinux/boot.cat					    \\
+	    -no-emul-boot						    \\
+	    -boot-load-size 4	    	    				    \\
+	    -boot-info-table	    	    				    \\
+	    -R			    	    				    \\
+	    -eltorito-alt-boot	    	    				    \\
+	    -efi-boot images/efiboot.img				    \\
+	    -no-emul-boot						    \\
+	    -J			    	    				    \\
+	    -V \${labelName}	    	    				    \\
+	    -publisher \${vendor}					    \\
+	    -appid \${isoid}		    				    \\
+	    -m $scriptName	    	    				    \\
+	    -m $xmlName							    \\
+	    -m "lost+found"						    \\
+	    -o ${newIso} .						    \\
+	    | tee --append $LOGFILE
+
+}
+
+function isoGrubPowerPc(){
+    echo "loader Grub"
+    local labelName="RHEL-LE-7.1 Server.ppc64le"
+
+    mkisofs				\\
+	    -chrp-boot			\\
+	    -R				\\
+	    -J				\\
+	    -V \${labelName}		\\
+	    -sysid "ppc"		\\
+	    -m $scriptName		\\
+	    -m $xmlName			\\
+	    -m "lost+found"		\\
+	    -publisher \${vendor}	\\
+	    -o ${newIso} .		\\
+	    | tee --append $LOGFILE
+}
+
+function isoMake() {
+    echo "mkisofs, loader \$loaderType" | tee --append $LOGFILE
+    sleep 1.5
+    case \$loaderType in
+	"isolinux")
+	    isofsIsolinux
+	    ;;
+	"grubPowerPc")
+	    isoGrubPowerPc
+	    ;;
+	*)
+	    echo 'unknown loaderType'
+	    ;;
+    esac
+}
+
+function main(){
+    envChkPrepare
+    repoDateUpdate
+    isoMake
+}
+
+main
+
 EOF
-    #fi
     chmod a+x ${scriptName}
     cp ./repodata/repomd.xml $xmlName
     /bin/bash
@@ -138,11 +198,11 @@ EOF
 #$3:upper dir
 function unPrepare(){
     umount ${1}
-    umount ${2}    
+    umount ${2}
 
     cd ${3}
 }
-        
+
 function main(){
     local ovl
     prepareNewIsoMntDir
@@ -154,6 +214,6 @@ function main(){
     unPrepare $ovl
     echo "exit $program"
     echo "exit $program">> $LOGFILE
-}    
+}
 
 main
