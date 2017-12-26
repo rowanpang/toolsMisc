@@ -180,6 +180,8 @@
         let g:pyindent_continue=4
 "line wrap
     set textwidth=80
+    set breakindent
+    au FileType text set textwidth=88
 
 "search
     set nobackup                " 覆盖文件时不备份
