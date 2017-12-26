@@ -81,12 +81,54 @@ function overlayfs(){
     echo "${new} ${old} ${upper}"
 }
 
+function prepareGroupxml(){
+    newXmlName="groupNewXml.xml"
+    orgXml=$(python << "_EOF"
+import xml.etree.ElementTree as ET
+import hashlib
+import binascii
+import sys
+
+tree = ET.parse('./repodata/repomd.xml')
+root = tree.getroot()
+grp = root.find('./{http://linux.duke.edu/metadata/repo}data[@type="group"]')
+for c in grp.getchildren():
+    if c.tag.endswith('location'):
+	fPath = c.attrib['href']
+	# print fPath
+    if c.tag.endswith("checksum"):
+	hashT = c.attrib["type"]
+	hashV = c.text
+	# print hashT
+	# print hashV
+
+hobj = hashlib.new(hashT)
+hobj.update(open(fPath).read())
+
+hashCal = binascii.hexlify(hobj.digest())
+
+if hashV == hashCal:
+    #os.system('cp %s groupXml.xml' %(fPath))
+    print fPath
+else:
+    print 'org groupxml fail'
+    sys.exit(-1)
+_EOF
+)
+    ret=$?
+    if [ $ret -eq 0 ];then
+	cp $orgXml $newXmlName
+	echo $newXmlName
+    fi
+    return $ret
+}
+
 #$1:for new dir
 function subShell(){
+    cd ${1}
     echo "call & enter new bash"
     local scriptName="mkNewIso.sh"
-    local xmlName=xmlnew.xml
-    cd ${1}
+    local newGroupXml=$(prepareGroupxml)
 
 cat << EOF >${scriptName}
 #auto generate by isoMK.sh
@@ -106,14 +148,14 @@ function envChkPrepare() {
 	exit -1
     fi
 
-    [ -f "$xmlName" ] || { echo "need prepare $xmlName" && exit -1; }
+    [ -f "$newGroupXml" ] || { echo "need prepare $newGroupXml" && exit -1; }
     [ -f $newIso ] && rm -f $newIso
 }
 
 function repoDateUpdate(){
     echo "createrepo----------" | tee --append $LOGFILE
     [ -d repodata ] && rm -rf repodata
-    createrepo -v -g $xmlName --workers 10  .  | tee --append $LOGFILE
+    createrepo -v -g $newGroupXml --workers 10  .  | tee --append $LOGFILE
 }
 
 function isofsIsolinux(){
@@ -137,25 +179,45 @@ function isofsIsolinux(){
 	    -publisher \${vendor}					    \\
 	    -appid \${isoid}		    				    \\
 	    -m $scriptName	    	    				    \\
-	    -m $xmlName							    \\
+	    -m $newGroupXml							    \\
 	    -m "lost+found"						    \\
 	    -o ${newIso} .						    \\
 	    | tee --append $LOGFILE
 
 }
 
+function sectionKeyVal(){
+    local section="\$1" key="\$2" cursec="" k="" v=""
+    while read line; do
+        case "\$line" in
+            \#*) continue ;;
+            \[*\]*) cursec="\${line#[}"; cursec="\${cursec%%]*}" ;;
+            *=*) k=\$(echo \${line%%=*}); v=\$(echo \${line#*=}) ;;
+        esac
+        if [ "\$cursec" = "\$section" ] && [ "\$k" == "\$key" ]; then
+            echo \$v
+            break
+        fi
+    done
+}
+
 function isoGrubPowerPc(){
     echo "loader Grub"
     local labelName="RHEL-LE-7.1 Server.ppc64le"
+    local NV="\$(sectionKeyVal product short < .treeinfo)-\$(sectionKeyVal product version < .treeinfo)"
+    local VA="\$(sectionKeyVal tree variants < .treeinfo).\$(sectionKeyVal tree arch < .treeinfo)"
+    local labelName="\$NV \$VA"
 
     mkisofs				\\
+	    -U				\\
 	    -chrp-boot			\\
 	    -R				\\
 	    -J				\\
-	    -V \${labelName}		\\
+	    -V "\${labelName}"		\\
 	    -sysid "ppc"		\\
+	    -graft-points		\\
 	    -m $scriptName		\\
-	    -m $xmlName			\\
+	    -m $newGroupXml			\\
 	    -m "lost+found"		\\
 	    -publisher \${vendor}	\\
 	    -o ${newIso} .		\\
@@ -188,7 +250,6 @@ main
 
 EOF
     chmod a+x ${scriptName}
-    cp ./repodata/repomd.xml $xmlName
     /bin/bash
     cd -
 }
