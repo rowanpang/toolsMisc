@@ -103,6 +103,8 @@ function vncInit(){
 function baseInit(){
     local dir=$localdir
     pkgCheckInstall virt-manager
+    pkgCheckInstall iptraf-ng
+    pkgCheckInstall bmon
     pkgCheckInstall libvirt-client
     [ $? -eq 0 ] && lsudo usermod --append --groups kvm,qemu,libvirt $USER
 
