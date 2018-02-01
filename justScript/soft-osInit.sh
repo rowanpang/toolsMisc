@@ -35,6 +35,9 @@ function miscInit(){
 	#j() 是在bash加载时export的func
 	#autojump_add_to_database()  也是export 的func
 	#数据库: ~/.local/share/autojump/autojump.txt
+    pkgCheckInstall autoconf
+    pkgCheckInstall autoconf-archive
+    pkgCheckInstall automake
 }
 
 function main(){
