@@ -45,6 +45,8 @@
 	"Plug 'hynek/vim-python-pep8-indent'
 	Plug 'tell-k/vim-autopep8'
 	Plug 'vim-scripts/DrawIt'
+	"Plug 'doxygen/doxygen'
+	Plug 'vim-scripts/DoxygenToolkit.vim'
 
     call plug#end()
     "
