@@ -50,7 +50,7 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 #
 
-default_orientation vertical
+#default_orientation vertical
 
 # change focus
 # bindsym $mod+semicolon focus right
@@ -176,7 +176,7 @@ exec_always /usr/bin/loadkeys	    -d		    #disable ctrlCap software swap for ker
 
 #exec /usr/bin/ibus-daemon --daemonize --replace
 exec /usr/bin/fcitx -d
-exec /usr/bin/sogou-qimpanel
+#exec /usr/bin/sogou-qimpanel
 
 exec /home/pangwz/.nutstore/dist/bin/nutstore-pydaemon.py
 exec /usr/libexec/polkit-gnome-authentication-agent-1
