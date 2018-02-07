@@ -18,6 +18,8 @@ function repoInit(){
     local dir="${localdir}/dictRepo/"
     cd $dir
     tar -xjf stardict-oxford-gb-formated-2.4.2.tar.bz2
+    tar -xjf stardict-langdao-ce-gb-2.4.2.tar.bz2
+    tar -xjf stardict-langdao-ec-gb-2.4.2.tar.bz2
     cd -
 }
 
