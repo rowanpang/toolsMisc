@@ -205,7 +205,6 @@
     let g:indentLine_fileType = ['c','cpp']
     let g:indentLine_bufTypeExclude = ['help','terminal']
 
-
 "fold
     "set foldenable             " 开始折叠
     set nofoldenable            " 开始折叠
