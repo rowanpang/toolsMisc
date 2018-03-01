@@ -201,8 +201,8 @@
     "set list			"nolist better manual set when need
     "highlight SpecialKey NONE
 
-    let g:indentLine_fileTypeExclude = ['.txt','.sh']
-    let g:indentLine_fileType = ['c','cpp']
+    "let g:indentLine_fileTypeExclude = ['text']
+    let g:indentLine_fileType = ['c','cpp','sh']
     let g:indentLine_bufTypeExclude = ['help','terminal']
 
 "fold
