@@ -208,6 +208,7 @@ bindsym $mod+Control+d workspace doublecmd
 bindsym $mod+Shift+Control+d move container to workspace doublecmd
 
 assign [class="Foxit Reader"]  pdf
+assign [class="Evince"]  pdf
 bindsym $mod+Control+p workspace pdf
 bindsym $mod+Shift+Control+p move container to workspace pdf
 
