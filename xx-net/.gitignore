@@ -1,10 +1,6 @@
+code*
 .idea
-data/gae_proxy/certs
-data/gae_proxy/good_ip.txt
-data/gae_proxy/scan_ip.*
-data/x_tunnel/client.log
-data/launcher/launcher.log
-data/gae_proxy/proxy.pac
+data
 *~
 *.pyc
 *.swp
