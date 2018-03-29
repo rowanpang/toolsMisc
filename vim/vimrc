@@ -47,6 +47,7 @@
 	Plug 'vim-scripts/DrawIt'
 	"Plug 'doxygen/doxygen'
 	Plug 'vim-scripts/DoxygenToolkit.vim'
+	Plug 'fatih/vim-go'
 
     call plug#end()
     "
@@ -172,10 +173,10 @@
 "indent
     set shiftwidth=4            " 设定 << 和 >> 命令移动时的宽度为 4
     set softtabstop=4           " 使得按退格键时可以一次删掉 4 个空格
-    set tabstop=8
+    set tabstop=4
         "设定tab长度为4,如果ts与sts不相等则，按下tab建缩进sts.
         "exp"ts=8,sts=4,则按下tab建插入的字符为4个' '，连续两个tab插入的为'\t'
-    "set expandtab             " 不使用空格展开tab
+    set expandtab               " 使用空格展开tab
     set autoindent              " or cindent
     set smartindent             " 开启新行时使用智能自动缩进
     filetype indent on

@@ -7,6 +7,7 @@ function initVim(){
     pkgCheckInstall vim-enhanced
     pkgCheckInstall ctags
     pkgCheckInstall cscope
+    pkgCheckInstall gotags
 
     ln -snf $dir ${HOMEDIR}.vim
     if [ "$USER" != 'root' ];then
