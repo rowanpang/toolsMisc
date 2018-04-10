@@ -21,6 +21,7 @@ function Usage(){
     echo -e "\t\t -n,noVnc: not startup vncViewer"
     echo -e "\t\t -t,shut: shutdown vm"
     echo -e "\t\t -d,destroy: destroy vm"
+    echo -e "\t\t -c,noUndefine: not undefine the vm"
 }
 
 function lsudo(){
@@ -73,7 +74,7 @@ function doVncViewer(){
     local vncPort=""
     vncPort=$(gotDomainVncPort)
     echo "vncPort: $vncPort"
-    if [ "$quitShell" ];then
+    if [ "$noWaitShell" ];then
 	vncviewer :$vncPort   >/dev/null 2>&1 &
 	exit
     else
@@ -206,7 +207,7 @@ function domainCreate(){
         $lvirsh define $xmlConfig
         $lvirsh start ${domain}
         ret=$?
-	$lvirsh undefine $domain
+	[ "$noUndefine" == "true" ] || $lvirsh undefine $domain
     fi
 
     if [ $ret -eq 0 ];then
@@ -247,13 +248,17 @@ function optParser(){
 		break
 		;;
 	    -q|quit)
-		quitShell="true"
+		noWaitShell="true"
 		;;
 	    -s|size)
 		imgSizeWhenAutoCreate="${2}"
 		shift
 		;;
 	    -n|noVnc)
+		noVncViewer="true"
+		;;
+	    -c|noUndefine)
+		noUndefine="true"
 		noVncViewer="true"
 		;;
 	    -h|help)
