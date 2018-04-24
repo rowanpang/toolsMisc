@@ -15,6 +15,11 @@ function initGraphviz(){
     cp ${localdir}k柯南.jpg $HOME/Pictures
 }
 
+function initGnuplot(){
+    pkgsInstall gnuplot
+    pkgsInstall gnuplot-doc
+}
+
 function initDia(){
     pkgsInstall dia
 }
@@ -30,3 +35,4 @@ function initQr(){
 initGraphviz
 initDia
 initQr
+initGnuplot
