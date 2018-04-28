@@ -48,6 +48,9 @@
 	"Plug 'doxygen/doxygen'
 	Plug 'vim-scripts/DoxygenToolkit.vim'
 	Plug 'fatih/vim-go'
+	Plug 'mattn/webapi-vim'
+	"Plug 'mattn/excelview-vim'
+	"Plug 'vim-scripts/excel.vim'
 
     call plug#end()
     "
