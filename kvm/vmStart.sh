@@ -259,7 +259,6 @@ function optParser(){
 		;;
 	    -c|noUndefine)
 		noUndefine="true"
-		noVncViewer="true"
 		;;
 	    -h|help)
 		Usage
