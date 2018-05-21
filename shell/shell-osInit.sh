@@ -29,7 +29,7 @@ function binPATH(){
 	fi
     fi
 
-    conf="${localdir}zshrc"
+    conf="${HOME}/.zshrc"
     if [ -f $conf ];then
 	if [ `cat $conf | grep -c "$binDir"` -eq 0 ];then
 	    sed -i "2s;^PATH=\(\S\+\);PATH=$binDir:\1;" $conf
@@ -56,7 +56,8 @@ function zshInit(){
     fi
     rcT="$HOME/.zshrc"
     rc="$localdir/zshrc"
-    ln -sf $rc $rcT
+    #ln -sf $rc $rcT
+    cp $rc $rcT
     lsudo useradd -D -s '/usr/bin/zsh'	    #chang the default shell when useradd
 
     #root user
