@@ -193,6 +193,7 @@ exec /usr/bin/xcompmgr
 exec --no-startup-id /usr/bin/volumeicon
 
 #app class
+#$mod + Control + f,i,d,p,o,m,j,v,n
 #ref https://i3wm.org/docs/userguide.html#assign_workspace
 #xporp for xwindos property exp: class="Firefox"
 assign [class="Firefox"]    firefox
@@ -228,3 +229,7 @@ bindsym $mod+Shift+Control+j move container to workspace java
 assign [class="Virt-manager"] vm
 bindsym $mod+Control+v workspace vm
 bindsym $mod+Shift+Control+v move container to workspace vm
+
+assign [class="Nautilus"] nautilus
+bindsym $mod+Control+n workspace nautilus
+bindsym $mod+Shift+Control+n move container to workspace nautilus
