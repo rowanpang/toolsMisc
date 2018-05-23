@@ -40,7 +40,14 @@ function miscInit(){
     pkgCheckInstall automake
 }
 
+#for view file through nautilus
+function gvfsInit(){
+    pkgCheckInstall gvfs-smb
+    pkgCheckInstall gvfs-nfs
+}
+
 function main(){
+    gvfsInit
     initWireshark
     miscInit
 }
