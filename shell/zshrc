@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-PATH=/home/pangwz/tools/toolsMisc/shell/bin:/usr/local/bin:/usr/bin:$HOME/bin:/usr/local/sbin:/usr/sbin:/root/toolsmisc/shell/bin
+PATH=/root/toolsmisc/shell/bin:$HOME/bin:/usr/local/bin:$PATH
 export PATH
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
