@@ -105,6 +105,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -233,3 +234,25 @@ bindsym $mod+Shift+Control+v move container to workspace vm
 assign [class="Nautilus"] nautilus
 bindsym $mod+Control+n workspace nautilus
 bindsym $mod+Shift+Control+n move container to workspace nautilus
+
+#output
+workspace 1		output HDMI-1
+workspace 2 		output HDMI-1
+workspace 3 		output HDMI-1
+workspace 4 		output HDMI-1
+workspace 5 		output HDMI-1
+workspace 6 		output HDMI-1
+workspace 7 		output HDMI-1
+workspace 8 		output HDMI-1
+workspace 9 		output HDMI-1
+workspace 10		output HDMI-1
+
+workspace firefox	output VGA-1
+workspace ishark	output VGA-1
+workspace doublecmd	output VGA-1
+workspace pdf		output VGA-1
+workspace office	output VGA-1
+workspace mail		output VGA-1
+workspace nautilus	output VGA-1
+workspace vm		output VGA-1
+workspace java		output VGA-1
