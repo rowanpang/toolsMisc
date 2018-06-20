@@ -1,0 +1,11 @@
+
+ACTION!="add",		GOTO="pciNetUdev_end"
+ENV{ID_BUS} != "pci",	GOTO="pciNetUdev_end"
+ENV{ID_PATH_TAG} != "pci-0000_02_00_0", GOTO="pciNetUdev_end"
+SUBSYSTEM!="net",	GOTO="pciNetUdev_end"
+ATTR{type}!="1",	GOTO="pciNetUdev_end"
+
+ATTR{address}=="60:02:92:54:cb:1c",    NAME="enp3s0"
+
+
+LABEL="pciNetUdev_end"

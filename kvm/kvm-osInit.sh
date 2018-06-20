@@ -63,6 +63,9 @@ function usbNetUdev(){
     local uRulesDir="/etc/udev/rules.d/"
     local rfile="99-usbNetUdev.rules"
     lsudo cp ${dir}${rfile} ${uRulesDir}
+
+    rfile="99-pciNetUdev.rules"
+    lsudo cp ${dir}${rfile} ${uRulesDir}
 }
 
 function ldnsmasq() {
