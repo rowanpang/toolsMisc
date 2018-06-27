@@ -37,7 +37,16 @@ function initQr(){
     pkgCheckInstall python-qrcode
 }
 
+function initMisc(){
+    #gui version of xrandr
+    pkgCheckInstall arandr
+
+    #launches a given program when X session has been idle for a given time
+    pkgCheckInstall xautolock
+}
+
 initGraphviz
 initDia
 initQr
 initGnuplot
+initMisc
