@@ -19,6 +19,9 @@ function run(){
     key="xiaoYan*#0515"
     host="$hostPrefix.herokuapp.com"
 
+    #cnt:key:port
+    cntKeys="rss-heroku:rss-heroku-ssr:1083 rss-heroku-gmail:xiaoYan*#0515:1084"
+
     dlink=$(ip route | grep default |		    \
 	    awk '{
 		    i=1;
@@ -35,18 +38,26 @@ function run(){
 		    print $1
 		}')
 
-    pac="/var/www/html/rowan.pac"
-    port=1083
     iter=`which node`
-    cmd="daemonize -v -c $workDir $iter local.js -s $host
-	    -l $port -m aes-256-cfb -k $key -b 0.0.0.0"
+    for cntKey in $cntKeys;do
+	cnt=`echo "$cntKey" | awk 'BEGIN { FS=":" } { print $1 }'`
+	key=`echo "$cntKey" | awk 'BEGIN { FS=":" } { print $2 }'`
+	port=`echo "$cntKey" | awk 'BEGIN { FS=":" } { print $3 }'`
+
+	host="${cnt}.herokuapp.com"
+	cmd="daemonize -v -c $workDir $iter local.js -s $host
+		-l $port -m aes-256-cfb -k $key -b 0.0.0.0"
+	$cmd
+    done
+
+    pac="/var/www/html/rowan.pac"
+    pacPort=1084
 
     oProxy=$(sed -n 's/\s\+var autoproxy = \(.\+\);/\1/p' $pac)
-    nProxy="'SOCKS ${dip}:$port'"
+    nProxy="'SOCKS ${dip}:$pacPort'"
 
     sed -i "s#\(var autoproxy = \).*;#\1$nProxy;#" $pac
-    $cmd
-    sed -i "s#\(var autoproxy = \).*;#\1$oProxy;#" $pac
+    #sed -i "s#\(var autoproxy = \).*;#\1$oProxy;#" $pac
     cd $olddir
 }
 

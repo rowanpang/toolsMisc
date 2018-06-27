@@ -110,7 +110,7 @@ function main(){
 	fi
     elif ! [ "$doTimeCheck" ];then
 	doUpdate="yes"
-	cause="not checkTime,just do update"
+	cause="not checkTime,force do update"
     else
 	cause="dry run,not do update"
     fi
