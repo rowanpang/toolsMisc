@@ -222,6 +222,12 @@ assign [class="Soffice"] office
 bindsym $mod+Control+o workspace office
 bindsym $mod+Shift+Control+o move container to workspace office
 
+#oracle sqldeveloper
+assign [class="sun-awt-X11-XFramePeer"] sql
+assign [class="DBeaver"] sql
+bindsym $mod+Control+s workspace sql
+bindsym $mod+Shift+Control+s move container to workspace sql
+
 assign [class="Evolution"] mail
 bindsym $mod+Control+m workspace mail
 bindsym $mod+Shift+Control+m move container to workspace mail
@@ -250,6 +256,7 @@ workspace 8 		output HDMI-1
 workspace 9 		output HDMI-1
 workspace 10		output HDMI-1
 
+workspace sql		output VGA-1
 workspace firefox	output VGA-1
 workspace ishark	output VGA-1
 workspace doublecmd	output VGA-1
