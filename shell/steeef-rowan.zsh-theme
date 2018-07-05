@@ -62,10 +62,13 @@ zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
 
 function steeef_preexec {
-    case "$(history $HISTCMD)" in
+    case "$2" in
         *git*)
             PR_GIT_UPDATE=1
             ;;
+	*hub*)
+	    PR_GIT_UPDATE=1
+	    ;;
         *svn*)
             PR_GIT_UPDATE=1
             ;;
