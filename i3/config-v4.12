@@ -256,7 +256,8 @@ workspace 8 		output HDMI-1
 workspace 9 		output HDMI-1
 workspace 10		output HDMI-1
 
-workspace sql		output VGA-1
+workspace sql		output HDMI-1
+
 workspace firefox	output VGA-1
 workspace ishark	output VGA-1
 workspace doublecmd	output VGA-1
