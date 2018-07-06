@@ -23,6 +23,7 @@ ZSH_THEME="zhann"
 
 #ZSH_THEME="random"
 ZSH_THEME="steeef"
+ZSH_THEME="avit"
 ZSH_THEME="steeef-rowan"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -73,7 +74,7 @@ ZSH_THEME="steeef-rowan"
 plugins=(
 	git git-prompt fasd fedora thefuck
 	command-not-found common-aliases gpg-agent svn-fast-info
-	ssh-agent encode64 pip zsh-completions
+	ssh-agent encode64 pip zsh-completions vi-mode
 	)
 
 source $ZSH/oh-my-zsh.sh
