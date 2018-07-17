@@ -38,6 +38,9 @@ function miscInit(){
     pkgCheckInstall autoconf
     pkgCheckInstall autoconf-archive
     pkgCheckInstall automake
+
+	#for kernel build dependence
+    pkgCheckInstall asciidoc
 }
 
 #for view file through nautilus

@@ -6,8 +6,8 @@ source ./osInitframe/lib.sh
 function initSynergy(){
     local dir=$localdir
     local conf='lu'		#linux on up
-    local conf='lr'		#linux on right
     local conf='ll'		#linux on left
+    local conf='lr'		#linux on right
 
     pkgCheckInstall tcping
 

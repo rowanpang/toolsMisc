@@ -21,4 +21,6 @@ or other application using the libvirt API.
       <range start='192.168.177.128' end='192.168.177.254'/>
     </dhcp>
   </ip>
+  <!--route 配置在了host上，而不是通过dhcp给virt Machine-->
+  <!--<route address='192.168.100.0' prefix='24' gateway='192.168.177.1'/>-->
 </network>
