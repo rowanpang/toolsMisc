@@ -208,10 +208,6 @@ assign [class="Wireshark"]  ishark
 bindsym $mod+Control+i workspace ishark
 bindsym $mod+Shift+Control+i move container to workspace ishark
 
-assign [class="Doublecmd"]  doublecmd
-bindsym $mod+Control+d workspace doublecmd
-bindsym $mod+Shift+Control+d move container to workspace doublecmd
-
 assign [class="Foxit Reader"]  pdf
 assign [class="Evince"]  pdf
 bindsym $mod+Control+p workspace pdf
@@ -244,6 +240,11 @@ assign [class="Nautilus"] nautilus
 bindsym $mod+Control+n workspace nautilus
 bindsym $mod+Shift+Control+n move container to workspace nautilus
 
+assign [class="Meld"]	    dd
+assign [class="Doublecmd"]  dd
+bindsym $mod+Control+d workspace dd
+bindsym $mod+Shift+Control+d move container to workspace dd
+
 #output
 workspace 1		output HDMI-1
 workspace 2 		output HDMI-1
@@ -258,9 +259,9 @@ workspace 10		output HDMI-1
 
 workspace sql		output HDMI-1
 
+workspace dd		output VGA-1
 workspace firefox	output VGA-1
 workspace ishark	output VGA-1
-workspace doublecmd	output VGA-1
 workspace pdf		output VGA-1
 workspace office	output VGA-1
 workspace mail		output VGA-1
