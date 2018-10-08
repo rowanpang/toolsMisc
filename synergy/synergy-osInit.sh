@@ -5,9 +5,9 @@ source ./osInitframe/lib.sh
 #just init configfile, start ./synergyX.sh by i3
 function initSynergy(){
     local dir=$localdir
-    local conf='lu'		#linux on up
     local conf='ll'		#linux on left
     local conf='lr'		#linux on right
+    local conf='lu'		#linux on up
 
     pkgCheckInstall tcping
 

@@ -40,7 +40,10 @@ end
 section: options
 	screenSaverSync = false
 	win32KeepForeground = false
-	switchCorners = none
+	switchCorners = none + bottom-left
+	switchCornerSize = 200
+	#back to the edge within N milliseconds
+	#switchDoubleTap = 1000
 	keystroke(alt+shift+h) = switchInDirection(left)
 	keystroke(alt+shift+l) = switchInDirection(right)
 

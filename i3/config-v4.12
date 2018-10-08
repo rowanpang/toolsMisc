@@ -16,7 +16,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:DejaVu Sans Mono 8
+#font pango:monospace 16
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -175,8 +176,6 @@ exec /root/toolsmisc/synergy/synergyX.sh
 
 #swap hase been make when bootup,ref keyboard/*
 #add this 2 lines to disable it
-exec_always /usr/bin/setxkbmap	    -option	    #disable ctrlCap software swap for X11
-exec_always /usr/bin/loadkeys	    -d		    #disable ctrlCap software swap for kern
 
 #exec /usr/bin/ibus-daemon --daemonize --replace
 exec /usr/bin/fcitx -d
@@ -246,25 +245,28 @@ bindsym $mod+Control+d workspace dd
 bindsym $mod+Shift+Control+d move container to workspace dd
 
 #output
-workspace 1		output HDMI-1
-workspace 2 		output HDMI-1
-workspace 3 		output HDMI-1
-workspace 4 		output HDMI-1
-workspace 5 		output HDMI-1
-workspace 6 		output HDMI-1
-workspace 7 		output HDMI-1
-workspace 8 		output HDMI-1
-workspace 9 		output HDMI-1
-workspace 10		output HDMI-1
+workspace 1		output VGA-1
+workspace 2 		output VGA-1
+workspace 3 		output VGA-1
+workspace 4 		output VGA-1
+workspace 5 		output VGA-1
+workspace 6 		output VGA-1
+workspace 7 		output VGA-1
+workspace 8 		output VGA-1
+workspace 9 		output VGA-1
+workspace 10		output VGA-1
 
-workspace sql		output HDMI-1
+workspace sql		output VGA-1
 
-workspace dd		output VGA-1
-workspace firefox	output VGA-1
-workspace ishark	output VGA-1
-workspace pdf		output VGA-1
-workspace office	output VGA-1
-workspace mail		output VGA-1
-workspace nautilus	output VGA-1
-workspace vm		output VGA-1
-workspace java		output VGA-1
+workspace dd		output HDMI-1
+workspace firefox	output HDMI-1
+workspace ishark	output HDMI-1
+workspace pdf		output HDMI-1
+workspace office	output HDMI-1
+workspace mail		output HDMI-1
+workspace nautilus	output HDMI-1
+workspace vm		output HDMI-1
+workspace java		output HDMI-1
+
+exec_always /usr/bin/setxkbmap	    -option	    #disable ctrlCap software swap for X11
+exec_always /usr/bin/loadkeys	    -d		    #disable ctrlCap software swap for kern

@@ -74,7 +74,7 @@ ZSH_THEME="steeef-rowan"
 plugins=(
 	git git-prompt fasd fedora thefuck
 	command-not-found common-aliases gpg-agent svn-fast-info
-	ssh-agent encode64 pip zsh-completions
+	ssh-agent encode64 pip zsh-completions cp
 	#vi-mode
 	)
 
@@ -109,3 +109,4 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+autoload -U compinit && compinit

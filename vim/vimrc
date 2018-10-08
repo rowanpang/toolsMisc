@@ -51,7 +51,16 @@
 	Plug 'mattn/webapi-vim'
 	"Plug 'mattn/excelview-vim'
 	"Plug 'vim-scripts/excel.vim'
+	Plug 'vim-latex/vim-latex'
 
+	"orgMode
+	Plug 'jceb/vim-orgmode'
+	Plug 'vim-scripts/utl.vim'
+	Plug 'tpope/vim-speeddating'
+	Plug 'mattn/calendar-vim'
+	Plug 'vim-scripts/SyntaxRange'
+	Plug 'tpope/vim-repeat'
+	"orgModeEnd
     call plug#end()
     "
 "ack/ag
@@ -245,6 +254,7 @@
     "let Tlist_File_Fold_Auto_Close = 1
     let Tlist_Close_On_Select = 1
     let Tlist_Highlight_Tag_On_BufEnter = 1
+    let Tlist_Show_One_File = 1
     if has("win32")
         let Tlist_Ctags_Cmd = 'C:\Users\pangwz\vimfiles\plugin\ctags.exe'
     endif
