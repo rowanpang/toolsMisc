@@ -21,6 +21,7 @@ for f in $files;do
     if ! [ -f "$dec" ] && [ -f $enc ];then
 	echo "-----decrypt $enc----"
 	openssl enc -d -in $enc -aes-256-cfb -out ${dec} -pass pass:$pwd
+	chmod +x $dec
 	#openssl enc -d -in $enc -aes-256-cfb -out ${dec} -kfile $kfile
     elif ! [ -f "$enc" ] && [ -f $dec ];then
 	echo "-----encrypt $dec----"
