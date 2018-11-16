@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-files="lgm.sh phome.sh lvzl.sh rss-heroku.sh lvzl-redir.sh"
+files="lgm.sh phome.sh lvzl.sh rss-heroku.sh lvzl-redir.sh predir.sh"
 
 #read -s -p "Password: " pwd
 #echo

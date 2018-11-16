@@ -61,6 +61,8 @@
 	Plug 'vim-scripts/SyntaxRange'
 	Plug 'tpope/vim-repeat'
 	"orgModeEnd
+
+	Plug 'ekalinin/dockerfile.vim'
     call plug#end()
     "
 "ack/ag
