@@ -181,7 +181,7 @@ exec /root/toolsmisc/synergy/synergyX.sh
 exec /usr/bin/fcitx -d
 #exec /usr/bin/sogou-qimpanel
 
-exec /home/pangwz/.nutstore/dist/bin/nutstore-pydaemon.py
+exec $HOME/.nutstore/dist/bin/nutstore-pydaemon.py
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec /root/.fehbg
 
