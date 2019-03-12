@@ -63,6 +63,8 @@
 	"orgModeEnd
 
 	Plug 'ekalinin/dockerfile.vim'
+
+	Plug 'chrisbra/csv.vim'
     call plug#end()
     "
 "ack/ag
