@@ -3,7 +3,7 @@
 source ./osInitframe/lib.sh
 
 function phpFileShare(){
-    phpDir="$HOME/filemanager"
+    phpDir="/var/www/html/filemanager"
     php="$phpDir/filemanager.php"
 
     user=kuxInspur
