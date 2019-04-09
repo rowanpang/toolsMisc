@@ -8,3 +8,10 @@
 2,rss-heroku
     a,
 
+
+3,ports
+    1080: shadowsocks/v2ray
+    1081: phome
+    1082: lvzl
+    1083: rss-rowan
+    1084: rss-xiaoyan
