@@ -74,10 +74,14 @@ ZSH_THEME="steeef-rowan"
 # zsh-syntax-highlighting
 plugins=(
 	git git-prompt fasd fedora thefuck
-	command-not-found common-aliases gpg-agent svn-fast-info
-	ssh-agent encode64 pip zsh-completions cp
-	#vi-mode
+	common-aliases gpg-agent svn-fast-info
+	ssh-agent encode64 pip cp
+	zsh-completions
 	docker
+	tmux
+	#vi-mode
+	#command-not-found
+	#compleat
 	)
 
 source $ZSH/oh-my-zsh.sh
