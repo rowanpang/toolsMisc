@@ -1,7 +1,7 @@
 #!/bin/sh
 function verbose(){
     fsize=`du -b $LOG | awk '{print $1}'`
-    let max=8*1024				
+    let max=8*1024
     if [ $fsize -gt $max ];then
 	echo "------new file-------" > $LOG
     fi
@@ -10,7 +10,7 @@ function verbose(){
 }
 
 function add(){
-    eval $(blkid -po udev ${DEVNAME})
+    eval $(blkid -po udev ${DEVNAME} | awk '{print $1}')
     [ -z ${ID_FS_LABEL} ] && ID_FS_LABEL=uDisk
 
     local mntOpt=""
@@ -27,7 +27,7 @@ function add(){
 
     if [ "${ID_FS_TYPE}" == "ntfs" ];then
         mntOpt="-t ntfs-3g -o uid=$uidPangwz,gid=$uidPangwz,utf8,fmask=0113,dmask=0022"
-    fi    
+    fi
 
     verbose "mntopt:$mntOpt"
     /bin/mount $mntOpt ${DEVNAME} $mntDir
