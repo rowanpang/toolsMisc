@@ -16,9 +16,9 @@
     "plugs will be install in plugged/xxx/*  'xxx' subdir named as plugin.
     ":PlugInstall :PlugClen ...
     call plug#begin()
-	Plug 'https://github.com/SirVer/ultisnips'
-	Plug 'https://github.com/honza/vim-snippets.git'
-	Plug 'https://github.com/artur-shaik/vim-javacomplete2.git'
+	"Plug 'https://github.com/SirVer/ultisnips'
+	"Plug 'https://github.com/honza/vim-snippets.git'
+	"Plug 'https://github.com/artur-shaik/vim-javacomplete2.git'
 	Plug 'https://github.com/Shougo/unite.vim.git'
 	Plug 'scrooloose/syntastic'		"语法检查
 	Plug 'majutsushi/tagbar'		"单文件tag
@@ -27,7 +27,7 @@
 	Plug 'rowanpang/nerdtree'		"Plug 'scrooloose/nerdtree'
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'ervandew/supertab'
-	Plug 'valloric/youcompleteme'
+	"Plug 'valloric/youcompleteme'
 	Plug 'yggdroot/indentline'
 	Plug 'raimondi/delimitmate'
 	Plug 'tpope/vim-surround'
@@ -37,15 +37,14 @@
 	Plug 'altercation/vim-colors-solarized'
 	Plug 'skywind3000/asyncrun.vim'
 	Plug 'wannesm/wmgraphviz.vim'
-	Plug 'mileszs/ack.vim'
+	"Plug 'mileszs/ack.vim'
 	Plug 'godlygeek/tabular'
 	Plug 'juneedahamed/vc.vim'
 	Plug 'plasticboy/vim-markdown'
-	"Plug 'hynek/vim-python-pep8-indent'
-	Plug 'tell-k/vim-autopep8'
+	Plug 'tell-k/vim-autopep8'		"Plug 'hynek/vim-python-pep8-indent'
 	Plug 'vim-scripts/DrawIt'
 	"Plug 'doxygen/doxygen'
-	Plug 'vim-scripts/DoxygenToolkit.vim'
+	"Plug 'vim-scripts/DoxygenToolkit.vim'
 	Plug 'fatih/vim-go'
 	Plug 'mattn/webapi-vim'
 	"Plug 'mattn/excelview-vim'
@@ -53,15 +52,15 @@
 	Plug 'vim-latex/vim-latex'
 
 	"orgMode
-	Plug 'jceb/vim-orgmode'
-	Plug 'vim-scripts/utl.vim'
-	Plug 'tpope/vim-speeddating'
-	Plug 'mattn/calendar-vim'
-	Plug 'vim-scripts/SyntaxRange'
-	Plug 'tpope/vim-repeat'
+	"Plug 'jceb/vim-orgmode'
+	"Plug 'vim-scripts/utl.vim'
+	"Plug 'tpope/vim-speeddating'
+	"Plug 'mattn/calendar-vim'
+	"Plug 'vim-scripts/SyntaxRange'
+	"Plug 'tpope/vim-repeat'
 	"orgModeEnd
 
-	Plug 'ekalinin/dockerfile.vim'
+	"Plug 'ekalinin/dockerfile.vim'
 
 	Plug 'chrisbra/csv.vim'
     call plug#end()
