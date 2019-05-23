@@ -30,14 +30,14 @@ function addBridgeAndSlave(){
 function br-sec(){
     local bridgeName="br-sec"
     local dlink=`echo $(ip link | grep enp | awk 'BEGIN{FS=":"};{print $2}')`
-    local slave="enp3s0"
     local slave=$dlink
+    local slave="ethUsbr30f8"
     addBridgeAndSlave $bridgeName $slave
 }
 
 function br-wan(){
     local bridgeName="br-wan"
-    local slave="ethUsbr30f8"
+    local slave="enp3s0"
 
     local qemuConfig="/etc/qemu/bridge.conf"
     if [ $(cat $qemuConfig | grep -c $bridgeName) -lt 1 ];then
