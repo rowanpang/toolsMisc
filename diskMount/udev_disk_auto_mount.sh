@@ -54,7 +54,7 @@ uidPangwz=`id --user pangwz`
 [ $1 ] && DEVNAME="/dev/${1}"
 [ $2 ] && ACTION=$2
 
-verbose "----start:$0"
+verbose "----start: `date -R` ---$0"
 verbose "action:$ACTION"
 verbose "dev:${DEVNAME}"
 
@@ -63,5 +63,5 @@ if [ "$ACTION" == "add" ];then
 elif [ "$ACTION" == "remove" ];then
     remove
 fi
-verbose "----end:$0"
+verbose "----end-----"
 verbose ""
