@@ -29,9 +29,8 @@ function add(){
         mntOpt="-t ntfs-3g -o uid=$uidPangwz,gid=$uidPangwz,utf8,fmask=0113,dmask=0022"
     fi
 
-    verbose "mntopt:$mntOpt"
+    verbose "mntCmd: /bin/mount $mntOpt ${DEVNAME} $mntDir"
     /bin/mount $mntOpt ${DEVNAME} $mntDir
-    verbose "after add"
 }
 
 function remove(){
@@ -46,6 +45,7 @@ function remove(){
 }
 
 LOG=/tmp/log-udev_disk_auto_mount.log
+touch $LOG
 #LOG=/dev/null
 
 timeStamp=`/bin/date +%Y%m%d%H%M%S`
@@ -54,7 +54,7 @@ uidPangwz=`id --user pangwz`
 [ $1 ] && DEVNAME="/dev/${1}"
 [ $2 ] && ACTION=$2
 
-verbose $0
+verbose "----start:$0"
 verbose "action:$ACTION"
 verbose "dev:${DEVNAME}"
 
@@ -63,3 +63,5 @@ if [ "$ACTION" == "add" ];then
 elif [ "$ACTION" == "remove" ];then
     remove
 fi
+verbose "----end:$0"
+verbose ""

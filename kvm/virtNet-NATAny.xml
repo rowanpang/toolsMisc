@@ -12,7 +12,7 @@ or other application using the libvirt API.
   <bridge name='br-kvmNat' stp='on' delay='0'/>
   <mac address='52:54:00:17:e2:6c'/>
   <domain name='nat.kvm'/>
-  <dns>
+  <dns enable="yes">
       <host ip='192.168.122.1'>
 	  <hostname>rowanInspur</hostname>
       </host>
