@@ -133,7 +133,7 @@ function initI3wm(){
 	pkgCheckInstall network-manager-applet
 	#sed -i "/^#nm-applet/ aexec /usr/bin/nm-applet" ${configSelected}
     #startx
-	[ -f $HOME/.Xclients ] || cp ${dir}./Xclients $HOME/.Xclients
+	[ -f $HOME/.Xclients ] || ln -s ${dir}./Xclients $HOME/.Xclients
 }
 
 initI3wm
