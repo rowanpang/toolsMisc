@@ -243,87 +243,6 @@ def ifAuthen(svr,ifSpec = None):
     conn.close()
     return ret
 
-gwsPromptCache = {}
-def ifGetGwsPrompt(ifname):
-    global gwsPromptCache
-    try:
-        return gwsPromptCache[ifname]
-    except KeyError,key:
-        print '%s,not in prompt cache' %key
-
-    while True:
-        gw = raw_input('Auto get err,please manual input gateway for %s: ' %ifname)
-        try:
-            socket.inet_aton(gw)
-            break
-        except socket.error,e:
-            print 'gw format error: %s,again' %e
-            continue
-
-    gwsPromptCache[ifname] = gw
-    return gw
-
-def ifGetGws(ifSpecs):
-    gwsAuto = {}
-    rts = os.popen('ip route').readlines()
-    for rt in rts:
-        rtl = rt.split()
-        # print rtl[0] + ' ' + rtl[4] + ' '
-        # print ifSpecs.keys()
-        if rtl[0] == 'default' and rtl[4] in ifSpecs.keys() and (not rtl[4] in  gwsAuto.keys()):
-            gwsAuto[rtl[4]] = rtl[2]
-    # print gwsAuto
-
-    for ifname in ifSpecs.keys():
-        if ifname in gwsAuto.keys():
-            continue
-        else:   #auto find gateWay for ifname field
-            gwsAuto[ifname] = ifGetGwsPrompt(ifname)
-
-    return gwsAuto
-
-def ifNamesConfirm(default):
-    ifnames = []
-    if len(sys.argv) > 1:
-        for arg in sys.argv:
-            if arg in default:
-                ifnames.append(arg)
-    if len(ifnames) < 1:
-        print 'not select ifname,use default'
-        ifnames = default
-    return ifnames
-
-def ifGetAddr(ifnames):
-    ifSpecs = {}
-    for ifname in ifnames:
-        s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-        ifreq = fcntl.ioctl(s.fileno(),0x8915, #SIOCGIFADDR
-                    struct.pack('256s',ifname))
-        ip = socket.inet_ntoa(ifreq[20:24])
-        print "got ip %s for ifname %s" %(ip,ifname)
-        s.close()
-        ifSpecs[ifname] = ip
-    return ifSpecs
-
-
-def rtCmd(ifSpecs,gws,build = True):
-    if build == True:
-        cmd = 'add'
-    else:
-        cmd = 'del'
-
-    rtTable = 150
-    pref = 32000
-    for ifSpec in ifSpecs.items():
-        cmdStr = 'ip route %s to default via %s dev %s table %d' % (cmd,gws[ifSpec[0]],ifSpec[0],rtTable)
-        # print cmdStr
-        os.system(cmdStr)
-        cmdStr = 'ip rule %s from %s pref %d table %d' %(cmd,ifSpec[1],pref,rtTable)
-        # print cmdStr
-        os.system(cmdStr)
-        pref -= 1
-        rtTable -= 1
-
 def ifAuthens(svr,ifSpecs = None):
     if ifSpecs is None:
         ifAuthen(svr)
@@ -331,44 +250,9 @@ def ifAuthens(svr,ifSpecs = None):
         for ifSpec in ifSpecs.items():
             ifAuthen(svr,ifSpec)
 
-def ifnamesAuto(master):
-    from subprocess import Popen,PIPE
-    p=Popen(["ip", "link"],stdout=PIPE,stderr=PIPE)
-    p.wait()
-    subRet=p.communicate()
-    ifnamesAuto=[]
-    for line in subRet[0].splitlines():
-	iterms = line.split(':')
-	if iterms[1].find(master) != -1:
-	    # print iterms[1]
-	    # print iterms[1].lstrip().split('@')[0]
-            ifnamesAuto.append(iterms[1].strip().split('@')[0])
-    return ifnamesAuto
-
-#for ifSpecs[x]=value ,key is ifname,value is ip for ifname.
-#for ifSpec will be a (key, value) pair for ifSpecs.
-# ifSpec[0]:ifname
-# ifSpec[1]:ifsrc
-
 def main():
     svr = '10.6.6.9'
-    '''
-    master = 'eth0.2'
-    # master = 'bridge0'
-    ifnamesDefault = ('eth0.2','vth1','vth2','vth3')
-    #ifnamesDefault = ('wlan0','bridged')
-    ifnamesDefault = ifnamesAuto(master)
-    ifnames = ifNamesConfirm(ifnamesDefault)        #default ifnames to authen.
-    print "authen for %s" %str(ifnames)
-    if os.getuid() != 0:
-        print 'need run as root,exit!'
-        exit()
-    ifSpecs = ifGetAddr(ifnames)
-    rtCmd(ifSpecs,ifGetGws(ifSpecs))
-    '''
     ifAuthens(svr)
-
-    #rtCmd(ifSpecs,ifGetGws(ifSpecs),build = False)
 
 if __name__ == '__main__':
     main()
