@@ -52,14 +52,16 @@
 	"Plug 'vim-scripts/excel.vim'
 	Plug 'vim-latex/vim-latex'
 
-	"orgMode
+	"-----orgMode
 	Plug 'jceb/vim-orgmode'
 	Plug 'vim-scripts/utl.vim'
 	Plug 'tpope/vim-speeddating'
 	Plug 'mattn/calendar-vim'
 	Plug 'vim-scripts/SyntaxRange'
 	Plug 'tpope/vim-repeat'
-	"orgModeEnd
+	"orgModeEnd------
+
+	Plug 'rykka/riv.vim'		"xx.rst file
 
 	Plug 'ekalinin/dockerfile.vim'
 
@@ -396,6 +398,7 @@
     "let g:syntastic_check_on_open = 1
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_auto_loc_list = 1
+    let g:syntastic_cpp_compiler = 'g++'
 
 "cmdline hotkey
     :cnoremap <C-A> <HOME>
