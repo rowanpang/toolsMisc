@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ref $HOME/.vnc/xstartup export VNCDESKTOPROWAN
-if [ -n $VNCDESKTOPROWAN ];then
+if [ -n "$VNCDESKTOPROWAN" ];then
     echo "VNCDESKTOP "
     exec /usr/bin/gnome-session
 else
