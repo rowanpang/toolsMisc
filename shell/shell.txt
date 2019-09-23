@@ -1,0 +1,2 @@
+0,basic
+    a,put the exec file into 'bin/' that in the PATH env.
