@@ -25,6 +25,8 @@ function initVim(){
 
     vim +PlugInstall +qa    #install plugin and exit
     ycmbuild="${dir}ycm-build.sh"
+    ycmbuild="$HOME/.vim/plugged/youcompleteme/install.py"
+
     if ! [ -f $HOME/.vim/plugged/youcompleteme/third_party/ycmd/ycm_core.so ];then
 	$ycmbuild
     fi
