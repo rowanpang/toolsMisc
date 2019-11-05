@@ -19,7 +19,7 @@ else
 fi
 
 svrCmd="$(dirname $prog)/synergys --address $addr"
-#svrCmd="/usr/bin/synergys --address $addr --enable-drag-drop"
+svrCmd="/usr/bin/synergys --address $addr --enable-drag-drop"
 cliCmd="$(dirname $prog)/synergyc $svrName"
 
 #by startup the network may not connected.

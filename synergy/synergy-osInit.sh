@@ -10,6 +10,7 @@ function initSynergy(){
     local conf='lu'		#linux on up
 
     pkgCheckInstall tcping
+    pkgCheckInstall synergy
 
     tconf="$HOME/.synergy.conf"
     script=${dir}synergyX.sh
