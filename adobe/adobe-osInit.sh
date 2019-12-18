@@ -15,4 +15,15 @@ function baseInit(){
     pkgCheckInstall flash-plugin adobe-linux-x86_64
 }
 
-baseInit
+function main(){
+    local dir=$localdir
+    if [ -f $dir/disable ];then
+	pr_warn "adobe disable return "
+	return
+    fi
+
+    baseInit
+}
+
+main
+

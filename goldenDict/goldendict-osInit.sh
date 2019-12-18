@@ -24,6 +24,12 @@ function repoInit(){
 }
 
 function main(){
+    local dir=$localdir
+    if [ -f $dir/disable ];then
+	pr_warn "$dir disable return "
+	return
+    fi
+
     pkgInstall
     repoInit
 }

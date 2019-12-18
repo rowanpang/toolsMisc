@@ -28,4 +28,14 @@ function baseInit(){
     fi
 }
 
-baseInit
+function main() {
+    local dir=$localdir
+    if [ -f $dir/disable ];then
+	pr_warn "$dir disable return "
+	return
+    fi
+
+    baseInit
+}
+
+main
