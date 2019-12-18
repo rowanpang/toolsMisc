@@ -18,6 +18,11 @@ function bashConf(){
     fi
 }
 
+function bashit(){
+    git clone --depth=1 https://github.com/Bash-it/bash-it.git $HOME/.bash_it
+    $HOME/.bash_it/install.sh
+}
+
 function binPATH(){
     binDir="${localdir}bin"
     conf="$HOME/.bash_profile"
@@ -78,6 +83,7 @@ function sofwareInit(){
 }
 
 bashConf
+bashit
 zshInit
 binPATH
 sofwareInit

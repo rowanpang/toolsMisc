@@ -31,13 +31,13 @@ function br-sec(){
     local bridgeName="br-sec"
     local dlink=`echo $(ip link | grep enp | awk 'BEGIN{FS=":"};{print $2}')`
     local slave=$dlink
-    local slave="ethUsbr30f8"
+    local slave="ethSec"
     addBridgeAndSlave $bridgeName $slave
 }
 
 function br-wan(){
     local bridgeName="br-wan"
-    local slave="enp3s0"
+    local slave="ethWan"
 
     local qemuConfig="/etc/qemu/bridge.conf"
     if [ $(cat $qemuConfig | grep -c $bridgeName) -lt 1 ];then
@@ -66,6 +66,12 @@ function usbNetUdev(){
 
     rfile="99-pciNetUdev.rules"
     lsudo cp ${dir}${rfile} ${uRulesDir}
+}
+
+function kvmnetInit(){
+    usbNetUdev
+    br-wan
+    br-sec
 }
 
 function ldnsmasq() {
@@ -124,11 +130,8 @@ function baseInit(){
 
     vncInit
 
-    br-wan
-    br-sec
     br-kvmlan
     ldnsmasq
-    usbNetUdev
 }
 
 baseInit

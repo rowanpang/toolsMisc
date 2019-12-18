@@ -15,9 +15,7 @@ function initVim(){
     fi
     lsudo sed  -i 's; \[\s\+.*\]\s\+\&\&\s\+return$;#&;' /etc/profile.d/vim.sh
 
-    #for ycm dependence
-	pkgsInstall clang llvm automake gcc gcc-c++ cmake python-devel
-
+    pkgsInstall clang llvm automake gcc gcc-c++ cmake python-devel  	#for ycm dependence
 
     #fix deps for ack plugin
     pkgCheckInstall ack

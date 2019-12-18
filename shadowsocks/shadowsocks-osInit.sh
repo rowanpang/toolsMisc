@@ -133,7 +133,7 @@ function rssHerokuInit(){
 function main(){
     pacInit
     pScriptInit
-    ssInit
+    #ssInit 			not used 2019.12.18 rowanPang
     firewalldInit
     rssHerokuInit
 }

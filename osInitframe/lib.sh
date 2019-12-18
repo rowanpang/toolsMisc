@@ -8,12 +8,12 @@ function pr_info(){
 
 function pr_warn(){
     #33m,yellow
-    echo -e "\033[1;33m" "$@" "\033[0m"
+    echo -e "\033[1;33m""$@""\033[0m"
 }
 
 function pr_err(){
     #31m,red
-    echo -e "\033[1;31m" "$@" "\033[0m"
+    echo -e "\033[1;31m""$@""\033[0m"
     exit -1
 }
 
@@ -127,6 +127,14 @@ function netRPMInstall(){
     fi
 }
 
+function isdisable(){
+    dir=$localdir
+    if [ -f $dir/disable ] ;then
+	pr_warn "$dir disable,exit -1"
+	exit -1;
+    fi
+}
+
 function libInit(){
     if [ -r /etc/redhat-release ];then
         case $(cat /etc/redhat-release) in
@@ -161,4 +169,10 @@ function libInit(){
 		    print $1
 		}')
 }
-libInit
+
+function frameOsInit(){
+    libInit
+    isdisable
+}
+
+frameOsInit

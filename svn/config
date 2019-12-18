@@ -14,7 +14,7 @@
 ###   gpg-agent            (Unix-like systems)
 ###   keychain             (Mac OS X)
 ###   windows-cryptoapi    (Windows)
-# password-stores = gpg-agent,gnome-keyring,kwallet
+password-stores = gpg-agent,gnome-keyring,kwallet
 ### To disable all password stores, use an empty list:
 # password-stores =
 ###
