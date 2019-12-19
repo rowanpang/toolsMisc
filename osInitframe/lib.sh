@@ -131,7 +131,7 @@ function isdisable(){
     dir=$localdir
     if [ -f $dir/disable ] ;then
 	pr_warn "$dir disable,exit -1"
-	exit -1;
+	exit 127;
     fi
 }
 

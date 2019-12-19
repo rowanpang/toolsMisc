@@ -34,7 +34,12 @@ function initQr(){
     pkgCheckInstall qrencode-devel
     pkgCheckInstall qrencode-libs
     pkgCheckInstall zbar
-    pkgCheckInstall python-qrcode
+    pyVer=`python -V | awk '{print $2}' | awk -F "." '{print $1}'`
+    if [ $pyVer -eq 3 ]; then
+        pkgCheckInstall python3-qrcode
+    else
+	pkgCheckInstall python-qrcode
+    fi
 }
 
 function initMisc(){
