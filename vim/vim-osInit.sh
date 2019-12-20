@@ -9,7 +9,8 @@ function initYCM(){
     chkFile='/tmp/vim.ycm.build.check.KWkD'
 
     if ! [ -f $chkFile ];then
-	$ycmbuild
+	#$ycmbuild --all
+	$ycmbuild --clang-completer
 	touch $chkFile
     fi
 }
