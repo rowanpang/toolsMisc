@@ -51,6 +51,7 @@
 	"Plug 'mattn/excelview-vim'
 	"Plug 'vim-scripts/excel.vim'
 	Plug 'vim-latex/vim-latex'
+	Plug 'aklt/plantuml-syntax'
 
 	"-----orgMode
 	Plug 'jceb/vim-orgmode'
@@ -70,6 +71,8 @@
     "
 "ack/ag
     let g:ackprg = 'ag --vimgrep --smart-case'
+
+    let g:plantuml_set_makeprg = 0
 
 "strip trailing space
     autocmd BufWritePre * %s/\s\+$//e
@@ -92,6 +95,13 @@
     map <silent> <leader>vbf :VCBrowseBuffer<CR>
     map <silent> <leader>vq :diffoff! <CR> :q<CR>
 
+
+"quick run
+    let g:quickrun_config = {
+	\ "_":{
+	\   'outputter':'quickfix',
+	\   },
+	\}
 "asyncrun
     command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
     "let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
