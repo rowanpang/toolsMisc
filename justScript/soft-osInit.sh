@@ -8,8 +8,12 @@ function initWine(){
 }
 
 function initWireshark(){
-    pkgCheckInstall wireshark-gtk
-    pkgCheckInstall wireshark-qt
+    if [ $(fedoraXlater 31) == "yes" ] ;then
+	pkgCheckInstall wireshark
+    else
+	pkgCheckInstall wireshark-gtk
+	pkgCheckInstall wireshark-qt
+    fi
     [ $? -eq 0 ] && lsudo usermod --append --groups wireshark,usbmon $USER
 }
 

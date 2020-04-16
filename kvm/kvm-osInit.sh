@@ -8,8 +8,8 @@ function addBridgeAndSlave(){
 
     local bridgeConName=$bridgeName
     if [ $(brctl show | grep -c $bridgeName) -eq 0 ];then
-        pr_info "add bridge con $bridgeConName"
-        nmcli connection add ifname $bridgeName con-name $bridgeConName type bridge
+	pr_info "add bridge con $bridgeConName"
+	nmcli connection add ifname $bridgeName con-name $bridgeConName type bridge
 	nmcli connection modify $bridgeConName connection.autoconnect-slaves 1
 	nmcli connection modify $bridgeConName ipv6.method ignore
 	nmcli connection modify $bridgeConName bridge.stp no
@@ -31,13 +31,13 @@ function br-sec(){
     local bridgeName="br-sec"
     local dlink=`echo $(ip link | grep enp | awk 'BEGIN{FS=":"};{print $2}')`
     local slave=$dlink
-    local slave="ethSec"
+    local slave="enp0s20u5u2"
     addBridgeAndSlave $bridgeName $slave
 }
 
 function br-wan(){
     local bridgeName="br-wan"
-    local slave="ethWan"
+    local slave="enp2s0"
 
     local qemuConfig="/etc/qemu/bridge.conf"
     if [ $(cat $qemuConfig | grep -c $bridgeName) -lt 1 ];then
@@ -135,3 +135,4 @@ function baseInit(){
 }
 
 baseInit
+kvmnetInit

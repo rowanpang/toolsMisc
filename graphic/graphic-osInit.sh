@@ -34,7 +34,11 @@ function initQr(){
     pkgCheckInstall qrencode-devel
     pkgCheckInstall qrencode-libs
     pkgCheckInstall zbar
-    pkgCheckInstall python-qrcode
+    if [ $osVendor == "fedora" -a $osVer -ge 31 ];then
+	pkgCheckInstall python3-qrcode
+    else
+	pkgCheckInstall python-qrcode
+    fi
 }
 
 function initMisc(){

@@ -12,9 +12,22 @@ function initNutstore(){
 	#Release     : 1.fc19
 	#Architecture: x86_64
 
-    if ! [ "$(pkgInstalled nautilus-nutstore)" ];then
+    nutdsk="$HOME/.nutstore/dist/gnome-config/menu/nutstore-menu.desktop"
+
+    if ! [ -f $nutdsk ];then
         pr_info "installing nutstore"
-        lsudo rpm -i https://www.jianguoyun.com/static/exe/installer/fedora/nautilus_nutstore_amd64.rpm
+	if [ $osVendor == "fedora" -a $osVer -ge 31 ];then
+	    nutroot=$HOME/.nutstore;nutsrc=$nutroot/src;mkdir -p $nutsrc
+	    yum install glib2-devel gtk2-devel nautilus-devel gvfs libappindicator-gtk3  python2-gobject
+	    wget https://www.jianguoyun.com/static/exe/installer/nutstore_linux_src_installer.tar.gz -O $nutsrc/nutstore_linux_src_installer.tar.gz
+	    opwd=$PWD
+	    cd $nutsrc && tar zxf nutstore_linux_src_installer.tar.gz && cd ./nutstore_linux_src_installer
+	    ./configure && make && make install && nautius -q && ./runtime_bootstrap
+	    cd $opwd
+	else
+            lsudo yum install  https://www.jianguoyun.com/static/exe/installer/fedora/nautilus_nutstore_amd64.rpm
+	fi
+
     else
 	pr_info "nutstore installed"
     fi

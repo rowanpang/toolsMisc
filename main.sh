@@ -44,8 +44,18 @@ function doScripts(){
 	$script
 	ret=$?
 	pr_info "---------------end ret:$ret ------------------"
-	[ $ret -eq 0 ] || pr_err "script $script error"
+
+	case $ret in
+		0)
+			:;;
+		251) 			#script disabled
+			:;;
+		*)
+			msg="$script run error, exit $ret"
+			pr_err $msg
+	esac
     done
+    pr_ok "all script finished"
 }
 
 function initCheck(){
@@ -55,9 +65,9 @@ function initCheck(){
     doScripts "$reg"
 
     local who=`whoami`
-    [ "$who" == "$USER" ] || lerror "effective user:$who is not login user:$USER"
-    [ -f ${HOMEDIR}.gitconfig ] || lerror " prepare .gitconfig first,exit"
-    [ -f ${HOMEDIR}.ssh/id_rsa ] || lerror "prepare ssh key first,exit"
+    [ "$who" == "$USER" ] || pr_err "effective user:$who is not login user:$USER"
+    [ -f ${HOMEDIR}.gitconfig ] || pr_err " prepare .gitconfig first,exit"
+    [ -f ${HOMEDIR}.ssh/id_rsa ] || pr_err "prepare ssh key first,exit"
 
 }
 

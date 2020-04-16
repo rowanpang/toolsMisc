@@ -1,0 +1,4 @@
+[Match]
+MACAddress=60:02:92:54:cb:1c
+[Link]
+NAME="ethWan"

@@ -1,0 +1,1 @@
+/root/toolsmisc/synergy/synergyX.sh

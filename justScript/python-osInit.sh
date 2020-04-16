@@ -14,7 +14,12 @@ function cryptography(){
 
     pkgCheckInstall python2-pycodestyle
     pkgCheckInstall python-pep8
-    pkgCheckInstall python2-autopep8
+
+    if [ $(fedoraXlater 31) == "yes" ];then
+	pkgCheckInstall python3-autopep8
+    else
+	pkgCheckInstall python2-autopep8
+    fi
 }
 
 function main(){

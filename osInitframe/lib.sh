@@ -11,6 +11,12 @@ function pr_warn(){
     echo -e "\033[1;33m""$@""\033[0m"
 }
 
+function pr_ok(){
+    #32m,green
+    echo -e "\033[1;32m""$@""\033[0m"
+    exit -1
+}
+
 function pr_err(){
     #31m,red
     echo -e "\033[1;31m""$@""\033[0m"
@@ -87,9 +93,11 @@ function pkgCheckInstall(){
     [ $? == 255 ] || return 0
     return $?
 }
+
 #$@:pkgs to install
 #return:
     #255: pkgX install error
+
 function pkgsInstall(){
     for pkg in "$@";do
 	pkgCheckInstall $pkg
@@ -121,7 +129,7 @@ function netRPMInstall(){
     pkgUrl=$2
     if ! [ "$(pkgInstalled $pkgName)" ];then
         pr_info "installing $pkgName"
-        lsudo rpm -i $pkgUrl
+        lsudo yum install $pkgUrl
     else
 	pr_info "$pkgName installed"
     fi
@@ -130,8 +138,8 @@ function netRPMInstall(){
 function isdisable(){
     dir=$localdir
     if [ -f $dir/disable ] ;then
-	pr_warn "$dir disable,exit -1"
-	exit -1;
+	pr_warn "$dir disable,exit -5"
+	exit -5;
     fi
 }
 
@@ -170,9 +178,20 @@ function libInit(){
 		}')
 }
 
+function fedoraXlater(){
+    ver=$1
+    if [ $osVendor == "fedora" -a $osVer -ge $ver ];then
+	echo "yes" ; return  0
+    else
+	echo "no"  ; return  -1
+    fi
+}
+
 function frameOsInit(){
     libInit
     isdisable
+
+    [ -d $HOME/Pictures ] || mkdir -p $HOME/Pictures
 }
 
 frameOsInit

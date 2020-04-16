@@ -82,8 +82,22 @@ function sofwareInit(){
     pkgCheckInstall ansifilter
 }
 
-bashConf
-bashit
-zshInit
-binPATH
-sofwareInit
+function iAuthen(){
+	cronsh=/etc/cron.daily/iAuthen.sh
+	cat << EOF > $cronsh
+#!/bin/bash
+${localdir}/shell/bin/iAuthen.py >> /var/log/iAuthen.log 2>&1
+EOF
+	chmod +x $cronsh
+}
+
+function main(){
+	bashConf
+	bashit
+	zshInit
+	binPATH
+	sofwareInit
+	iAuthen
+}
+
+main

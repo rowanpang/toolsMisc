@@ -18,6 +18,9 @@ function initSynergy(){
     i3cfg=${i3configSelected}
     sed -i "s;exec .*synergyX.sh;exec $script;" $i3cfg
 
+    tdir="${localdir}../shell/bin/"
+    ln -sf $script $tdir
+
     case $conf in
 	'll')
 	    lsudo ln -sf ${dir}synergy.conf.llwr  /etc/synergy.conf
