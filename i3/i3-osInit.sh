@@ -33,7 +33,10 @@ function baseInit(){
 	pkgCheckInstall xscreensaver
 
     #config
-	ln -snf $dir ${HOMEDIR}.i3
+	tgtdir=$HOME/.config/i3
+	[ -d $tgtdir ] && mv $tgtdir $tgtdir.org
+
+	ln -snf $dir $tgtdir
 	ln -rsf ${configSelected} ${dir}config
 
     #i3status

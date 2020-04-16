@@ -33,6 +33,7 @@ function br-sec(){
     local slave=$dlink
     local slave="enp0s20u5u2"
     addBridgeAndSlave $bridgeName $slave
+    nmcli connection modify $bridgeName ipv4.never-default yes
 }
 
 function br-wan(){
@@ -68,8 +69,10 @@ function usbNetUdev(){
     lsudo cp ${dir}${rfile} ${uRulesDir}
 }
 
-function kvmnetInit(){
-    usbNetUdev
+function kvmNetInit(){
+    if ! [ $ovVer -ge 31 ];then
+	usbNetUdev
+    fi
     br-wan
     br-sec
 }
@@ -129,7 +132,7 @@ function baseInit(){
     pkgCheckInstall NetworkManager
 
     vncInit
-
+    kvmNetInit
     br-kvmlan
     ldnsmasq
 }

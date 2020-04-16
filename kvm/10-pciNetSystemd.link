@@ -1,0 +1,6 @@
+[Match]
+MACAddress=60:02:92:54:cb:1c
+Path=pci-0000:02:00.0
+
+[Link]
+Name=ethWan
