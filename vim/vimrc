@@ -115,12 +115,6 @@
     "will block gvim need 'enter' trigger on
     "call airline#add_statusline_func('AsyncrunStatus')
 
-"indent-guides
-    let g:indent_guides_enable_on_vim_startup = 0
-    let g:indent_guides_exclude_filetypes = ['help','vim','nerdtree']
-    "au BufReadPost * IndentGuidesEnable
-    "<leader>ig
-
 "easymotion
     "ref http://www.wklken.me/posts/2015/06/07/vim-plugin-easymotion.html
 
@@ -198,18 +192,6 @@
         "winent/winleave also can auto set to distinguish cur window
     "set number				" 显示行号
 
-"indent
-    set shiftwidth=4            " 设定 << 和 >> 命令移动时的宽度为 4
-    set softtabstop=4           " 使得按退格键时可以一次删掉 4 个空格
-    set tabstop=8
-        "设定tab长度为4,如果ts与sts不相等则，按下tab建缩进sts.
-        "exp"ts=8,sts=4,则按下tab建插入的字符为4个' '，连续两个tab插入的为'\t'
-    "set expandtab               " 使用空格展开tab
-    set autoindent              " or cindent
-    set smartindent             " 开启新行时使用智能自动缩进
-    filetype indent on
-        "ref :help 30.3  :help indentexpr  /usr/share/vim/vim74/indent/*
-        let g:pyindent_continue=4
 "line wrap
     "set nowrap	    	"disable linebreak
     set textwidth=80 	"0,disable break
@@ -224,6 +206,25 @@
     set hlsearch                " 搜索时高亮显示被找到的文本
     set hidden                  " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
 
+"indent-guides
+    let g:indent_guides_enable_on_vim_startup = 0
+    let g:indent_guides_exclude_filetypes = ['help','vim','nerdtree']
+    "au BufReadPost * IndentGuidesEnable
+    "<leader>ig
+
+"indent
+    set shiftwidth=4            " 设定 << 和 >> 命令移动时的宽度为 4
+    set softtabstop=4           " 使得按退格键时可以一次删掉 4 个空格
+    set tabstop=8
+        "设定tab长度为4,如果ts与sts不相等则，按下tab建缩进sts.
+        "exp"ts=8,sts=4,则按下tab建插入的字符为4个' '，连续两个tab插入的为'\t'
+    "set expandtab               " 使用空格展开tab
+    set autoindent              " or cindent
+    set smartindent             " 开启新行时使用智能自动缩进
+    filetype indent on
+        "ref :help 30.3  :help indentexpr  /usr/share/vim/vim74/indent/*
+        let g:pyindent_continue=4
+
 "vertical list
     "can also be '¦,┆'. for plugins https://github.com/Yggdroot/indentLine
     "set listchars=tab:\¦\ ,eol:$
@@ -234,6 +235,8 @@
     "let g:indentLine_fileType = ['c','cpp','sh','javascript','html']
     let g:indentLine_fileTypeExclude = ['text']
     let g:indentLine_bufTypeExclude = ['help','terminal']
+    let g:indentLine_enabled = 0
+    "cmd :IndentLinesDisable
 
 "fold
     "set foldenable             " 开始折叠

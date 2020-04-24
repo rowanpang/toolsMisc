@@ -11,6 +11,7 @@ import base64
 import sys
 import json
 import getpass
+import datetime
 
 def svrConnection(svr,srcIp = None,srcPort = 6666):
     if srcIp is None:
@@ -89,7 +90,7 @@ def repParser(rep):
 
     return repdict,isJson
 
-authenUser = ''
+authenUser = 'pangweizhenbj'
 def ifAuthenGetUser():
     global authenUser
     authenUserDefault = 'pangweizhenbj'
@@ -102,7 +103,7 @@ def ifAuthenGetUser():
 
     return authenUser
 
-authenPWD = ''
+authenPWD = 'phome@sxy12'
 def ifAuthenGetPWD():
     global authenPWD
     if len(authenPWD) != 0:
@@ -251,6 +252,7 @@ def ifAuthens(svr,ifSpecs = None):
             ifAuthen(svr,ifSpec)
 
 def main():
+    print '%s' % datetime.datetime.now().strftime('%Y-%m-%d')
     svr = '10.6.6.9'
     ifAuthens(svr)
 
