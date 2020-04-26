@@ -103,27 +103,38 @@ def ifAuthenGetUser():
 
     return authenUser
 
-authenPWD = 'phome@sxy12'
+authenPWD = ''
 def ifAuthenGetPWD():
     global authenPWD
     if len(authenPWD) != 0:
         return authenPWD
 
-    prompt='domain pwd:'
+    fpath="/root/.pwd"
 
+    if os.path.isfile(fpath):
+        authenPWD = open(fpath,'r').readline().strip()      #strip the '\n'
+    if len(authenPWD) != 0:
+        # printf('pwd from file %s, %s',fpath,authenPWD);
+        print 'pwd from file %s, %s' % (fpath, authenPWD)
+        return authenPWD
+    prompt='domain pwd:'
     authenPWD = getpass.getpass(prompt);
     while len(authenPWD) == 0:
         authenPWD = getpass.getpass(prompt);
 
+    open(fpath,'w').write(authenPWD)
     return authenPWD
 
 def ifAuthen(svr,ifSpec = None):
     ret = False
     userName = ifAuthenGetUser()
     pwd = ifAuthenGetPWD()
-    print userName
-    print pwd
+
+    print 'Authen user: %s' % userName
+    print 'Authen pwd: %s' % pwd
     print
+
+    return;
 
     if ifSpec is None:
         conn = svrConnection(svr)
@@ -255,6 +266,8 @@ def main():
     print '%s' % datetime.datetime.now().strftime('%Y-%m-%d')
     svr = '10.6.6.9'
     ifAuthens(svr)
+    print ''
+    print ''
 
 if __name__ == '__main__':
     main()
