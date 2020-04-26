@@ -134,8 +134,6 @@ def ifAuthen(svr,ifSpec = None):
     print 'Authen pwd: %s' % pwd
     print
 
-    return;
-
     if ifSpec is None:
         conn = svrConnection(svr)
     else:
