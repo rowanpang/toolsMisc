@@ -194,9 +194,8 @@
 
 "line wrap
     "set nowrap	    	"disable linebreak
-    set textwidth=80 	"0,disable break
+    set textwidth=96	"0,disable break
     set breakindent
-    au FileType text set textwidth=88
 
 "search
     set nobackup                " 覆盖文件时不备份
