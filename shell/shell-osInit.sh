@@ -86,7 +86,7 @@ function iAuthen(){
 	cronsh=/etc/cron.daily/iAuthen.sh
 	cat << EOF > $cronsh
 #!/bin/bash
-${localdir}/shell/bin/iAuthen.py >> /var/log/iAuthen.log 2>&1
+${localdir}/bin/iAuthen.py >> /var/log/iAuthen.log 2>&1
 EOF
 	chmod +x $cronsh
 }

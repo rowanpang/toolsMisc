@@ -194,7 +194,7 @@
 
 "line wrap
     "set nowrap	    	"disable linebreak
-    set textwidth=96	"0,disable break
+    set textwidth=0	"0,disable break
     set breakindent
 
 "search

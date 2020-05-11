@@ -1,15 +1,28 @@
 [user]
     name = Rowan Pang
-    email = pangweizhen.2008@hotmail.com
+    email = pangweizhen.2008@qq.com
+    signingkey = "C3A1F87AE49FC1DD"
+
+[commit]
+    gpgsign = false
+
 [sendemail]
     confirm = auto
-    smtpserver = smtp-mail.outlook.com
-    smtpserverport = 25
-    smtpuser = pangweizhen.2008@hotmail.com
-    smtpencryption = tls
-    #smtppass = 'pwd'
+    smptauth = login
+    smtpserver = smtp.qq.com
+    smtpserverport = 465
+    smtpuser = pangweizhen.2008@qq.com
+    smtpencryption = ssl
+    smtppass = "egphjcnkrprecaeh"
+    smptsslcertpath = /etc/pki/nssdb/
+    #
 [format]
+    signOff = true
     headers = "MIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\n"
+
+[gpg]
+    program = gpg2
+
 [core]
     editor = vim
 [merge]
