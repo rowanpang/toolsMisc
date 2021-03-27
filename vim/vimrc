@@ -68,6 +68,7 @@
 	Plug 'ekalinin/dockerfile.vim'
 
 	Plug 'chrisbra/csv.vim'
+        Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     call plug#end()
     "
 "ack/ag
@@ -193,14 +194,14 @@
     "set number				" 显示行号
 
 "line wrap
-    "set nowrap	    	"disable linebreak
+    "set nowrap	    	"disable linewrap(display break)
     set textwidth=0	"0,disable break
     set breakindent
 
 "search
     set nobackup                " 覆盖文件时不备份
     set ignorecase smartcase    " 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
-    "set nowrapscan              " 禁止在搜索到文件两端时重新搜索
+    set nowrapscan              " 禁止在搜索到文件两端时重新搜索
     set incsearch               " 输入搜索内容时就显示搜索结果
     set hlsearch                " 搜索时高亮显示被找到的文本
     set hidden                  " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
@@ -217,7 +218,7 @@
     set tabstop=8
         "设定tab长度为4,如果ts与sts不相等则，按下tab建缩进sts.
         "exp"ts=8,sts=4,则按下tab建插入的字符为4个' '，连续两个tab插入的为'\t'
-    "set expandtab               " 使用空格展开tab
+    set expandtab               " 使用空格展开tab
     set autoindent              " or cindent
     set smartindent             " 开启新行时使用智能自动缩进
     filetype indent on
@@ -349,6 +350,7 @@
     noremap <leader>7 7gt
     noremap <leader>8 8gt
     noremap <leader>9 9gt
+    noremap <leader>0 10gt
     noremap <leader>n gt
     noremap <leader>p gT
     "for previous tabpage
@@ -363,6 +365,9 @@
 "vim-airline
     "managed by Plugin:
     "let g:airline#extensions#tabline#enabled = 1
+    "let g:airline#extensions#tabline#buffer_nr_show = 1
+    "let g:airline#extensions#tabline#fnamemod = ':.'
+    "let g:airline#extensions#tabline#fnamecollapse = 0
 
     if has('gui_running')
         "in gui default is on
@@ -370,6 +375,7 @@
 	"uncommen below if don't want airline.
         "au VimEnter * if exists('g:loaded_airline') | AirlineToggle | endif
     endif
+
 
 "fs/dir operation
     "set autochdir    --->should't set for ctags and cscope will work error!!!

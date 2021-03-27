@@ -18,9 +18,10 @@ else
     addr=$ipdeflink
 fi
 
-svrCmd="$(dirname $prog)/synergys --address $addr"
-svrCmd="/usr/bin/synergys --address $addr --enable-drag-drop"
-svrCmd="/usr/bin/synergys --address $addr "	#prevent linux arrow abnormal
+svrArg="-d WARNING --address $addr"
+svrCmd="$(dirname $prog)/synergys $svrArg"
+svrCmd="/usr/bin/synergys $svrArg"
+
 cliCmd="$(dirname $prog)/synergyc $svrName"
 
 #by startup the network may not connected.

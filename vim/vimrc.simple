@@ -1,0 +1,207 @@
+"language
+    let $LANG='en_US'
+    set langmenu=en_US
+
+"keymap leader
+    "map <silent> [map] [cmd]: will not show cmd in window,exp:
+    "map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
+    let mapleader = ","		    "default is \
+    let maplocalleader = ','	    "default is \
+
+"strip trailing space
+    autocmd BufWritePre * %s/\s\+$//e
+
+"quick run
+    let g:quickrun_config = {
+	\ "_":{
+	\   'outputter':'message',
+	\   },
+	\}
+"simalt alt-key
+    if has("win32")
+        set winaltkeys=yes        "let vim handle <alt-space> for os system menu.
+    endif
+
+"window
+
+    :nmap <silent> <C-h> :wincmd h<CR>		"silent not show cmd map in commandline"
+    :nmap <silent> <C-j> :wincmd j<CR>
+    :nmap <silent> <C-k> :wincmd k<CR>
+    :nmap <silent> <C-l> :wincmd l<CR>
+    :nmap <silent> <C-c> :wincmd c<CR>
+
+    augroup BgHighlight
+        autocmd!
+        autocmd WinEnter * set cul
+        autocmd WinLeave * set nocul
+    augroup END
+
+"highlight
+    syntax on				" 自动语法高亮
+"line wrap
+    "set nowrap	    	"disable linebreak
+    set textwidth=0	"0,disable break
+    set breakindent
+
+"search
+    set nobackup                " 覆盖文件时不备份
+    set ignorecase smartcase    " 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
+    set nowrapscan              " 禁止在搜索到文件两端时重新搜索
+    set incsearch               " 输入搜索内容时就显示搜索结果
+    set hlsearch                " 搜索时高亮显示被找到的文本
+    set hidden                  " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
+
+"indent
+    set shiftwidth=4            " 设定 << 和 >> 命令移动时的宽度为 4
+    set softtabstop=4           " 使得按退格键时可以一次删掉 4 个空格
+    set tabstop=8
+        "设定tab长度为4,如果ts与sts不相等则，按下tab建缩进sts.
+        "exp"ts=8,sts=4,则按下tab建插入的字符为4个' '，连续两个tab插入的为'\t'
+    set expandtab               " 使用空格展开tab
+    set autoindent              " or cindent
+    set smartindent             " 开启新行时使用智能自动缩进
+    filetype indent on
+        "ref :help 30.3  :help indentexpr  /usr/share/vim/vim74/indent/*
+        let g:pyindent_continue=4
+
+"vertical list
+    "can also be '¦,┆'. for plugins https://github.com/Yggdroot/indentLine
+    "set listchars=tab:\¦\ ,eol:$
+    "set listchars=tab:\¦\ ,
+    "set list			"nolist better manual set when need
+    "highlight SpecialKey NONE
+
+    "let g:indentLine_fileType = ['c','cpp','sh','javascript','html']
+    let g:indentLine_fileTypeExclude = ['text']
+    let g:indentLine_bufTypeExclude = ['help','terminal']
+    let g:indentLine_enabled = 0
+    "cmd :IndentLinesDisable
+
+"fold
+    "set foldenable             " 开始折叠
+    set nofoldenable            " 开始折叠
+    set foldmethod=syntax       " 设置语法折叠
+    set foldcolumn=0            " 设置折叠区域的宽度
+    setlocal foldlevel=1        " 设置折叠层数为
+
+"encoding                       "
+    set encoding=utf-8
+    set fencs=utf-8,gbk,ucs-bom,latin1
+
+"statusline
+    set cmdheight=1             " 设定命令行的行数为 1
+    set laststatus=2
+    "set statusline=\ %<%F[%n%M%R%H]%=\ %y\ %(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)
+    set statusline=\ %<%F[b:%n%M%R%H]%=\ \ %(%c:%l/%L%)
+
+"vimdiff
+    if &diff
+        map <leader>1 :diffget 1<CR> :diffupdate<CR>
+        map <leader>2 :diffget 2<CR> :diffupdate<CR>
+        map <leader>3 :diffget 3<CR> :diffupdate<CR>
+        map <leader>4 :diffget 4<CR> :diffupdate<CR>
+
+        au BufRead * set filetype=
+    endif
+
+"taglist
+    nnoremap <F8> :TlistToggle<CR>
+    let Tlist_Auto_Highlight_Tag = 1
+    let Tlist_Auto_Open = 0
+    let Tlist_Exit_OnlyWindow = 1
+    let Tlist_GainFocus_On_ToggleOpen = 1
+    "let Tlist_File_Fold_Auto_Close = 1
+    let Tlist_Close_On_Select = 1
+    let Tlist_Highlight_Tag_On_BufEnter = 1
+    let Tlist_Show_One_File = 1
+    if has("win32")
+        let Tlist_Ctags_Cmd = 'C:\Users\pangwz\vimfiles\plugin\ctags.exe'
+    endif
+
+"nerdtree
+    "managed by Plugin
+    nnoremap <F9> :NERDTreeToggle<CR>
+    "nnoremap <F9> :NERDTreeFind<CR>
+    "options
+        let NERDTreeWinPos = "right"
+        let NERDTreeShowLineNumbers = 1
+        "let NERDTreeQuitOnOpen = 1
+        let nerdtree_plugin_open_cmd = 'xdg-open'
+	let NERDTreeChDirMode = 2
+	"let NERDTreeShowBookmarks = 0
+	"let NERDTreeBookmarksFile = '/path/to/file'
+	"default is $HOME/.NERDTreeBookmarks
+
+    let g:netrw_nogx = 1	    "use xdg-open files
+
+"nerdcomment
+    "managed by Plugin
+    "ref:https://github.com/scrooloose/nerdcommenter
+    "\ca 转换注释的方式，比如： /**/和//
+
+"ctags
+    "nnoremap <leader>csc :cs find c <C-R><C-W>
+    "source ~/.vim/plugin/cscope_maps.vim    no need manual source,it will auto sourced
+    au FileType python set tags+=$HOME/.vim/tags/python2.ctags
+
+"Makefile
+    "----------------for kernel script/Makefile.xx
+    au BufRead,BufNewFile Makefile.* set filetype=make
+
+"Binary
+    augroup Binary
+        au BufReadPre *.bin let &bin=1
+        au BufReadPost *.bin if &bin | %!xxd -g 1
+        au BufReadPost *.bin set filetype=xxd | endif
+    augroup END
+
+"autherinfo
+    let g:vimrc_author='Rowan Pang'
+    let g:vimrc_email='pangweizhen.2008@hotmail.com'
+    let g:vimrc_homepage=''
+    nmap <F4> :AuthorInfoDetect<cr>
+
+"rpm spec
+    au FileType spec map <buffer> <F5> <Plug>SpecChangelog
+    let spec_chglog_format = "%a %b %d %Y RowanPang <pangweizhen.2008@hotmail.com>"
+    "let spec_chglog_release_info = 1
+
+"git commit message
+    au FileType gitcommit exe "normal gg"
+
+"dictionary
+    "in 'insert mode' use tab or c-x_c-k to finish word
+    set dictionary+=/usr/share/dict/words
+
+"vim-instant-markdown
+    "from https://github.com/suan/vim-instant-markdown
+    "use for view md files
+    "after/ftplugin/markdown/instant-markdown.vim
+
+"vim tabpage,:help tabp ...
+    "for tabline show ref plugin/tabline.vim,autoload.
+    noremap <leader>1 1gt
+    noremap <leader>2 2gt
+    noremap <leader>3 3gt
+    noremap <leader>4 4gt
+    noremap <leader>5 5gt
+    noremap <leader>6 6gt
+    noremap <leader>7 7gt
+    noremap <leader>8 8gt
+    noremap <leader>9 9gt
+    noremap <leader>n gt
+    noremap <leader>p gT
+    "for previous tabpage
+    let g:preTab = 1
+    noremap <Leader>tl :exe "tabn ".g:preTab<CR>
+    au TabLeave * let g:preTab= tabpagenr()
+    au TabClosed * exe "normal gT"
+
+"paste
+    set pastetoggle=<F2>
+
+"cmdline hotkey
+    :cnoremap <C-A> <HOME>
+    :cnoremap <C-F> <Right>
+    :cnoremap <C-B> <Left>
+    :cnoremap <C-B> <Left>

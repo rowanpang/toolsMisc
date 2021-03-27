@@ -207,6 +207,10 @@ assign [class="Wireshark"]  ishark
 bindsym $mod+Control+i workspace ishark
 bindsym $mod+Shift+Control+i move container to workspace ishark
 
+assign [class="Code"]  code
+bindsym $mod+Control+c workspace code
+bindsym $mod+Shift+Control+c move container to workspace code
+
 assign [class="Foxit Reader"]  pdf
 assign [class="Evince"]  pdf
 bindsym $mod+Control+p workspace pdf
@@ -258,6 +262,7 @@ workspace 10		output VGA-1
 
 workspace sql		output HDMI-1
 workspace dd		output HDMI-1
+workspace code		output HDMI-1
 workspace firefox	output HDMI-1
 workspace ishark	output HDMI-1
 workspace pdf		output HDMI-1
