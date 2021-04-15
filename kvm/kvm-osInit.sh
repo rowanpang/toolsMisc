@@ -34,6 +34,8 @@ function br-sec(){
     local slave="enp0s20u5u2"
     addBridgeAndSlave $bridgeName $slave
     nmcli connection modify $bridgeName ipv4.never-default yes
+    nmcli connection down $bridgeName  		#reset for default route
+    nmcli connection up $bridgeName 
 }
 
 function br-wan(){
@@ -70,8 +72,8 @@ function usbNetUdev(){
 }
 
 function kvmNetInit(){
-    if ! [ $ovVer -ge 31 ];then
-	usbNetUdev
+    if [ $osVendor == "fedora" -a $osVer -lt 31 ];then
+	usbNetUdev 	#use default link name
     fi
     br-wan
     br-sec
@@ -83,6 +85,14 @@ function ldnsmasq() {
 
     lsudo ln -sf $cfg1 /etc/NetworkManager/
     lsudo ln -sf $cfg2 /etc/NetworkManager/dnsmasq.d/
+
+    if [ $osVendor == "fedora" -a $osVer -ge 31 ];then
+     	systemctl stop 		systemd-resolved.service
+     	systemctl disable 	systemd-resolved.service
+    fi
+
+    sed -i 's;^nameserver .*;#&;' /etc/resolv.conf
+    sed -i '$a \nameserver 127.0.0.1' /etc/resolv.conf
 }
 
 function vncInit(){
@@ -138,4 +148,3 @@ function baseInit(){
 }
 
 baseInit
-kvmnetInit

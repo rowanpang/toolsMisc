@@ -46,8 +46,6 @@ function binPATH(){
 }
 
 function zshInit(){
-    pkgCheckInstall thefuck
-    pkgCheckInstall fasd
     pkgCheckInstall zsh
     pkgCheckInstall sqlite		    #needed by zsh for auto complete
     pkgCheckInstall util-linux-user	    #for chsh cmd
@@ -92,12 +90,20 @@ EOF
 }
 
 function main(){
-	bashConf
-	bashit
-	zshInit
-	binPATH
-	sofwareInit
-	iAuthen
+    pkgCheckInstall thefuck
+    if [ $osVendor == "fedora" -a $osVer -ge 31 ];then
+        if [`dnf list copr | grep -c fasd` -lt 1 ];then
+            dnf copr enable rdnetto/fasd
+        fi
+    fi
+    pkgCheckInstall fasd
+
+    bashConf
+    bashit
+    zshInit
+    binPATH
+    sofwareInit
+    iAuthen
 }
 
 main

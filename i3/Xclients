@@ -5,6 +5,10 @@ if [ -n "$VNCDESKTOPROWAN" ];then
     echo "VNCDESKTOP "
     exec /usr/bin/gnome-session
 else
+    export GTK_IM_MODULE=ibus
+    export XMODIFIERS=@im=ibus
+    export QT_IM_MODULE=ibus
+
     xrandr --output HDMI-1 --left-of VGA-1
     exec i3
 fi

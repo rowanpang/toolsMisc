@@ -13,7 +13,9 @@ function baseInit(){
 	pkgCheckInstall polkit-gnome
 
     #compmgr
-	pkgCheckInstall xcompmgr
+    	if [ $osVendor == "fedora" -a $osVer -lt 31 ];then
+		pkgCheckInstall xcompmgr
+	fi
 
     #wallpaper
 	pkgCheckInstall feh
@@ -83,14 +85,16 @@ function terminalInit(){
 	#pkgCheckInstall terminator
 	#mkdir -p ${HOMEDIR}.config/terminator
 	#ln -sf ${dir}dep/terminator/config ${HOMEDIR}.config/terminator/config
-    #xfce4-terminator
-	local confDir=${HOMEDIR}.config/xfce4/terminal
 
+    #xfce4-terminator
 	pkgCheckInstall xfce4-terminal
+
+	local confDir=${HOMEDIR}.config/xfce4/terminal
 	[ -d $confDir ] || mkdir -p $confDir
-	ln -sf ${dir}dep/xfce4-terminal/accels.scm $confDir/accels.scm
-	ln -sf ${dir}dep/xfce4-terminal/readme.txt $confDir/readme.txt
-	ln -sf ${dir}dep/xfce4-terminal/terminalrc.solarized $confDir/terminalrc
+        ln -sf ${dir}dep/xfce3-terminal/accels.scm $confDir/accels.scm
+        ln -sf ${dir}dep/xfce4-terminal/readme.txt $confDir/readme.txt
+	#ln -sf ${dir}dep/xfce4-terminal/terminalrc.solarized $confDir/terminalrc           #f33, not copy cfg file.
+
     #terminal for nautilus
 	pkgCheckInstall gnome-terminal-nautilus
 }
@@ -105,6 +109,9 @@ function synergyInit(){
 }
 
 function inputMethoInit() {
+    if ! [ $osVer -ge 33 ];then
+        return
+    fi
     pkgCheckInstall fcitx
     pkgCheckInstall fcitx-pinyin		#a input method by pinyin
     pkgCheckInstall fcitx-sunpinyin		#a input method by pinyin
@@ -112,7 +119,6 @@ function inputMethoInit() {
     #pkgCheckInstall fcitx-libpinyin		#a input method by pinyin
     pkgCheckInstall fcitx-configtool
 
-    return
     if ! [ $osVer -eq 26 ];then
 	pkgCheckInstall sogoupinyin fzug-free
     fi

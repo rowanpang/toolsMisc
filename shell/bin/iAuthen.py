@@ -1,4 +1,4 @@
-#!/usr/bin/env /usr/bin/python
+#!/usr/bin/env /usr/bin/python2
 #coding: utf-8
 #Usage:
     # first chang the 'master' link for per host.
@@ -206,8 +206,8 @@ def ifAuthen(svr,ifSpec = None):
         else:
             print 'error!! Auth IP:%s,MAC:%s !' % (infoRepDict['IP'],infoRepDict['Mac'])
     else:
-        print 'error IP:%s,MAC:%s !' % (infoRepDict['IP'],infoRepDict['Mac'])
         print 'error rep not json,repMsg %s' % authRepDict
+        print 'error IP:%s,MAC:%s !' % (infoRepDict['IP'],infoRepDict['Mac'])
 
     urlreq = '/a/ajax.php?tradecode=regdevsubmit&NewMobile=1'
     referer = 'http://10.6.6.9/a/mobile/auth.html'

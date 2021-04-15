@@ -53,6 +53,20 @@ function gvfsInit(){
     pkgCheckInstall gvfs-nfs
 }
 
+function gftp(){
+    pkgCheckInstall gftp
+    cfg=$HOME/.gftp/gftprc
+
+    mkdir -p `dirname $cfg`
+
+    #远程服务器中文显示
+    if [ -f $cfg ];then
+        sed -i 's/remote_charsets=.*/remote_charsets=cp936,gb18303,gbk,gb2312,utf8,gb18030,euc-tw,zh_CN/' $cfg
+    else
+        echo 'remote_charsets=cp936,gb18303,gbk,gb2312,utf8,gb18030,euc-tw,zh_CN/' > $cfg
+    fi
+}
+
 function main(){
     gvfsInit
     initWireshark

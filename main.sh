@@ -28,8 +28,7 @@ function initRepo(){
 
 	[ $(cat /etc/dnf/dnf.conf | grep -c 'expire=1000d') -ge 1 ] || lsudo sed -i "$ a metadata_expire=1000d" /etc/dnf/dnf.conf
 	[ $(cat /etc/dnf/dnf.conf | grep -c 'keepcache=true') -ge 1 ] || lsudo sed -i "$ a keepcache=true" /etc/dnf/dnf.conf
-	# [ -f /etc/yum.repos.d/FZUG.repo ] || lsudo dnf config-manager --add-repo=http://repo.fdzh.org/FZUG/FZUG.repo
-		#not used FZUG rowanPang 2019.12.18
+	# [ -f /etc/yum.repos.d/FZUG.repo ] || lsudo dnf config-manager --add-repo=http://repo.fdzh.org/FZUG/FZUG.repo 	#not used FZUG rowanPang 2019.12.18
 
 	dnf --refresh makecache
     fi
@@ -74,7 +73,7 @@ function initCheck(){
 function main(){
     git submodule init
     git submodule update
-    callFunc initCheck
+    #callFunc initCheck
     local reg='*-osInit.sh'
     doScripts "$reg"
 }

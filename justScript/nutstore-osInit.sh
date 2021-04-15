@@ -4,7 +4,9 @@ source ./osInitframe/lib.sh
 function initNutstore(){
     #depend
     pkgCheckInstall java-*-openjdk
-    pkgCheckInstall notify-python
+    if [ $osVendor == "fedora" -a $osVer -lt 31 ];then
+	    pkgCheckInstall notify-python
+    fi
 
     #$rpm -qi nautilus-nutstore
 	#Name        : nautilus-nutstore
@@ -16,7 +18,7 @@ function initNutstore(){
 
     if ! [ -f $nutdsk ];then
         pr_info "installing nutstore"
-	if [ $osVendor == "fedora" -a $osVer -ge 31 ];then
+	if [ $osVendor == "fedora" -a $osVer -eq 31 ];then
 	    nutroot=$HOME/.nutstore;nutsrc=$nutroot/src;mkdir -p $nutsrc
 	    yum install glib2-devel gtk2-devel nautilus-devel gvfs libappindicator-gtk3  python2-gobject
 	    wget https://www.jianguoyun.com/static/exe/installer/nutstore_linux_src_installer.tar.gz -O $nutsrc/nutstore_linux_src_installer.tar.gz
@@ -42,7 +44,7 @@ function initNutstore(){
     done
 
     local i3cfg="$i3configSelected"
-    sed -i "s;exec .*/\(\.nutstore/dist/bin/nutstore-pydaemon.py\);exec $tdir/\1;" $i3cfg
+    sed -i "s;exec .*/\(\.nutstore/dist/bin/nutstore-pydaemon.py\);exec \$HOME/\1;" $i3cfg
 }
 
 initNutstore

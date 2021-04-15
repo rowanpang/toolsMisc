@@ -4,7 +4,12 @@ source ./osInitframe/lib.sh
 function initGraphviz(){
     fedoraRepo="True"
     if [ $fedoraRepo == "True" ];then
-	pkgsInstall graphviz graphviz-python graphviz-devel
+	pkgsInstall graphviz graphviz-devel
+    	if [ $osVendor == "fedora" -a $osVer -ge 31 ];then
+		pkgCheckInstall graphviz-python3
+	else
+		pkgCheckInstall graphviz-python
+	fi
     else
 	repofile="/etc/yum.repos.d/graphviz-fedora.repo"
 	if ! [ -f $repofile ];then

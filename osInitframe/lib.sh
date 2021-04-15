@@ -14,7 +14,6 @@ function pr_warn(){
 function pr_ok(){
     #32m,green
     echo -e "\033[1;32m""$@""\033[0m"
-    exit -1
 }
 
 function pr_err(){

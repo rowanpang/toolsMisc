@@ -42,7 +42,7 @@ function eclipseIDE(){
 
 function main(){
     javaEnv
-    eclipseIDE
+#   eclipseIDE
 }
 
 main

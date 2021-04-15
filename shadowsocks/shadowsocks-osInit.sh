@@ -7,12 +7,6 @@ function ssInit(){
     pkgCheckUninstall python-shadowsocks
     pkgCheckInstall libsodium  	updates
 
-    if ! [ -f /etc/yum.repos.d/_copr_librehat-shadowsocks.repo ];then
-	lsudo dnf copr enable librehat/shadowsocks
-	lsudo dnf copr disable librehat/shadowsocks
-    fi
-    pkgCheckInstall shadowsocks-libev.x86_64 librehat-shadowsocks
-
     method='systemd'
     cronSvr='/etc/cron.d/shadowSocks-update'
     local    svr=shadowsocks-rowan.service
@@ -131,6 +125,11 @@ function rssHerokuInit(){
 }
 
 function main(){
+    if [ `dnf copr list|grep -c shadowsocks-libev` -lt 1 ];then 
+	lsudo dnf copr enable outman/shadowsocks-libev
+    fi
+    pkgCheckInstall shadowsocks-libev.x86_64
+
     pacInit
     pScriptInit
     #ssInit 			not used 2019.12.18 rowanPang

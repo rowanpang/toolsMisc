@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#ref https://mega.io/sync
 source ./osInitframe/lib.sh
 
 function main(){

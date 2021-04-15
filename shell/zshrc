@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-PATH=/root/toolsmisc/shell/bin:$HOME/bin:/usr/local/bin:$PATH
+PATH=$HOME/go/bin:$HOME/go/gobin/go/bin:/root/toolsmisc/shell/bin:$HOME/bin:/usr/local/bin:$PATH
 export PATH
 export PATH=$PATH:/usr/local/cuda-9.2/bin
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -73,7 +73,7 @@ ZSH_THEME="steeef-rowan"
 # [autojump]:  use fasd alias 'd' 'z' instead
 # zsh-syntax-highlighting
 plugins=(
-	git git-prompt fasd fedora thefuck
+	git git-prompt fasd dnf thefuck
 	common-aliases gpg-agent svn-fast-info
 	ssh-agent encode64 pip cp
 	zsh-completions

@@ -172,13 +172,17 @@ bar {
 }
 
 #synergyX
-exec /root/toolsmisc/synergy/synergyX.sh
+exec /home/rowan/toolsmisc/synergy/synergyX.sh
 
 #swap hase been make when bootup,ref keyboard/*
 #add this 2 lines to disable it
 
-#exec /usr/bin/ibus-daemon --daemonize --replace
-exec /usr/bin/fcitx -d
+#exec /usr/bin/fcitx -d
+exec /usr/bin/ibus-daemon --daemonize --replace
+#export GTK_IM_MODULE=ibus
+#export XMODIFIERS=@im=ibus
+#export QT_IM_MODULE=ibus
+
 #exec /usr/bin/sogou-qimpanel
 
 exec $HOME/.nutstore/dist/bin/nutstore-pydaemon.py
@@ -248,6 +252,10 @@ assign [class="Doublecmd"]  dd
 bindsym $mod+Control+d workspace dd
 bindsym $mod+Shift+Control+d move container to workspace dd
 
+assign [class="gFTP"]	    gFTP
+bindsym $mod+Control+g workspace gFTP
+bindsym $mod+Shift+Control+g move container to workspace gFTP
+
 #output
 workspace 1		output VGA-1
 workspace 2 		output VGA-1
@@ -271,6 +279,7 @@ workspace mail		output HDMI-1
 workspace nautilus	output HDMI-1
 workspace vm		output HDMI-1
 workspace java		output HDMI-1
+workspace gFTP          output HDMI-1
 
 exec_always /usr/bin/setxkbmap	    -option	    #disable ctrlCap software swap for X11
 exec_always /usr/bin/loadkeys	    -d		    #disable ctrlCap software swap for kern

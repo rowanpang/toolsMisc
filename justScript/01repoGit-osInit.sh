@@ -22,5 +22,6 @@ function repoConan(){
     fi
 }
 
+exit 0
 repoNoteGit
 repoConan

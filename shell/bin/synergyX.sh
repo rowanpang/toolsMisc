@@ -1,1 +1,1 @@
-/root/toolsmisc/synergy/synergyX.sh
+/home/rowan/toolsmisc/synergy/synergyX.sh
