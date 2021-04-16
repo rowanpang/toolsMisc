@@ -90,14 +90,39 @@ def repParser(rep):
 
     return repdict,isJson
 
+userpwdcfg= {}
+def userpwdgromfile():
+    global userpwdcfg
+    if len(userpwdcfg) != 0:
+        return userpwdcfg
+
+    fpath="/root/.pwd"
+    line = ''
+    if os.path.isfile(fpath):
+        line = open(fpath,'r').readline().strip().partition(' ')      #strip the '\n'
+    if len(line[2]) == 0:
+        userpwdcfg[1] = line[0]
+        userpwdcfg[0] = ''
+    else:
+        userpwdcfg[1] = line[2]
+        userpwdcfg[0] = line[0]
+
+    print 'userpwd from file',userpwdcfg
+    return userpwdcfg
+
 authenUser = 'pangweizhenbj'
+authenUser = ''
 def ifAuthenGetUser():
     global authenUser
+    global userpwdcfg
     authenUserDefault = 'pangweizhenbj'
     if len(authenUser) != 0:
         return authenUser
 
-    authenUser = raw_input('Input username to be authen[%s]: ' %authenUserDefault);
+    authenUser = userpwdcfg[0]
+    if len(authenUser) == 0:
+        authenUser = raw_input('Input username to be authen[%s]: ' %authenUserDefault);
+
     if len(authenUser) == 0:
         authenUser = authenUserDefault
 
@@ -106,17 +131,14 @@ def ifAuthenGetUser():
 authenPWD = ''
 def ifAuthenGetPWD():
     global authenPWD
+    global userpwdcfg
     if len(authenPWD) != 0:
         return authenPWD
 
-    fpath="/root/.pwd"
-
-    if os.path.isfile(fpath):
-        authenPWD = open(fpath,'r').readline().strip()      #strip the '\n'
+    authenPWD = userpwdcfg[1]
     if len(authenPWD) != 0:
-        # printf('pwd from file %s, %s',fpath,authenPWD);
-        print 'pwd from file %s, %s' % (fpath, authenPWD)
         return authenPWD
+
     prompt='domain pwd:'
     authenPWD = getpass.getpass(prompt);
     while len(authenPWD) == 0:
@@ -127,6 +149,8 @@ def ifAuthenGetPWD():
 
 def ifAuthen(svr,ifSpec = None):
     ret = False
+    userpwdgromfile()
+    print userpwdcfg
     userName = ifAuthenGetUser()
     pwd = ifAuthenGetPWD()
 
