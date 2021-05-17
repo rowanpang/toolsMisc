@@ -62,7 +62,7 @@
 	Plug 'tpope/vim-repeat'
 	"orgModeEnd------
 
-	Plug 'rykka/riv.vim'		"xx.rst file
+	"Plug 'rykka/riv.vim'		"xx.rst file
 	Plug 'Rykka/InstantRst'
 
 	Plug 'ekalinin/dockerfile.vim'
