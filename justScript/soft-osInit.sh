@@ -80,6 +80,8 @@ function main(){
     miscInit
     gftp
     vscode
+
+    pkgCheckInstall cargo           #rust and cargo
 }
 
 main

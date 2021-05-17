@@ -12,6 +12,7 @@ import sys
 import json
 import getpass
 import datetime
+import time
 
 def svrConnection(svr,srcIp = None,srcPort = 6666):
     if srcIp is None:
@@ -66,7 +67,7 @@ def repstr2dict(repbody,coding,part = True):
 
     # str like this is ok for json.loads(xx)
         # {"length": 27,"DeviceID": "476719", "UserName": "pangweizhenbj", "IP": "10.200.40.11", "Mac": "6C:B0:CE:17:AD:72", "DepartID": "0"}
-    jsonstr = jsonstr[jsonstr.find('{'):jsonstr.find('$')].decode('gbk').encode('utf8').\
+    jsonstr = jsonstr[jsonstr.find('{'):jsonstr.find('$')].decode(coding).encode('utf8').\
                 replace('\'','"').replace('(','-').\
                 replace(')','-')
     # print jsonstr
@@ -79,7 +80,7 @@ def repParser(rep):
     if repbody.find('__res = {') == -1:
         isJson = False
     # print isJson
-    # print rep.getheader('Content-Type')
+    # Content-Type: text/html; charset=gbk\r\n
     coding = rep.getheader('Content-Type').split()[1].split('=')[1].lower()
     # print coding
 
@@ -100,6 +101,10 @@ def userpwdgromfile():
     line = ''
     if os.path.isfile(fpath):
         line = open(fpath,'r').readline().strip().partition(' ')      #strip the '\n'
+    else:
+    	print 'file not exist:',fpath
+	return
+
     if len(line[2]) == 0:
         userpwdcfg[1] = line[0]
         userpwdcfg[0] = ''
@@ -119,7 +124,8 @@ def ifAuthenGetUser():
     if len(authenUser) != 0:
         return authenUser
 
-    authenUser = userpwdcfg[0]
+    if len(userpwdcfg):
+	    authenUser = userpwdcfg[0]
     if len(authenUser) == 0:
         authenUser = raw_input('Input username to be authen[%s]: ' %authenUserDefault);
 
@@ -135,8 +141,9 @@ def ifAuthenGetPWD():
     if len(authenPWD) != 0:
         return authenPWD
 
-    authenPWD = userpwdcfg[1]
-    if len(authenPWD) != 0:
+    if len(userpwdcfg):
+        authenPWD = userpwdcfg[1]
+    if len(authenPWD):
         return authenPWD
 
     prompt='domain pwd:'
@@ -144,7 +151,8 @@ def ifAuthenGetPWD():
     while len(authenPWD) == 0:
         authenPWD = getpass.getpass(prompt);
 
-    open(fpath,'w').write(authenPWD)
+    fpath="/root/.pwd"
+    #open(fpath,'w').write(authenPWD)
     return authenPWD
 
 def ifAuthen(svr,ifSpec = None):
@@ -222,16 +230,26 @@ def ifAuthen(svr,ifSpec = None):
     dataAuth['password'] = base64.b64encode(pwd)
     dataAuth['deviceid'] = infoRepDict['DeviceID']
 
-    authRepDict,isJson = repParser(svrPostGotRep(conn,urlreq,referer,connkeep,dataAuth))
-    # print '----isJson:%d---' % isJson
-    if isJson == True:
-        if authRepDict['IsDisabled'] == '0':
-            print 'successful!! Auth IP:%s,MAC:%s !' % (infoRepDict['IP'],infoRepDict['Mac'])
-        else:
-            print 'error!! Auth IP:%s,MAC:%s !' % (infoRepDict['IP'],infoRepDict['Mac'])
-    else:
-        print 'error rep not json,repMsg %s' % authRepDict
-        print 'error IP:%s,MAC:%s !' % (infoRepDict['IP'],infoRepDict['Mac'])
+    while(1) :
+        rep = svrPostGotRep(conn,urlreq,referer,connkeep,dataAuth)
+        authRepDict,isJson = repParser(rep)
+        # print '----isJson:%d---' % isJson
+        if isJson == True:
+            if authRepDict['IsDisabled'] == '0':
+                print 'successful!! Auth IP:%s,MAC:%s !' % (infoRepDict['IP'],infoRepDict['Mac'])
+            else:
+                print 'error!! Auth IP:%s,MAC:%s !' % (infoRepDict['IP'],infoRepDict['Mac'])
+
+            break;
+        elif authRepDict.find("authRepeatDev"):
+            print "repeat Auth"
+            repeatid=authRepDict.split()[1]
+            dataAuth['authRepeatDev'] = repeatid
+            time.sleep(1)
+        else :
+            print 'error rep not json,repMsg %s' % authRepDict
+            print 'error IP:%s,MAC:%s !' % (infoRepDict['IP'],infoRepDict['Mac'])
+            break;
 
     urlreq = '/a/ajax.php?tradecode=regdevsubmit&NewMobile=1'
     referer = 'http://10.6.6.9/a/mobile/auth.html'
