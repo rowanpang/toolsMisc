@@ -303,7 +303,7 @@ def ifAuthens(svr,ifSpecs = None):
             ifAuthen(svr,ifSpec)
 
 def main():
-    print '%s' % datetime.datetime.now().strftime('%Y-%m-%d')
+    print '%s' % datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     svr = '10.6.6.9'
     ifAuthens(svr)
     print ''
