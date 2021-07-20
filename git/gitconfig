@@ -25,6 +25,7 @@
 
 [core]
     editor = vim
+    ;pager = cat
 [merge]
     tool = vimdiff
 [mergetool]
@@ -44,4 +45,8 @@
     default = matching
 
 [http]
-    #proxy = socks5h://127.0.0.1:1084
+    #proxy = socks5h://127.0.0.1:1080
+    lowSpeedLimit = 0
+    lowSpeedTime = 999999
+[pull]
+	rebase = false
