@@ -109,7 +109,7 @@ function synergyInit(){
 }
 
 function inputMethoInit() {
-    if ! [ $osVer -ge 33 ];then
+    if ! [ $osVer -ge 33 ];then                 #conflict with default ibus.  /etc/X11/xinit/xinput.d/ibus.conf  , fcitx.conf
         return
     fi
     pkgCheckInstall fcitx
@@ -118,6 +118,9 @@ function inputMethoInit() {
     pkgCheckInstall fcitx-cloudpinyin		#a input method by pinyin
     #pkgCheckInstall fcitx-libpinyin		#a input method by pinyin
     pkgCheckInstall fcitx-configtool
+
+    pkgCheckInstall imsettings
+
 
     if ! [ $osVer -eq 26 ];then
 	pkgCheckInstall sogoupinyin fzug-free
