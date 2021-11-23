@@ -6,7 +6,7 @@ cd /usr/local/SecoClient
 seccmd=./SecoClient
 seclink=ipsec_vnic
 
-tgts="10.152.30.10,80-82 10.152.20.11 10.152.11.50,63"
+tgts="10.152.30.10,80-82,116 10.152.20.11 10.152.11.50,63 10.152.6.23"
 
 spid=`pgrep SecoClientPromo`
 if [ "X$spid" != "X" ];then
