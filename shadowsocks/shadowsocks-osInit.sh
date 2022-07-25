@@ -1,7 +1,7 @@
 #!/bin/bash
 source ./osInitframe//lib.sh
 function ssInit(){
-    dir=$localdir
+    dir=$localdir/pullfree/
 
     #pkgCheckInstall python-shadowsocks
     pkgCheckUninstall python-shadowsocks
@@ -125,7 +125,7 @@ function rssHerokuInit(){
 }
 
 function main(){
-    if [ `dnf copr list|grep -c shadowsocks-libev` -lt 1 ];then 
+    if [ `dnf copr list|grep -c shadowsocks-libev` -lt 1 ];then
 	lsudo dnf copr enable outman/shadowsocks-libev
     fi
     pkgCheckInstall shadowsocks-libev.x86_64
