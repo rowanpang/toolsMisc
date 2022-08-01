@@ -11,6 +11,7 @@ section: screens
 	# three hosts named:  winxPC, linuxPC, and iMac
 	# These are the nice names of the hosts to make it easy to write the config file
 	# The aliases section below contain the "actual" names of the hosts (their hostnames)
+        timothyPC:
 	winxPC:
 	linuxPC:
 end
@@ -23,24 +24,29 @@ section: aliases
 		pangweizhenbj01
 	linuxPC:
 		rowanInspur
+        timothyPC:
+                timothy
 end
 
 section: links
 	# winxPC is to the left of linuxPC
 	linuxPC:
 		down = winxPC
+                left = timothyPC
 
 	# linuxPC is to the right of winxPC
 	winxPC:
 		up = linuxPC
 
+        timothyPC:
+                right = linuxPC
 end
 
 
 section: options
 	screenSaverSync = false
 	win32KeepForeground = false
-	switchCorners = none + bottom-left
+	switchCorners = none + bottom-left                              #只能在左下角向左移动.
 	switchCornerSize = 200
 	#back to the edge within N milliseconds
 	#switchDoubleTap = 1000

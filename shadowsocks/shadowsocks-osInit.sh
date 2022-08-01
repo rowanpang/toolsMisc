@@ -49,7 +49,7 @@ EOF"
 function pScriptInit(){
     tdir="${localdir}../shell/bin/"
 
-    scripts="phome.sh lvzl.sh"
+    scripts="phome.sh rsshwin.sh ./heroku.rssv2ray/gmail.sh ./heroku.rssv2ray/hotmail.sh myseco.sh"
 
     for f in $scripts;do
 	pscript=${localdir}$f
@@ -97,7 +97,7 @@ function firewalldInit(){
 }
 
 function rssHerokuInit(){
-    dir=${localdir}
+    dir=${localdir}/heroku.websocks/
     local svr="rss-heroku.service"
     local svrPrefix="${svr%.service}"
     local chksvr="${svrPrefix}-chk.service"

@@ -89,10 +89,19 @@ EOF
 	chmod +x $cronsh
 }
 
+function hkfw(){
+	cronsh=/etc/cron.d/1hkfw
+	cat << EOF > $cronsh
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+* * * * * root sh ${localdir}/bin/hkfw.sh
+EOF
+}
+
 function main(){
     pkgCheckInstall thefuck
     if [ $osVendor == "fedora" -a $osVer -ge 31 ];then
-        if [`dnf list copr | grep -c fasd` -lt 1 ];then
+        if [ `dnf list copr | grep -c fasd` -lt 1 ];then
             dnf copr enable rdnetto/fasd
         fi
     fi
@@ -104,6 +113,7 @@ function main(){
     binPATH
     sofwareInit
     iAuthen
+    hkfw
 }
 
 main
