@@ -14,6 +14,9 @@ import getpass
 import datetime
 import time
 
+authenUser = ''
+authenPWD = ''
+
 def svrConnection(svr,srcIp = None,srcPort = 6666):
     if srcIp is None:
         conn = httplib.HTTPConnection(host=svr)
@@ -115,8 +118,6 @@ def userpwdgromfile():
     print 'userpwd from file',userpwdcfg
     return userpwdcfg
 
-authenUser = 'pangweizhenbj'
-authenUser = ''
 def ifAuthenGetUser():
     global authenUser
     global userpwdcfg
@@ -134,7 +135,6 @@ def ifAuthenGetUser():
 
     return authenUser
 
-authenPWD = ''
 def ifAuthenGetPWD():
     global authenPWD
     global userpwdcfg

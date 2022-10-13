@@ -80,15 +80,6 @@ function sofwareInit(){
     pkgCheckInstall ansifilter
 }
 
-function iAuthen(){
-	cronsh=/etc/cron.daily/iAuthen.sh
-	cat << EOF > $cronsh
-#!/bin/bash
-${localdir}/bin/iAuthen.py >> /var/log/iAuthen.log 2>&1
-EOF
-	chmod +x $cronsh
-}
-
 function hkfw(){
 	cronsh=/etc/cron.d/1hkfw
 	cat << EOF > $cronsh
@@ -112,8 +103,11 @@ function main(){
     zshInit
     binPATH
     sofwareInit
-    iAuthen
     hkfw
+
+    for f in `ls ${localdir}/shell-osInit.d/*.oi`;do
+        bash $f ${localdir}
+    done
 }
 
 main

@@ -1,6 +1,6 @@
 "language
-    let $LANG='en_US'
-    set langmenu=en_US
+    "let $LANG='en_US'
+    "set langmenu=en_US
 
 "keymap leader
     "map <silent> [map] [cmd]: will not show cmd in window,exp:
@@ -69,6 +69,9 @@
 
 	Plug 'chrisbra/csv.vim'
         Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+        Plug 'aklt/plantuml-syntax'
+        Plug 'weirongxu/plantuml-previewer.vim'
+        Plug 'tyru/open-browser.vim'
     call plug#end()
     "
 "ack/ag
@@ -121,9 +124,9 @@
 
 "Ctrlp
     "let g:loaded_ctrlp = 1			    "uncomment it if you not want it;
+    "let g:ctrlp_by_filename = 1
+    "let g:ctrlp_regexp = 1
     "let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'  "default values
-    let g:ctrlp_by_filename = 1
-    let g:ctrlp_regexp = 1
     let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
     let g:ctrlp_open_new_file = 't'		    "open new file created by ctrlp in table.'
     let g:ctrlp_lazy_update = 0
@@ -425,3 +428,13 @@
     :cnoremap <C-F> <Right>
     :cnoremap <C-B> <Left>
     :cnoremap <C-B> <Left>
+
+"Plantuml
+    let g:plantuml_previewer#plantuml_jar_path = "/lib/plantuml.jar"
+    let g:plantuml_previewer#debug_mode = 1
+    "wget -O /lib/plantuml-1.2022.7.jar https://github.com/plantuml/plantuml/releases/download/v1.2022.7/plantuml-1.2022.7.jar
+    "cd /lib/ && ln -s plantuml-1.2022.7.jar plantuml.jar
+
+    nmap <leader>uo :PlantumlOpen<CR>
+    nmap <leader>us :PlantumlStart<CR>
+    nmap <leader>ut :PlantumlToggle<CR>

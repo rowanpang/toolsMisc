@@ -1,0 +1,13 @@
+#!/bin/bash
+osInitdir=$1
+
+target=/etc/cron.daily/
+cp $osInitdir/bin/reposync.sh $target
+
+logroate=/etc/logrotate.d/reposync
+
+cat << EOF > $logroate
+#---------Auto gen by $0---------
+#default week , rotate=4 (1 month)
+/var/log/reposync/*.log {}
+EOF

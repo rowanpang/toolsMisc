@@ -76,7 +76,7 @@ plugins=(
 	git git-prompt fasd dnf thefuck
 	common-aliases gpg-agent svn-fast-info
 	ssh-agent encode64 pip cp
-	zsh-completions
+	#zsh-completions
 	docker
 	tmux
 	#vi-mode

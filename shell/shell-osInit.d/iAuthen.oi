@@ -1,0 +1,32 @@
+#!/bin/bash
+
+localdir=$1
+function iAuthen(){
+    cronsh=/etc/cron.daily/iAuthen.sh
+    logf=/var/log/iAuthen.log
+    logrotate=/etc/logrotate.d/iAuthen
+
+    cat << EOF > $cronsh
+#!/bin/bash
+#---------Auto gen by $0--------------
+totaltry=5
+try=1
+while [ \$try -le \$totaltry ];do
+    echo "Daily cron iAuth, try: \$try" >> $logf
+    #python default buffer io, if timeout TERM will no output,change to NUNBUF
+    PYTHONUNBUFFERED=1 timeout 5 /home/rowan/toolsmisc/shell//bin/iAuthen.py >> $logf 2>&1
+    [ \$? -eq 0 ] || [ \$try -eq \$totaltry ] && break
+    let try++
+    sleep 60
+done
+EOF
+    chmod +x $cronsh
+
+    cat << EOF > $logrotate
+#default week rotate, keep 4 rotated(1 month)
+$logf { }
+EOF
+
+}
+
+iAuthen
